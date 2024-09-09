@@ -32,5 +32,5 @@ This course covers the principles and practices of distributed systems, includin
 - Lab assignments using distributed frameworks (e.g., Apache Kafka, Zookeeper)
 
 ## Resources
-- "Distributed Systems: Principles and Paradigms" by Andrew Tanenbaum
+- ["Distributed Systems: Principles and Paradigms" by Andrew Tanenbaum](https://vowi.fsinf.at/images/b/bc/TU_Wien-Verteilte_Systeme_VO_%28G%C3%B6schka%29_-_Tannenbaum-distributed_systems_principles_and_paradigms_2nd_edition.pdf)
 - Research papers on consensus and distributed storage systems
