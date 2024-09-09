@@ -31,5 +31,5 @@ This course provides an in-depth understanding of cybersecurity principles and p
 - Final exam
 
 ## Resources
-- "Computer Security: Principles and Practice" by William Stallings
-- "The Web Application Hacker's Handbook" by Dafydd Stuttard, Marcus Pinto
+- ["Computer Security: Principles and Practice" by William Stallings](http://www.cs.unibo.it/babaoglu/courses/security/resources/documents/Computer_Security_Principles_and_Practice_(3rd_Edition).pdf)
+- ["The Web Application Hacker's Handbook" by Dafydd Stuttard, Marcus Pinto](https://edu.anarcho-copy.org/Against%20Security%20-%20Self%20Security/Dafydd%20Stuttard,%20Marcus%20Pinto%20-%20The%20web%20application%20hacker%27s%20handbook_%20finding%20and%20exploiting%20security%20flaws-Wiley%20(2011).pdf)
