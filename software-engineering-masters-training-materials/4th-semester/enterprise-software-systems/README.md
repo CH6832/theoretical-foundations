@@ -26,5 +26,5 @@ This course covers the design, development, and management of enterprise-level s
 - Final exam
 
 ## Resources
-- "Enterprise Architecture at Work" by Marc Lankhorst
-- "Modern ERP: Select, Implement, and Use Today's Advanced Business Systems" by Marianne Bradford
+- ["Enterprise Architecture at Work" by Marc Lankhorst](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.kau.edu.sa/GetFile.aspx%3Fid%3D192614%26fn%3DEnterprise_Architecture_at_Work__Modelling__Communication_and_Analysis.pdf&ved=2ahUKEwiPqfKI0rWIAxVAzQIHHXuHGdUQFnoECAoQAQ&usg=AOvVaw3fOXGODs8BC2jgAXKPNJLb)
+- ["Modern ERP: Select, Implement, and Use Today's Advanced Business Systems" by Marianne Bradford](https://lms.su.edu.pk/lesson/3799/modern-erp-select-implement-and-use-todays-advanced-business-systems-by-marianne-bradford-3rd-edition)
