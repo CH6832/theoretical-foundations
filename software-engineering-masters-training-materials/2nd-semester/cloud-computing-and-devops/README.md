@@ -31,5 +31,5 @@ This course focuses on cloud computing platforms and DevOps practices, emphasizi
 - Final exam
 
 ## Resources
-- "Cloud Computing: Concepts, Technology & Architecture" by Thomas Erl
-- "The DevOps Handbook" by Gene Kim, Patrick Debois, John Willis, Jez Humble
+- ["Cloud Computing: Concepts, Technology & Architecture" by Thomas Erl](https://ptgmedia.pearsoncmg.com/images/9780133387520/samplepages/0133387526.pdf)
+- ["The DevOps Handbook" by Gene Kim, Patrick Debois, John Willis, Jez Humble](http://images.itrevolution.com/documents/DevOps_Handbook_Intro_Part1_Part2.pdf)
