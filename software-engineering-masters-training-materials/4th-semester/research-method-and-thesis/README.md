@@ -26,5 +26,5 @@ This course provides training in research methodologies and the execution of a r
 - Final thesis submission and defense
 
 ## Resources
-- "Research Methods for Computer Science" by David J. McCandless
-- "Writing for Computer Science" by Justin Zobel
+- ["Research Methods for Computer Science" by David J. McCandless](https://eclass.hmu.gr/modules/document/file.php/TP374/Lecture%20Presentations/L1%20-%20Introduction/Literature/2017%20-%20Research%20Methods%20in%20Computer%20Science%20-%20The%20Challenges%20and%20Issues.pdf)
+- ["Writing for Computer Science" by Justin Zobel](https://faculty.kashanu.ac.ir/file/download/course/1677017074-justin-zobel-auth.-writing-for-computer-science-springer-verlag-london-2014-.pdf)
