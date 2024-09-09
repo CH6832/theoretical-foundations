@@ -26,5 +26,5 @@ This course explores advanced and emerging topics in software engineering, provi
 - Final exam
 
 ## Resources
-- "Domain-Driven Design" by Eric Evans
-- "Quantum Computing for Computer Scientists" by Noson S. Yanofsky, Mirco A. Mannucci
+- ["Domain-Driven Design" by Eric Evans](https://fabiofumarola.github.io/nosql/readingMaterial/Evans03.pdf)
+- ["Quantum Computing for Computer Scientists" by Noson S. Yanofsky, Mirco A. Mannucci](https://assets.cambridge.org/97805218/79965/frontmatter/9780521879965_frontmatter.pdf)
