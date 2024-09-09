@@ -34,5 +34,5 @@ This course delves into advanced topics in software engineering, focusing on cut
 - Final exam
 
 ## Resources
-- "Software Engineering at Google" by Titus Winters et al.
-- "Agile Estimating and Planning" by Mike Cohn
+- ["Software Engineering at Google" by Titus Winters et al.](https://res.infoq.com/articles/software-engineering-google/en/resources/software_engineering_at_google_extract-1622201647282.pdf)
+- ["Agile Estimating and Planning" by Mike Cohn](https://www.mountaingoatsoftware.com/uploads/presentations/Agile-Estimating-Planning-Agile-Development-Practices-2008.pdf)
