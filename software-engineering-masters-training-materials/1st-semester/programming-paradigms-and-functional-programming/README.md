@@ -33,5 +33,5 @@ This course explores various programming paradigms with a special focus on funct
 - Final exam
 
 ## Resources
-- "Functional Programming in Scala" by Paul Chiusano, Runar Bjarnason
-- "Real World Haskell" by Bryan O'Sullivan et al.
+- ["Functional Programming in Scala" by Paul Chiusano, Runar Bjarnason](https://github.com/fan-zheng/books/blob/master/Manning.Functional.Programming.in.Scala.2014.8.pdf)
+- ["Real World Haskell" by Bryan O'Sullivan et al.](https://i.iinfo.cz/files/root/k/real-world-haskell.pdf)
