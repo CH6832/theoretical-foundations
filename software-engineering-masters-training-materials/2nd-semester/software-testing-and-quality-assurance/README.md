@@ -33,5 +33,5 @@ This course covers the principles and practices of software testing and quality 
 - Final exam
 
 ## Resources
-- "Software Testing: A Craftsman's Approach" by Paul C. Jorgensen
-- "Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation" by Jez Humble, David Farley
+- ["Software Testing: A Craftsman's Approach" by Paul C. Jorgensen](https://malenezi.github.io/malenezi/SE401/Books/Software-Testing-A-Craftsman-s-Approach-Fourth-Edition-Paul-C-Jorgensen.pdf)
+- ["Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation" by Jez Humble, David Farley](https://proweb.md/ftp/carti/Continuous-Delivery-Jez%20Humble-David-Farley.pdf)
