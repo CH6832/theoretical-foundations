@@ -34,5 +34,5 @@ This course covers the fundamentals of blockchain technology, including its arch
 - Final exam
 
 ## Resources
-- "Mastering Blockchain" by Imran Bashir
-- "Blockchain Basics" by Daniel Drescher
+- ["Mastering Blockchain" by Imran Bashir](https://users.cs.fiu.edu/~prabakar/cen5079/Common/textbooks/Mastering_Blockchain_2nd_Edition.pdf)
+- ["Blockchain Basics" by Daniel Drescher](https://lms.maaldatalabs.com/uploads/Blockchain_basic.pdf)
