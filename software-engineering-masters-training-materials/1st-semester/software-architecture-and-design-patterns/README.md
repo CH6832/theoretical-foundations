@@ -38,5 +38,5 @@ This course introduces key concepts in software architecture and design patterns
 - Final exam
 
 ## Resources
-- "Design Patterns: Elements of Reusable Object-Oriented Software" by Gamma et al.
-- "Clean Architecture" by Robert C. Martin
+- ["Design Patterns: Elements of Reusable Object-Oriented Software" by Gamma et al.](https://www.javier8a.com/itc/bd1/articulo.pdf)
+- ["Clean Architecture" by Robert C. Martin](https://agorism.dev/book/software-architecture/%28Robert%20C.%20Martin%20Series%29%20Robert%20C.%20Martin%20-%20Clean%20Architecture_%20A%20Craftsman%E2%80%99s%20Guide%20to%20Software%20Structure%20and%20Design-Prentice%20Hall%20%282017%29.pdf)
