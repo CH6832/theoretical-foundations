@@ -34,5 +34,5 @@ This course covers advanced topics in database systems and data management, incl
 - Final exam
 
 ## Resources
-- "Database Systems: The Complete Book" by Hector Garcia-Molina
-- "Designing Data-Intensive Applications" by Martin Kleppmann
+- ["Database Systems: The Complete Book" by Hector Garcia-Molina](https://people.inf.elte.hu/kiss/DB/ullman_the_complete_book.pdf)
+- ["Designing Data-Intensive Applications" by Martin Kleppmann](https://bayanbox.ir/view/5162266560232218675/Designing-Data-Intensive-Applications.pdf)
