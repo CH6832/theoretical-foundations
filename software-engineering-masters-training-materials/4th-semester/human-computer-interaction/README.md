@@ -27,5 +27,5 @@ This course focuses on the principles and practices of HCI, emphasizing the desi
 - Final exam
 
 ## Resources
-- "Designing Interfaces: Patterns for Effective Interaction Design" by Jenifer Tidwell
-- "The Design of Everyday Things" by Don Norman
+- ["Designing Interfaces: Patterns for Effective Interaction Design" by Jenifer Tidwell]()
+- ["The Design of Everyday Things" by Don Norman](https://dl.icdst.org/pdfs/files4/4bb8d08a9b309df7d86e62ec4056ceef.pdf)
