@@ -32,5 +32,5 @@ This course provides a comprehensive introduction to machine learning, focusing 
 - Final project: End-to-end machine learning pipeline
 
 ## Resources
-- "Pattern Recognition and Machine Learning" by Christopher M. Bishop
-- "Deep Learning" by Ian Goodfellow, Yoshua Bengio, Aaron Courville
+- ["Pattern Recognition and Machine Learning" by Christopher M. Bishop](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
+- ["Deep Learning" by Ian Goodfellow, Yoshua Bengio, Aaron Courville](http://alvarestech.com/temp/deep/Deep%20Learning%20by%20Ian%20Goodfellow,%20Yoshua%20Bengio,%20Aaron%20Courville%20(z-lib.org).pdf)
