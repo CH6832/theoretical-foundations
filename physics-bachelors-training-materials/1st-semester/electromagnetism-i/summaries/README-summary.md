@@ -1,7 +1,3 @@
-Certainly! Below is a more detailed explanation of each topic in the lecture notes, with comprehensive explanations for the formulas and concepts involved.
-
----
-
 # Lecture Notes on Electrostatics, Magnetostatics, and Electrodynamics
 
 ## Electrostatics
@@ -220,7 +216,3 @@ $c = \frac{1}{\sqrt{\mu_0 \epsilon_0}}$
 
 - **Larmor Formula:** Describes the power radiated by an accelerating charge.
 - **Antenna Theory:** Analyzes how antennas emit and receive electromagnetic waves, including concepts such as radiation patterns and impedance.
-
----
-
-Feel free to add any further specifics or additional sections as needed for your lecture or study purposes!

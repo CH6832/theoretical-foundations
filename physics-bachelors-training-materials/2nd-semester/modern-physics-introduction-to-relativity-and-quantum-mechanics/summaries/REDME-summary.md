@@ -1,7 +1,3 @@
-Certainly! Let's expand on each topic with more detailed explanations to ensure better understanding.
-
----
-
 # Modern Physics: Introduction to Relativity and Quantum Mechanics
 
 ## Course Description
@@ -267,7 +263,3 @@ The Schrödinger equation is fundamental to quantum mechanics, describing how th
 2. **Implications:**
 
    Entanglement has profound implications for quantum computing and quantum cryptography, enabling secure communication and the development of new quantum technologies.
-
----
-
-These expanded notes provide a thorough explanation of key concepts in modern physics, designed to help students understand both the theoretical underpinnings and practical applications of special relativity and quantum mechanics.

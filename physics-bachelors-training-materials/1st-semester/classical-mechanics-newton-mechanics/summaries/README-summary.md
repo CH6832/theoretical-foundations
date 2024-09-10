@@ -1,7 +1,3 @@
-Here's a detailed lecture note on Newtonian Mechanics and Advanced Topics, formatted in Markdown with mathematical explanations and examples.
-
----
-
 # Newtonian Mechanics
 
 ## Fundamental Principles
@@ -285,7 +281,3 @@ where$G$is the gravitational constant ($6.674 \times 10^{-11} \, \text{N} \cdot 
 **Example**:
 For Earth orbiting the Sun, if$a$is the average distance and$T$is the orbital period, then:
 \[ \frac{T^2}{a^3} = \frac{4 \pi^2}{G (M_{\text{Sun}} + M_{\text{Earth}})} \]
-
----
-
-This lecture note covers the fundamental principles, kinematics, work and energy, momentum and collisions, rotational mechanics, and advanced topics in Newtonian mechanics, providing a detailed and rigorous understanding of classical mechanics at an advanced level.

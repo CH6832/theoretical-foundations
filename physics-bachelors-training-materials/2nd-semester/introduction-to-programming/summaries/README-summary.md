@@ -1,7 +1,3 @@
-Certainly! Here is an extensive set of lecture notes for MATLAB programming, covering intermediate to advanced levels, including more complex topics and examples.
-
----
-
 # Advanced MATLAB Programming
 
 ## Course Description

@@ -1,7 +1,3 @@
-Certainly! Here are detailed lecture notes for a General Chemistry course, including mathematical formulas and in-depth explanations for each key topic.
-
----
-
 # General Chemistry
 
 ## Course Description
