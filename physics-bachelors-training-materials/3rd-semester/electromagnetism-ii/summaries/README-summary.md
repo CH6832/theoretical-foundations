@@ -246,7 +246,3 @@ In special relativity, electromagnetism is described in four-dimensional spaceti
 1. **Electromagnetic Field Simulation:**
 
    CST Studio Suite offers comprehensive tools for designing and analyzing electromagnetic systems, including full-wave solvers, frequency domain solvers, and time domain solvers. 
-
----
-
-These expanded notes provide a detailed overview of advanced electromagnetism topics, including mathematical formulations, theoretical insights, and practical applications. They are intended to support a deep understanding of electromagnetic phenomena and computational techniques.

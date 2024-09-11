@@ -1,7 +1,5 @@
 ### Detailed Explanation of Condensed Matter Physics Topics
 
----
-
 ### **Crystallography and Structure**
 
 #### **Crystal Structures:**

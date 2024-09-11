@@ -381,7 +381,3 @@ This course provides an in-depth exploration of MATLAB programming, covering bot
   options = optimoptions('fminunc', 'Algorithm', 'quasi-newton');
   [x_opt, fval] = fminunc(objective, x0, options);
   ```
-
----
-
-These extensive notes cover a broad spectrum of MATLAB functionalities and applications, from basic to advanced programming techniques. They should provide a comprehensive foundation for both intermediate and advanced users, with practical examples and applications to enhance learning.

@@ -8,11 +8,11 @@
 
 **Precision and Accuracy:**
 
-- **Precision:** The degree to which repeated measurements under unchanged conditions show the same results. It is quantified by the standard deviation \( \sigma \) of the measurements:
+- **Precision:** The degree to which repeated measurements under unchanged conditions show the same results. It is quantified by the standard deviation $( \sigma )$ of the measurements:
 
   $\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^{N} (x_i - \bar{x})^2}$
 
-  where \( x_i \) are the individual measurements, \( \bar{x} \) is the mean of the measurements, and \( N \) is the number of measurements.
+  where $( x_i )$ are the individual measurements, $( \bar{x} )$ is the mean of the measurements, and $( N )$ is the number of measurements.
 
 - **Accuracy:** The closeness of a measurement to the true value. It is often expressed as the absolute error or relative error:
 
@@ -46,7 +46,7 @@ Calibration involves adjusting an instrument to align with a known standard. The
 
 - **Sampling Methods:**
   - **Random Sampling:** Each member of a population has an equal chance of being selected.
-  - **Systematic Sampling:** Selection of every \( k \)-th member of the population.
+  - **Systematic Sampling:** Selection of every $( k )$-th member of the population.
   - **Stratified Sampling:** Divides the population into strata and takes a sample from each stratum.
 
 **Explanation:**
@@ -79,11 +79,11 @@ Calibration involves adjusting an instrument to align with a known standard. The
 **Techniques for Calculating Uncertainties:**
 
 - **Propagation of Uncertainty:**
-  For a function \( f(x, y) \) with uncertainties \( \sigma_x \) and \( \sigma_y \), the uncertainty in \( f \) is:
+  For a function $( f(x, y) )$ with uncertainties $( \sigma_x )$ and $( \sigma_y )$, the uncertainty in $( f )$ is:
 
   $\sigma_f^2 = \left( \frac{\partial f}{\partial x} \sigma_x \right)^2 + \left( \frac{\partial f}{\partial y} \sigma_y \right)^2$
 
-  where \( \frac{\partial f}{\partial x} \) and \( \frac{\partial f}{\partial y} \) are the partial derivatives of \( f \) with respect to \( x \) and \( y \), respectively.
+  where $( \frac{\partial f}{\partial x} )$ and $( \frac{\partial f}{\partial y} )$ are the partial derivatives of $( f )$ with respect to $( x )$ and $( y )$, respectively.
 
 **Explanation:**
 
@@ -94,15 +94,15 @@ Calibration involves adjusting an instrument to align with a known standard. The
 **Methods for Analyzing Experimental Data:**
 
 - **Descriptive Statistics:** 
-  - **Mean (\( \bar{x} \))**:
+  - **Mean ($( \bar{x} )$)**:
 
     $\bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i$
 
-  - **Variance (\( \sigma^2 \))**:
+  - **Variance ($( \sigma^2 )$)**:
 
     $\sigma^2 = \frac{1}{N-1} \sum_{i=1}^{N} (x_i - \bar{x})^2$
 
-  - **Standard Deviation (\( \sigma \))**:
+  - **Standard Deviation ($( \sigma )$)**:
 
     $\sigma = \sqrt{\sigma^2}$
 
@@ -112,7 +112,7 @@ Calibration involves adjusting an instrument to align with a known standard. The
 
     $\text{CI} = \bar{x} \pm t_{\alpha/2} \frac{\sigma}{\sqrt{N}}$
 
-    where \( t_{\alpha/2} \) is the critical value from the t-distribution, \( \sigma \) is the standard deviation, and \( N \) is the sample size.
+    where $( t_{\alpha/2} )$ is the critical value from the t-distribution, $( \sigma )$ is the standard deviation, and $( N )$ is the sample size.
 
 **Explanation:**
 
@@ -132,22 +132,22 @@ Calibration involves adjusting an instrument to align with a known standard. The
 
     $f = \frac{1}{T}$
 
-    where \( T \) is the period of the waveform.
+    where $( T )$ is the period of the waveform.
 
   - **Amplitude**: The peak value of the waveform.
 
 - **Spectrometers:** Analyze light and electromagnetic radiation. Key equations include:
-  - **Wavelength Calculation:** For spectroscopy, the wavelength \( \lambda \) can be related to energy \( E \) using:
+  - **Wavelength Calculation:** For spectroscopy, the wavelength $( \lambda )$ can be related to energy $( E )$ using:
 
     $E = \frac{hc}{\lambda}$
 
-    where \( h \) is Planck’s constant and \( c \) is the speed of light.
+    where $( h )$ is Planck’s constant and $( c )$ is the speed of light.
 
-- **Photometers:** Measure light intensity. The intensity \( I \) of light passing through a sample can be related to concentration \( C \) using Beer-Lambert Law:
+- **Photometers:** Measure light intensity. The intensity $( I )$ of light passing through a sample can be related to concentration $( C )$ using Beer-Lambert Law:
 
   $I = I_0 e^{-\alpha C}$
 
-  where \( I_0 \) is the incident light intensity, \( \alpha \) is the absorption coefficient, and \( C \) is the concentration.
+  where $( I_0 )$ is the incident light intensity, $( \alpha )$ is the absorption coefficient, and $( C )$ is the concentration.
 
 **Explanation:**
 
@@ -165,20 +165,20 @@ Calibration involves adjusting an instrument to align with a known standard. The
 
     $F = m \omega^2 r$
 
-    where \( m \) is mass, \( \omega \) is the angular velocity, and \( r \) is the radial distance from the axis.
+    where $( m )$ is mass, $( \omega )$ is the angular velocity, and $( r )$ is the radial distance from the axis.
 
-- **Titration:** Determines concentration by adding a reagent until a reaction endpoint is reached. The calculation for concentration \( C \) is:
+- **Titration:** Determines concentration by adding a reagent until a reaction endpoint is reached. The calculation for concentration $( C )$ is:
 
   $C = \frac{n_{\text{titrant}}}{V_{\text{sample}}}$
 
-  where \( n_{\text{titrant}} \) is the moles of titrant added and \( V_{\text{sample}} \) is the volume of the sample.
+  where $( n_{\text{titrant}} )$ is the moles of titrant added and $( V_{\text{sample}} )$ is the volume of the sample.
 
 - **Microscopy:**
-  - **Optical Microscopy:** Uses lenses to magnify samples. The magnification \( M \) is:
+  - **Optical Microscopy:** Uses lenses to magnify samples. The magnification $( M )$ is:
 
     $M = \frac{d_{\text{image}}}{d_{\text{object}}}$
 
-    where \( d_{\text{image}} \) is the image distance and \( d_{\text{object}} \) is the object distance.
+    where $( d_{\text{image}} )$ is the image distance and $( d_{\text{object}} )$ is the object distance.
 
 **Explanation:**
 
@@ -192,17 +192,17 @@ Calibration involves adjusting an instrument to align with a known standard. The
 
 **Techniques:**
 
-- **Absorption Spectroscopy:** Measures how much light is absorbed by a sample at different wavelengths. The absorption \( A \) is:
+- **Absorption Spectroscopy:** Measures how much light is absorbed by a sample at different wavelengths. The absorption $( A )$ is:
 
   $A = \log_{10}\left(\frac{I_0}{I}\right)$
 
-  where \( I_0 \) is the incident light intensity and \( I \) is the transmitted light intensity.
+  where $( I_0 )$ is the incident light intensity and $( I )$ is the transmitted light intensity.
 
 - **Emission Spectroscopy:** Measures light emitted by a sample. The intensity of emission can be correlated with concentration using calibration curves.
 
-- **Raman Spectroscopy:** Measures vibrational scattering of light. The shift in wavelength \( \Delta \
+- **Raman Spectroscopy:** Measures vibrational scattering of light. The shift in wavelength $( \Delta \
 
-lambda \) provides information about molecular vibrations.
+lambda )$ provides information about molecular vibrations.
 
 **Explanation:**
 
@@ -219,14 +219,14 @@ lambda \) provides information about molecular vibrations.
 
     $I = I_0 \left[ \cos^2 \left(\frac{2 \pi d \sin \theta}{\lambda} \right) \right]$
 
-    where \( d \) is the distance between slits, \( \theta \) is the angle of diffraction, and \( \lambda \) is the wavelength of light.
+    where $( d )$ is the distance between slits, $( \theta )$ is the angle of diffraction, and $( \lambda )$ is the wavelength of light.
 
 - **Condensed Matter Physics:**
   - **X-ray Diffraction (XRD):** Analyzes crystal structures using Bragg’s Law:
 
     $n \lambda = 2 d \sin \theta$
 
-    where \( n \) is the order of diffraction, \( \lambda \) is the X-ray wavelength, \( d \) is the spacing between crystal planes, and \( \theta \) is the angle of incidence.
+    where $( n )$ is the order of diffraction, $( \lambda )$ is the X-ray wavelength, $( d )$ is the spacing between crystal planes, and $( \theta )$ is the angle of incidence.
 
   - **Scanning Tunneling Microscopy (STM):** Measures surface topography at the atomic scale by tunneling current.
 
@@ -246,25 +246,25 @@ lambda \) provides information about molecular vibrations.
 **Techniques:**
 
 - **Regression Analysis:**
-  - **Linear Regression:** Models the relationship between two variables \( x \) and \( y \) using:
+  - **Linear Regression:** Models the relationship between two variables $( x )$ and $( y )$ using:
 
     $y = \beta_0 + \beta_1 x + \epsilon$
 
-    where \( \beta_0 \) is the y-intercept, \( \beta_1 \) is the slope, and \( \epsilon \) is the error term.
+    where $( \beta_0 )$ is the y-intercept, $( \beta_1 )$ is the slope, and $( \epsilon )$ is the error term.
 
 - **Hypothesis Testing:**
-  - **t-Test:** Assesses whether the means of two groups are statistically different. The test statistic \( t \) is:
+  - **t-Test:** Assesses whether the means of two groups are statistically different. The test statistic $( t )$ is:
 
     $t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}$
 
-    where \( \bar{x}_1 \) and \( \bar{x}_2 \) are sample means, \( s_p \) is the pooled standard deviation, and \( n_1 \) and \( n_2 \) are sample sizes.
+    where $( \bar{x}_1 )$ and $( \bar{x}_2 )$ are sample means, $( s_p )$ is the pooled standard deviation, and $( n_1 )$ and $( n_2 )$ are sample sizes.
 
 - **Confidence Intervals:**
   - For a mean, the confidence interval is:
 
     $\text{CI} = \bar{x} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{N}}$
 
-    where \( z_{\alpha/2} \) is the critical value from the normal distribution, \( \sigma \) is the standard deviation, and \( N \) is the sample size.
+    where $( z_{\alpha/2} )$ is the critical value from the normal distribution, $( \sigma )$ is the standard deviation, and $( N )$ is the sample size.
 
 **Explanation:**
 
