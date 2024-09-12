@@ -824,7 +824,3 @@ Machine learning techniques, such as regression trees, neural networks, and clus
 
   **C++ Implementation:**
   Implementing machine learning models from scratch in C++ is complex and often involves using libraries like TensorFlow or PyTorch. For simpler cases, you might use a basic implementation of regression or classification algorithms. For more advanced models, using specialized libraries or languages like Python is more common.
-
----
-
-This concludes the detailed guide on financial mathematics with a focus on various aspects including probability, stochastic processes, derivatives, risk management, fixed income securities, and portfolio optimization. Each section provides both theoretical explanations and practical C++ implementations to illustrate the concepts.
