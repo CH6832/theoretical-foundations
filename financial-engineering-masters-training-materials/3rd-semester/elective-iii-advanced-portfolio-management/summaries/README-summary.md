@@ -10,29 +10,21 @@ This course provides an in-depth exploration of advanced strategies and theories
 #### **Efficient Frontier**
 
 **Introduction to the Efficient Frontier:**
-- The efficient frontier represents the set of optimal portfolios that offer the highest expected return \( \mathbb{E}[R_p] \) for a given level of risk \( \sigma_p \), or equivalently, the lowest risk for a given level of expected return. It is derived from the mean-variance optimization framework developed by Harry Markowitz.
+- The efficient frontier represents the set of optimal portfolios that offer the highest expected return $( \mathbb{E}[R_p] )$ for a given level of risk $( \sigma_p )$, or equivalently, the lowest risk for a given level of expected return. It is derived from the mean-variance optimization framework developed by Harry Markowitz.
 
 **Mathematical Formulation:**
-- Let \( w \) be the vector of portfolio weights, \( \mu \) the vector of expected returns, and \( \Sigma \) the covariance matrix of asset returns. The expected return and variance of the portfolio are given by:
+- Let $( w )$ be the vector of portfolio weights, $( \mu )$ the vector of expected returns, and $( \Sigma )$ the covariance matrix of asset returns. The expected return and variance of the portfolio are given by:
 
-\[
-\mathbb{E}[R_p] = w^T \mu
-\]
+$\mathbb{E}[R_p] = w^T \mu$
 
-\[
-\sigma_p^2 = w^T \Sigma w
-\]
+$\sigma_p^2 = w^T \Sigma w$
 
 **Constructing the Efficient Frontier:**
 - The efficient frontier is obtained by solving the following optimization problem for different levels of expected return:
 
-\[
-\min_w \, w^T \Sigma w
-\]
+$\min_w \, w^T \Sigma w$
 
-\[
-\text{subject to} \, \mathbb{E}[R_p] = w^T \mu, \, \sum_{i=1}^n w_i = 1, \, w_i \geq 0 \, \text{for all } i
-\]
+$\text{subject to} \, \mathbb{E}[R_p] = w^T \mu, \, \sum_{i=1}^n w_i = 1, \, w_i \geq 0 \, \text{for all } i$
 
 **Python Example: Constructing the Efficient Frontier**
 
@@ -73,7 +65,7 @@ plt.show()
 ```
 
 **Practical Application: Identifying Optimal Portfolios on the Efficient Frontier**
-- Optimal portfolios are typically selected based on the highest Sharpe ratio \( \text{Sharpe} = \frac{\mathbb{E}[R_p] - R_f}{\sigma_p} \), where \( R_f \) is the risk-free rate. The portfolio with the highest Sharpe ratio lies at the tangent point between the efficient frontier and the Capital Market Line (CML).
+- Optimal portfolios are typically selected based on the highest Sharpe ratio $( \text{Sharpe} = \frac{\mathbb{E}[R_p] - R_f}{\sigma_p} )$, where $( R_f )$ is the risk-free rate. The portfolio with the highest Sharpe ratio lies at the tangent point between the efficient frontier and the Capital Market Line (CML).
 
 #### **Markowitz Model**
 
@@ -83,9 +75,7 @@ plt.show()
 **Mathematical Formulation:**
 - The optimization problem is as follows:
 
-\[
-\max_w \, \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}}
-\]
+$\max_w \, \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}}$
 
 **Portfolio Diversification Strategies Based on the Markowitz Model:**
 - Diversification reduces the portfolio's overall risk by investing in assets that are not perfectly correlated. The goal is to minimize the portfolio’s variance while achieving a desired return.
@@ -93,11 +83,9 @@ plt.show()
 **Mathematical Justification for Diversification:**
 - The portfolio variance is given by:
 
-\[
-\sigma_p^2 = \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij}
-\]
+$\sigma_p^2 = \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij}$
 
-Where \( \sigma_{ij} \) is the covariance between the returns of assets \( i \) and \( j \). Diversification works because the off-diagonal elements (covariances) tend to reduce overall portfolio variance when assets are not perfectly correlated (\( \rho_{ij} < 1 \)).
+Where $( \sigma_{ij} )$ is the covariance between the returns of assets $( i )$ and $( j )$. Diversification works because the off-diagonal elements (covariances) tend to reduce overall portfolio variance when assets are not perfectly correlated ($( \rho_{ij} < 1 )$).
 
 **Case Studies: Real-World Application of the Markowitz Model in Portfolio Construction**
 - These could involve examining how diversified portfolios have performed historically, focusing on periods of market stress and recovery, and demonstrating the benefits of diversification in reducing drawdowns and enhancing long-term returns.
@@ -110,11 +98,9 @@ Where \( \sigma_{ij} \) is the covariance between the returns of assets \( i \) 
 **Mathematical Expression of the CML:**
 - The CML is given by the equation:
 
-\[
-\mathbb{E}[R_p] = R_f + \frac{\mathbb{E}[R_m] - R_f}{\sigma_m} \sigma_p
-\]
+$\mathbb{E}[R_p] = R_f + \frac{\mathbb{E}[R_m] - R_f}{\sigma_m} \sigma_p$
 
-Where \( \mathbb{E}[R_m] \) is the expected return of the market portfolio, \( \sigma_m \) is the standard deviation of the market portfolio, and \( \sigma_p \) is the standard deviation of the portfolio.
+Where $( \mathbb{E}[R_m] )$ is the expected return of the market portfolio, $( \sigma_m )$ is the standard deviation of the market portfolio, and $( \sigma_p )$ is the standard deviation of the portfolio.
 
 **Python Example: Constructing the Optimal Risky Portfolio**
 
@@ -177,11 +163,9 @@ plt.show()
 **Mathematical Risk-Return Measures for Hedge Funds:**
 - **Sharpe Ratio:** A common measure of risk-adjusted return:
 
-\[
-\text{Sharpe Ratio} = \frac{\mathbb{E}[R_{hf}] - R_f}{\sigma_{hf}}
-\]
+$\text{Sharpe Ratio} = \frac{\mathbb{E}[R_{hf}] - R_f}{\sigma_{hf}}$
 
-Where \( \mathbb{E}[R_{hf}] \) is the expected return of the hedge fund, \( R_f \) is the risk-free rate, and \( \sigma_{hf} \) is the standard deviation of the hedge fund's returns.
+Where $( \mathbb{E}[R_{hf}] )$ is the expected return of the hedge fund, $( R_f )$ is the risk-free rate, and $( \sigma_{hf} )$ is the standard deviation of the hedge fund's returns.
 
 #### **Private Equity**
 
@@ -215,9 +199,7 @@ Where \( \mathbb{E}[R_{hf}] \) is the expected return of the hedge fund, \( R_f 
 **Valuation Methods for Real Estate Investments:**
 - **Cap Rate:** The capitalization rate, which is the ratio of Net Operating Income (NOI) to property value, is a key metric for valuing income-generating real estate.
   
-\[
-\text{Cap Rate} = \frac{\text{NOI}}{\text{Property Value}}
-\]
+$\text{Cap Rate} = \frac{\text{NOI}}{\text{Property Value}}$
 
 ### **Behavioral Finance**
 
@@ -282,14 +264,12 @@ plt.show()
 **Behavioral Finance Models Incorporating Loss Aversion:**
 - **Prospect Theory:** Developed by Kahneman and Tversky, this theory models how people decide between probabilistic alternatives that involve risk, where the probabilities of outcomes are known.
 
-\[
-\text{Value Function: } V(x) = \begin{cases} 
+$\text{Value Function: } V(x) = \begin{cases} 
 (x - \lambda x^{\alpha}) & \text{if } x \geq 0 \\
 -\lambda (-x)^{\beta} & \text{if } x < 0 
-\end{cases}
-\]
+\end{cases}$
 
-Where \( x \) is the gain or loss, \( \alpha \) and \( \beta \) are parameters that shape the curvature of the value function, and \( \lambda \) represents the degree of loss aversion.
+Where $( x )$ is the gain or loss, $( \alpha )$ and $( \beta )$ are parameters that shape the curvature of the value function, and $( \lambda )$ represents the degree of loss aversion.
 
 ### **Dynamic Portfolio Strategies**
 
@@ -299,13 +279,11 @@ Where \( x \) is the gain or loss, \( \alpha \) and \( \beta \) are parameters t
 - The Black-Litterman model blends market equilibrium with investor views to provide a more stable and intuitive asset allocation. It improves on the Markowitz model by incorporating subjective views and mitigating the estimation errors often encountered in traditional mean-variance optimization.
 
 **Mathematical Formulation:**
-- Let \( \pi \) be the equilibrium excess returns, \( P \) the matrix representing the investor's views, \( Q \) the vector of expected returns from these views, and \( \Omega \) the uncertainty in the views. The Black-Litterman formula for the posterior expected returns \( \mu^* \) is:
+- Let $( \pi )$ be the equilibrium excess returns, $( P )$ the matrix representing the investor's views, $( Q )$ the vector of expected returns from these views, and $( \Omega )$ the uncertainty in the views. The Black-Litterman formula for the posterior expected returns $( \mu^* )$ is:
 
-\[
-\mu^* = \left( (\tau \Sigma)^{-1} + P^T \Omega^{-1} P \right)^{-1} \left( (\tau \Sigma)^{-1} \pi + P^T \Omega^{-1} Q \right)
-\]
+$\mu^* = \left( (\tau \Sigma)^{-1} + P^T \Omega^{-1} P \right)^{-1} \left( (\tau \Sigma)^{-1} \pi + P^T \Omega^{-1} Q \right)$
 
-Where \( \tau \) is a scalar representing the uncertainty in the equilibrium returns, and \( \Sigma \) is the covariance matrix of returns.
+Where $( \tau )$ is a scalar representing the uncertainty in the equilibrium returns, and $( \Sigma )$ is the covariance matrix of returns.
 
 **Python Example: Constructing Portfolios Using the Black-Litterman Approach**
 
@@ -346,11 +324,9 @@ print("Posterior Expected Returns:", posterior_return)
 **Mathematical Expression:**
 - Bayes' Theorem in portfolio context is expressed as:
 
-\[
-P(\theta | X) = \frac{P(X | \theta) \cdot P(\theta)}{P(X)}
-\]
+$P(\theta | X) = \frac{P(X | \theta) \cdot P(\theta)}{P(X)}$
 
-Where \( P(\theta | X) \) is the posterior probability, \( P(X | \theta) \) is the likelihood, \( P(\theta) \) is the prior probability, and \( P(X) \) is the marginal likelihood.
+Where $( P(\theta | X) )$ is the posterior probability, $( P(X | \theta) )$ is the likelihood, $( P(\theta) )$ is the prior probability, and $( P(X) )$ is the marginal likelihood.
 
 #### **Multiperiod Portfolio Optimization**
 
@@ -363,11 +339,9 @@ Where \( P(\theta | X) \) is the posterior probability, \( P(X | \theta) \) is t
 **Mathematical Formulation:**
 - The dynamic optimization problem can be expressed as a Bellman equation:
 
-\[
-V_t(W_t) = \max_{w_t} \left\{ U(w_t^T \mu_t) + \beta \mathbb{E}[V_{t+1}(W_{t+1}) | W_t, w_t] \right\}
-\]
+$V_t(W_t) = \max_{w_t} \left\{ U(w_t^T \mu_t) + \beta \mathbb{E}[V_{t+1}(W_{t+1}) | W_t, w_t] \right\}$
 
-Where \( V_t(W_t) \) is the value function at time \( t \), \( W_t \) is the wealth at time \( t \), \( U(\cdot) \) is the utility function, and \( \beta \) is the discount factor.
+Where $( V_t(W_t) )$ is the value function at time $( t )$, $( W_t )$ is the wealth at time $( t )$, $( U(\cdot) )$ is the utility function, and $( \beta )$ is the discount factor.
 
 **Python Example: Managing Portfolios with a Long-Term Investment Horizon**
 

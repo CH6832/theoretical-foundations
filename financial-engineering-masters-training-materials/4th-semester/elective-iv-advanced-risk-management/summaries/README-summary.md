@@ -1,7 +1,3 @@
-Sure, let’s dive into the detailed exploration of advanced risk management with mathematical formulations and practical Python examples. 
-
----
-
 # Elective IV: Advanced Risk Management
 
 ## Course Overview
@@ -20,11 +16,9 @@ This course provides an in-depth exploration of advanced topics in risk manageme
 **Mathematical Formulation (Risk Assessment):**
 - ERM often uses quantitative measures like Value at Risk (VaR) to assess risk. VaR is defined as the maximum loss not exceeded with a certain confidence level over a specific period:
 
-\[
-\text{VaR}_{\alpha} = -\text{Quantile}_{\alpha}(\text{Loss Distribution})
-\]
+$\text{VaR}_{\alpha} = -\text{Quantile}_{\alpha}(\text{Loss Distribution})$
 
-Where \( \text{Quantile}_{\alpha} \) represents the value below which \( \alpha \) percent of the loss distribution falls.
+Where $( \text{Quantile}_{\alpha} )$ represents the value below which $( \alpha )$ percent of the loss distribution falls.
 
 **Python Example: Calculating VaR**
 
@@ -71,9 +65,7 @@ print(f"Average Risk Awareness Score: {average_score}")
 **Mathematical Formulation (Risk Appetite):**
 - Risk appetite can be quantified using metrics like capital adequacy ratios. For example, a common measure is the Capital Adequacy Ratio (CAR):
 
-\[
-\text{CAR} = \frac{\text{Capital}}{\text{Risk-Weighted Assets}}
-\]
+$\text{CAR} = \frac{\text{Capital}}{\text{Risk-Weighted Assets}}$
 
 **Python Example: Calculating CAR**
 
@@ -97,15 +89,13 @@ print(f"Capital Adequacy Ratio (CAR): {car}")
 **Mathematical Formulation (Stress Testing):**
 - Stress tests typically involve simulating scenarios where key financial metrics are subjected to severe but plausible adverse conditions:
 
-\[
-\text{Stress Test Metric} = \text{Baseline Metric} \times (1 - \text{Stress Factor})
-\]
+$\text{Stress Test Metric} = \text{Baseline Metric} \times (1 - \text{Stress Factor})$
 
 **Python Example: Stress Testing**
 
 ```python
 # Example baseline capital
-baseline_capital = 1000000  # Example baseline
+baseline_capital = 1000000 # Example baseline
 
 # Stress factor (e.g., a 20% decrease)
 stress_factor = 0.20
@@ -160,9 +150,7 @@ print(f"Potential Impact Under Extreme Conditions: {potential_impact}")
 **Mathematical Formulation (Liquidity Coverage Ratio - LCR):**
 - The LCR measures the ratio of high-quality liquid assets (HQLA) to total net cash outflows over a 30-day stress period:
 
-\[
-\text{LCR} = \frac{\text{HQLA}}{\text{Net Cash Outflows}}
-\]
+$\text{LCR} = \frac{\text{HQLA}}{\text{Net Cash Outflows}}$
 
 **Python Example: Calculating LCR**
 
@@ -184,9 +172,7 @@ print(f"Liquidity Coverage Ratio (LCR): {lcr}")
 **Mathematical Formulation (Net Stable Funding Ratio - NSFR):**
 - The NSFR measures the ratio of available stable funding to required stable funding over a one-year horizon:
 
-\[
-\text{NSFR} = \frac{\text{Available Stable Funding}}{\text{Required Stable Funding}}
-\]
+$\text{NSFR} = \frac{\text{Available Stable Funding}}{\text{Required Stable Funding}}$
 
 **Python Example: Calculating NSFR**
 
@@ -245,9 +231,7 @@ print(f"Total Risk Frequency: {risk_frequency}")
 **Mathematical Formulation (Risk Score):**
 - Risk scores can be computed as:
 
-\[
-\text{Risk Score} = \text{Probability} \times \text{Impact}
-\]
+$\text{Risk Score} = \text{Probability} \times \text{Impact}$
 
 **Python Example: Risk Score Calculation**
 
