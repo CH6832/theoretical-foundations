@@ -136,9 +136,7 @@ Dynamic Hedging with Options: Simulate a dynamic hedging strategy using options 
 
 Portfolio Performance During Crises: Analyze how different portfolio strategies (e.g., risk parity, mean-variance, dynamic) performed during past market crises such as the dot-com bubble and the 2008 financial crisis.
 
-Long-Term Wealth Simulation
-
-: Using real data, simulate the growth of wealth for different asset classes (equities, bonds, real estate, commodities) over a 30-year horizon.
+Long-Term Wealth Simulation: Using real data, simulate the growth of wealth for different asset classes (equities, bonds, real estate, commodities) over a 30-year horizon.
 
 Factor Investing Strategy: Construct and backtest a factor-based portfolio (e.g., value, momentum) using real-world data and compare its performance to the S&P 500.
 
