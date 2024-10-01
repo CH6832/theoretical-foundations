@@ -81,9 +81,7 @@
 64. **(Implementation)** Implement the dynamic programming solution to the traveling salesman problem (TSP) and compare it with the performance of a greedy approximation algorithm.
 65. **(Theoretical)** Prove that there is no polynomial-time algorithm for the TSP unless P=NP, but that there exists a \( \frac{3}{2} \)-approximation algorithm for the metric TSP.
 66. **(Implementation)** Implement a greedy algorithm for the coin change problem and analyze its performance compared to dynamic programming.
-67. **
-
-(Theoretical)** Prove the correctness of the dynamic programming approach to solving the rod cutting problem.
+67. **(Theoretical)** Prove the correctness of the dynamic programming approach to solving the rod cutting problem.
 68. **(Implementation)** Create a dynamic programming algorithm for solving the subset sum problem and compare it with a brute force approach.
 69. **(Theoretical)** Discuss the trade-offs between greedy and dynamic programming approaches in optimization problems.
 70. **(Implementation)** Implement a 3-approximation algorithm for the metric TSP and compare its results with exact solutions.
