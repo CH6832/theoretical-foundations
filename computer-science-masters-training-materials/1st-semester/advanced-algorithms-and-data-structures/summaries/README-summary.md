@@ -1,4 +1,4 @@
-### **Course 1: Advanced Algorithms and Data Structures** (MIT Niveau)
+### **Course 1: Advanced Algorithms and Data Structures**
 
 This course delves deep into the design, analysis, and implementation of advanced algorithms and data structures. Students will learn how to approach computational problems both theoretically and practically, with an emphasis on real-world applications. Below is a structured learning path, inspired by MIT’s standards, for each of the key topics listed.
 
@@ -151,5 +151,3 @@ This course delves deep into the design, analysis, and implementation of advance
   - Key breakthrough in improving the time complexity of matrix multiplication.
 - "Optimal Cache-Oblivious Algorithms" by Frigo, Leiserson, Prokop, and Ramachandran (1999)
   - Introduces the cache-oblivious model and develops algorithms that optimize cache usage without knowledge of cache parameters.
-
----
