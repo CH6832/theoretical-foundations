@@ -236,3 +236,5 @@ Matrix):
 
 - **Courses**:
   - **MIT’s 6.845: Quantum Complexity Theory**: An advanced course that delves into the computational complexity of quantum algorithms and the theoretical limits of quantum computing. It covers topics such as quantum algorithms, complexity classes, and quantum cryptographic protocols.
+
+ask!
