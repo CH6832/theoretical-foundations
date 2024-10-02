@@ -143,9 +143,7 @@
 45. **Black-Litterman Model:**
     - Incorporate investor views into the portfolio optimization process using the Black-Litterman model. Discuss the model’s advantages and potential drawbacks.
 
-46.
-
- **Value at Risk (VaR) Calculation:**
+46. **Value at Risk (VaR) Calculation:**
     - Estimate the Value at Risk for a portfolio using historical simulation and parametric methods. Discuss the importance of VaR in risk management.
 
 47. **Stress Testing:**
