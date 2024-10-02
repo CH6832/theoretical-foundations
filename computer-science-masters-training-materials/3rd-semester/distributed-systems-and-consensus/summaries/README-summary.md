@@ -1,96 +1,190 @@
-### **1. Introduction to Distributed Systems**
-**Summary:**
-- **What is a Distributed System?** It’s a system where components located on networked computers communicate and coordinate their actions by passing messages. They work together to achieve a common goal.
-- **Types and Properties:** There are different types like client-server (where clients request services from a server) and peer-to-peer (where each node can act as both a client and a server). Key properties include transparency (users don’t need to know about the distributed nature), scalability (how well the system grows with increased load), and fault tolerance (how the system handles failures).
+### 1. **Introduction to Distributed Systems**
+A **distributed system** consists of multiple independent computers (nodes) that work together to appear as a single system to the user. These nodes communicate over a network, and each node can perform part of the overall computation. 
 
-**Example:** Imagine a global email service where servers across the world sync emails to ensure you can access your messages from any device, anywhere.
+Key properties include:
+- **Transparency**: The complexity of the underlying distribution is hidden from users.
+- **Scalability**: The system can expand without major changes.
+- **Fault tolerance**: It continues operating despite node failures.
 
----
+**Pseudo code for a distributed email system:**
 
-### **2. Communication in Distributed Systems**
-**Summary:**
-- **How They Communicate:** Distributed systems use techniques like Remote Procedure Calls (RPC) to request services from other computers and message passing for sending data between them. 
-- **Networking Basics:** This includes understanding protocols like TCP/IP (used for reliable communication) and UDP (used for faster but less reliable communication). Synchronization techniques like logical clocks help manage the timing of events.
+```pseudo
+function send_email(email_data):
+    server = find_nearest_server()
+    server.store(email_data)
+    broadcast_to_replicas(email_data)
 
-**Example:** When you send an email, RPC helps your email client communicate with the email server, and TCP/IP ensures the email is transmitted reliably.
+function find_nearest_server():
+    # Select the closest server based on user's location
+    return nearest_server
+```
 
----
+### 2. **Communication in Distributed Systems**
+Nodes in a distributed system communicate by **message passing** or **Remote Procedure Calls (RPC)**. Common communication protocols are **TCP/IP** for reliable transmission and **UDP** for faster, less reliable communication.
 
-### **3. Consistency and Replication**
-**Summary:**
-- **Consistency Models:** Different ways to ensure that all parts of the system have the same data at the same time. Strong consistency means everyone sees the same data immediately, while eventual consistency means that data will eventually be the same across the system.
-- **Replication:** Techniques to keep copies of data across multiple servers to ensure reliability and availability. This includes master-slave (one server handles writes, others only read) and quorum-based replication (a majority of servers must agree for a write to succeed).
+**Pseudo code for RPC communication:**
 
-**Example:** Google Drive replicates your files across multiple servers to ensure you can access them anytime, even if one server fails.
+```pseudo
+function rpc_call(server, request):
+    response = send_message(server, request)
+    return response
 
----
+function send_message(server, request):
+    if network_protocol == "TCP":
+        establish_connection(server)
+        send_data(request)
+        return wait_for_response()
+    elif network_protocol == "UDP":
+        send_data_without_connection(request)
+        return None
+```
 
-### **4. Consensus Algorithms**
-**Summary:**
-- **Why Consensus Matters:** In a distributed system, multiple servers need to agree on changes to ensure the system works correctly.
-- **Algorithms:** Paxos and Raft are methods for achieving consensus, which help multiple servers agree on a single value or decision despite failures. Byzantine Fault Tolerance (BFT) handles more complex scenarios where servers might act maliciously.
+### 3. **Consistency and Replication**
+In a distributed system, **replication** ensures copies of data exist in multiple nodes for fault tolerance. **Consistency** ensures all nodes agree on the data values.
 
-**Example:** In a voting system, consensus algorithms ensure that all participants agree on the result of an election, even if some voters are unreliable.
+- **Strong consistency**: All nodes see the same data at the same time.
+- **Eventual consistency**: Nodes eventually converge to the same data.
 
----
+**Pseudo code for data replication:**
 
-### **5. Fault Tolerance and Recovery**
-**Summary:**
-- **Handling Failures:** Distributed systems must be designed to handle crashes or failures without affecting the overall system. Techniques include using checkpoints (saving the state of the system periodically) and log-based recovery (keeping a log of changes to revert if needed).
-- **Redundancy:** Adding extra components or resources to handle failures and maintain service continuity.
+```pseudo
+function replicate_data(data):
+    for server in replica_servers:
+        send_data(server, data)
 
-**Example:** Online banking systems keep transaction logs and backups so they can recover your account balance accurately even if a server crashes.
+function update_data(new_data):
+    replicate_data(new_data)
+    update_local_copy(new_data)
+```
 
----
+### 4. **Consensus Algorithms**
+**Consensus algorithms** ensure all nodes in a distributed system agree on a single value or state, even in the presence of faults.
 
-### **6. Scalability and Performance**
-**Summary:**
-- **Scaling:** Making sure the system can handle more users or data by adding resources. Techniques include load balancing (distributing work evenly across servers) and sharding (dividing data into smaller pieces that can be managed separately).
-- **Performance Metrics:** Measures like latency (delay before data starts being transferred) and throughput (amount of data transferred in a given time) help gauge system efficiency.
+- **Paxos** and **Raft** are common algorithms for achieving consensus.
+- **Byzantine Fault Tolerance (BFT)** handles malicious nodes.
 
-**Example:** Netflix scales its servers to handle millions of users streaming videos simultaneously by using load balancing and data partitioning.
+**Pseudo code for Raft consensus:**
 
----
+```pseudo
+function leader_election():
+    candidate = start_election()
+    vote_count = gather_votes()
+    if vote_count > majority:
+        become_leader()
 
-### **7. Security in Distributed Systems**
-**Summary:**
-- **Security Threats:** Protecting against issues like Denial of Service (DoS) attacks (overloading the system) and Sybil attacks (fake nodes pretending to be legitimate ones).
-- **Security Mechanisms:** Techniques include encryption (coding data to prevent unauthorized access), authentication (verifying user identities), and secure communication protocols like SSL/TLS.
+function gather_votes():
+    votes = 0
+    for node in nodes:
+        if node.supports(candidate):
+            votes += 1
+    return votes
+```
 
-**Example:** When you log into an online service, SSL/TLS ensures that your login credentials are transmitted securely.
+### 5. **Fault Tolerance and Recovery**
+**Fault tolerance** ensures the system remains operational even when some components fail. **Recovery mechanisms** like checkpoints or log-based recovery restore the system to a consistent state after a failure.
 
----
+**Pseudo code for checkpointing:**
 
-### **8. Case Studies and Applications**
-**Summary:**
-- **Real-World Systems:** Studying how systems like Google Spanner (a globally distributed database) and Amazon DynamoDB (a key-value store with high availability) are designed.
-- **Applications:** Exploring systems used for distributed file storage (like Hadoop) and cloud computing platforms that offer scalable resources over the internet.
+```pseudo
+function save_checkpoint(state):
+    backup_server.store(state)
+    
+function recover_from_failure():
+    state = backup_server.retrieve_latest_checkpoint()
+    restore_state(state)
+```
 
-**Example:** Dropbox uses distributed file systems to ensure that your files are accessible from any device and synced across all your devices.
+### 6. **Scalability and Performance**
+A **scalable system** can handle increasing load by adding more resources. Performance is measured through metrics like **latency** and **throughput**.
 
----
+- **Sharding** divides data into smaller partitions.
+- **Load balancing** distributes tasks across multiple servers.
 
-### **9. Emerging Topics**
-**Summary:**
-- **Blockchain:** A decentralized system for managing digital transactions without a central authority. It uses consensus mechanisms to agree on transaction validity.
-- **Edge Computing:** Processing data closer to where it’s generated (e.g., on IoT devices) to reduce latency and improve performance.
-- **Quantum Computing:** An emerging field that could potentially solve problems in distributed systems much faster than classical computers.
+**Pseudo code for load balancing:**
 
-**Example:** Bitcoin uses blockchain to enable peer-to-peer transactions without intermediaries.
+```pseudo
+function distribute_requests(request):
+    server = get_least_busy_server()
+    server.handle_request(request)
 
----
+function get_least_busy_server():
+    return server_with_min_load()
+```
 
-### **10. Project and Practical Work**
-**Summary:**
-- **Capstone Project:** Develop a distributed system that incorporates consensus algorithms, fault tolerance, performance optimization, and security. This hands-on project helps apply theoretical knowledge to real-world problems.
+### 7. **Security in Distributed Systems**
+Security is essential to protect distributed systems from attacks such as **Denial of Service (DoS)** and **Sybil attacks**. Techniques include **encryption**, **authentication**, and secure communication protocols like **SSL/TLS**.
 
-**Example:** Create a distributed chat application where messages are replicated across multiple servers to ensure no data loss and low latency.
+**Pseudo code for secure communication:**
 
----
+```pseudo
+function secure_send(message, recipient):
+    encrypted_message = encrypt(message, recipient.public_key)
+    send(encrypted_message)
 
-### **11. Ethics and Future Trends**
-**Summary:**
-- **Ethical Considerations:** Examining the impact of distributed systems on privacy, data security, and the broader social implications.
-- **Future Trends:** Exploring upcoming technologies and research areas in distributed systems, such as advancements in blockchain, edge computing, and quantum computing.
+function authenticate_user(user_credentials):
+    if verify_credentials(user_credentials):
+        grant_access(user)
+    else:
+        deny_access(user)
+```
 
-**Example:** Consider how the increasing use of distributed systems for data collection might affect personal privacy and what measures can be taken to protect user data.
+### 8. **Case Studies and Applications**
+**Distributed systems** have real-world applications in cloud computing, distributed databases, and file systems like **Google Spanner** and **Amazon DynamoDB**.
+
+**Pseudo code for distributed file access (e.g., Dropbox):**
+
+```pseudo
+function upload_file(file):
+    chunked_file = divide_into_chunks(file)
+    for chunk in chunked_file:
+        store_in_server(chunk)
+    replicate_across_servers(chunked_file)
+```
+
+### 9. **Emerging Topics**
+Emerging technologies like **Blockchain**, **Edge Computing**, and **Quantum Computing** are reshaping distributed systems.
+
+- **Blockchain** ensures decentralization through consensus algorithms.
+- **Edge computing** reduces latency by processing data closer to its source.
+
+**Pseudo code for blockchain transaction verification:**
+
+```pseudo
+function verify_transaction(transaction):
+    if consensus_reached(transaction):
+        add_to_blockchain(transaction)
+
+function consensus_reached(transaction):
+    for node in network:
+        if node.validates(transaction):
+            return True
+    return False
+```
+
+### 10. **Project and Practical Work**
+A **distributed chat application** could be a capstone project. Messages are sent and replicated across multiple servers for high availability.
+
+**Pseudo code for message replication in a chat app:**
+
+```pseudo
+function send_message(user, message):
+    nearest_server.store_message(user, message)
+    replicate_message_to_other_servers(user, message)
+
+function replicate_message_to_other_servers(user, message):
+    for server in backup_servers:
+        send_message_to_server(server, user, message)
+```
+
+### 11. **Ethics and Future Trends**
+As distributed systems become more pervasive, ethical concerns about **privacy** and **data security** grow. Future trends include **advancements in blockchain**, **edge computing**, and **quantum computing**.
+
+**Pseudo code for privacy-preserving data access:**
+
+```pseudo
+function access_data(user, request):
+    if user_has_permission(user, request):
+        return encrypt_and_send_data(request)
+    else:
+        deny_request(user)
+```
