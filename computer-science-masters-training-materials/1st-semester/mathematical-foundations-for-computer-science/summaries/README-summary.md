@@ -10,12 +10,36 @@ Graph theory and combinatorics are central to many areas in computer science, in
 #### **Core Concepts:**
 - **Graphs**: Paths, cycles, trees, connectivity, and graph coloring. Graphs are a collection of nodes connected by edges, which can represent networks, relationships, and more.
   
+  ```pseudo
+  class Graph:
+      def __init__(self):
+          self.vertices = {}
+      
+      def add_edge(self, vertex1, vertex2):
+          if vertex1 not in self.vertices:
+              self.vertices[vertex1] = []
+          if vertex2 not in self.vertices:
+              self.vertices[vertex2] = []
+          self.vertices[vertex1].append(vertex2)
+          self.vertices[vertex2].append(vertex1)
+  ```
+
 - **Planar Graphs**: These can be drawn on a plane without edges crossing, important for geographical data representation.
   
 - **Dual Graphs**: A dual graph represents the relationships between the faces of a graph, providing insights into graph properties.
   
 - **Combinatorial Structures**: Including permutations (arrangements of items), combinations (selections of items), and partitions (ways of dividing a set).
-  
+
+  ```pseudo
+  def factorial(n):
+      if n == 0:
+          return 1
+      return n * factorial(n - 1)
+
+  def permutations(n):
+      return factorial(n)
+  ```
+
 - **Ramsey Theory and Turan's Theorem**: These theorems deal with conditions under which a certain structure must appear within a larger graph.
   
 - **Probabilistic Combinatorics**: This area uses probability theory to study combinatorial structures, crucial for analyzing algorithms.
@@ -42,10 +66,28 @@ Probability theory is essential for understanding randomized algorithms, cryptog
 #### **Core Concepts:**
 - **Probability Spaces**: Comprising a sample space, events, and a probability measure, these provide a framework for analyzing random phenomena.
   
+  ```pseudo
+  class ProbabilitySpace:
+      def __init__(self, sample_space):
+          self.sample_space = sample_space
+      
+      def probability(self, event):
+          return len(event) / len(self.sample_space)
+  ```
+
 - **Random Variables**: Variables that can take different values based on probability distributions, crucial for modeling uncertainty.
   
 - **Expectation and Variance**: These statistical measures provide insights into the central tendency and spread of random variables.
-  
+
+  ```pseudo
+  def expectation(values, probabilities):
+      return sum(value * prob for value, prob in zip(values, probabilities))
+
+  def variance(values, probabilities):
+      exp = expectation(values, probabilities)
+      return expectation([(value - exp) ** 2 for value in values], probabilities)
+  ```
+
 - **Markov Chains**: These are models that describe systems that transition from one state to another on a state space.
   
 - **Concentration Inequalities**: Such as Chebyshev’s inequality, these bounds provide insights into how a random variable deviates from its expected value.
@@ -72,12 +114,28 @@ Linear algebra is the core of many algorithms in machine learning, graphics, and
 #### **Core Concepts:**
 - **Vector Spaces**: Collections of vectors that can be scaled and added, fundamental for understanding multidimensional data.
   
+  ```pseudo
+  class Vector:
+      def __init__(self, components):
+          self.components = components
+      
+      def add(self, other):
+          return Vector([x + y for x, y in zip(self.components, other.components)])
+  ```
+
 - **Matrices**: Arrays of numbers that represent linear transformations and are essential in systems of linear equations.
   
 - **Eigenvalues and Eigenvectors**: These provide insights into the properties of linear transformations and are critical for dimensionality reduction techniques.
   
 - **Singular Value Decomposition (SVD)**: A method for matrix factorization that has applications in data compression and noise reduction.
-  
+
+  ```pseudo
+  def svd(matrix):
+      # Pseudo implementation for SVD
+      U, S, V = some_svd_library(matrix)
+      return U, S, V
+  ```
+
 - **Numerical Linear Algebra**: Techniques for efficient computation of matrix operations, essential in applications requiring large datasets.
 
 #### **Learning Resources:**
@@ -104,6 +162,18 @@ Number theory is the mathematical foundation behind modern cryptography, particu
 #### **Core Concepts:**
 - **Modular Arithmetic**: This deals with integers and their equivalences under a modulus, crucial for cryptographic algorithms.
   
+  ```pseudo
+  def modular_exponentiation(base, exponent, modulus):
+      result = 1
+      base = base % modulus
+      while exponent > 0:
+          if (exponent % 2) == 1:  # If exponent is odd
+              result = (result * base) % modulus
+          exponent //= 2
+          base = (base * base) % modulus
+      return result
+  ```
+
 - **Fermat's Little Theorem**: This theorem provides a method for determining prime numbers and is foundational in many cryptographic algorithms.
   
 - **Prime Numbers**: Understanding prime numbers is essential for key generation in public-key cryptography.
@@ -115,7 +185,9 @@ Number theory is the mathematical foundation behind modern cryptography, particu
 #### **Learning Resources:**
 - **Textbook**: *An Introduction to the Theory of Numbers* by G.H. Hardy and E.M. Wright – Classical text on number theory, covering both foundational and advanced topics.
   
-- **Research Paper**: "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems" by Rivest, Shamir, Adleman – The original RSA paper, foundational in understanding number theory's applications to cryptography.
+- **Research Paper**: "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems" by Rivest, Shamir, Adleman – The original RSA paper, foundational
+
+ in understanding number theory's applications to cryptography.
   
 - **Course**: *MIT 18.785: Number Theory I* – MIT OCW course on advanced number theory [available here](https://ocw.mit.edu/courses/mathematics/18-785-number-theory-i-fall-2020/).
   
@@ -139,7 +211,14 @@ Mathematics is essential in designing secure communication protocols and ensurin
 - **Public-Key Cryptosystems**: Such as RSA and elliptic curve cryptography, crucial for secure internet communications.
   
 - **Hash Functions**: Used for data integrity checks and password storage, ensuring that data cannot be altered without detection.
-  
+
+  ```pseudo
+  import hashlib
+
+  def hash_data(data):
+      return hashlib.sha256(data.encode()).hexdigest()
+  ```
+
 - **Error-Correcting Codes**: These ensure data is transmitted accurately, even over noisy channels, vital for data storage and communication technologies.
   
 - **Information Theory**: Concepts like Shannon entropy and mutual information measure the amount of information and predict the performance of communication systems.
@@ -147,9 +226,7 @@ Mathematics is essential in designing secure communication protocols and ensurin
 #### **Learning Resources:**
 - **Textbook**: *Introduction to Modern Cryptography* by Jonathan Katz and Yehuda Lindell – Provides a formal treatment of cryptographic protocols and mathematical underpinnings.
   
-- **Research Paper**: "Error Correction via Linear Programming" by
-
- Emmanuel Candes and Terence Tao – A key paper in compressed sensing and error-correcting codes.
+- **Research Paper**: "Error Correction via Linear Programming" by Emmanuel Candes and Terence Tao – A key paper in compressed sensing and error-correcting codes.
   
 - **Course**: *MIT 6.046J: Design and Analysis of Algorithms* – Covers algorithmic principles that include cryptographic applications and data transmission strategies [available on MIT OCW](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-design-and-analysis-of-algorithms-spring-2015/).
 
