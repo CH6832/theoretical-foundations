@@ -1,4 +1,4 @@
-### **Course 2: Computation Theory and Complexity** (MIT Niveau)
+### **Computation Theory and Complexity** (MIT Niveau)
 
 This course investigates the theoretical underpinnings of computation, focusing on the mathematical framework that defines what can and cannot be computed efficiently. You will explore foundational models such as Turing Machines, delve into the various complexity classes, and consider both classical and modern challenges, including quantum computation.
 
@@ -6,7 +6,7 @@ This course investigates the theoretical underpinnings of computation, focusing 
 
 ### **README.md - Learning Overview**
 
-**Computation Theory and Complexity** is a deep dive into the mathematical boundaries of computation. It covers the basics of Turing machines and moves into the classification of problems based on computational complexity, discussing how resource constraints (time, space, randomness) affect the solvability of problems. The course also includes a modern perspective, discussing quantum computation and its potential impact on classical complexity. 
+**Computation Theory and Complexity** is a deep dive into the mathematical boundaries of computation. It covers the basics of Turing machines and moves into the classification of problems based on computational complexity, discussing how resource constraints (time, space, randomness) affect the solvability of problems. The course also includes a modern perspective, discussing quantum computation and its potential impact on classical complexity.
 
 At the heart of the course is the P vs NP problem, one of the most famous open problems in computer science, and an introduction to quantum complexity through classes like BQP and QMA.
 
@@ -34,6 +34,18 @@ At the heart of the course is the P vs NP problem, one of the most famous open p
 
 **Exercises**:
 - Design a Turing machine that recognizes a simple language (e.g., balanced parentheses) and analyze its time complexity.
+```plaintext
+function TuringMachine(input):
+    stack = []
+    for char in input:
+        if char == '(':
+            stack.push(char)
+        else if char == ')':
+            if stack.isEmpty():
+                return False
+            stack.pop()
+    return stack.isEmpty()
+```
 - Prove that every language in P is also in PSPACE.
 - Analyze the relationship between PSPACE and NP. Are all NP problems solvable in PSPACE?
 
@@ -56,8 +68,30 @@ At the heart of the course is the P vs NP problem, one of the most famous open p
 
 **Exercises**:
 - Prove that the 3-SAT problem is NP-complete by reducing it from SAT.
+```plaintext
+function ReduceSATto3SAT(satFormula):
+    // Convert a SAT formula into 3-SAT form
+    // For each clause with more than 3 literals, introduce new variables
+    newClauses = []
+    for clause in satFormula:
+        if len(clause) > 3:
+            newClause = splitInto3Clause(clause)
+            newClauses.append(newClause)
+        else:
+            newClauses.append(clause)
+    return newClauses
+```
 - Show how to reduce the Hamiltonian Cycle problem to the Traveling Salesman Problem to demonstrate that TSP is NP-complete.
 - Implement a simple NP-complete problem solver using backtracking for 3-SAT and analyze its time complexity.
+```plaintext
+function Backtrack3SAT(clauses):
+    if all clauses are satisfied:
+        return True
+    if any clause is unsatisfied:
+        return False
+    var = selectVariable(clauses)
+    return Backtrack3SAT(assignTrue(var, clauses)) or Backtrack3SAT(assignFalse(var, clauses))
+```
 
 ---
 
@@ -79,6 +113,20 @@ At the heart of the course is the P vs NP problem, one of the most famous open p
 **Exercises**:
 - Prove that RP is contained in NP and that BPP is contained in P^NP.
 - Implement a randomized algorithm for primality testing (e.g., Miller-Rabin) and analyze its time complexity and error rate.
+```plaintext
+function MillerRabin(n, k):
+    if n < 2:
+        return False
+    for i in range(k):
+        a = random(2, n-2)
+        if not witness(a, n):
+            return False
+    return True
+
+function witness(a, n):
+    // Implementation of the Miller-Rabin witness check
+    // Returns true if 'a' is a witness for the compositeness of 'n'
+```
 - Prove that every problem in BPP can be solved deterministically in polynomial time given access to a source of truly random bits.
 
 ---
@@ -101,6 +149,16 @@ At the heart of the course is the P vs NP problem, one of the most famous open p
 **Exercises**:
 - Prove that BQP is contained in PSPACE but not known to be contained in NP.
 - Implement a simple quantum algorithm (e.g., Grover’s algorithm) using a quantum computing framework (e.g., Qiskit).
+```plaintext
+def GroversAlgorithm(f, n):
+    // f is the function we want to find the root of
+    // n is the number of qubits
+    initializeSuperposition(n)
+    for i in range(sqrt(N)):
+        applyOracle(f)
+        applyDiffusionOperator()
+    measure()
+```
 - Prove that QMA contains NP, using reductions and quantum verification concepts.
 
 ---
@@ -122,8 +180,16 @@ At the heart of the course is the P vs NP problem, one of the most famous open p
 
 **Exercises**:
 - Prove that if P = NP, then many cryptographic protocols would become insecure by reducing problems like factoring to P.
+```plaintext
+function ProvePEqualsNP():
+    if P == NP:
+        // Show implications for cryptographic protocols
+        return "Many protocols become insecure"
+```
 - Explain how the PCP theorem leads to hardness of approximation results for the Maximum Clique problem.
-- Investigate modern results on circuit complexity and natural proofs in the context of proving or disproving P ≠ NP.
+- Investigate modern results on circuit complexity and natural proofs in the context of proving or disproving
+
+ P ≠ NP.
 
 ---
 
@@ -143,7 +209,14 @@ At the heart of the course is the P vs NP problem, one of the most famous open p
 - **Research Papers**: "Natural Proofs" by Razborov and Rudich (1997).
 
 **Exercises**:
-- Design a Boolean circuit that computes the majority function, and prove that its depth is \( O(\log n) \).
+- Design a Boolean circuit that computes the majority function and prove that its depth is \( O(\log n) \).
+```plaintext
+function MajorityCircuit(input):
+    if len(input) == 1:
+        return input[0]
+    mid = len(input) // 2
+    return MajorityCircuit(input[:mid]) + MajorityCircuit(input[mid:]) > len(input) / 2
+```
 - Prove that any problem in P can be solved by a polynomial-sized family of circuits (P/poly).
 - Explain the significance of the Razborov-Rudich natural proofs barrier to proving lower bounds on circuit complexity.
 
@@ -162,9 +235,5 @@ At the heart of the course is the P vs NP problem, one of the most famous open p
 #### **Research Papers**:
 - **"Quantum Complexity Theory"** by Scott Aaronson (2013)
   - Provides a comprehensive introduction to the complexity theory of quantum computation.
-- **"Natural Proofs"** by Razborov and Rudich (1997
-
-)
-  - A seminal paper exploring the limitations of current techniques for proving lower bounds in circuit complexity. 
-
-This learning content ensures a comprehensive understanding of classical and modern topics in **Computation Theory and Complexity**, offering a balance between foundational knowledge and exposure to cutting-edge research.
+- **"Natural Proofs"** by Razborov and Rudich (1997)
+  - A seminal paper exploring the limitations of current techniques for proving lower bounds in circuit complexity.
