@@ -17,10 +17,21 @@ Brownian motion \( B_t \) is a stochastic process with the following properties:
 $
   Here, \( \mathcal{F}_t \) represents the information available up to time \( t \).
 
+```bash
+function checkMartingaleExpectation(B_t, s):
+    return B_t  // Expected future value E[B_{t+s} | F_t] = B_t
+```
+
 - **Markov Property:** The process \( B_t \) has no memory, meaning its future evolution depends only on its current state and not on how it arrived there:
   $  \mathbb{P}(B_{t+s} \in A \mid \mathcal{F}_t) = \mathbb{P}(B_{t+s} \in A \mid B_t)
 $
   where \( A \) is any event in the future.
+
+```bash
+function checkMarkovProperty(B_t, future_event):
+    // Probability of future event given current value
+    return computeProbability(future_event, B_t)
+```
 
 - **Path Behavior:** The paths of Brownian motion are continuous, but they are nowhere differentiable. This implies that while the motion is smooth in the sense that there are no jumps, it is also highly irregular:
   $  \lim_{h \to 0} \frac{B_{t+h} - B_t}{h} \text{ does not exist.}
@@ -44,6 +55,19 @@ $S_t = S_0 \exp\left((\mu - \frac{\sigma^2}{2})t + \sigma B_t\right)$
 
 This shows that the stock price \( S_t \) follows a log-normal distribution, which is consistent with observed market behavior.
 
+```
+function geometricBrownianMotion(S0, mu, sigma, T, dt):
+    N = T / dt
+    path = array of size N + 1
+    path[0] = S0
+
+    for i from 1 to N:
+        increment = generateStandardNormal() * sqrt(dt)
+        path[i] = path[i - 1] * exp((mu - 0.5 * sigma^2) * dt + sigma * increment)
+    
+    return path  // Returns the simulated stock price path
+```
+
 ## Stochastic Differential Equations (SDEs)
 
 SDEs are equations that describe the evolution of a system subject to random shocks, such as the price of a financial asset influenced by random market movements.
@@ -64,6 +88,16 @@ $df(X_t, t) = \left(\frac{\partial f}{\partial t} + \mu(X_t, t) \frac{\partial f
 
 This lemma is crucial in deriving the Black-Scholes PDE and other results in finance.
 
+```bash
+function itosLemma(f, X_t, t, mu, sigma):
+    df_dt = partialDerivative(f, t)  // Partial derivative with respect to t
+    df_dX = partialDerivative(f, X_t)  // Partial derivative with respect to X
+    dX_t = mu(X_t, t) * dt + sigma(X_t, t) * generateStandardNormal() * sqrt(dt)
+
+    // Apply Ito's Lemma
+    return df_dt * dt + df_dX * dX_t + 0.5 * secondPartialDerivative(f, X_t) * sigma(X_t, t)^2 * dt
+```
+
 ### Girsanov’s Theorem
 
 Girsanov’s Theorem is fundamental in changing the probability measure, which is essential in pricing derivatives under a risk-neutral measure. It states that if \( X_t \) is a Brownian motion under the original probability measure \( \mathbb{P} \), then under a new measure \( \mathbb{Q} \) defined by the Radon-Nikodym derivative:
@@ -75,6 +109,15 @@ where \( \theta_t \) is a predictable process, the process:
 $W_t = B_t + \int_0^t \theta_s \, ds$
 
 is a Brownian motion under \( \mathbb{Q} \). This theorem allows us to move from the real-world probability measure to the risk-neutral measure, facilitating the pricing of financial derivatives.
+
+```bash
+function girsanovTheorem(B_t, theta_t, T):
+    // Compute the Radon-Nikodym derivative
+    dQ_dP = exp(-integrate(theta_t, B_t, T) - 0.5 * integrate(theta_t^2, T))
+    W_t = B_t + integrate(theta_t, T)
+    
+    return W_t, dQ_dP  // Return new Brownian motion and Radon-Nikodym derivative
+```
 
 ## Option Pricing Models
 
@@ -99,6 +142,15 @@ where:
 $d_1 = \frac{\ln(S_0 / K) + (r + \sigma^2 / 2) T}{\sigma \sqrt{T}}, \quad d_2 = d_1 - \sigma \sqrt{T}$
 
 Here, \( N(d) \) represents the cumulative distribution function of the standard normal distribution.
+
+```bash
+function blackScholes(S0, K, T, r, sigma):
+    d1 = (ln(S0 / K) + (r + 0.5 * sigma^2) * T) / (sigma * sqrt(T))
+    d2 = d1 - sigma * sqrt(T)
+    
+    C = S0 * N(d1) - K * exp(-r * T) * N(d2)
+    return C  // Returns the price of the European call option
+```
 
 ### The Greeks
 
@@ -134,6 +186,18 @@ The Greeks are derivatives of the option price with respect to various parameter
   
   Rho indicates how much the option price will change in response to changes in the interest rate.
 
+```bash
+function calculateGreeks(S0, K, T, r, sigma):
+    C = blackScholes(S0, K, T, r, sigma)
+    delta = partialDerivative(C, S0)
+    gamma = secondPartialDerivative(C, S0)
+    vega = partialDerivative(C, sigma)
+    theta = partialDerivative(C, T)
+    rho = partialDerivative(C, r)
+    
+    return delta, gamma, vega, theta, rho  // Returns all Greeks
+```
+
 ### Volatility Surface
 
 The volatility surface represents the implied volatility of options across different strikes and maturities. It reflects market participants' expectations of future volatility and can exhibit patterns such as the volatility smile or skew.
@@ -141,6 +205,17 @@ The volatility surface represents the implied volatility of options across diffe
 - **Volatility Smile:** A pattern where implied volatility tends to be higher for options that are deep in or out of the money compared to at-the-money options.
 
 - **Volatility Skew:** A phenomenon where implied volatility varies with the strike price, often observed in equity markets where out-of-the-money puts may have higher implied volatilities than at-the-money puts.
+
+```bash
+function volatilitySurface(option_data):
+    // option_data is a list of (strike, maturity, implied_volatility)
+    surface = createEmptySurface()  // Initialize an empty surface
+    for data in option_data:
+        strike, maturity, implied_volatility = data
+        surface[strike][maturity] = implied_volatility  // Populate the surface
+    
+    return surface  // Returns the constructed volatility surface
+```
 
 ## Conclusion
 
@@ -153,4 +228,3 @@ Stochastic calculus provides a robust framework for modeling and understanding t
 3. Shreve, S. E. (2004). *Stochastic Calculus for Finance I: The Binomial Asset Pricing Model*. Springer.
 
 For further reading and a deeper understanding of these concepts, refer to the textbooks and papers listed in the references.
-
