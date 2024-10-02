@@ -46,12 +46,6 @@ This course provides an in-depth exploration of stochastic calculus and its appl
   - Introduction to binary (digital) options and their payoff structure.
   - Pricing and hedging strategies for binary options.
 
-## Assessment Methods
-- **Problem Sets:** Regular assignments focusing on the application of stochastic calculus to derivative pricing.
-- **Midterm Exam:** Evaluation of understanding of the first half of the course, including Brownian motion and SDEs.
-- **Final Exam:** Comprehensive exam covering all topics, with a focus on practical application and problem-solving.
-- **Project Work:** Implementation of option pricing models and analysis of exotic options.
-
 ## Recommended Textbooks
 - "Options, Futures, and Other Derivatives" by John C. Hull.
 - "Stochastic Calculus for Finance I: The Binomial Asset Pricing Model" by Steven Shreve.
