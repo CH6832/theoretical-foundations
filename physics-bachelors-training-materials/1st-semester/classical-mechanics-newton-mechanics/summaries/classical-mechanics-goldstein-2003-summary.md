@@ -13,7 +13,7 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
   $\mathbf{v}(t) = \frac{d\mathbf{r}(t)}{dt}$
   
   $\mathbf{a}(t) = \frac{d\mathbf{v}(t)}{dt}$
-  Newton’s second law:
+  Newton's second law:
   
   $\mathbf{F} = m \mathbf{a}$
 
@@ -38,12 +38,12 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
   $f(\mathbf{r}, t) = 0$
   Non-holonomic constraints involve differentials.
 
-#### 1.4 D’Alembert’s Principle and Lagrange’s Equations
-- **D’Alembert’s Principle**: 
+#### 1.4 D'Alembert's Principle and Lagrange's Equations
+- **D'Alembert's Principle**: 
   
   $\mathbf{F} - m \mathbf{a} = 0$
 
-- **Lagrange’s Equations**: Derived from stationary action:
+- **Lagrange's Equations**: Derived from stationary action:
   
   $\frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}_i} \right) - \frac{\partial L}{\partial q_i} = 0$
   with \( L = T - V \) as the Lagrangian.
@@ -60,8 +60,8 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
 #### 1.6 Simple Applications of the Lagrangian Formulation
 - **Example Problems**: Applied to systems like pendulums and harmonic oscillators.
 
-### Chapter 2: Variational Principles and Lagrange’s Equations
-#### 2.1 Hamilton’s Principle
+### Chapter 2: Variational Principles and Lagrange's Equations
+#### 2.1 Hamilton's Principle
 - **Principle of Least Action**: 
   
   $S = \int_{t_1}^{t_2} L \, dt$
@@ -71,10 +71,10 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
   
   $\frac{\partial L}{\partial q_i} - \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q}_i} \right) = 0$
 
-#### 2.3 Derivation from Hamilton’s Principle
+#### 2.3 Derivation from Hamilton's Principle
 - **Variational Approach**: Derivation using calculus of variations.
 
-#### 2.4 Extending Hamilton’s Principle to Systems with Constraints
+#### 2.4 Extending Hamilton's Principle to Systems with Constraints
 - **Modified Action**: 
   
   $S = \int_{t_1}^{t_2} \left( L + \sum_{k} \lambda_k f_k \right) dt$
@@ -83,7 +83,7 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
 - **Flexibility and Generality**: Provides a general framework for deriving equations of motion.
 
 #### 2.6 Conservation Theorems and Symmetry Properties
-- **Noether’s Theorem**: Relates symmetries to conserved quantities.
+- **Noether's Theorem**: Relates symmetries to conserved quantities.
 
 #### 2.7 Energy Function and the Conservation of Energy
 - **Conservation of Energy**: 
@@ -112,11 +112,11 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
   
   $\frac{d^2 u}{d\theta^2} + u = \frac{1}{l^2} \frac{dV}{du}$
 
-#### 3.6 Conditions for Closed Orbits (Bertrand’s Theorem)
-- **Bertrand’s Theorem**: Closed orbits occur for inverse-square and harmonic potentials.
+#### 3.6 Conditions for Closed Orbits (Bertrand's Theorem)
+- **Bertrand's Theorem**: Closed orbits occur for inverse-square and harmonic potentials.
 
 #### 3.7 The Kepler Problem: Inverse-Square Law of Force
-- **Kepler’s Laws**: 
+- **Kepler's Laws**: 
   
   $F = -\frac{G M m}{r^2}$
 
@@ -159,8 +159,8 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
 #### 4.5 The Cayley–Klein Parameters and Related Quantities
 - **Rotations with Quaternions**: Alternative to Euler angles.
 
-#### 4.6 Euler’s Theorem on the Motion of a Rigid Body
-- **Euler’s Theorem**: Any rotation about a fixed point can be described by a single rotation about some axis.
+#### 4.6 Euler's Theorem on the Motion of a Rigid Body
+- **Euler's Theorem**: Any rotation about a fixed point can be described by a single rotation about some axis.
 
 #### 4.7 Finite Rotations
 - **Composition of Rotations**: Successive infinitesimal rotations.
@@ -176,9 +176,7 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
 #### 4.10 The Coriolis Effect
 - **Coriolis Force**: 
   
- $
-
- \mathbf{F}_{cor} = -2 m (\mathbf{v} \times \mathbf{\Omega})$
+ $\mathbf{F}_{cor} = -2 m (\mathbf{v} \times \mathbf{\Omega})$
 
 #### 4.11 The General Problem of Rigid Body Motion
 - **Equations of Motion**: 
@@ -208,7 +206,7 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
   \end{pmatrix}$
 
 #### 5.3 The Euler Equations of Motion
-- **Euler’s Equations**: 
+- **Euler's Equations**: 
   
   $\frac{d \mathbf{L}}{dt} = \mathbf{T} + \mathbf{\Omega} \times \mathbf{L}$
 
@@ -228,7 +226,7 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
 - **Precession**: Slow rotation of the axis of a spinning body.
 
 #### 5.9 The Atmosphere and the Earth
-- **Earth’s Rotation**: Application to atmospheric dynamics.
+- **Earth's Rotation**: Application to atmospheric dynamics.
 
 #### 5.10 Torsional Oscillations and Normal Modes
 - **Oscillatory Motion**: Analysis of vibrational modes.
@@ -279,7 +277,7 @@ The third edition of *Classical Mechanics* provides a comprehensive exploration 
   $J_i = \frac{1}{2 \pi} \oint p_i dq_i$
 
 #### 7.4 Hamiltonian Mechanics
-- **Hamilton’s Equations**: 
+- **Hamilton's Equations**: 
   
   $\dot{q}_i = \frac{\partial H}{\partial p_i}$
   
