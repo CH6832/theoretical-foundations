@@ -90,7 +90,7 @@ This course provides a comprehensive introduction to the fundamental principles 
 
 **Mole Concept:**
 
-- **Avogadro’s Number:**
+- **Avogadro's Number:**
   $( 1 \text{ mole} = 6.022 \times 10^{23} \text{ particles} )$.
 
 - **Molar Mass:**
@@ -208,7 +208,7 @@ This course provides a comprehensive introduction to the fundamental principles 
 
   $\Delta T_b = i K_b m$
 
-  where $( i )$ is the van’t Hoff factor, $( K_b )$ is the ebullioscopic constant, and $( m )$ is the molality.
+  where $( i )$ is the van't Hoff factor, $( K_b )$ is the ebullioscopic constant, and $( m )$ is the molality.
 
 - **Freezing Point Depression $( \Delta T_f )$:**
 
@@ -218,7 +218,7 @@ This course provides a comprehensive introduction to the fundamental principles 
 
 #### Chemical Equilibrium
 
-**Le Chatelier’s Principle:**
+**Le Chatelier's Principle:**
 
 - **Shifts in Equilibrium:**
   Changes in concentration, pressure, or temperature can shift the position of equilibrium. For example, adding more reactant will shift the equilibrium to produce more products.
