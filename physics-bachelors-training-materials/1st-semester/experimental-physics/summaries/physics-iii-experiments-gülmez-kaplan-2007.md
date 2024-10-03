@@ -50,9 +50,9 @@ This section provides an overview of the fundamental concepts and methods used i
 **Units** are standard quantities used to measure physical properties. Common units include meters (m) for length, kilograms (kg) for mass, and seconds (s) for time. 
 
 **Dimensions** refer to the physical nature of a quantity. For example:
-- Length: \([L]\)
-- Mass: \([M]\)
-- Time: \([T]\)
+- Length: $([L])$
+- Mass: $([M])$
+- Time: $([T])$
 
 #### Measurement and Instruments
 
@@ -77,17 +77,17 @@ A data logger is an electronic device that records data over time. It is useful 
 
 ##### Mean and Standard Deviation
 
-- **Mean** (\(\bar{x}\)): The average of a set of values.
+- **Mean** ($(\bar{x})$): The average of a set of values.
   
-  $\bar{x} = \frac{1}{N} \sum_{i=1}^N x_i
- $ 
-  where \( \bar{x} \) is the mean, \( x_i \) are the individual data points, and \( N \) is the number of data points.
+  $\bar{x} = \frac{1}{N} \sum_{i=1}^N x_i$
 
-- **Standard Deviation** (\(\sigma\)): Measures the dispersion of data points around the mean.
+  where $( \bar{x} )$ is the mean, $( x_i )$ are the individual data points, and $( N )$ is the number of data points.
+
+- **Standard Deviation** ($(\sigma)$): Measures the dispersion of data points around the mean.
   
-  $\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \bar{x})^2}
- $ 
-  where \( \sigma \) is the standard deviation.
+  $\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \bar{x})^2}$
+
+  where $( \sigma )$ is the standard deviation.
 
 ##### Distributions
 
@@ -95,7 +95,7 @@ The **Normal Distribution** is a common probability distribution described by th
 
 $f(x) = \frac{1}{\sigma \sqrt{2 \pi}} \exp \left( -\frac{(x - \bar{x})^2}{2 \sigma^2} \right)$
 
-where \( \sigma \) is the standard deviation and \( \bar{x} \) is the mean.
+where $( \sigma )$ is the standard deviation and $( \bar{x} )$ is the mean.
 
 #### Errors
 
@@ -127,7 +127,7 @@ The weighted average is calculated as:
 
 $\bar{x}_{w} = \frac{\sum_{i=1}^N w_i x_i}{\sum_{i=1}^N w_i}$
 
-where \( w_i \) are the weights and \( x_i \) are the measured values.
+where $( w_i )$ are the weights and $( x_i )$ are the measured values.
 
 ##### Error Propagation
 
@@ -135,7 +135,7 @@ When dealing with multiple variables, the propagated error is given by:
 
 $\sigma_f = \sqrt{\left(\frac{\partial f}{\partial x_1} \sigma_{x_1}\right)^2 + \left(\frac{\partial f}{\partial x_2} \sigma_{x_2}\right)^2 + \cdots + \left(\frac{\partial f}{\partial x_n} \sigma_{x_n}\right)^2}$
 
-where \( \sigma_f \) is the propagated error in the function \( f \), and \( \frac{\partial f}{\partial x_i} \) are the partial derivatives of \( f \) with respect to each variable \( x_i \), with \( \sigma_{x_i} \) being the error in \( x_i \).
+where $( \sigma_f )$ is the propagated error in the function $( f )$, and $( \frac{\partial f}{\partial x_i} )$ are the partial derivatives of $( f )$ with respect to each variable $( x_i )$, with $( \sigma_{x_i} )$ being the error in $( x_i )$.
 
 ##### Multivariable Measurements: Fitting Procedures
 
@@ -149,11 +149,11 @@ This section covers how to structure scientific reports, including sections for 
 
 ### Measurement of Resistance - Ohm’s Law
 
-Ohm's Law describes the relationship between voltage (\(V\)), current (\(I\)), and resistance (\(R\)):
+Ohm's Law describes the relationship between voltage ($(V)$), current ($(I)$), and resistance ($(R)$):
 
 $V = IR$
 
-where \( V \) is the voltage across a component, \( I \) is the current through it, and \( R \) is the resistance. This experiment involves measuring \( V \) and \( I \) to determine \( R \).
+where $( V )$ is the voltage across a component, $( I )$ is the current through it, and $( R )$ is the resistance. This experiment involves measuring $( V )$ and $( I )$ to determine $( R )$.
 
 ### Ammeters and Voltmeters
 
@@ -166,15 +166,15 @@ The Wheatstone Bridge is a circuit used to measure unknown resistances. The brid
 
 $\frac{R_1}{R_2} = \frac{R_3}{R_x}$
 
-where \( R_x \) is the unknown resistance.
+where $( R_x )$ is the unknown resistance.
 
 ### Force Between Charged Plates
 
-The electrostatic force \( F \) between two parallel charged plates separated by a distance \( d \) is given by:
+The electrostatic force $( F )$ between two parallel charged plates separated by a distance $( d )$ is given by:
 
 $F = \frac{Q^2}{4 \pi \epsilon_0 d^2}$
 
-where \( Q \) is the charge on each plate and \( \epsilon_0 \) is the permittivity of free space.
+where $( Q )$ is the charge on each plate and $( \epsilon_0 )$ is the permittivity of free space.
 
 ### The Cathode Ray Oscilloscope (CRO)
 
@@ -184,25 +184,25 @@ A Cathode Ray Oscilloscope (CRO) is used to visualize electrical signals. Key fe
 
 ### Characteristics of a Capacitor
 
-Capacitors are components that store and release electrical energy. The relationship between charge \( Q \), voltage \( V \), and capacitance \( C \) is:
+Capacitors are components that store and release electrical energy. The relationship between charge $( Q )$, voltage $( V )$, and capacitance $( C )$ is:
 
-$Q = CV$
+Q = CV
 
-The time constant \( \tau \) for charging and discharging a capacitor is given by:
+The time constant $( \tau )$ for charging and discharging a capacitor is given by:
 
 $\tau = RC$
 
-where \( R \) is the resistance in the circuit.
+where $( R )$ is the resistance in the circuit.
 
 ### Force Between Current-Carrying Wires
 
-The force \( F \) between two parallel wires carrying currents \( I_1 \) and \( I_2 \) is described by:
+The force $( F )$ between two parallel wires carrying currents $( I_1 )$ and $( I_2 )$ is described by:
 
 $F = \frac{\mu_0 I_1 I_2 L}{2 \pi d}$
 
-where \( \mu_0 \) is the permeability of free space, \( L \) is the length of
+where $( \mu_0 )$ is the permeability of free space, $( L )$ is the length of
 
- the wires, and \( d \) is the distance between them.
+ the wires, and $( d )$ is the distance between them.
 
 ## Appendices
 
