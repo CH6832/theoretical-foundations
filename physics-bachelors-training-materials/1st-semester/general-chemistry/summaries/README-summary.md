@@ -28,10 +28,10 @@ This course provides a comprehensive introduction to the fundamental principles 
 
 - **Quantum Numbers:**
   Each electron in an atom is described by four quantum numbers:
-  - Principal quantum number ($( n )$): Indicates the energy level.
-  - Angular momentum quantum number ($( l )$): Describes the shape of the orbital.
-  - Magnetic quantum number ($( m_l )$): Describes the orientation of the orbital.
-  - Spin quantum number ($( m_s )$): Describes the spin of the electron.
+  - Principal quantum number $( n )$: Indicates the energy level.
+  - Angular momentum quantum number $( l )$: Describes the shape of the orbital.
+  - Magnetic quantum number $( m_l )$: Describes the orientation of the orbital.
+  - Spin quantum number $( m_s )$: Describes the spin of the electron.
 
 **Periodic Table:**
 
@@ -125,8 +125,8 @@ This course provides a comprehensive introduction to the fundamental principles 
 **Acids and Bases:**
 
 - **Properties and Strength:**
-  - **Acids:** Donate protons ($( \text{H}^+ )$). Strong acids completely dissociate in water (e.g., $( \text{HCl} )$).
-  - **Bases:** Accept protons ($( \text{OH}^- )$). Strong bases completely dissociate in water (e.g., $( \text{NaOH} )$).
+  - **Acids:** Donate protons $( \text{H}^+ )$. Strong acids completely dissociate in water (e.g., $( \text{HCl} )$.
+  - **Bases:** Accept protons $( \text{OH}^- )$. Strong bases completely dissociate in water (e.g., $( \text{NaOH} )$.
 
 - **Neutralization Reactions:**
   Reactions between an acid and a base to produce water and a salt. The general reaction is:
@@ -146,19 +146,19 @@ This course provides a comprehensive introduction to the fundamental principles 
 
 **Entropy and Enthalpy:**
 
-- **Enthalpy ($( \Delta H )$):**
+- **Enthalpy $( \Delta H )$:**
   The heat content of a system at constant pressure. For a reaction, it is calculated using:
 
   $\Delta H = \sum H_{\text{products}} - \sum H_{\text{reactants}}$
 
-- **Entropy ($( \Delta S )$):**
+- **Entropy $( \Delta S )$:**
   A measure of disorder or randomness. For a reversible process, the change in entropy is:
 
   $\Delta S = \frac{\Delta Q_{\text{rev}}}{T}$
 
   where $( \Delta Q_{\text{rev}} )$ is the heat absorbed or released reversibly and $( T )$ is the temperature.
 
-- **Gibbs Free Energy ($( \Delta G )$):**
+- **Gibbs Free Energy $( \Delta G )$:**
   Predicts spontaneity of a reaction:
 
   $\Delta G = \Delta H - T \Delta S$
@@ -188,29 +188,29 @@ This course provides a comprehensive introduction to the fundamental principles 
 
 **Concentration Units:**
 
-- **Molarity ($( M )$):**
+- **Molarity $( M )$:**
 
   $M
 
  = \frac{\text{moles of solute}}{\text{liters of solution}}$
 
-- **Molality ($( m )$):**
+- **Molality $( m )$:**
 
   $m = \frac{\text{moles of solute}}{\text{kg of solvent}}$
 
-- **Normality ($( N )$):**
+- **Normality $( N )$:**
 
   $N = \frac{\text{equivalents of solute}}{\text{liters of solution}}$
 
 **Colligative Properties:**
 
-- **Boiling Point Elevation ($( \Delta T_b )$):**
+- **Boiling Point Elevation $( \Delta T_b )$:**
 
   $\Delta T_b = i K_b m$
 
   where $( i )$ is the van’t Hoff factor, $( K_b )$ is the ebullioscopic constant, and $( m )$ is the molality.
 
-- **Freezing Point Depression ($( \Delta T_f )$):**
+- **Freezing Point Depression $( \Delta T_f )$:**
 
   $\Delta T_f = i K_f m$
 
@@ -225,12 +225,8 @@ This course provides a comprehensive introduction to the fundamental principles 
 
 **Equilibrium Constants:**
 
-- **Expression for Equilibrium Constant ($( K_c )$):**
+- **Expression for Equilibrium Constant $( K_c )$:**
 
   $K_c = \frac{[\text{products}]}{[\text{reactants}]}$
 
   where concentrations are raised to the power of their stoichiometric coefficients.
-
----
-
-Feel free to adjust the details or expand on any section to suit the specific requirements of your course!
