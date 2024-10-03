@@ -37,26 +37,26 @@
 
 #### **Example**: Construct a quantum circuit using Qiskit to prepare and measure the Bell state.
 
-```python
-from qiskit import QuantumCircuit, Aer, execute
+```plaintext
+function CreateBellState():
+    // Step 1: Initialize a quantum circuit with 2 qubits
+    quantumCircuit = InitializeQuantumCircuit(2)
 
-# Create a quantum circuit with 2 qubits
-qc = QuantumCircuit(2)
+    // Step 2: Apply Hadamard gate to the first qubit
+    ApplyHadamard(quantumCircuit, qubitIndex = 0)
 
-# Create Bell state
-qc.h(0)  # Apply Hadamard gate to qubit 0
-qc.cx(0, 1)  # Apply CNOT gate with qubit 0 as control and qubit 1 as target
+    // Step 3: Apply CNOT gate with qubit 0 as control and qubit 1 as target
+    ApplyCNOT(quantumCircuit, controlQubit = 0, targetQubit = 1)
 
-# Measure both qubits
-qc.measure_all()
+    // Step 4: Measure both qubits
+    measurementResults = MeasureAll(quantumCircuit)
 
-# Execute the circuit
-simulator = Aer.get_backend('aer_simulator')
-result = execute(qc, backend=simulator, shots=1024).result()
+    // Step 5: Execute the circuit
+    results = ExecuteCircuit(quantumCircuit, shots = 1024)
 
-# Get the counts (result)
-counts = result.get_counts()
-print(counts)
+    // Step 6: Obtain and return the measurement counts
+    counts = GetCounts(results)
+    return counts
 ```
 
 ---
@@ -117,7 +117,7 @@ function ShorFactor(N):
 
 #### **Example**: Implement Grover’s algorithm to search for a marked item in a 4-item database using Qiskit.
 
-```python
+```plaintext
 # Example of a simple implementation of Grover's algorithm in Qiskit will go here.
 ```
 
@@ -158,7 +158,7 @@ function ShorCode(quantum_state):
 
 #### **Example**: Simulate error correction using Shor’s Code and measure its effectiveness in a noisy environment.
 
-```python
+```plaintext
 # Example code for simulating Shor's Code error correction will go here.
 ```
 
@@ -192,7 +192,7 @@ function BB84Protocol(sender, receiver):
 
 #### **Example**: Implement a QKD protocol using simulation tools to demonstrate secure key exchange.
 
-```python
+```plaintext
 # Example code for simulating BB84 QKD will go here.
 ```
 
@@ -213,7 +213,6 @@ function BB84Protocol(sender, receiver):
 ```plaintext
 function QuantumTeleportation(sender_state, entangled_pair, classical_channel):
     # Step 1: Share an entangled pair between sender and receiver
-
 
     entangled_pair = create_entangled_pair()
     
