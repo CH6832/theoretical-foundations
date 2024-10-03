@@ -22,16 +22,28 @@ where $( \text{Payoff}_i )$ is the payoff of the derivative in state $( i )$.
 
 **Python Example: Pricing a Simple Derivative in Incomplete Markets**
 
-```python
-import numpy as np
+```
+BEGIN
 
-# Example Arrow-Debreu prices and payoffs
-arrow_debreu_prices = np.array([0.8, 0.2])
-payoffs = np.array([100, 50])
+    // Step 1: Initialize Arrow-Debreu prices and payoffs
+    DECLARE arrow_debreu_prices AS ARRAY OF FLOAT
+    DECLARE payoffs AS ARRAY OF FLOAT
+    arrow_debreu_prices = [0.8, 0.2]      // Example prices for different states
+    payoffs = [100, 50]                    // Corresponding payoffs for those states
 
-# Calculate derivative price
-price = np.sum(arrow_debreu_prices * payoffs)
-print(f"Price of the Derivative: {price:.2f}")
+    // Step 2: Initialize price variable
+    DECLARE price AS FLOAT
+    price = 0.0                             // Start with a price of zero
+
+    // Step 3: Calculate the price of the derivative
+    FOR i FROM 0 TO LENGTH(arrow_debreu_prices) - 1 DO
+        price = price + (arrow_debreu_prices[i] * payoffs[i]) // Calculate expected price
+    END FOR
+
+    // Step 4: Output the result
+    PRINT "Price of the Derivative: ", price
+
+END
 ```
 
 **Stochastic Control:**
@@ -48,17 +60,41 @@ where $( \mathcal{L}_u )$ is the generator of the stochastic process under contr
 
 **Python Example: Solving a Simple HJB Equation**
 
-```python
-import numpy as np
-import scipy.optimize as opt
+```
+BEGIN
 
-# Define the HJB equation
-def hjb_solution(x):
-    return opt.root(lambda v: v - (1 - 0.5 * x**2), x0=0).x[0]
+    // Step 1: Import necessary libraries
+    // (In pseudo code, we simply mention that libraries are imported but do not specify)
+    IMPORT numpy AS np
+    IMPORT scipy.optimize AS opt
 
-# Example value
-solution = hjb_solution(1.5)
-print(f"Solved HJB Value: {solution:.2f}")
+    // Step 2: Define the HJB equation function
+    FUNCTION hjb_solution(x)
+        // Define the equation based on the HJB formulation
+        DECLARE FUNCTION equation(v)
+            RETURN v - (1 - 0.5 * x^2)  // The HJB equation to be solved
+
+        // Step 3: Use a root-finding method to solve the equation
+        DECLARE result AS STRUCT
+        result = opt.root(equation, x0=0)  // Find the root starting from initial guess x0 = 0
+
+        // Step 4: Return the solution
+        RETURN result.x[0]  // Extract the first element of the solution
+
+    END FUNCTION
+
+    // Step 5: Example usage
+    DECLARE value AS FLOAT
+    value = 1.5  // Example value to test the HJB equation
+
+    // Step 6: Call the HJB solution function and store the result
+    DECLARE solution AS FLOAT
+    solution = hjb_solution(value)  // Call the function with the example value
+
+    // Step 7: Print the solved HJB value
+    PRINT "Solved HJB Value: ", solution  // Display the result formatted to 2 decimal places
+
+END
 ```
 
 **Optimal Hedging:**
@@ -89,15 +125,24 @@ where $( p_{bid} )$ and $( p_{ask} )$ are the bid and ask prices, respectively, 
 
 **Python Example: Simulating Market Making Profit**
 
-```python
-# Example bid and ask prices
-bid_price = 100
-ask_price = 101
-quantity = 50
+```
+BEGIN
+    // Step 1: Initialize bid and ask prices and quantity
+    DECLARE bid_price AS FLOAT
+    DECLARE ask_price AS FLOAT
+    DECLARE quantity AS INTEGER
 
-# Calculate profit
-profit = (bid_price - ask_price) * quantity
-print(f"Market Making Profit: {profit:.2f}")
+    bid_price = 100        // Example bid price
+    ask_price = 101        // Example ask price
+    quantity = 50          // Quantity of assets traded
+
+    // Step 2: Calculate profit
+    DECLARE profit AS FLOAT
+    profit = (bid_price - ask_price) * quantity  // Calculate profit based on the formula
+
+    // Step 3: Print the calculated profit
+    PRINT "Market Making Profit: ", profit  // Display the result formatted to 2 decimal places
+END
 ```
 
 **Risk Management:**
@@ -114,15 +159,23 @@ where $( \text{Quantile}_{\alpha}(R) )$ is the $( \alpha )$-th percentile of the
 
 **Python Example: Calculating VaR**
 
-```python
-import numpy as np
+```
+BEGIN
+    // Step 1: Import necessary libraries
+    // (In pseudo code, we simply mention that libraries are imported but do not specify)
+    IMPORT numpy AS np
 
-# Generate synthetic returns
-returns = np.random.normal(loc=0.01, scale=0.02, size=1000)
+    // Step 2: Generate synthetic returns
+    DECLARE returns AS ARRAY OF FLOAT
+    returns = GENERATE random normal distribution WITH MEAN 0.01 AND STANDARD DEVIATION 0.02 FOR SIZE 1000
 
-# Calculate VaR at 95% confidence level
-var_95 = -np.percentile(returns, 5)
-print(f"Value at Risk (95%): {var_95:.2f}")
+    // Step 3: Calculate VaR at 95% confidence level
+    DECLARE var_95 AS FLOAT
+    var_95 = -PERCENTILE(returns, 5)  // Calculate the 5th percentile of the returns and negate it
+
+    // Step 4: Print the Value at Risk
+    PRINT "Value at Risk (95%): ", var_95  // Display the result formatted to 2 decimal places
+END
 ```
 
 **Regulatory Challenges:**
@@ -132,13 +185,29 @@ print(f"Value at Risk (95%): {var_95:.2f}")
 
 **Python Example: Compliance Check**
 
-```python
-# Example regulatory compliance data
-compliance = {'HFT Strategy': 'Approved', 'Algorithm Transparency': 'Not Approved'}
+```
+BEGIN
+    // Step 1: Initialize compliance data
+    DECLARE compliance AS DICTIONARY
+    compliance = {
+        'HFT Strategy': 'Approved',
+        'Algorithm Transparency': 'Not Approved'
+    }
 
-# Check compliance status
-compliance_status = {key: value for key, value in compliance.items() if 'Not Approved' in value}
-print(f"Non-Compliant Aspects:\n{compliance_status}")
+    // Step 2: Check compliance status for non-compliant aspects
+    DECLARE compliance_status AS DICTIONARY
+    compliance_status = EMPTY DICTIONARY  // Initialize an empty dictionary to store non-compliant aspects
+
+    FOR EACH key, value IN compliance DO
+        IF value CONTAINS 'Not Approved' THEN
+            compliance_status[key] = value  // Add non-compliant aspect to the status
+        END IF
+    END FOR
+
+    // Step 3: Print non-compliant aspects
+    PRINT "Non-Compliant Aspects:"
+    PRINT compliance_status  // Display the non-compliant aspects
+END
 ```
 
 **Market Impact:**
@@ -153,14 +222,22 @@ $\text{Bid-Ask Spread} = \frac{\text{Ask Price} - \text{Bid Price}}{\text{Ask Pr
 
 **Python Example: Calculating Bid-Ask Spread**
 
-```python
-# Example bid and ask prices
-bid_price = 100
-ask_price = 101
+```
+BEGIN
+    // Step 1: Initialize bid and ask prices
+    DECLARE bid_price AS FLOAT
+    DECLARE ask_price AS FLOAT
 
-# Calculate bid-ask spread
-spread = (ask_price - bid_price) / ask_price
-print(f"Bid-Ask Spread: {spread:.2%}")
+    bid_price = 100        // Example bid price
+    ask_price = 101        // Example ask price
+
+    // Step 2: Calculate bid-ask spread
+    DECLARE spread AS FLOAT
+    spread = (ask_price - bid_price) / ask_price  // Calculate the spread as a percentage of the ask price
+
+    // Step 3: Print the bid-ask spread
+    PRINT "Bid-Ask Spread: ", spread * 100, "%"  // Display the spread formatted as a percentage
+END
 ```
 
 ### Financial Networks
@@ -179,15 +256,24 @@ where Distance(i, j) is the shortest path between institutions $( i )$ and $( j 
 
 **Python Example: Calculating Centrality**
 
-```python
-import networkx as nx
+```
+BEGIN
+    // Step 1: Import necessary libraries
+    // (In pseudo code, we simply mention that libraries are imported but do not specify)
+    IMPORT networkx AS nx
 
-# Create a simple financial network
-G = nx.erdos_renyi_graph(10, 0.3)
+    // Step 2: Create a simple financial network using an Erdős-Rényi model
+    DECLARE G AS GRAPH
+    G = CREATE Erdős-Rényi graph WITH 10 NODES AND CONNECTION PROBABILITY 0.3
 
-# Calculate centrality
-centrality = nx.degree_centrality(G)
-print(f"Centrality of Nodes:\n{centrality}")
+    // Step 3: Calculate centrality of nodes
+    DECLARE centrality AS DICTIONARY
+    centrality = CALCULATE degree centrality OF G  // Calculate the degree centrality for each node in the graph
+
+    // Step 4: Print the centrality of nodes
+    PRINT "Centrality of Nodes:"
+    PRINT centrality  // Display the calculated centrality values
+END
 ```
 
 **Contagion:**
@@ -202,31 +288,61 @@ $\text{Propagation Probability} = \frac{p_{ij}}{\sum_{j} p_{ij}}$
 
 **Python Example: Simulating Contagion Spread**
 
-```python
-import networkx as nx
+```
+BEGIN
+    // Step 1: Import necessary libraries
+    // (In pseudo code, we simply mention that libraries are imported but do not specify)
+    IMPORT networkx AS nx
 
-# Define a simple contagion model
-def simulate_contagion(graph, initial_nodes, probability):
-    infected = set(initial_nodes)
-    new_infected = set(initial_nodes)
-    while new_infected:
-        current_new_infected = set()
-        for node in new_infected:
-            neighbors = set(graph.neighbors(node))
-            for neighbor in neighbors:
-                if neighbor not in infected and np.random.rand() < probability:
-                    current_new_infected.add(neighbor)
-                    infected.add(neighbor)
-        new_infected = current_new_in
+    // Step 2: Define the contagion simulation function
+    FUNCTION simulate_contagion(graph, initial_nodes, probability)
+        DECLARE infected AS SET
+        infected = EMPTY SET  // Set to track infected nodes
 
-fected
-    return infected
+        DECLARE new_infected AS SET
+        new_infected = SET(initial_nodes)  // Set of newly infected nodes, starting with initial nodes
 
-# Example usage
-G = nx.erdos_renyi_graph(10, 0.3)
-initial_infected = [0]
-contagion_set = simulate_contagion(G, initial_infected, 0.2)
-print(f"Nodes affected by contagion: {contagion_set}")
+        WHILE new_infected IS NOT EMPTY DO
+            DECLARE current_new_infected AS SET
+            current_new_infected = EMPTY SET  // Initialize the current batch of new infections
+
+            // Step 3: Iterate over newly infected nodes
+            FOR EACH node IN new_infected DO
+                DECLARE neighbors AS SET
+                neighbors = GET neighbors OF node IN graph  // Get the neighbors of the current node
+
+                // Step 4: Attempt to infect neighbors
+                FOR EACH neighbor IN neighbors DO
+                    IF neighbor NOT IN infected THEN
+                        // Generate a random number and check against the infection probability
+                        IF RANDOM NUMBER < probability THEN
+                            current_new_infected.ADD(neighbor)  // Add neighbor to the current new infections
+                            infected.ADD(neighbor)  // Mark neighbor as infected
+                        END IF
+                    END IF
+                END FOR
+            END FOR
+
+            new_infected = current_new_infected  // Update new infected nodes for the next iteration
+        END WHILE
+
+        RETURN infected  // Return the set of infected nodes
+    END FUNCTION
+
+    // Step 5: Example usage
+    DECLARE G AS GRAPH
+    G = CREATE Erdős-Rényi graph WITH 10 NODES AND CONNECTION PROBABILITY 0.3
+
+    DECLARE initial_infected AS LIST
+    initial_infected = [0]  // Initial infected node
+
+    // Step 6: Simulate contagion
+    DECLARE contagion_set AS SET
+    contagion_set = simulate_contagion(G, initial_infected, 0.2)
+
+    // Step 7: Print the nodes affected by contagion
+    PRINT "Nodes affected by contagion: ", contagion_set  // Display the set of infected nodes
+END
 ```
 
 **Network Theory in Finance:**
@@ -241,10 +357,23 @@ $\text{Clustering Coefficient}(i) = \frac{2 \times \text{Number of Triangles Inc
 
 **Python Example: Calculating Clustering Coefficient**
 
-```python
-# Calculate clustering coefficient for a node
-clustering_coeff = nx.clustering(G)
-print(f"Clustering Coefficient of Nodes:\n{clustering_coeff}")
+```
+BEGIN
+    // Step 1: Import necessary libraries
+    // (In pseudo code, we simply mention that libraries are imported but do not specify)
+    IMPORT networkx AS nx
+
+    // Step 2: Define a graph
+    DECLARE G AS GRAPH
+    G = INITIALIZE A GRAPH  // Create or load a graph (specifics omitted)
+
+    // Step 3: Calculate clustering coefficient for each node
+    DECLARE clustering_coeff AS DICTIONARY
+    clustering_coeff = CALCULATE clustering coefficient FOR EACH NODE IN G  // Compute the clustering coefficient for the graph
+    // Step 4: Print the clustering coefficient of nodes
+    PRINT "Clustering Coefficient of Nodes:"
+    PRINT clustering_coeff  // Display the calculated clustering coefficients
+END
 ```
 
 ### Advanced Credit Risk Modeling
@@ -263,14 +392,23 @@ where the Haircut represents a reduction in the value of collateral to account f
 
 **Python Example: Collateral Valuation**
 
-```python
-# Example collateral management
-current_value = 1000
-haircut = 0.1 * current_value
+```
+BEGIN
+    // Step 1: Initialize collateral management parameters
+    DECLARE current_value AS FLOAT
+    current_value = 1000  // Example current value of the collateral
 
-# Calculate adjusted collateral value
-adjusted_value = current_value - haircut
-print(f"Adjusted Collateral Value: {adjusted_value:.2f}")
+    // Step 2: Calculate the haircut amount
+    DECLARE haircut AS FLOAT
+    haircut = 0.1 * current_value  // Calculate the haircut as 10% of the current value
+
+    // Step 3: Calculate adjusted collateral value
+    DECLARE adjusted_value AS FLOAT
+    adjusted_value = current_value - haircut  // Adjusted value after applying the haircut
+
+    // Step 4: Print the adjusted collateral value
+    PRINT "Adjusted Collateral Value: ", adjusted_value  // Display the result formatted to 2 decimal places
+END
 ```
 
 **Wrong-Way Risk:**
@@ -285,14 +423,22 @@ $\text{EAD} = \text{Exposure} \times \text{Default Probability}$
 
 **Python Example: Wrong-Way Risk Calculation**
 
-```python
-# Example wrong-way risk calculation
-exposure = 500000
-default_probability = 0.05
+```
+BEGIN
+    // Step 1: Initialize risk calculation parameters
+    DECLARE exposure AS FLOAT
+    exposure = 500000  // Example exposure amount
 
-# Calculate exposure at default
-ead = exposure * default_probability
-print(f"Exposure at Default (EAD): {ead:.2f}")
+    DECLARE default_probability AS FLOAT
+    default_probability = 0.05  // Example default probability (5%)
+
+    // Step 2: Calculate exposure at default
+    DECLARE ead AS FLOAT
+    ead = exposure * default_probability  // Calculate Exposure at Default (EAD)
+
+    // Step 3: Print the Exposure at Default (EAD)
+    PRINT "Exposure at Default (EAD): ", ead  // Display the result formatted to 2 decimal places
+END
 ```
 
 **Credit Valuation Adjustment (CVA):**
@@ -307,22 +453,26 @@ $\text{CVA} = (1 - \text{Recovery Rate}) \times \text{Exposure} \times \text{Pro
 
 **Python Example: CVA Calculation**
 
-```python
-# Example CVA calculation
-recovery_rate = 0.4
-probability_of_default = 0.05
-
-# Calculate CVA
-cva = (1 - recovery_rate) * exposure * probability_of_default
-print(f"Credit Valuation Adjustment (CVA): {cva:.2f}")
 ```
+BEGIN
+    // Step 1: Initialize CVA calculation parameters
+    DECLARE recovery_rate AS FLOAT
+    recovery_rate = 0.4  // Example recovery rate (40%)
 
-## Assessment Methods
+    DECLARE probability_of_default AS FLOAT
+    probability_of_default = 0.05  // Example probability of default (5%)
 
-- **Problem Sets:** Focus on applying theoretical concepts to practical problems in derivative pricing, risk management, and other advanced financial engineering topics.
-- **Midterm Exam:** Covers core concepts and techniques discussed in the first half of the course, including mathematical and practical applications.
-- **Final Exam:** A comprehensive exam featuring advanced topics and practical case studies to test overall understanding and application of financial engineering principles.
-- **Project Work:** An in-depth project on a specific topic of interest, such as developing a high-frequency trading algorithm or creating a credit risk model, with a focus on both technical and ethical considerations.
+    DECLARE exposure AS FLOAT
+    exposure = 1000000  // Example exposure amount (assumed for CVA calculation)
+
+    // Step 2: Calculate CVA
+    DECLARE cva AS FLOAT
+    cva = (1 - recovery_rate) * exposure * probability_of_default  // Calculate Credit Valuation Adjustment (CVA)
+
+    // Step 3: Print the Credit Valuation Adjustment (CVA)
+    PRINT "Credit Valuation Adjustment (CVA): ", cva  // Display the result formatted to 2 decimal places
+END
+```
 
 ## Recommended Textbooks
 
