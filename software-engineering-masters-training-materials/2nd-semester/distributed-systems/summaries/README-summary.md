@@ -15,38 +15,26 @@ This course covers fundamental concepts and practical aspects of distributed sys
 - **Message-Passing**: Processes communicate by sending and receiving messages.
 - **Shared Memory**: Processes communicate by reading from and writing to a shared memory space.
 
-**Java Example (Message Passing with Sockets):**
-```java
-import java.io.*;
-import java.net.*;
-
-public class Server {
-    public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(1234);
-        Socket socket = serverSocket.accept();
-        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        String message = in.readLine();
-        System.out.println("Received: " + message);
-        out.println("Message received");
-    }
-}
+**Pseudocode Example (Message Passing with Sockets - Server):**
+```
+START Server
+    CREATE ServerSocket at port 1234
+    WAIT for client connection
+    ACCEPT client connection
+    READ message from client
+    PRINT "Received: " + message
+    SEND "Message received" to client
+END Server
 ```
 
-**Java Example (Message Passing with Sockets - Client):**
-```java
-import java.io.*;
-import java.net.*;
-
-public class Client {
-    public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("localhost", 1234);
-        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        out.println("Hello, Server!");
-        System.out.println("Server says: " + in.readLine());
-    }
-}
+**Pseudocode Example (Message Passing with Sockets - Client):**
+```
+START Client
+    CREATE Socket to "localhost" at port 1234
+    SEND "Hello, Server!" to server
+    READ response from server
+    PRINT "Server says: " + response
+END Client
 ```
 
 #### **Client-Server and Peer-to-Peer Architectures**
@@ -54,32 +42,27 @@ public class Client {
 - **Peer-to-Peer (P2P)**: Decentralized network where each node (peer) can act as both client and server.
 
 **Practical Exercise:**
-- **Build a Simple Client-Server Application** using Java sockets.
+- **Build a Simple Client-Server Application** using sockets.
 
 ### **2. Consensus Algorithms**
 
 #### **Leader Election**
 - **Goal**: Elect a leader among distributed nodes for coordination.
 
-**Java Example (Leader Election - Simplified):**
-```java
-import java.util.Random;
+**Pseudocode Example (Leader Election - Simplified):**
+```
+START LeaderElection
+    nodeId = RANDOM integer between 0 and 100
+    leaderId = FIND_LEADER(nodeId, [1, 2, 3, 4, 5])
+    PRINT "Leader ID: " + leaderId
 
-public class LeaderElection {
-    public static void main(String[] args) {
-        int id = new Random().nextInt(100);
-        int leaderId = findLeader(id, new int[]{1, 2, 3, 4, 5});
-        System.out.println("Leader ID: " + leaderId);
-    }
-
-    static int findLeader(int nodeId, int[] nodeIds) {
-        int leader = nodeId;
-        for (int id : nodeIds) {
-            if (id > leader) leader = id;
-        }
-        return leader;
-    }
-}
+FUNCTION FIND_LEADER(nodeId, nodeIds)
+    leader = nodeId
+    FOR each id IN nodeIds
+        IF id > leader THEN
+            leader = id
+    RETURN leader
+END LeaderElection
 ```
 
 #### **Paxos, Raft, Byzantine Fault Tolerance (BFT)**
@@ -99,46 +82,43 @@ public class LeaderElection {
 #### **Distributed Hash Tables (DHT)**
 - **DHT**: Data is distributed across nodes using a hash function.
 
-**Python Example (Simple DHT Implementation):**
-```python
-class DHT:
-    def __init__(self):
-        self.table = {}
+**Pseudocode Example (Simple DHT Implementation):**
+```
+CLASS DHT
+    FUNCTION INIT()
+        table = {}
 
-    def put(self, key, value):
-        self.table[key] = value
+    FUNCTION PUT(key, value)
+        table[key] = value
 
-    def get(self, key):
-        return self.table.get(key, "Not Found")
+    FUNCTION GET(key)
+        RETURN table[key] IF key EXISTS ELSE "Not Found"
+END DHT
 
-dht = DHT()
-dht.put("key1", "value1")
-print(dht.get("key1"))
+dht = NEW DHT()
+dht.PUT("key1", "value1")
+PRINT dht.GET("key1")
 ```
 
 #### **Data Replication and Consistency Protocols**
 - **Quorum-based Replication**: Ensures that a certain number of replicas agree before a write is considered successful.
 
 **Practical Exercise:**
-- **Implement a Simple Quorum-based Replication System** using Python or Java.
+- **Implement a Simple Quorum-based Replication System** using a language of your choice.
 
 ### **4. Fault Tolerance and Reliability**
 
 #### **Failover Techniques**
 - **Failover**: Switching to a backup system or node when the primary one fails.
 
-**Java Example (Failover Simulation):**
-```java
-public class FailoverExample {
-    public static void main(String[] args) {
-        try {
-            System.out.println("Primary server running...");
-            throw new Exception("Primary server failed");
-        } catch (Exception e) {
-            System.out.println("Switching to backup server...");
-        }
-    }
-}
+**Pseudocode Example (Failover Simulation):**
+```
+START FailoverExample
+    PRINT "Primary server running..."
+    RAISE Exception "Primary server failed"
+    CATCH Exception e
+        PRINT "Switching to backup server..."
+END FailoverExample
 ```
 
 #### **Partition Tolerance, Load Balancing**
@@ -154,33 +134,19 @@ public class FailoverExample {
 - **TLS (Transport Layer Security)**: Ensures secure communication over the network.
 - **SSL (Secure Sockets Layer)**: Legacy protocol for secure communication.
 
-**Java Example (Secure Socket Communication):**
-```java
-import javax.net.ssl.*;
-import java.io.*;
-import java.security.KeyStore;
-
-public class SecureServer {
-    public static void main(String[] args) throws Exception {
-        KeyStore keyStore = KeyStore.getInstance("JKS");
-        keyStore.load(new FileInputStream("keystore.jks"), "password".toCharArray());
-
-        KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("SunX509");
-        keyManagerFactory.init(keyStore, "password".toCharArray());
-
-        SSLContext sslContext = SSLContext.getInstance("TLS");
-        sslContext.init(keyManagerFactory.getKeyManagers(), null, null);
-
-        SSLServerSocketFactory serverSocketFactory = sslContext.getServerSocketFactory();
-        SSLServerSocket serverSocket = (SSLServerSocket) serverSocketFactory.createServerSocket(1234);
-        SSLSocket socket = (SSLSocket) serverSocket.accept();
-        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        String message = in.readLine();
-        System.out.println("Received: " + message);
-        out.println("Message received securely");
-    }
-}
+**Pseudocode Example (Secure Socket Communication - Server):**
+```
+START SecureServer
+    LOAD KeyStore from "keystore.jks" with password "password"
+    INITIALIZE KeyManagerFactory with KeyStore
+    CREATE SSLContext with KeyManagerFactory
+    CREATE SSLServerSocket at port 1234
+    WAIT for secure client connection
+    ACCEPT secure client connection
+    READ message from client
+    PRINT "Received: " + message
+    SEND "Message received securely" to client
+END SecureServer
 ```
 
 #### **Distributed Authentication and Authorization**
