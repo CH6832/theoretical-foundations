@@ -22,19 +22,14 @@ This course focuses on the practical aspects of financial engineering, exploring
 
 where \( R_p \) is the portfolio return, \( R_f \) is the risk-free rate, and \( \sigma_p \) is the standard deviation of the portfolio returns. The Sharpe Ratio helps assess whether the returns of a portfolio are due to smart investment decisions or excessive risk-taking.
 
-**Python Example: Calculating Sharpe Ratio**
+**Pseudocode Example: Calculating Sharpe Ratio**
 
-```python
-import numpy as np
-
-# Generate synthetic portfolio returns
-portfolio_returns = np.random.normal(loc=0.01, scale=0.02, size=1000)
-risk_free_rate = 0.002  # Annual risk-free rate
-
-# Calculate Sharpe Ratio
-excess_returns = portfolio_returns - risk_free_rate
-sharpe_ratio = excess_returns.mean() / excess_returns.std()
-print(f"Sharpe Ratio: {sharpe_ratio:.2f}")
+```
+1. Generate synthetic portfolio returns using a normal distribution with a mean of 0.01 and standard deviation of 0.02
+2. Set the risk-free rate to 0.002
+3. Calculate excess returns by subtracting the risk-free rate from portfolio returns
+4. Calculate Sharpe Ratio as the mean of excess returns divided by the standard deviation of excess returns
+5. Print Sharpe Ratio
 ```
 
 **Successes and Failures:**
@@ -55,30 +50,16 @@ print(f"Sharpe Ratio: {sharpe_ratio:.2f}")
 \sigma = \sqrt{\frac{\sum_{i=1}^{n} (r_i - \bar{r})^2}{n-1}}
 \]
 
-**Python Example: Risk Assessment**
+**Pseudocode Example: Risk Assessment**
 
-```python
-import matplotlib.pyplot as plt
-
-# Example data
-returns = np.random.normal(loc=0.05, scale=0.1, size=12)  # Monthly returns
-
-# Calculate ROI
-initial_investment = 1000
-final_value = initial_investment * (1 + returns.mean())
-roi = (final_value - initial_investment) / initial_investment
-print(f"ROI: {roi:.2f}")
-
-# Calculate Standard Deviation of Returns
-std_dev = np.std(returns)
-print(f"Standard Deviation of Returns: {std_dev:.2f}")
-
-# Plot distribution of returns
-plt.hist(returns, bins=10, edgecolor='black')
-plt.xlabel('Return')
-plt.ylabel('Frequency')
-plt.title('Distribution of Returns')
-plt.show()
+```
+1. Generate example monthly returns using a normal distribution with a mean of 0.05 and standard deviation of 0.1
+2. Set the initial investment to 1000
+3. Calculate final value as initial investment multiplied by (1 + mean of returns)
+4. Calculate ROI as (final value - initial investment) / initial investment
+5. Calculate standard deviation of returns
+6. Print ROI and standard deviation of returns
+7. Create a histogram of returns distribution
 ```
 
 ### Structured Products
@@ -97,18 +78,13 @@ V = \frac{1}{(1 + r)^T} \sum_{i=1}^{n} p_i \times \text{Payoff}_i
 
 where \( p_i \) represents the risk-neutral probability of state \( i \), \( \text{Payoff}_i \) is the payoff in state \( i \), and \( r \) is the risk-free rate.
 
-**Python Example: Pricing a Simple Structured Note**
+**Pseudocode Example: Pricing a Simple Structured Note**
 
-```python
-import numpy as np
-
-# Example parameters
-cash_flows = np.array([100, 100, 100, 100, 105])  # Cash flows over time
-discount_rate = 0.03  # Annual discount rate
-
-# Calculate present value of cash flows
-present_value = np.sum(cash_flows / (1 + discount_rate) ** np.arange(1, len(cash_flows) + 1))
-print(f"Present Value of Structured Note: {present_value:.2f}")
+```
+1. Define cash flows as an array [100, 100, 100, 100, 105]
+2. Set discount rate to 0.03
+3. Calculate present value of cash flows by summing cash flows divided by (1 + discount rate) raised to the power of time
+4. Print present value of structured note
 ```
 
 **Risk-Return Profiles:**
@@ -131,21 +107,14 @@ where \( p_i \) is the probability of return \( r_i \).
 \sigma = \sqrt{\sum_{i=1}^{n} p_i \times (r_i - \text{Expected Return})^2}
 \]
 
-**Python Example: Calculating ROI and Standard Deviation**
+**Pseudocode Example: Calculating ROI and Standard Deviation**
 
-```python
-# Example data
-initial_investment = 1000
-final_value = 1200
-returns = np.random.normal(loc=0.05, scale=0.1, size=12)  # Monthly returns
-
-# Calculate ROI
-roi = (final_value - initial_investment) / initial_investment
-print(f"ROI: {roi:.2f}")
-
-# Calculate Standard Deviation of Returns
-std_dev = np.std(returns)
-print(f"Standard Deviation of Returns: {std_dev:.2f}")
+```
+1. Set initial investment to 1000 and final value to 1200
+2. Generate example monthly returns using a normal distribution with a mean of 0.05 and standard deviation of 0.1
+3. Calculate ROI as (final value - initial investment) / initial investment
+4. Calculate standard deviation of returns
+5. Print ROI and standard deviation of returns
 ```
 
 **Regulatory Considerations:**
@@ -153,20 +122,12 @@ print(f"Standard Deviation of Returns: {std_dev:.2f}")
 **Overview of Regulatory Frameworks:**
 - Structured products are regulated under frameworks like Basel III and Dodd-Frank. These regulations mandate transparency and risk disclosure to prevent systemic risk and protect investors.
 
-**Python Example: Regulatory Compliance Check**
+**Pseudocode Example: Regulatory Compliance Check**
 
-```python
-import pandas as pd
-
-# Example compliance data
-structured_products = pd.DataFrame({
-    'Product': ['Product A', 'Product B'],
-    'Risk Disclosure': ['Complete', 'Incomplete']
-})
-
-# Check compliance
-compliance_status = structured_products['Risk Disclosure'].apply(lambda x: x == 'Complete')
-print(f"Compliance Status:\n{structured_products[compliance_status]}")
+```
+1. Create a data frame with structured products and their risk disclosure statuses
+2. Check compliance by filtering for complete risk disclosures
+3. Print compliance status of structured products
 ```
 
 ### Innovation in Financial Markets
@@ -183,22 +144,12 @@ print(f"Compliance Status:\n{structured_products[compliance_status]}")
 H(d) = \text{SHA-256}(d)
 \]
 
-**Python Example: Simple Blockchain Implementation**
+**Pseudocode Example: Simple Blockchain Implementation**
 
-```python
-import hashlib
-
-def calculate_hash(index, previous_hash, timestamp, data):
-    return hashlib.sha256(f'{index}{previous_hash}{timestamp}{data}'.encode()).hexdigest()
-
-# Example block data
-index = 1
-previous_hash = '0'
-timestamp = '2024-09-03'
-data = 'Sample Block Data'
-hash = calculate_hash(index, previous_hash, timestamp, data)
-
-print(f"Block Hash: {hash}")
+```
+1. Define a function to calculate hash using SHA-256 for given parameters: index, previous_hash, timestamp, data
+2. Set example block data with index, previous hash, timestamp, and data
+3. Call hash function with block data and print block hash
 ```
 
 **Fintech:**
@@ -206,23 +157,13 @@ print(f"Block Hash: {hash}")
 **Overview of Financial Technology Innovations:**
 - Fintech encompasses innovations such as robo-advisors, digital wallets, and peer-to-peer lending platforms. These technologies streamline financial services and make them more accessible.
 
-**Python Example: Basic Robo-Advisor Simulation**
+**Pseudocode Example: Basic Robo-Advisor Simulation**
 
-```python
-import numpy as np
-
-# Example asset returns
-assets = {
-    'Stock': np.random.normal(loc=0.07, scale=0.15, size=12),
-    'Bond': np.random.normal(loc=0.03, scale=0.05, size=12)
-}
-
-# Simple asset allocation
-allocation = {'Stock': 0.6, 'Bond': 0.4}
-
-# Calculate portfolio return
-portfolio_return = sum(allocation[asset] * returns.mean() for asset, returns in assets.items())
-print(f"Estimated Portfolio Return: {portfolio_return:.2f}")
+```
+1. Define asset returns for stocks and bonds using normal distributions
+2. Set simple asset allocation with weights for stocks and bonds
+3. Calculate portfolio return by summing the product of asset allocation and mean returns
+4. Print estimated portfolio return
 ```
 
 **Smart Contracts:**
@@ -230,24 +171,13 @@ print(f"Estimated Portfolio Return: {portfolio_return:.2f}")
 **Understanding Smart Contracts:**
 - Smart contracts are self-executing contracts with the terms of agreement directly written into code. They automate contract execution and reduce the need for intermediaries.
 
-**Python Example: Simulating a Smart Contract**
+**Pseudocode Example: Simulating a Smart Contract**
 
-```python
-class SmartContract:
-    def __init__(self, condition):
-        self.condition = condition
-
-    def execute(self):
-        if self.condition():
-            return "Contract Executed"
-        else:
-            return "Contract Not Executed"
-
-# Example condition
-condition = lambda: True  # Simple true condition
-
-contract = SmartContract(condition)
-print(contract.execute())
+```
+1. Define a SmartContract class with an initializer for condition
+2. Define execute method to check the condition and return appropriate execution status
+3. Create an instance of SmartContract with a simple true condition
+4. Call execute method and print the result
 ```
 
 **Decentralized Finance (DeFi):**
@@ -255,29 +185,14 @@ print(contract.execute())
 **Exploration of DeFi Concepts:**
 - DeFi platforms offer decentralized alternatives to traditional financial systems, such as lending, borrowing, and trading, all built on blockchain technology.
 
-**Python Example: Simulating a Simple DeFi Lending Platform**
+**Pseudocode Example: Simulating a Simple DeFi Lending Platform**
 
-```python
-class DeFiL
-
-endingPlatform:
-    def __init__(self):
-        self.lending_pool = 0
-
-    def deposit(self, amount):
-        self.lending_pool += amount
-        return f"Deposited {amount}. Total Pool: {self.lending_pool}"
-
-    def borrow(self, amount):
-        if amount <= self.lending_pool:
-            self.lending_pool -= amount
-            return f"Borrowed {amount}. Remaining Pool: {self.lending_pool}"
-        else:
-            return "Insufficient Funds"
-
-platform = DeFiLendingPlatform()
-print(platform.deposit(1000))
-print(platform.borrow(500))
+```
+1. Define a DeFiLendingPlatform class with an initializer for lending pool
+2. Define deposit method to increase lending pool and return confirmation
+3. Define borrow method to check if enough funds are available, decrease lending pool if true, else return insufficient funds message
+4. Create an instance of DeFiLendingPlatform
+5. Call deposit and borrow methods and print results
 ```
 
 ### Ethics in Financial Engineering
@@ -287,14 +202,12 @@ print(platform.borrow(500))
 **Discussion on Ethical Issues:**
 - Ethical issues in financial engineering involve ensuring transparency, fairness, and the social impact of financial products. Historical examples like the mispricing of subprime mortgages highlight the importance of ethical practices.
 
-**Python Example: Ethical Risk Assessment**
+**Pseudocode Example: Ethical Risk Assessment**
 
-```python
-ethical_risks = {'Product A': 'Low', 'Product B': 'High'}
-
-# Assess ethical risk
-high_risk_products = {product: risk for product, risk in ethical_risks.items() if risk == 'High'}
-print(f"High Ethical Risk Products: {high_risk_products}")
+```
+1. Create a dictionary of products with their ethical risk ratings
+2. Filter for high ethical risk products
+3. Print high ethical risk products
 ```
 
 **Regulatory Challenges:**
@@ -302,20 +215,12 @@ print(f"High Ethical Risk Products: {high_risk_products}")
 **Overview of Regulatory Challenges:**
 - Financial engineering faces regulatory challenges related to compliance, market manipulation prevention, and managing systemic risks. Effective regulation is essential for maintaining market integrity.
 
-**Python Example: Regulatory Compliance Check**
+**Pseudocode Example: Regulatory Compliance Check**
 
-```python
-import pandas as pd
-
-# Example data
-regulations = pd.DataFrame({
-    'Product': ['Product X', 'Product Y'],
-    'Compliance Status': ['Compliant', 'Non-Compliant']
-})
-
-# Check for non-compliance
-non_compliant_products = regulations[regulations['Compliance Status'] == 'Non-Compliant']
-print(f"Non-Compliant Products:\n{non_compliant_products}")
+```
+1. Create a data frame with products and their compliance statuses
+2. Check for non-compliance by filtering for non-compliant statuses
+3. Print non-compliant products
 ```
 
 **Sustainable Finance and ESG Factors:**
@@ -323,39 +228,19 @@ print(f"Non-Compliant Products:\n{non_compliant_products}")
 **Introduction to Sustainable Finance:**
 - Sustainable finance integrates ESG (Environmental, Social, and Governance) factors into financial decision-making, promoting investments that contribute to sustainable development.
 
-**Mathematical Formulation: ESG Scoring**
+**Mathematical Formulation
+
+: ESG Score Calculation**
 - **ESG Score Calculation:**
 
 \[
 \text{ESG Score} = \frac{\text{Environmental Score} + \text{Social Score} + \text{Governance Score}}{3}
 \]
 
-**Python Example: ESG Score Calculation**
+**Pseudocode Example: ESG Score Calculation**
 
-```python
-import pandas as pd
-
-# Example ESG data
-esg_scores = pd.DataFrame({
-    'Company': ['Company A', 'Company B'],
-    'Environmental Score': [75, 60],
-    'Social Score': [80, 70],
-    'Governance Score': [85, 65]
-})
-
-# Calculate average ESG score
-esg_scores['Average ESG Score'] = esg_scores[['Environmental Score', 'Social Score', 'Governance Score']].mean(axis=1)
-print(f"ESG Scores:\n{esg_scores}")
 ```
-
-## Assessment Methods
-
-- **Case Study Analysis:** Involves detailed analysis and presentation of real-world financial engineering cases, highlighting practical implications and lessons learned.
-- **Midterm Exam:** Covers core concepts and practical applications from the course, including problem-solving and theoretical understanding.
-- **Final Exam:** A comprehensive exam with case studies and theoretical questions to test overall understanding and application of financial engineering principles.
-- **Project Work:** A capstone project involving the design, analysis, and ethical considerations of a structured product or innovative financial solution.
-
-## Recommended Textbooks
-
-- **"Financial Engineering: Derivatives and Risk Management" by John F. Marshall and Vipul K. Bansal:** This textbook provides a thorough guide on financial engineering, focusing on derivatives and risk management techniques.
-- **"Structured Products and Related Credit Derivatives" by Brian P. Lancaster, Glenn M. Schultz, and Frank J. Fabozzi:** Offers detailed coverage of structured products, credit derivatives, and their applications in financial markets.
+1. Set environmental, social, and governance scores
+2. Calculate ESG score as the average of these scores
+3. Print ESG score
+```
