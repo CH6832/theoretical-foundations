@@ -8,33 +8,28 @@
 
 **Declarative Programming** focuses on what the program should accomplish without specifying how to achieve it.
 
-**Java Example (Imperative):**
-```java
-import java.util.ArrayList;
-import java.util.List;
+**Pseudocode Example (Imperative):**
+```
+CREATE list numbers
+FOR i FROM 0 TO 9
+    ADD i TO numbers
+END FOR
 
-public class ImperativeExample {
-    public static void main(String[] args) {
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            numbers.add(i);
-        }
-        List<Integer> evenNumbers = new ArrayList<>();
-        for (int number : numbers) {
-            if (number % 2 == 0) {
-                evenNumbers.add(number);
-            }
-        }
-        System.out.println(evenNumbers);
-    }
-}
+CREATE list evenNumbers
+FOR number IN numbers
+    IF number MOD 2 EQUALS 0 THEN
+        ADD number TO evenNumbers
+    END IF
+END FOR
+
+PRINT evenNumbers
 ```
 
-**JavaScript Example (Declarative):**
-```javascript
-const numbers = Array.from({ length: 10 }, (_, i) => i);
-const evenNumbers = numbers.filter(number => number % 2 === 0);
-console.log(evenNumbers);
+**Pseudocode Example (Declarative):**
+```
+SET numbers TO [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+SET evenNumbers TO FILTER numbers WHERE number MOD 2 EQUALS 0
+PRINT evenNumbers
 ```
 
 #### **Overview of Paradigms**
@@ -45,38 +40,36 @@ console.log(evenNumbers);
 
 **Functional Programming** emphasizes pure functions and immutability.
 
-**Java Example (Procedural):**
-```java
-public class ProceduralExample {
-    public static int add(int a, int b) {
-        return a + b;
-    }
+**Pseudocode Example (Procedural):**
+```
+FUNCTION add(a, b)
+    RETURN a + b
+END FUNCTION
 
-    public static void main(String[] args) {
-        int result = add(5, 3);
-        System.out.println(result);
-    }
-}
+SET result TO add(5, 3)
+PRINT result
 ```
 
-**Python Example (OOP):**
-```python
-class Calculator:
-    def add(self, a, b):
-        return a + b
+**Pseudocode Example (OOP):**
+```
+CLASS Calculator
+    FUNCTION add(a, b)
+        RETURN a + b
+    END FUNCTION
+END CLASS
 
-calc = Calculator()
-result = calc.add(5, 3)
-print(result)
+SET calc TO new Calculator()
+SET result TO calc.add(5, 3)
+PRINT result
 ```
 
-**Haskell Example (Functional):**
-```haskell
-add :: Int -> Int -> Int
-add a b = a + b
+**Pseudocode Example (Functional):**
+```
+FUNCTION add(a, b)
+    RETURN a + b
+END FUNCTION
 
-main :: IO ()
-main = print (add 5 3)
+PRINT add(5, 3)
 ```
 
 ---
@@ -91,27 +84,22 @@ main = print (add 5 3)
 
 **Polymorphism** enables objects of different classes to be treated as objects of a common superclass.
 
-**Java Example:**
-```java
-class Animal {
-    public void makeSound() {
-        System.out.println("Animal sound");
-    }
-}
+**Pseudocode Example:**
+```
+CLASS Animal
+    FUNCTION makeSound()
+        PRINT "Animal sound"
+    END FUNCTION
+END CLASS
 
-class Dog extends Animal {
-    @Override
-    public void makeSound() {
-        System.out.println("Woof");
-    }
-}
+CLASS Dog INHERITS Animal
+    FUNCTION makeSound()
+        PRINT "Woof"
+    END FUNCTION
+END CLASS
 
-public class OOPExample {
-    public static void main(String[] args) {
-        Animal myDog = new Dog();
-        myDog.makeSound(); // Outputs "Woof"
-    }
-}
+SET myDog TO new Dog()
+myDog.makeSound()  // Outputs "Woof"
 ```
 
 #### **Principles of Good Object Design (SOLID)**
@@ -122,76 +110,75 @@ public class OOPExample {
 - **Interface Segregation Principle:** Clients should not be forced to depend on interfaces they do not use.
 - **Dependency Inversion Principle:** Depend on abstractions, not on concrete implementations.
 
-**Java Example for SOLID Principles:**
+**Pseudocode Example for SOLID Principles:**
 
-```java
+```
 // Single Responsibility Principle
-class User {
-    private String name;
+CLASS User
+    PROPERTY name
     // Getter and Setter
-}
+END CLASS
 
-class UserPrinter {
-    public void print(User user) {
-        System.out.println(user.getName());
-    }
-}
+CLASS UserPrinter
+    FUNCTION print(user)
+        PRINT user.name
+    END FUNCTION
+END CLASS
 
 // Open/Closed Principle
-abstract class Shape {
-    public abstract double area();
-}
+ABSTRACT CLASS Shape
+    FUNCTION area() RETURNING NUMBER
+END CLASS
 
-class Rectangle extends Shape {
-    private double width, height;
+CLASS Rectangle INHERITS Shape
+    PROPERTY width, height
 
-    public Rectangle(double width, double height) {
-        this.width = width;
-        this.height = height;
-    }
+    FUNCTION constructor(width, height)
+        SET this.width TO width
+        SET this.height TO height
+    END FUNCTION
 
-    @Override
-    public double area() {
-        return width * height;
-    }
-}
+    FUNCTION area()
+        RETURN this.width * this.height
+    END FUNCTION
+END CLASS
 
 // Liskov Substitution Principle
-class ShapeAreaCalculator {
-    public double calculateArea(Shape shape) {
-        return shape.area();
-    }
-}
+CLASS ShapeAreaCalculator
+    FUNCTION calculateArea(shape)
+        RETURN shape.area()
+    END FUNCTION
+END CLASS
 
 // Interface Segregation Principle
-interface Printable {
-    void print();
-}
+INTERFACE Printable
+    FUNCTION print()
+END INTERFACE
 
-interface Scannable {
-    void scan();
-}
+INTERFACE Scannable
+    FUNCTION scan()
+END INTERFACE
 
-class MultiFunctionPrinter implements Printable, Scannable {
-    public void print() {
+CLASS MultiFunctionPrinter IMPLEMENTS Printable, Scannable
+    FUNCTION print()
         // Implementation
-    }
+    END FUNCTION
 
-    public void scan() {
+    FUNCTION scan()
         // Implementation
-    }
-}
+    END FUNCTION
+END CLASS
 
 // Dependency Inversion Principle
-interface Repository {
-    void save(Object obj);
-}
+INTERFACE Repository
+    FUNCTION save(obj)
+END INTERFACE
 
-class MySQLRepository implements Repository {
-    public void save(Object obj) {
+CLASS MySQLRepository IMPLEMENTS Repository
+    FUNCTION save(obj)
         // MySQL save implementation
-    }
-}
+    END FUNCTION
+END CLASS
 ```
 
 ---
@@ -204,56 +191,44 @@ class MySQLRepository implements Repository {
 
 **Immutability** means that once a data structure is created, it cannot be changed.
 
-**Haskell Example (Pure Functions and Immutability):**
-```haskell
--- Pure Function
-add :: Int -> Int -> Int
-add x y = x + y
+**Pseudocode Example (Pure Functions and Immutability):**
+```
+// Pure Function
+FUNCTION add(x, y)
+    RETURN x + y
+END FUNCTION
 
--- Immutability in Haskell
-let x = 5
-let y = x + 10
--- x remains 5
+// Immutability
+SET x TO 5
+SET y TO x + 10
+// x remains 5
 ```
 
-**JavaScript Example (Pure Functions):**
-```javascript
-function add(a, b) {
-    return a + b;
-}
+**Pseudocode Example (Pure Functions):**
+```
+FUNCTION add(a, b)
+    RETURN a + b
+END FUNCTION
 
-const result = add(5, 3);
-console.log(result);
+SET result TO add(5, 3)
+PRINT result
 ```
 
 #### **Higher-Order Functions**
 
 Higher-order functions take other functions as arguments or return functions as results.
 
-**Haskell Example:**
-```haskell
--- Higher-order function
-applyFunction :: (Int -> Int) -> Int -> Int
-applyFunction f x = f x
-
-increment :: Int -> Int
-increment x = x + 1
-
-main :: IO ()
-main = print (applyFunction increment 5)  -- Outputs 6
+**Pseudocode Example:**
 ```
+FUNCTION applyFunction(f, x)
+    RETURN f(x)
+END FUNCTION
 
-**JavaScript Example:**
-```javascript
-function applyFunction(fn, x) {
-    return fn(x);
-}
+FUNCTION increment(x)
+    RETURN x + 1
+END FUNCTION
 
-function increment(x) {
-    return x + 1;
-}
-
-console.log(applyFunction(increment, 5));  // Outputs 6
+PRINT applyFunction(increment, 5)  // Outputs 6
 ```
 
 #### **Recursion and Tail Recursion**
@@ -262,39 +237,26 @@ console.log(applyFunction(increment, 5));  // Outputs 6
 
 **Tail Recursion** is a special case where the recursive call is the last operation in the function.
 
-**Haskell Example (Recursion and Tail Recursion):**
-```haskell
--- Recursive function (not tail-recursive)
-factorial :: Int -> Int
-factorial 0 = 1
-factorial n = n * factorial (n - 1)
-
--- Tail-recursive function
-factorialTail :: Int -> Int -> Int
-factorialTail 0 acc = acc
-factorialTail n acc = factorialTail (n - 1) (n * acc)
-
-main :: IO ()
-main = print (factorial 5)         -- Outputs 120
-      print (factorialTail 5 1)    -- Outputs 120
+**Pseudocode Example (Recursion and Tail Recursion):**
 ```
-
-**JavaScript Example (Recursion and Tail Recursion):**
-```javascript
 // Recursive function (not tail-recursive)
-function factorial(n) {
-    if (n === 0) return 1;
-    return n * factorial(n - 1);
-}
+FUNCTION factorial(n)
+    IF n EQUALS 0 THEN
+        RETURN 1
+    END IF
+    RETURN n * factorial(n - 1)
+END FUNCTION
 
 // Tail-recursive function
-function factorialTail(n, acc = 1) {
-    if (n === 0) return acc;
-    return factorialTail(n - 1, n * acc);
-}
+FUNCTION factorialTail(n, acc)
+    IF n EQUALS 0 THEN
+        RETURN acc
+    END IF
+    RETURN factorialTail(n - 1, n * acc)
+END FUNCTION
 
-console.log(factorial(5));         // Outputs 120
-console.log(factorialTail(5));     // Outputs 120
+PRINT factorial(5)         // Outputs 120
+PRINT factorialTail(5, 1)  // Outputs 120
 ```
 
 #### **Closures and Lambda Expressions**
@@ -303,34 +265,21 @@ console.log(factorialTail(5));     // Outputs 120
 
 **Lambda Expressions** are anonymous functions used to create function objects.
 
-**Haskell Example (Closures and Lambda Expressions):**
-```haskell
--- Closure example
-addN :: Int -> Int -> Int
-addN n x = x + n
-
--- Lambda expression example
-main :: IO ()
-main = do
-    let add5 = (\x -> x + 5)
-    print (add5 10)  -- Outputs 15
+**Pseudocode Example (Closures and Lambda Expressions):**
 ```
-
-**JavaScript Example (Closures and Lambda Expressions):**
-```javascript
 // Closure example
-function makeAdder(n) {
-    return function(x) {
-        return x + n;
-    };
-}
+FUNCTION addN(n)
+    RETURN FUNCTION(x)
+        RETURN x + n
+    END FUNCTION
+END FUNCTION
 
-const add5 = makeAdder(5);
-console.log(add5(10));  // Outputs 15
+SET add5 TO addN(5)
+PRINT add5(10)  // Outputs 15
 
 // Lambda expression example
-const add10 = x => x + 10;
-console.log(add10(5));  // Outputs 15
+SET add10 TO FUNCTION(x) RETURN x + 10
+PRINT add10(5)  // Outputs 15
 ```
 
 ---
@@ -341,15 +290,17 @@ console.log(add10(5));  // Outputs 15
 
 **Monads** are abstract data types used to represent computations instead of values.
 
-**Haskell Example (Monads):**
-```haskell
--- Maybe Monad Example
-safeDivide :: Int -> Int -> Maybe Int
-safeDivide _ 0 = Nothing
-safeDivide x y = Just (x `div` y)
+**Pseudocode Example (Monads):**
+```
+// Maybe Monad Example
+FUNCTION safeDivide(x, y)
+    IF y EQUALS 0 THEN
+        RETURN Nothing
+    END IF
+    RETURN Just(x DIV y)
+END FUNCTION
 
-main :: IO ()
-main = print (safeDivide 10 2)  -- Outputs Just 5
+PRINT safeDivide(10, 2)  // Outputs Just 5
 ```
 
 #### **Functors and Applicatives**
@@ -358,55 +309,23 @@ main = print (safeDivide 10 2)  -- Outputs Just 5
 
 **Applicatives** extend functors to allow for function application within a context.
 
-**Haskell Example (Functors and Applicatives):**
-```haskell
-import Control.Applicative (liftA2)
-
--- Functor Example
-
-
-data Box a = Box a
-instance Functor Box where
-    fmap f (Box x) = Box (f x)
-
--- Applicative Example
-addBox :: Box Int -> Box Int -> Box Int
-addBox (Box x) (Box y) = Box (x + y)
-
-main :: IO ()
-main = print (addBox (Box 5) (Box 10))  -- Outputs Box 15
+**Pseudocode Example (Functors and Applicatives):**
 ```
-
-**Scala Example (Functors and Applicatives):**
-```scala
 // Functor Example
-trait Functor[F[_]] {
-    def map[A, B](fa: F[A])(f: A => B): F[B]
-}
+CLASS Box
+    PROPERTY value
+END CLASS
 
-// Box Functor Implementation
-case class Box[A](value: A)
-object BoxFunctor extends Functor[Box] {
-    def map[A, B](fa: Box[A])(f: A => B): Box[B] = Box(f(fa.value))
-}
+FUNCTION fmap(f, box)
+    RETURN new Box(f(box.value))
+END FUNCTION
 
 // Applicative Example
-trait Applicative[F[_]] extends Functor[F] {
-    def pure[A](a: A): F[A]
-    def ap[A, B](fa: F[A])(f: F[A => B]): F[B]
-}
+FUNCTION addBox(box1, box2)
+    RETURN new Box(box1.value + box2.value)
+END FUNCTION
 
-object BoxApplicative extends Applicative[Box] {
-    def pure[A](a: A): Box[A] = Box(a)
-    def ap[A, B](fa: Box[A])(f: Box[A => B]): Box[B] = Box(f.value(fa.value))
-}
-
-object Main extends App {
-    val box1 = Box(5)
-    val box2 = Box(10)
-    val result = BoxApplicative.ap(box1)(Box(value => value + 10))
-    println(result)  // Outputs Box(15)
-}
+PRINT addBox(new Box(5), new Box(10))  // Outputs Box(15)
 ```
 
 ---
@@ -419,58 +338,53 @@ object Main extends App {
 
 **Communicating Sequential Processes (CSP)** involves processes that communicate through channels.
 
-**Scala Example (Actors Model):**
-```scala
-import akka.actor.{Actor, ActorSystem, Props}
+**Pseudocode Example (Actors Model):**
+```
+DEFINE Actor SimpleActor
+    FUNCTION receive(message)
+        IF message EQUALS "ping" THEN
+            PRINT "pong"
+        ELSE
+            PRINT "unknown message"
+        END IF
+    END FUNCTION
+END Actor
 
-// Define the Actor
-class SimpleActor extends Actor {
-    def receive = {
-        case "ping" => println("pong")
-        case _      => println("unknown message")
-    }
-}
-
-// Main App
-object Main extends App {
-    val system = ActorSystem("SimpleSystem")
-    val actor = system.actorOf(Props[SimpleActor], name = "simpleActor")
-
-    actor ! "ping"  // Outputs "pong"
-    actor ! "hello" // Outputs "unknown message"
-}
+SET actor TO new SimpleActor()
+actor.receive("ping")  // Outputs "pong"
+actor.receive("hello") // Outputs "unknown message"
 ```
 
 #### **Asynchronous Programming**
 
 **Futures** and **Promises** represent computations that may complete in the future.
 
-**JavaScript Example (Promises):**
-```javascript
-// Function that returns a promise
-function fetchData() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => resolve("Data fetched"), 1000);
-    });
-}
+**Pseudocode Example (Promises):**
+```
+FUNCTION fetchData()
+    RETURN new Promise(resolve, reject) DO
+        WAIT 1 SECOND
+        RESOLVE("Data fetched")
+    END FUNCTION
+END FUNCTION
 
-fetchData().then(data => console.log(data));  // Outputs "Data fetched"
+fetchData().then(data) DO
+    PRINT data  // Outputs "Data fetched"
+END FUNCTION
 ```
 
-**Java Example (CompletableFuture):**
-```java
-import java.util.concurrent.CompletableFuture;
-
-public class AsyncExample {
-    public static void main(String[] args) {
-        CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return "Data fetched";
-        }).thenAccept(data -> System.out.println(data)); // Outputs "Data fetched"
-    }
-}
+**Pseudocode Example (CompletableFuture):**
 ```
+FUNCTION main()
+    SET future TO CompletableFuture.supplyAsync() DO
+        WAIT 1 SECOND
+        RETURN "Data fetched"
+    END FUNCTION
+
+    future.thenAccept(data) DO
+        PRINT data  // Outputs "Data fetched"
+    END FUNCTION
+
+
+END FUNCTION
+``` 
