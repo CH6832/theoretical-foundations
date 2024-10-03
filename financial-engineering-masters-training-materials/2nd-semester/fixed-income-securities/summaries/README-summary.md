@@ -21,19 +21,44 @@ In practice, companies use the yield curve to assess the cost of borrowing over 
 
 Python implementation to plot a basic yield curve:
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+```
+FUNCTION main()
+    // Simulated yield curve data
+    maturities = [1, 2, 5, 10, 20, 30]  // Array of maturities in years
+    yields = [0.02, 0.025, 0.03, 0.035, 0.04, 0.042]  // Corresponding yield rates
 
-# Simulated yield curve data
-maturities = np.array([1, 2, 5, 10, 20, 30])
-yields = np.array([0.02, 0.025, 0.03, 0.035, 0.04, 0.042])
+    // Plot the yield curve
+    plot_yield_curve(maturities, yields)
+END FUNCTION
 
-plt.plot(maturities, yields, marker='o')
-plt.title('Yield Curve')
-plt.xlabel('Maturity (Years)')
-plt.ylabel('Yield')
-plt.show()
+FUNCTION plot_yield_curve(maturities, yields)
+    // Initialize the plot area
+    Initialize plot area
+
+    // Set title and labels
+    Set title to "Yield Curve"
+    Set x-axis label to "Maturity (Years)"
+    Set y-axis label to "Yield"
+
+    // Draw points for each maturity and yield
+    FOR i FROM 0 TO LENGTH(maturities) - 1
+        x = maturities[i]
+        y = yields[i]
+        Plot point (x, y) on the graph with marker "o"
+    END FOR
+
+    // Draw lines connecting the points
+    FOR i FROM 0 TO LENGTH(maturities) - 2
+        Draw line from (maturities[i], yields[i]) to (maturities[i+1], yields[i+1])
+    END FOR
+
+    // Display the plot
+    Show the plot
+END FUNCTION
+
+// Execute the main function
+main()
+
 ```
 
 This visualization aids in understanding how interest rates vary with bond maturity, crucial for pricing and risk management.
@@ -52,19 +77,46 @@ Portfolio managers use duration to manage interest rate risk. For instance, they
 
 Python implementation to calculate duration:
 
-```python
-import numpy as np
+```
+FUNCTION main()
+    // Simulated bond cash flows and yields
+    cash_flows = [5, 5, 5, 105]  // Array of cash flows for the bond
+    yields = 0.03  // Annual yield (interest rate)
+    years = [1, 2, 3, 4]  // Array of years until cash flows are received
 
-# Simulated bond cash flows and yields
-cash_flows = np.array([5, 5, 5, 105])
-yields = 0.03
-years = np.array([1, 2, 3, 4])
+    // Calculate the duration of the bond
+    duration = calculate_duration(cash_flows, yields, years)
 
-# Duration calculation
-present_values = cash_flows / (1 + yields) ** years
-duration = np.sum(years * present_values) / np.sum(present_values)
+    // Print the duration
+    PRINT "Duration: " + FORMAT(duration, 2) + " years"
+END FUNCTION
 
-print(f"Duration: {duration:.2f} years")
+FUNCTION calculate_duration(cash_flows, yields, years)
+    // Initialize variables for present values and total present value
+    total_present_value = 0
+    weighted_present_value_sum = 0
+
+    // Calculate present values of cash flows and accumulate sums
+    FOR i FROM 0 TO LENGTH(cash_flows) - 1
+        // Calculate present value for each cash flow
+        present_value = cash_flows[i] / (1 + yields) ^ years[i]
+
+        // Accumulate the total present value
+        total_present_value = total_present_value + present_value
+
+        // Accumulate weighted present value for duration calculation
+        weighted_present_value_sum = weighted_present_value_sum + (years[i] * present_value)
+    END FOR
+
+    // Calculate duration
+    duration = weighted_present_value_sum / total_present_value
+
+    RETURN duration
+END FUNCTION
+
+// Execute the main function
+main()
+
 ```
 
 This duration estimate helps investors understand the interest rate risk in their bond holdings.
@@ -81,11 +133,39 @@ Convexity is crucial for managing large interest rate changes. Financial institu
 
 Python implementation to calculate convexity:
 
-```python
-# Convexity calculation
-convexity = np.sum(present_values * years * (years + 1)) / ((1 + yields) ** 2 * np.sum(present_values))
+```
+FUNCTION main()
+    // Assuming present_values, yields, and years are already defined
+    present_values = [...]  // Array of present values of cash flows
+    yields = ...  // Annual yield (interest rate)
+    years = [...]  // Array of years until cash flows are received
 
-print(f"Convexity: {convexity:.2f}")
+    // Calculate the convexity of the bond
+    convexity = calculate_convexity(present_values, yields, years)
+
+    // Print the convexity
+    PRINT "Convexity: " + FORMAT(convexity, 2)
+END FUNCTION
+
+FUNCTION calculate_convexity(present_values, yields, years)
+    // Initialize variable for weighted sum
+    weighted_sum = 0
+
+    // Calculate the weighted sum for convexity
+    FOR i FROM 0 TO LENGTH(present_values) - 1
+        // Calculate the contribution of each cash flow to convexity
+        weighted_sum = weighted_sum + (present_values[i] * years[i] * (years[i] + 1))
+    END FOR
+
+    // Calculate convexity
+    convexity = weighted_sum / ((1 + yields) ^ 2 * SUM(present_values))
+
+    RETURN convexity
+END FUNCTION
+
+// Execute the main function
+main()
+
 ```
 
 This convexity measure helps to refine the duration analysis, offering a more accurate picture of potential price changes.
@@ -104,16 +184,49 @@ Insurance companies often use immunization strategies to ensure that their asset
 
 Python implementation to illustrate immunization:
 
-```python
-# Basic example of immunization strategy
-asset_cash_flows = np.array([10, 10, 10, 110])
-liability_cash_flows = np.array([0, 0, 0, 120])
+```
+FUNCTION main()
+    // Define cash flows for assets and liabilities
+    asset_cash_flows = [10, 10, 10, 110]  // Array of asset cash flows
+    liability_cash_flows = [0, 0, 0, 120]  // Array of liability cash flows
+    yields = ...  // Annual yield (interest rate)
+    years = [1, 2, 3, 4]  // Array of years until cash flows are received
 
-asset_duration = np.sum(years * asset_cash_flows / (1 + yields) ** years) / np.sum(asset_cash_flows / (1 + yields) ** years)
-liability_duration = np.sum(years * liability_cash_flows / (1 + yields) ** years) / np.sum(liability_cash_flows / (1 + yields) ** years)
+    // Calculate durations
+    asset_duration = calculate_duration(asset_cash_flows, yields, years)
+    liability_duration = calculate_duration(liability_cash_flows, yields, years)
 
-print(f"Asset Duration: {asset_duration:.2f} years")
-print(f"Liability Duration: {liability_duration:.2f} years")
+    // Print the results
+    PRINT "Asset Duration: " + FORMAT(asset_duration, 2) + " years"
+    PRINT "Liability Duration: " + FORMAT(liability_duration, 2) + " years"
+END FUNCTION
+
+FUNCTION calculate_duration(cash_flows, yields, years)
+    // Initialize variables for present values and weighted sums
+    total_present_value = 0
+    weighted_sum = 0
+
+    // Calculate present values and accumulate sums
+    FOR i FROM 0 TO LENGTH(cash_flows) - 1
+        // Calculate present value for each cash flow
+        present_value = cash_flows[i] / (1 + yields) ^ years[i]
+
+        // Accumulate the total present value
+        total_present_value = total_present_value + present_value
+
+        // Accumulate the weighted sum for duration calculation
+        weighted_sum = weighted_sum + (years[i] * present_value)
+    END FOR
+
+    // Calculate duration
+    duration = weighted_sum / total_present_value
+
+    RETURN duration
+END FUNCTION
+
+// Execute the main function
+main()
+
 ```
 
 This strategy helps align the duration of assets and liabilities, reducing the portfolio’s sensitivity to interest rate changes.
@@ -138,30 +251,46 @@ The Vasicek model is used in pricing zero-coupon bonds and interest rate derivat
 
 Python implementation of the Vasicek model:
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+```
+FUNCTION main()
+    // Parameters for the Vasicek model
+    alpha = 0.1          // Speed of reversion
+    mu = 0.05            // Long-term mean interest rate
+    sigma = 0.01         // Volatility of the interest rate
+    r0 = 0.03            // Initial interest rate
+    T = 1.0              // Total time (in years)
+    dt = 0.01            // Time step (in years)
+    N = INT(T / dt)      // Total number of time steps
 
-# Parameters
-alpha = 0.1
-mu = 0.05
-sigma = 0.01
-r0 = 0.03
-T = 1.0
-dt = 0.01
-N = int(T / dt)
-rates = np.zeros(N)
-rates[0] = r0
+    // Initialize array to store interest rates
+    rates = ARRAY(N)     // Array to hold interest rates
+    rates[0] = r0        // Set initial interest rate
 
-# Simulation
-for t in range(1, N):
-    rates[t] = rates[t-1] + alpha * (mu - rates[t-1]) * dt + sigma * np.sqrt(dt) * np.random.randn()
+    // Simulation loop to calculate interest rates
+    FOR t FROM 1 TO N - 1
+        // Calculate the next interest rate using the Vasicek model formula
+        rates[t] = rates[t-1] + alpha * (mu - rates[t-1]) * dt + sigma * SQRT(dt) * RANDOM_NORMAL()
 
-plt.plot(np.linspace(0, T, N), rates)
-plt.title('Vasicek Interest Rate Model')
-plt.xlabel('Time')
-plt.ylabel('Interest Rate')
-plt.show()
+    // Plotting the results
+    time_values = ARRAY(N) // Array to hold time values
+    FOR i FROM 0 TO N - 1
+        time_values[i] = i * dt  // Generate time values based on dt
+
+    PLOT(time_values, rates)      // Plot time values against interest rates
+    SET_TITLE("Vasicek Interest Rate Model")  // Set plot title
+    SET_X_LABEL("Time")           // Set x-axis label
+    SET_Y_LABEL("Interest Rate")   // Set y-axis label
+    DISPLAY_PLOT()                // Display the plot
+END FUNCTION
+
+// Function to generate a random normal value (standard normal distribution)
+FUNCTION RANDOM_NORMAL()
+    // Implement Box-Muller transform or other method to generate a standard normal random number
+    RETURN value
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This simulation demonstrates how the short-term interest rate might evolve over time under the Vasicek model.
@@ -184,27 +313,46 @@ The CIR model is used by financial institutions to price bonds and interest rate
 
 Python implementation to simulate CIR model:
 
-```python
-# Parameters for CIR model
-alpha = 0.1
-mu = 0.05
-sigma = 0.02
-r0 = 0.03
-T = 1.0
-dt = 0.01
-N = int(T / dt)
-rates = np.zeros(N)
-rates[0] = r0
+```
+FUNCTION main()
+    // Parameters for the CIR model
+    alpha = 0.1          // Speed of reversion
+    mu = 0.05            // Long-term mean interest rate
+    sigma = 0.02         // Volatility of the interest rate
+    r0 = 0.03            // Initial interest rate
+    T = 1.0              // Total time (in years)
+    dt = 0.01            // Time step (in years)
+    N = INT(T / dt)      // Total number of time steps
 
-# Simulation
-for t in range(1, N):
-    rates[t] = rates[t-1] + alpha * (mu - rates[t-1]) * dt + sigma * np.sqrt(rates[t-1]) * np.sqrt(dt) * np.random.randn()
+    // Initialize array to store interest rates
+    rates = ARRAY(N)     // Array to hold interest rates
+    rates[0] = r0        // Set initial interest rate
 
-plt.plot(np.linspace(0, T, N), rates)
-plt.title('CIR Interest Rate Model')
-plt.xlabel('Time')
-plt.ylabel('Interest Rate')
-plt.show()
+    // Simulation loop to calculate interest rates
+    FOR t FROM 1 TO N - 1
+        // Calculate the next interest rate using the CIR model formula
+        rates[t] = rates[t-1] + alpha * (mu - rates[t-1]) * dt + sigma * SQRT(rates[t-1]) * SQRT(dt) * RANDOM_NORMAL()
+
+    // Plotting the results
+    time_values = ARRAY(N) // Array to hold time values
+    FOR i FROM 0 TO N - 1
+        time_values[i] = i * dt  // Generate time values based on dt
+
+    PLOT(time_values, rates)      // Plot time values against interest rates
+    SET_TITLE("CIR Interest Rate Model")  // Set plot title
+    SET_X_LABEL("Time")           // Set x-axis label
+    SET_Y_LABEL("Interest Rate")   // Set y-axis label
+    DISPLAY_PLOT()                // Display the plot
+END FUNCTION
+
+// Function to generate a random normal value (standard normal distribution)
+FUNCTION RANDOM_NORMAL()
+    // Implement Box-Muller transform or other method to generate a standard normal random number
+    RETURN value
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This model is essential for pricing and managing the risk of interest rate-sensitive instruments.
@@ -254,38 +402,45 @@ Consider a simple simulation of forward rate movements under the HJM framework. 
 
 Python example to simulate forward rate dynamics:
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+```
+FUNCTION main()
+    // Parameters
+    T = 1.0                    // Total time (in years)
+    dt = 0.01                  // Time step (in years)
+    N = INT(T / dt)            // Total number of time steps
+    times = ARRAY(N)           // Array to hold time values
+    sigma = 0.02               // Constant volatility for simplicity
+    forward_rates = ARRAY(N)   // Array to hold forward rates
 
-# Parameters
-T = 1.0
-dt = 0.01
-N = int(T / dt)
-times = np.linspace(0, T, N)
-sigma = 0.02  # Constant volatility for simplicity
-forward_rates = np.zeros(N)
+    // Generate time values
+    FOR i FROM 0 TO N - 1
+        times[i] = i * dt      // Populate time values from 0 to T
 
-# Simulate forward rates
-for t in range(1, N):
-    forward_rates[t] = forward_rates[t-1] + sigma * np.sqrt(dt) * np.random.randn()
+    // Simulate forward rates
+    FOR t FROM 1 TO N - 1
+        forward_rates[t] = forward_rates[t-1] + sigma * SQRT(dt) * RANDOM_NORMAL()
 
-plt.plot(times, forward_rates)
-plt.title('Forward Rate Dynamics (HJM)')
-plt.xlabel('Time')
-plt.ylabel('Forward Rate')
-plt.show()
+    // Plotting the results
+    PLOT(times, forward_rates)      // Plot time values against forward rates
+    SET_TITLE("Forward Rate Dynamics (HJM)")  // Set plot title
+    SET_X_LABEL("Time")             // Set x-axis label
+    SET_Y_LABEL("Forward Rate")      // Set y-axis label
+    DISPLAY_PLOT()                  // Display the plot
+END FUNCTION
+
+// Function to generate a random normal value (standard normal distribution)
+FUNCTION RANDOM_NORMAL()
+    // Implement Box-Muller transform or other method to generate a standard normal random number
+    RETURN value
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This simulation demonstrates the evolution of forward rates over time, assuming constant volatility. It provides a visual understanding of how forward rates might behave under the HJM framework.
 
 ---
-
-This detailed explanation provides a solid theoretical foundation for the HJM framework, covering key concepts, stochastic processes, and practical applications.
-
-
-
-Certainly! Let’s continue detailing each topic with the necessary theoretical background, practical examples, and Python implementations.
 
 ### **1. Bond Pricing (continued)**
 
@@ -305,27 +460,48 @@ Financial institutions use term structure models to price bonds and interest rat
 
 Python example for bootstrapping a yield curve:
 
-```python
-import numpy as np
-from scipy.optimize import minimize
+```
+FUNCTION main()
+    // Example bond data
+    coupon_rates = ARRAY(0.02, 0.03, 0.04)  // Array of coupon rates
+    maturities = ARRAY(1, 2, 3)               // Array of maturities (in years)
+    market_prices = ARRAY(99.5, 98.5, 97.0)   // Array of market prices
 
-# Example bond data
-coupon_rates = np.array([0.02, 0.03, 0.04])
-maturities = np.array([1, 2, 3])
-market_prices = np.array([99.5, 98.5, 97.0])
+    // Calculate bootstrapped yields
+    bootstrapped_yields = bootstrap_yield(coupon_rates, maturities, market_prices)
 
-# Bootstrap function
-def bootstrap_yield(coupons, maturities, market_prices):
-    def objective(yields):
-        return np.sum((market_prices - np.sum([coupon / (1 + yields[i]) ** maturities[i] for i, coupon in enumerate(coupons)], axis=0)) ** 2)
-    
-    initial_guess = np.ones(len(maturities)) * 0.03
+    // Print the results
+    PRINT("Bootstrapped Yields: ", bootstrapped_yields)
+END FUNCTION
+
+// Bootstrap yield calculation function
+FUNCTION bootstrap_yield(coupons, maturities, market_prices)
+    // Objective function to minimize
+    FUNCTION objective(yields)
+        // Calculate the difference between market prices and present values based on yields
+        error = 0
+        FOR i FROM 0 TO LENGTH(coupons) - 1
+            present_value = 0
+            FOR j FROM 0 TO LENGTH(coupons) - 1
+                present_value = present_value + (coupons[j] / (1 + yields[j]) ^ maturities[j])
+            END FOR
+            error = error + (market_prices[i] - present_value) ^ 2
+        END FOR
+        RETURN error  // Return the total squared error
+    END FUNCTION
+
+    // Initial guess for yields
+    initial_guess = ARRAY(FILL(0.03, LENGTH(maturities)))  // Array of initial guess for yields
+
+    // Optimization process to minimize the objective function
     result = minimize(objective, initial_guess, method='Nelder-Mead')
-    return result.x
 
-# Calculate bootstrapped yields
-bootstrapped_yields = bootstrap_yield(coupon_rates, maturities, market_prices)
-print(f"Bootstrapped Yields: {bootstrapped_yields}")
+    // Return the optimized yields
+    RETURN result.x
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This example demonstrates how to bootstrap a yield curve from bond prices and coupon payments, essential for valuing bonds and derivatives.
@@ -346,27 +522,60 @@ Insurance companies and pension funds use immunization strategies to ensure they
 
 Python example to simulate classical immunization:
 
-```python
-# Simulated bond portfolio
-bonds = {
-    'Bond A': {'price': 100, 'duration': 5},
-    'Bond B': {'price': 95, 'duration': 6}
-}
+```
+FUNCTION main()
+    // Simulated bond portfolio
+    bonds = DICTIONARY()  // Create a dictionary to hold bonds
+    bonds["Bond A"] = DICTIONARY()  // Add Bond A
+    bonds["Bond A"]["price"] = 100   // Set price of Bond A
+    bonds["Bond A"]["duration"] = 5   // Set duration of Bond A
 
-# Target duration
-target_duration = 5.5
+    bonds["Bond B"] = DICTIONARY()  // Add Bond B
+    bonds["Bond B"]["price"] = 95    // Set price of Bond B
+    bonds["Bond B"]["duration"] = 6   // Set duration of Bond B
 
-# Portfolio weights calculation
-def calculate_weights(bonds, target_duration):
-    total_value = sum(bond['price'] for bond in bonds.values())
-    weighted_duration = sum(bond['price'] * bond['duration'] for bond in bonds.values()) / total_value
-    
-    weights = {name: bond['price'] / total_value for name, bond in bonds.items()}
-    return weights, weighted_duration
+    // Target duration
+    target_duration = 5.5
 
-weights, weighted_duration = calculate_weights(bonds, target_duration)
-print(f"Portfolio Weights: {weights}")
-print(f"Weighted Duration: {weighted_duration:.2f}")
+    // Calculate portfolio weights
+    weights, weighted_duration = calculate_weights(bonds, target_duration)
+
+    // Print results
+    PRINT("Portfolio Weights: ", weights)
+    PRINT("Weighted Duration: ", weighted_duration)
+END FUNCTION
+
+// Function to calculate portfolio weights and weighted duration
+FUNCTION calculate_weights(bonds, target_duration)
+    // Initialize total value
+    total_value = 0
+
+    // Calculate total value of the portfolio
+    FOR each bond IN bonds
+        total_value = total_value + bond["price"]
+
+    // Initialize weighted duration
+    weighted_duration = 0
+
+    // Calculate weighted duration
+    FOR each bond IN bonds
+        weighted_duration = weighted_duration + (bond["price"] * bond["duration"])
+
+    weighted_duration = weighted_duration / total_value  // Normalize by total value
+
+    // Initialize weights dictionary
+    weights = DICTIONARY()
+
+    // Calculate weights for each bond
+    FOR each bond IN bonds
+        weights[bond] = bond["price"] / total_value  // Calculate weight
+
+    // Return weights and weighted duration
+    RETURN weights, weighted_duration
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This simulation helps in determining the portfolio weights needed to achieve a desired duration, thereby immunizing the portfolio against interest rate risk.
@@ -391,25 +600,36 @@ Traders and portfolio managers use the Vasicek model to price interest rate deri
 
 Python example to price a zero-coupon bond using the Vasicek model:
 
-```python
-import numpy as np
+```
+FUNCTION main()
+    // Vasicek model parameters
+    alpha = 0.1  // Speed of mean reversion
+    mu = 0.05    // Long-term mean interest rate
+    sigma = 0.02 // Volatility of the interest rate
+    r0 = 0.03    // Initial interest rate
+    T = 5        // Maturity in years
 
-# Vasicek parameters
-alpha = 0.1
-mu = 0.05
-sigma = 0.02
-r0 = 0.03
-T = 5  # Maturity in years
+    // Calculate the bond price using the Vasicek model
+    price = vasicek_bond_price(alpha, mu, sigma, r0, T)
 
-# Vasicek model bond price function
-def vasicek_bond_price(alpha, mu, sigma, r0, T):
-    B = (1 - np.exp(-alpha * T)) / alpha
-    A = np.exp((B * (alpha * mu - sigma**2 / (2 * alpha**2))) - (sigma**2 * B**2 / (4 * alpha)))
-    return A * np.exp(-B * r0)
+    // Print the bond price
+    PRINT("Vasicek Model Zero-Coupon Bond Price: ", price)
+END FUNCTION
 
-# Price the zero-coupon bond
-price = vasicek_bond_price(alpha, mu, sigma, r0, T)
-print(f"Vasicek Model Zero-Coupon Bond Price: {price:.2f}")
+// Function to calculate the bond price using the Vasicek model
+FUNCTION vasicek_bond_price(alpha, mu, sigma, r0, T)
+    // Calculate the parameter B
+    B = (1 - EXP(-alpha * T)) / alpha
+
+    // Calculate the parameter A
+    A = EXP((B * (alpha * mu - (sigma^2 / (2 * alpha^2)))) - ((sigma^2 * B^2) / (4 * alpha)))
+
+    // Calculate and return the bond price
+    RETURN A * EXP(-B * r0)
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This calculation provides the theoretical price of a zero-coupon bond under the Vasicek model, useful for pricing and risk management.
@@ -428,19 +648,37 @@ Financial institutions use the CIR model to price options on interest rates and 
 
 Python example for CIR model pricing:
 
-```python
-import numpy as np
+```
+FUNCTION main()
+    // CIR model parameters
+    alpha = 0.1  // Speed of mean reversion
+    mu = 0.05    // Long-term mean interest rate
+    sigma = 0.02 // Volatility of the interest rate
+    r0 = 0.03    // Initial interest rate
+    T = 5        // Maturity in years
 
-# CIR parameters
-alpha = 0.1
-mu = 0.05
-sigma = 0.02
-r0 = 0.03
-T = 5  # Maturity in years
+    // Calculate the bond price using the CIR model
+    price = cir_bond_price(alpha, mu, sigma, r0, T)
 
-# CIR model bond price function
-def cir_bond_price(alpha, mu, sigma, r0, T):
-    A = (2 * np.exp((alpha + sigma) * T) - (alpha
+    // Print the bond price
+    PRINT("CIR Model Zero-Coupon Bond Price: ", price)
+END FUNCTION
+
+// Function to calculate the bond price using the CIR model
+FUNCTION cir_bond_price(alpha, mu, sigma, r0, T)
+    // Calculate the parameter A
+    A = (2 * EXP((alpha + sigma) * T) - (alpha - sigma) * EXP(alpha * T)) / (sigma^2 * (1 - EXP(-alpha * T)))
+
+    // Calculate the bond price using A and other parameters
+    price = A * EXP(-mu * T) * EXP(-r0 * (1 - EXP(-alpha * T)) / alpha)
+
+    // Return the bond price
+    RETURN price
+END FUNCTION
+
+// Execute the main function
+main()
+```
 
 Continuing with the **Cox-Ingersoll-Ross (CIR) Model** and the remaining topics:
 
@@ -462,25 +700,39 @@ The CIR model is used to price interest rate options such as caps, floors, and s
 
 Python example for CIR model pricing:
 
-```python
-import numpy as np
+```
+FUNCTION main()
+    // Define CIR model parameters
+    alpha = 0.1          // Speed of mean reversion
+    mu = 0.05            // Long-term mean interest rate
+    sigma = 0.02         // Volatility of the interest rate
+    r0 = 0.03            // Initial interest rate
+    T = 5                // Maturity in years
 
-# CIR parameters
-alpha = 0.1
-mu = 0.05
-sigma = 0.02
-r0 = 0.03
-T = 5  # Maturity in years
+    // Calculate the bond price using the CIR model
+    price = cir_bond_price(alpha, mu, sigma, r0, T)
 
-# CIR model bond price function
-def cir_bond_price(alpha, mu, sigma, r0, T):
-    A = (2 * np.exp((alpha + sigma**2 / 2) * T) - (alpha + sigma**2 / 2) * T) / (sigma**2 * (np.exp((alpha + sigma**2 / 2) * T) - 1))
-    B = (2 * np.exp((alpha + sigma**2 / 2) * T) - 2) / (sigma**2 * (np.exp((alpha + sigma**2 / 2) * T) - 1))
-    return np.exp(A - B * r0)
+    // Print the bond price
+    PRINT("CIR Model Zero-Coupon Bond Price: ", price)
+END FUNCTION
 
-# Price the zero-coupon bond
-price = cir_bond_price(alpha, mu, sigma, r0, T)
-print(f"CIR Model Zero-Coupon Bond Price: {price:.2f}")
+// Function to calculate the bond price using the CIR model
+FUNCTION cir_bond_price(alpha, mu, sigma, r0, T)
+    // Calculate the parameter A
+    A = (2 * EXP((alpha + (sigma^2 / 2)) * T) - (alpha + (sigma^2 / 2)) * T) / (sigma^2 * (EXP((alpha + (sigma^2 / 2)) * T) - 1))
+
+    // Calculate the parameter B
+    B = (2 * EXP((alpha + (sigma^2 / 2)) * T) - 2) / (sigma^2 * (EXP((alpha + (sigma^2 / 2)) * T) - 1))
+
+    // Calculate the bond price using parameters A and B
+    bond_price = EXP(A - B * r0)
+
+    // Return the bond price
+    RETURN bond_price
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This implementation provides the theoretical price of a zero-coupon bond using the CIR model, valuable for managing interest rate risk.
@@ -503,27 +755,48 @@ The HJM framework is applied in pricing complex interest rate derivatives like s
 
 Python example to simulate forward rate dynamics under HJM:
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+```
+FUNCTION main()
+    // Define parameters
+    T = 1.0              // Total time period (1 year)
+    dt = 0.01            // Time increment (0.01 years)
+    N = INT(T / dt)      // Number of time steps
+    sigma = 0.01         // Volatility of the forward rate
 
-# Parameters
-T = 1.0
-dt = 0.01
-N = int(T / dt)
-times = np.linspace(0, T, N)
-sigma = 0.01
-forward_rates = np.zeros(N)
+    // Initialize time array and forward rates array
+    times = ARRAY(N)     // Array to store time points
+    forward_rates = ARRAY(N)  // Array to store forward rates
 
-# Simulation
-for t in range(1, N):
-    forward_rates[t] = forward_rates[t-1] + sigma * np.sqrt(dt) * np.random.randn()
+    // Populate the time array
+    FOR i FROM 0 TO N-1 DO
+        times[i] = i * dt  // Calculate time points
+    END FOR
 
-plt.plot(times, forward_rates)
-plt.title('Forward Rate Dynamics (HJM)')
-plt.xlabel('Time')
-plt.ylabel('Forward Rate')
-plt.show()
+    // Initialize the first forward rate
+    forward_rates[0] = INITIAL_VALUE  // Set the initial forward rate (could be 0 or another value)
+
+    // Simulate forward rates
+    FOR t FROM 1 TO N-1 DO
+        // Update the forward rate based on the previous value, volatility, and random noise
+        forward_rates[t] = forward_rates[t-1] + sigma * SQRT(dt) * RANDOM_NORMAL()
+    END FOR
+
+    // Plotting the results
+    PLOT(times, forward_rates)        // Create a plot of forward rates vs. time
+    SET_TITLE("Forward Rate Dynamics (HJM)") // Set the title of the plot
+    SET_XLABEL("Time")                // Label for x-axis
+    SET_YLABEL("Forward Rate")         // Label for y-axis
+    SHOW_PLOT()                       // Display the plot
+END FUNCTION
+
+// Function to simulate normally distributed random values
+FUNCTION RANDOM_NORMAL()
+    // Implement a method to generate a random number from a normal distribution
+    RETURN RANDOM_VALUE // Placeholder for a normally distributed random value
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This example simulates the evolution of forward rates under the HJM framework, providing insight into how forward rates can change over time.
@@ -544,19 +817,47 @@ Investors use prepayment models to adjust their MBS valuations and investment st
 
 Python example to simulate prepayment impact:
 
-```python
-import numpy as np
+```
+FUNCTION main()
+    // Define parameters
+    n_periods = 12                // Number of periods (months)
+    prepayment_rate = 0.05        // Probability of prepayment (5%)
+    principal = 100000            // Total principal amount of the loan
 
-# Parameters
-n_periods = 12
-prepayment_rate = 0.05
-principal = 100000
+    // Simulate prepayments
+    prepayments = ARRAY(n_periods) // Initialize array to store prepayments
 
-# Simulate prepayments
-prepayments = np.random.binomial(n=1, p=prepayment_rate, size=n_periods)
-adjusted_cash_flows = np.cumsum(prepayments * principal / n_periods)
+    // Generate prepayment simulation using a binomial distribution
+    FOR i FROM 0 TO n_periods-1 DO
+        IF RANDOM_UNIFORM(0, 1) < prepayment_rate THEN
+            prepayments[i] = 1     // Prepayment occurs
+        ELSE
+            prepayments[i] = 0     // No prepayment
+        END IF
+    END FOR
 
-print(f"Adjusted Cash Flows: {adjusted_cash_flows}")
+    // Calculate adjusted cash flows
+    adjusted_cash_flows = ARRAY(n_periods) // Initialize array for adjusted cash flows
+    prepayment_amount = principal / n_periods // Amount per period
+
+    // Compute cumulative cash flows
+    cumulative_sum = 0 // Initialize cumulative sum
+    FOR j FROM 0 TO n_periods-1 DO
+        cumulative_sum = cumulative_sum + (prepayments[j] * prepayment_amount) // Update cumulative sum
+        adjusted_cash_flows[j] = cumulative_sum // Store adjusted cash flow for the period
+    END FOR
+
+    // Output the adjusted cash flows
+    PRINT("Adjusted Cash Flows: ", adjusted_cash_flows)
+END FUNCTION
+
+// Function to generate a random number uniformly between a range
+FUNCTION RANDOM_UNIFORM(min, max)
+    RETURN RANDOM_VALUE // Placeholder for a uniformly distributed random value between min and max
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This simulation helps estimate the impact of prepayments on the cash flows of an MBS.
@@ -575,16 +876,47 @@ Investors analyze different CMO tranches to match their risk tolerance and inves
 
 Python example to analyze CMO tranches:
 
-```python
-import numpy as np
+```
+FUNCTION main()
+    // Simulate tranche data
+    tranche1 = ARRAY(1000) // Initialize array for tranche 1 yields
+    tranche2 = ARRAY(1000) // Initialize array for tranche 2 yields
 
-# Simulated tranche data
-tranche1 = np.random.normal(loc=0.03, scale=0.01, size=1000)
-tranche2 = np.random.normal(loc=0.05, scale=0.02, size=1000)
+    // Generate random yields for tranche 1
+    FOR i FROM 0 TO 999 DO
+        tranche1[i] = RANDOM_NORMAL(mean = 0.03, std_dev = 0.01) // Generate normal distribution value
+    END FOR
 
-# Analyze tranche yields
-print(f"Tranche 1 Mean Yield: {np.mean(tranche1):.2f}")
-print(f"Tranche 2 Mean Yield: {np.mean(tranche2):.2f}")
+    // Generate random yields for tranche 2
+    FOR j FROM 0 TO 999 DO
+        tranche2[j] = RANDOM_NORMAL(mean = 0.05, std_dev = 0.02) // Generate normal distribution value
+    END FOR
+
+    // Analyze tranche yields
+    mean_yield_tranche1 = CALCULATE_MEAN(tranche1) // Calculate mean for tranche 1
+    mean_yield_tranche2 = CALCULATE_MEAN(tranche2) // Calculate mean for tranche 2
+
+    // Output mean yields
+    PRINT("Tranche 1 Mean Yield: ", mean_yield_tranche1) // Display mean yield for tranche 1
+    PRINT("Tranche 2 Mean Yield: ", mean_yield_tranche2) // Display mean yield for tranche 2
+END FUNCTION
+
+// Function to generate a normally distributed random number
+FUNCTION RANDOM_NORMAL(mean, std_dev)
+    RETURN RANDOM_VALUE // Placeholder for a normally distributed random value with specified mean and standard deviation
+END FUNCTION
+
+// Function to calculate the mean of an array
+FUNCTION CALCULATE_MEAN(array)
+    total = 0
+    FOR k FROM 0 TO LENGTH(array) - 1 DO
+        total = total + array[k] // Sum up all values in the array
+    END FOR
+    RETURN total / LENGTH(array) // Return the average
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This analysis helps investors assess the risk-return profiles of different CMO tranches.
@@ -605,16 +937,44 @@ Investors use pass-through security models to estimate potential cash flows and 
 
 Python example to analyze cash flow patterns:
 
-```python
-import numpy as np
+```
+FUNCTION main()
+    // Set parameters for simulation
+    number_of_periods = 12
+    principal_mean = 1000
+    principal_std_dev = 200
+    interest_mean = 50
+    interest_std_dev = 10
 
-# Simulate pass-through cash flows
-principal_payments = np.random.normal(loc=1000, scale=200, size=12)
-interest_payments = np.random.normal(loc=50, scale=10, size=12)
+    // Simulate principal payments
+    principal_payments = ARRAY(number_of_periods) // Initialize array for principal payments
+    FOR i FROM 0 TO number_of_periods - 1 DO
+        principal_payments[i] = RANDOM_NORMAL(principal_mean, principal_std_dev) // Generate principal payment
+    END FOR
 
-# Total cash flows
-total_cash_flows = principal_payments + interest_payments
-print(f"Total Pass-Through Cash Flows: {total_cash_flows}")
+    // Simulate interest payments
+    interest_payments = ARRAY(number_of_periods) // Initialize array for interest payments
+    FOR j FROM 0 TO number_of_periods - 1 DO
+        interest_payments[j] = RANDOM_NORMAL(interest_mean, interest_std_dev) // Generate interest payment
+    END FOR
+
+    // Calculate total cash flows
+    total_cash_flows = ARRAY(number_of_periods) // Initialize array for total cash flows
+    FOR k FROM 0 TO number_of_periods - 1 DO
+        total_cash_flows[k] = principal_payments[k] + interest_payments[k] // Calculate total cash flow
+    END FOR
+
+    // Output total cash flows
+    PRINT("Total Pass-Through Cash Flows: ", total_cash_flows) // Display total cash flows
+END FUNCTION
+
+// Function to generate a normally distributed random number
+FUNCTION RANDOM_NORMAL(mean, std_dev)
+    RETURN RANDOM_VALUE // Placeholder for a normally distributed random value with specified mean and standard deviation
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This simulation helps estimate cash flows from pass-through securities, considering interest and principal payments.
@@ -635,15 +995,42 @@ Credit risk analysts estimate default probabilities and recovery rates to price 
 
 Python example to estimate default probabilities:
 
-```python
-import numpy as np
+```
+FUNCTION main()
+    // Set parameters for simulation
+    number_of_simulations = 1000
+    low_probability = 0.01
+    high_probability = 0.10
 
-# Simulate default probabilities
-default_probabilities = np.random.uniform(low=0.01, high=0.10, size=1000)
+    // Simulate default probabilities
+    default_probabilities = ARRAY(number_of_simulations) // Initialize array for default probabilities
+    FOR i FROM 0 TO number_of_simulations - 1 DO
+        default_probabilities[i] = RANDOM_UNIFORM(low_probability, high_probability) // Generate a uniform random default probability
+    END FOR
 
-# Calculate mean default probability
-mean_default_prob = np.mean(default_probabilities)
-print(f"Mean Default Probability: {mean_default_prob:.2f}")
+    // Calculate mean default probability
+    mean_default_prob = CALCULATE_MEAN(default_probabilities) // Calculate the mean of the default probabilities
+
+    // Output the mean default probability
+    PRINT("Mean Default Probability: ", mean_default_prob) // Display the mean default probability
+END FUNCTION
+
+// Function to generate a uniformly distributed random number between low and high
+FUNCTION RANDOM_UNIFORM(low, high)
+    RETURN RANDOM_VALUE // Placeholder for a uniformly distributed random value in the range [low, high]
+END FUNCTION
+
+// Function to calculate the mean of an array
+FUNCTION CALCULATE_MEAN(array)
+    sum = 0
+    FOR each value IN array DO
+        sum = sum + value // Accumulate the sum of the values
+    END FOR
+    RETURN sum / LENGTH(array) // Return the average
+END FUNCTION
+
+// Execute the main function
+main()
 ```
 
 This example provides an estimate of default probabilities, useful for pricing and risk assessment.
@@ -664,58 +1051,50 @@ Structural models are used to price corporate bonds and credit derivatives by es
 
 Python example to implement a basic structural credit model:
 
-```python
-import numpy as np
-
-# Merton model parameters
-asset_value = 100
-debt_value = 80
-volatility = 0.2
-
-# Simulate asset value path
-n_simulations = 1000
-final_asset_values = asset_value * np.exp(np.random.normal(loc=0, scale=volatility, size=n_simulations))
-
-# Estimate default probability
-
-
-default_probability = np.mean(final_asset_values < debt_value)
-print(f"Estimated Default Probability: {default_probability:.2f}")
 ```
+FUNCTION main()
+    // Set Merton model parameters
+    asset_value = 100
+    debt_value = 80
+    volatility = 0.2
 
-This simulation estimates the default probability based on the Merton model, useful for pricing corporate bonds and derivatives.
+    // Number of simulations
+    n_simulations = 1000
 
-## **Assessment Methods**
+    // Simulate asset value paths
+    final_asset_values = ARRAY(n_simulations) // Initialize an array to hold final asset values
+    FOR i FROM 0 TO n_simulations - 1 DO
+        // Generate a normally distributed random value
+        random_normal_value = RANDOM_NORMAL(0, volatility) // Standard normal value scaled by volatility
+        final_asset_values[i] = asset_value * EXP(random_normal_value) // Calculate final asset value
+    END FOR
 
-### **1. Problem Sets**
-Problem sets will involve exercises on bond pricing, interest rate models, mortgage-backed securities, and credit risk analysis. Students will apply theoretical concepts and Python implementations to solve real-world problems.
+    // Estimate default probability
+    default_probability = CALCULATE_DEFAULT_PROBABILITY(final_asset_values, debt_value) // Call function to calculate default probability
 
-### **2. Midterm Exam**
-The midterm exam will cover topics such as bond pricing, duration and convexity, interest rate models, and introductory mortgage-backed securities. It will test both theoretical understanding and practical applications.
+    // Output the estimated default probability
+    PRINT("Estimated Default Probability: ", default_probability) // Display the estimated probability
+END FUNCTION
 
-### **3. Final Exam**
-The final exam will be comprehensive, covering all topics, including advanced interest rate models, mortgage-backed securities, and credit risk. It will include practical problems requiring both theoretical knowledge and Python coding skills.
+// Function to generate a random value from a normal distribution
+FUNCTION RANDOM_NORMAL(mean, std_dev)
+    RETURN RANDOM_VALUE // Placeholder for normally distributed random value generation
+END FUNCTION
 
-### **4. Research Paper/Project**
-Students will complete a research paper or project focusing on a specific area of fixed income securities, such as the analysis of a particular interest rate model or the valuation of a complex fixed income instrument. This project will require students to apply theoretical concepts and Python programming to address a real-world financial issue.
+// Function to calculate the default probability
+FUNCTION CALCULATE_DEFAULT_PROBABILITY(asset_values, debt_value)
+    default_count = 0 // Initialize counter for defaults
+    FOR each value IN asset_values DO
+        IF value < debt_value THEN
+            default_count = default_count + 1 // Increment counter if asset value is less than debt
+        END IF
+    END FOR
+    RETURN default_count / LENGTH(asset_values) // Return the proportion of defaults
+END FUNCTION
 
-## **Recommended Textbooks**
-
-### **1. "Fixed Income Securities" by Bruce Tuckman and Angel Serrat**
-A comprehensive guide covering theory and practical aspects of fixed income markets, including bond pricing, risk management, and interest rate models.
-
-### **2. "The Handbook of Fixed Income Securities" edited by Frank J. Fabozzi**
-An authoritative reference providing in-depth coverage of fixed income instruments, markets, and risk management techniques, including advanced topics and practical applications.
-
-This expanded curriculum now includes detailed theoretical backgrounds, practical examples, and Python implementations for each topic, providing a thorough understanding of fixed income securities.
-
-Certainly! Here’s an enriched version of the content for the **Programming for Financial Engineering** course, including theoretical and mathematical background to provide a deeper understanding of the topics:
-
----
-
-Certainly! Here’s an enhanced version of the **Programming for Financial Engineering** course content with additional code examples in Python and C++ to illustrate the concepts:
-
----
+// Execute the main function
+main()
+```
 
 # **Programming for Financial Engineering**
 
