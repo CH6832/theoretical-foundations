@@ -1,7 +1,7 @@
 # Advanced Software Engineering
 
 ## Course Overview
-This course provides an in-depth exploration of advanced software engineering topics, focusing on modern methodologies, large-scale system design, process improvement, and emerging technologies. The course includes practical Java examples to illustrate concepts and real-world applications.
+This course provides an in-depth exploration of advanced software engineering topics, focusing on modern methodologies, large-scale system design, process improvement, and emerging technologies. The course includes practical pseudocode examples to illustrate concepts and real-world applications.
 
 ## Course Content
 
@@ -14,32 +14,24 @@ This course provides an in-depth exploration of advanced software engineering to
 **Real-World Example:**
 - **Scaling Scrum in a Large Organization**: Implementing SAFe to coordinate multiple Scrum teams working on a large product.
 
-**Java Example:**
+**Pseudocode Example:**
 - **Implementing Advanced Scrum Artifacts**:
-  ```java
-  // Sprint.java
-  import java.time.LocalDate;
-  import java.util.ArrayList;
-  import java.util.List;
+  ```
+  Class Sprint
+      Property name
+      Property startDate
+      Property endDate
+      Property userStories = []
 
-  public class Sprint {
-      private String name;
-      private LocalDate startDate;
-      private LocalDate endDate;
-      private List<UserStory> userStories = new ArrayList<>();
+      Method Sprint(name, startDate, endDate)
+          this.name = name
+          this.startDate = startDate
+          this.endDate = endDate
 
-      public Sprint(String name, LocalDate startDate, LocalDate endDate) {
-          this.name = name;
-          this.startDate = startDate;
-          this.endDate = endDate;
-      }
-
-      public void addUserStory(UserStory story) {
-          userStories.add(story);
-      }
+      Method addUserStory(story)
+          userStories.add(story)
 
       // Getters and Setters
-  }
   ```
 
 #### **Lean Software Development**
@@ -49,34 +41,26 @@ This course provides an in-depth exploration of advanced software engineering to
 **Real-World Example:**
 - **Implementing Kanban**: Using Kanban boards to improve workflow efficiency in a development team.
 
-**Java Example:**
+**Pseudocode Example:**
 - **Kanban Board Implementation**:
-  ```java
-  // KanbanBoard.java
-  import java.util.ArrayList;
-  import java.util.List;
+  ```
+  Class KanbanBoard
+      Property todo = []
+      Property inProgress = []
+      Property done = []
 
-  public class KanbanBoard {
-      private List<String> todo = new ArrayList<>();
-      private List<String> inProgress = new ArrayList<>();
-      private List<String> done = new ArrayList<>();
+      Method addTask(task)
+          todo.add(task)
 
-      public void addTask(String task) {
-          todo.add(task);
-      }
+      Method moveToInProgress(task)
+          todo.remove(task)
+          inProgress.add(task)
 
-      public void moveToInProgress(String task) {
-          todo.remove(task);
-          inProgress.add(task);
-      }
-
-      public void moveToDone(String task) {
-          inProgress.remove(task);
-          done.add(task);
-      }
+      Method moveToDone(task)
+          inProgress.remove(task)
+          done.add(task)
 
       // Display methods for board
-  }
   ```
 
 #### **Extreme Programming (XP)**
@@ -85,26 +69,21 @@ This course provides an in-depth exploration of advanced software engineering to
 **Real-World Example:**
 - **Pair Programming in Practice**: Implementing pair programming to improve code quality and team collaboration.
 
-**Java Example:**
+**Pseudocode Example:**
 - **Pair Programming Example**:
-  ```java
-  // PairProgramming.java
-  public class PairProgramming {
-      private String code;
-      
-      public void writeCode(String newCode) {
-          this.code = newCode;
-      }
+  ```
+  Class PairProgramming
+      Property code
 
-      public String getCode() {
-          return code;
-      }
+      Method writeCode(newCode)
+          this.code = newCode
+
+      Method getCode()
+          return code
 
       // Method for pair programming example
-      public void collaborate() {
-          System.out.println("Collaborating on code with a partner.");
-      }
-  }
+      Method collaborate()
+          Print "Collaborating on code with a partner."
   ```
 
 ### **2. Software Engineering for Large Systems**
@@ -116,26 +95,18 @@ This course provides an in-depth exploration of advanced software engineering to
 **Real-World Example:**
 - **Implementing Load Balancing**: Deploying a load balancer to handle high traffic in a web application.
 
-**Java Example:**
+**Pseudocode Example:**
 - **Load Balancer Implementation**:
-  ```java
-  // LoadBalancer.java
-  import java.util.HashMap;
-  import java.util.Map;
-  import java.util.Random;
+  ```
+  Class LoadBalancer
+      Property servers = {}
+      Property random = new Random()
 
-  public class LoadBalancer {
-      private Map<String, Integer> servers = new HashMap<>();
-      private Random random = new Random();
+      Method addServer(serverName, capacity)
+          servers[serverName] = capacity
 
-      public void addServer(String serverName, int capacity) {
-          servers.put(serverName, capacity);
-      }
-
-      public String getServer() {
-          return servers.keySet().toArray(new String[0])[random.nextInt(servers.size())];
-      }
-  }
+      Method getServer()
+          return Random server from servers.keys()
   ```
 
 #### **Performance Tuning**
@@ -143,29 +114,24 @@ This course provides an in-depth exploration of advanced software engineering to
 - **Optimizing Code**: Improving algorithm efficiency and memory usage.
 
 **Real-World Example:**
-- **Performance Profiling**: Analyzing and optimizing the performance of a Java application to handle increased load.
+- **Performance Profiling**: Analyzing and optimizing the performance of an application to handle increased load.
 
-**Java Example:**
+**Pseudocode Example:**
 - **Performance Optimization**:
-  ```java
-  // PerformanceOptimization.java
-  public class PerformanceOptimization {
-      public static void main(String[] args) {
-          long startTime = System.currentTimeMillis();
-          performTask();
-          long endTime = System.currentTimeMillis();
-          System.out.println("Execution Time: " + (endTime - startTime) + " ms");
-      }
+  ```
+  Class PerformanceOptimization
+      Method main()
+          startTime = currentTimeMillis()
+          performTask()
+          endTime = currentTimeMillis()
+          Print "Execution Time: " + (endTime - startTime) + " ms"
 
-      private static void performTask() {
+      Method performTask()
           // Example of optimized task
-          int sum = 0;
-          for (int i = 0; i < 1_000_000; i++) {
-              sum += i;
-          }
-          System.out.println("Sum: " + sum);
-      }
-  }
+          sum = 0
+          For i from 0 to 999999
+              sum = sum + i
+          Print "Sum: " + sum
   ```
 
 #### **High Availability Systems**
@@ -175,24 +141,20 @@ This course provides an in-depth exploration of advanced software engineering to
 **Real-World Example:**
 - **Implementing Failover**: Setting up a failover system to ensure high availability of critical services.
 
-**Java Example:**
+**Pseudocode Example:**
 - **Failover Mechanism**:
-  ```java
-  // FailoverMechanism.java
-  public class FailoverMechanism {
-      private String primaryServer = "PrimaryServer";
-      private String secondaryServer = "SecondaryServer";
+  ```
+  Class FailoverMechanism
+      Property primaryServer = "PrimaryServer"
+      Property secondaryServer = "SecondaryServer"
 
-      public void connect() {
-          try {
-              System.out.println("Connecting to " + primaryServer);
+      Method connect()
+          Try
+              Print "Connecting to " + primaryServer
               // Simulate failure
-              throw new RuntimeException("Primary server failure");
-          } catch (Exception e) {
-              System.out.println("Switching to " + secondaryServer);
-          }
-      }
-  }
+              Throw Exception("Primary server failure")
+          Catch Exception e
+              Print "Switching to " + secondaryServer
   ```
 
 ### **3. Software Process Improvement**
@@ -204,21 +166,17 @@ This course provides an in-depth exploration of advanced software engineering to
 **Real-World Example:**
 - **Applying CMMI**: Conducting a CMMI assessment and implementing a process improvement plan in a software development organization.
 
-**Java Example:**
+**Pseudocode Example:**
 - **Process Improvement Tracking**:
-  ```java
-  // ProcessImprovementTracking.java
-  public class ProcessImprovementTracking {
-      public void assessProcesses() {
-          System.out.println("Assessing current processes using CMMI.");
+  ```
+  Class ProcessImprovementTracking
+      Method assessProcesses()
+          Print "Assessing current processes using CMMI."
           // Code to evaluate processes
-      }
 
-      public void implementImprovements() {
-          System.out.println("Implementing improvements based on assessment.");
+      Method implementImprovements()
+          Print "Implementing improvements based on assessment."
           // Code to implement improvements
-      }
-  }
   ```
 
 #### **Six Sigma in Software Engineering**
@@ -228,31 +186,24 @@ This course provides an in-depth exploration of advanced software engineering to
 **Real-World Example:**
 - **Six Sigma Project**: Implementing Six Sigma to reduce defects and improve software quality.
 
-**Java Example:**
+**Pseudocode Example:**
 - **DMAIC Example**:
-  ```java
-  // DMAICProcess.java
-  public class DMAICProcess {
-      public void define() {
-          System.out.println("Defining the problem statement.");
-      }
+  ```
+  Class DMAICProcess
+      Method define()
+          Print "Defining the problem statement."
 
-      public void measure() {
-          System.out.println("Measuring current performance.");
-      }
+      Method measure()
+          Print "Measuring current performance."
 
-      public void analyze() {
-          System.out.println("Analyzing data to identify root causes.");
-      }
+      Method analyze()
+          Print "Analyzing data to identify root causes."
 
-      public void improve() {
-          System.out.println("Implementing improvements.");
-      }
+      Method improve()
+          Print "Implementing improvements."
 
-      public void control() {
-          System.out.println("Controlling the process to maintain improvements.");
-      }
-  }
+      Method control()
+          Print "Controlling the process to maintain improvements."
   ```
 
 ### **4. Emerging Technologies**
@@ -264,35 +215,17 @@ This course provides an in-depth exploration of advanced software engineering to
 **Real-World Example:**
 - **Implementing Microservices**: Designing and deploying a microservices-based application for a large e-commerce platform.
 
-**Java Example:**
-- **Microservices Example with Spring Boot**:
-  ```java
-  // UserServiceApplication.java
-  import org.springframework.boot.SpringApplication;
-  import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-  @SpringBootApplication
-  public class UserServiceApplication {
-      public static void main(String[] args) {
-          SpringApplication.run(UserServiceApplication.class, args);
-      }
-  }
+**Pseudocode Example:**
+- **Microservices Example**:
   ```
+  Class UserServiceApplication
+      Method main()
+          // Initialize the user service application
+          Start application
 
-  ```java
-  // UserController.java
-  import org.springframework.web.bind.annotation.GetMapping;
-  import org.springframework.web.bind.annotation.RequestMapping;
-  import org.springframework.web.bind.annotation.RestController;
-
-  @RestController
-  @RequestMapping("/users")
-  public class UserController {
-      @GetMapping
-      public String getUsers() {
-          return "List of users";
-      }
-  }
+  Class UserController
+      Method getUsers()
+          return "List of users"
   ```
 
 #### **Serverless Computing**
@@ -301,21 +234,12 @@ This course provides an in-depth exploration of advanced software engineering to
 **Real-World Example:**
 - **Deploying Serverless Functions**: Creating and deploying AWS Lambda functions for event-driven processing.
 
-**Java Example:**
+**Pseudocode Example:**
 - **AWS Lambda Function Example**:
-  ```java
-  // LambdaFunction.java
-  import com.amazonaws.services.lambda.runtime.Context;
-  import com.amazonaws.services.lambda.runtime.RequestHandler;
-
-  public class LambdaFunction implements RequestHandler<String
-
-, String> {
-      @Override
-      public String handleRequest(String input, Context context) {
-          return "Hello, " + input;
-      }
-  }
+  ```
+  Class LambdaFunction
+      Method handleRequest(input, context)
+          return "Hello, " + input
   ```
 
 #### **Edge Computing**
@@ -324,16 +248,13 @@ This course provides an in-depth exploration of advanced software engineering to
 **Real-World Example:**
 - **Edge Computing Implementation**: Developing a real-time data processing application for IoT devices.
 
-**Java Example:**
+**Pseudocode Example:**
 - **Edge Computing Example**:
-  ```java
-  // EdgeDevice.java
-  public class EdgeDevice {
-      public void processData(String data) {
-          System.out.println("Processing data at the edge: " + data);
+  ```
+  Class EdgeDevice
+      Method processData(data)
+          Print "Processing data at the edge: " + data
           // Edge processing logic
-      }
-  }
   ```
 
 ### **5. Ethical and Legal Issues in Software Engineering**
