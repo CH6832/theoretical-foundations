@@ -148,193 +148,160 @@ The Red-Black Tree enforces the following **properties**:
 
 These properties ensure that the longest path from the root to any leaf is at most twice the length of the shortest path, guaranteeing an **O(log n)** time complexity for insertion, deletion, and lookup.
 
-**Java Code Implementation of Red-Black Tree**
+**Code Implementation of Red-Black Tree**
 
 Below is a Java implementation of a Red-Black Tree that supports insertion while maintaining the necessary properties of the tree.
 
-```java
+```
 // Class representing a node in the Red-Black Tree
-class RedBlackNode {
-    int data;
-    RedBlackNode left, right, parent;
-    boolean color; // True for Red, False for Black
+class RedBlackNode:
+    integer data
+    RedBlackNode left, right, parent
+    boolean color // True for Red, False for Black
 
-    public RedBlackNode(int data) {
-        this.data = data;
-        left = right = parent = null;
-        color = true; // New nodes are red by default
-    }
-}
+    function RedBlackNode(int data):
+        this.data = data
+        this.left = NULL
+        this.right = NULL
+        this.parent = NULL
+        this.color = TRUE // New nodes are red by default
 
 // Red-Black Tree implementation
-class RedBlackTree {
-    private RedBlackNode root;
-    private RedBlackNode TNULL; // Sentinel node to represent null leaves
+class RedBlackTree:
+    RedBlackNode root
+    RedBlackNode TNULL // Sentinel node to represent null leaves
 
-    public RedBlackTree() {
-        TNULL = new RedBlackNode(0);
-        TNULL.color = false; // TNULL is black
-        root = TNULL;
-    }
+    function RedBlackTree():
+        TNULL = new RedBlackNode(0)
+        TNULL.color = FALSE // TNULL is black
+        this.root = TNULL
 
     // Inorder traversal to display the tree
-    public void inorder() {
-        inorderHelper(this.root);
-    }
+    function inorder():
+        inorderHelper(this.root)
 
     // Helper function for inorder traversal
-    private void inorderHelper(RedBlackNode node) {
-        if (node != TNULL) {
-            inorderHelper(node.left);
-            System.out.print(node.data + " ");
-            inorderHelper(node.right);
-        }
-    }
+    function inorderHelper(RedBlackNode node):
+        if node != TNULL:
+            inorderHelper(node.left)
+            print node.data
+            inorderHelper(node.right)
 
     // Rotate left around the given node
-    private void leftRotate(RedBlackNode x) {
-        RedBlackNode y = x.right;
-        x.right = y.left;
-        if (y.left != TNULL) {
-            y.left.parent = x;
-        }
-        y.parent = x.parent;
-        if (x.parent == null) {
-            this.root = y;
-        } else if (x == x.parent.left) {
-            x.parent.left = y;
-        } else {
-            x.parent.right = y;
-        }
-        y.left = x;
-        x.parent = y;
-    }
+    function leftRotate(RedBlackNode x):
+        RedBlackNode y = x.right
+        x.right = y.left
+        if y.left != TNULL:
+            y.left.parent = x
+        y.parent = x.parent
+        if x.parent == NULL:
+            this.root = y
+        else if x == x.parent.left:
+            x.parent.left = y
+        else:
+            x.parent.right = y
+        y.left = x
+        x.parent = y
 
     // Rotate right around the given node
-    private void rightRotate(RedBlackNode y) {
-        RedBlackNode x = y.left;
-        y.left = x.right;
-        if (x.right != TNULL) {
-            x.right.parent = y;
-        }
-        x.parent = y.parent;
-        if (y.parent == null) {
-            this.root = x;
-        } else if (y == y.parent.right) {
-            y.parent.right = x;
-        } else {
-            y.parent.left = x;
-        }
-        x.right = y;
-        y.parent = x;
-    }
+    function rightRotate(RedBlackNode y):
+        RedBlackNode x = y.left
+        y.left = x.right
+        if x.right != TNULL:
+            x.right.parent = y
+        x.parent = y.parent
+        if y.parent == NULL:
+            this.root = x
+        else if y == y.parent.right:
+            y.parent.right = x
+        else:
+            y.parent.left = x
+        x.right = y
+        y.parent = x
 
     // Fix the red-black tree properties after insertion
-    private void fixInsert(RedBlackNode k) {
-        RedBlackNode u;
-        while (k.parent.color == true) { // While parent is red
-            if (k.parent == k.parent.parent.left) {
-                u = k.parent.parent.right; // Uncle
-                if (u.color == true) {
-                    // Case 1: Uncle is red
-                    k.parent.color = false; // Parent becomes black
-                    u.color = false; // Uncle becomes black
-                    k.parent.parent.color = true; // Grandparent becomes red
-                    k = k.parent.parent; // Move up to the grandparent
-                } else {
-                    // Case 2: Uncle is black, and k is right child
-                    if (k == k.parent.right) {
-                        k = k.parent;
-                        leftRotate(k);
-                    }
-                    // Case 3: Uncle is black, and k is left child
-                    k.parent.color = false;
-                    k.parent.parent.color = true;
-                    rightRotate(k.parent.parent);
-                }
-            } else {
-                // Mirror of the above code for the other side
-                u = k.parent.parent.left;
-                if (u.color == true) {
-                    // Case 1: Uncle is red
-                    k.parent.color = false;
-                    u.color = false;
-                    k.parent.parent.color = true;
-                    k = k.parent.parent;
-                } else {
-                    // Case 2: Uncle is black, and k is left child
-                    if (k == k.parent.left) {
-                        k = k.parent;
-                        rightRotate(k);
-                    }
-                    // Case 3: Uncle is black, and k is right child
-                    k.parent.color = false;
-                    k.parent.parent.color = true;
-                    leftRotate(k.parent.parent);
-                }
-            }
-            if (k == root) {
-                break;
-            }
-        }
-        root.color = false; // Root must always be black
-    }
+    function fixInsert(RedBlackNode k):
+        RedBlackNode u
+        while k.parent.color == TRUE: // While parent is red
+            if k.parent == k.parent.parent.left:
+                u = k.parent.parent.right // Uncle
+                if u.color == TRUE: // Case 1: Uncle is red
+                    k.parent.color = FALSE // Parent becomes black
+                    u.color = FALSE // Uncle becomes black
+                    k.parent.parent.color = TRUE // Grandparent becomes red
+                    k = k.parent.parent // Move up to the grandparent
+                else:
+                    if k == k.parent.right: // Case 2: Uncle is black, k is right child
+                        k = k.parent
+                        leftRotate(k)
+                    // Case 3: Uncle is black, k is left child
+                    k.parent.color = FALSE
+                    k.parent.parent.color = TRUE
+                    rightRotate(k.parent.parent)
+            else: // Mirror of the above code for the other side
+                u = k.parent.parent.left
+                if u.color == TRUE: // Case 1: Uncle is red
+                    k.parent.color = FALSE
+                    u.color = FALSE
+                    k.parent.parent.color = TRUE
+                    k = k.parent.parent
+                else:
+                    if k == k.parent.left: // Case 2: Uncle is black, k is left child
+                        k = k.parent
+                        rightRotate(k)
+                    // Case 3: Uncle is black, k is right child
+                    k.parent.color = FALSE
+                    k.parent.parent.color = TRUE
+                    leftRotate(k.parent.parent)
+            if k == root:
+                break
+        root.color = FALSE // Root must always be black
 
     // Insert a new node into the Red-Black Tree
-    public void insert(int key) {
-        RedBlackNode node = new RedBlackNode(key);
-        node.parent = null;
-        node.left = TNULL;
-        node.right = TNULL;
+    function insert(int key):
+        RedBlackNode node = new RedBlackNode(key)
+        node.parent = NULL
+        node.left = TNULL
+        node.right = TNULL
 
-        RedBlackNode y = null;
-        RedBlackNode x = this.root;
+        RedBlackNode y = NULL
+        RedBlackNode x = this.root
 
-        while (x != TNULL) {
-            y = x;
-            if (node.data < x.data) {
-                x = x.left;
-            } else {
-                x = x.right;
-            }
-        }
+        while x != TNULL:
+            y = x
+            if node.data < x.data:
+                x = x.left
+            else:
+                x = x.right
 
-        node.parent = y;
-        if (y == null) {
-            root = node; // Tree was empty
-        } else if (node.data < y.data) {
-            y.left = node;
-        } else {
-            y.right = node;
-        }
+        node.parent = y
+        if y == NULL:
+            root = node // Tree was empty
+        else if node.data < y.data:
+            y.left = node
+        else:
+            y.right = node
 
-        if (node.parent == null) {
-            node.color = false; // Root is always black
-            return;
-        }
+        if node.parent == NULL:
+            node.color = FALSE // Root is always black
+            return
 
-        if (node.parent.parent == null) {
-            return;
-        }
+        if node.parent.parent == NULL:
+            return
 
         // Fix the tree to maintain Red-Black properties
-        fixInsert(node);
-    }
+        fixInsert(node)
 
     // Main function to test Red-Black Tree
-    public static void main(String[] args) {
-        RedBlackTree tree = new RedBlackTree();
+    function main():
+        RedBlackTree tree = new RedBlackTree()
+        integer[] keys = {20, 15, 25, 10, 5, 1, 30, 35, 40, 45}
 
-        int[] keys = {20, 15, 25, 10, 5, 1, 30, 35, 40, 45};
-
-        for (int key : keys) {
-            tree.insert(key);
-        }
+        for each key in keys:
+            tree.insert(key)
 
         // Print the inorder traversal of the tree
-        tree.inorder();
-    }
-}
+        tree.inorder()
 ```
 
 **Explanation of the Code**:
@@ -443,101 +410,146 @@ Now, the hash table at index 5 will have a chain (list) containing the values 15
 
 Below is an implementation of a Hash Table with Chaining in Java using a linked list for each bucket.
 
-```java
-import java.util.LinkedList;
-
+```
 // Class to represent the Hash Table with Chaining
-class HashTableChaining {
-    private int bucketSize; // Size of the hash table (number of buckets)
-    private LinkedList<KeyValuePair>[] table; // Array of linked lists
+class HashTableChaining:
+    integer bucketSize // Size of the hash table (number of buckets)
+    LinkedList<KeyValuePair>[] table // Array of linked lists
 
     // Constructor
-    public HashTableChaining(int size) {
-        bucketSize = size;
-        table = new LinkedList[bucketSize];
+    function HashTableChaining(integer size):
+        this.bucketSize = size
+        this.table = new LinkedList[bucketSize]
 
         // Initialize each bucket with an empty linked list
-        for (int i = 0; i < bucketSize; i++) {
-            table[i] = new LinkedList<>();
-        }
-    }
+        for integer i from 0 to bucketSize - 1:
+            table[i] = new LinkedList<KeyValuePair>()
 
     // Class representing a key-value pair
-    class KeyValuePair {
-        int key;
-        String value;
+    class KeyValuePair:
+        integer key
+        string value
 
-        public KeyValuePair(int key, String value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
+        // Constructor for KeyValuePair
+        function KeyValuePair(integer key, string value):
+            this.key = key
+            this.value = value
 
     // Hash function to map a key to an index
-    private int hashFunction(int key) {
-        return key % bucketSize;
-    }
+    private function hashFunction(integer key) -> integer:
+        return key mod bucketSize
 
     // Insert a key-value pair into the hash table
-    public void insert(int key, String value) {
-        int index = hashFunction(key); // Compute the hash index
-        KeyValuePair newPair = new KeyValuePair(key, value);
+    public function insert(integer key, string value):
+        integer index = hashFunction(key) // Compute the hash index
+        KeyValuePair newPair = new KeyValuePair(key, value)
 
         // Check if the key already exists and update the value if it does
-        for (KeyValuePair pair : table[index]) {
-            if (pair.key == key) {
-                pair.value = value; // Update the value
-                return;
-            }
-        }
+        for each KeyValuePair pair in table[index]:
+            if pair.key == key:
+                pair.value = value // Update the value
+                return
 
         // If the key does not exist, add the new key-value pair to the list
-        table[index].add(newPair);
-    }
+        table[index].add(newPair)
 
     // Search for a value by key
+    public function search(integer key) -> string:
+        integer index = hashFunction(key) // Compute the hash index
+
+        // Search through the linked list in the corresponding bucket
+        for each KeyValuePair pair in table[index]:
+            if pair.key == key:
+                return pair.value // Return the found value
+
+        return NULL // Return NULL if the key does not exist
+
+    // Remove a key-value pair from the hash table
+    public function remove(integer key):
+        integer index = hashFunction(key) // Compute the hash index
+
+        // Iterate through the linked list to find the key to remove
+        for each KeyValuePair pair in table[index]:
+            if pair.key == key:
+                table[index].remove(pair) // Remove the key-value pair
+                return // Exit the function after removal
+
+    // Main function for testing the Hash Table
+    function main():
+        HashTableChaining hashTable = new HashTableChaining(10) // Create a hash table with 10 buckets
+
+        // Insert key-value pairs into the hash table
+        hashTable.insert(1, "Value1")
+        hashTable.insert(2, "Value2")
+        hashTable.insert(12, "Value12") // Collision example, same bucket as key 2
+        hashTable.insert(3, "Value3")
+
+        // Search for a value by key
+        string result = hashTable.search(2) // Should return "Value2"
+        print result
+
+        // Remove a key-value pair
+        hashTable.remove(1) // Removes the pair with key 1
+        result = hashTable.search(1) // Should return NULL
+        print result
+
 ```
 
-**Java Code Example:**
+**Code Example:**
 
-```java
-import java.util.LinkedList;
+```
+// Class to represent the Hash Table
+class HashTable:
+    LinkedList<Integer>[] table // Array of linked lists for chaining
+    integer size // Size of the hash table
 
-class HashTable {
-    private LinkedList<Integer>[] table;
-    private int size;
+    // Constructor
+    function HashTable(integer size):
+        this.size = size
+        this.table = new LinkedList[size]
 
-    public HashTable(int size) {
-        this.size = size;
-        table = new LinkedList[size];
-        for (int i = 0; i < size; i++) {
-            table[i] = new LinkedList<>();
-        }
-    }
+        // Initialize each bucket with an empty linked list
+        for integer i from 0 to size - 1:
+            table[i] = new LinkedList<Integer>()
 
-    // Hash function
-    private int hash(int key) {
-        return key % size;
-    }
+    // Hash function to map a key to an index
+    private function hash(integer key) -> integer:
+        return key mod size
 
-    // Insert a key
-    public void insert(int key) {
-        int index = hash(key);
-        table[index].add(key);
-    }
+    // Insert a key into the hash table
+    public function insert(integer key):
+        integer index = hash(key) // Compute the hash index
+        table[index].add(key) // Add the key to the linked list at the index
 
-    // Search for a key
-    public boolean search(int key) {
-        int index = hash(key);
-        return table[index].contains(key);
-    }
+    // Search for a key in the hash table
+    public function search(integer key) -> boolean:
+        integer index = hash(key) // Compute the hash index
+        return table[index].contains(key) // Check if the key is in the linked list
 
-    // Delete a key
-    public void delete(int key) {
-        int index = hash(key);
-        table[index].remove(Integer.valueOf(key));
-    }
-}
+    // Delete a key from the hash table
+    public function delete(integer key):
+        integer index = hash(key) // Compute the hash index
+        table[index].remove(Integer.valueOf(key)) // Remove the key from the linked list
+
+    // Main function for testing the Hash Table
+    function main():
+        HashTable hashTable = new HashTable(10) // Create a hash table with size 10
+
+        // Insert keys into the hash table
+        hashTable.insert(5)
+        hashTable.insert(15) // Collision example (same bucket as key 5)
+        hashTable.insert(25) // Collision example (same bucket as key 5)
+
+        // Search for keys
+        boolean found = hashTable.search(15) // Should return true
+        print found
+        found = hashTable.search(20) // Should return false
+        print found
+
+        // Delete a key
+        hashTable.delete(15) // Removes the key 15
+        found = hashTable.search(15) // Should return false
+        print found
 ```
 
 ### Fenwick Trees Segment Trees and Binary Indexed Trees
@@ -546,31 +558,52 @@ class HashTable {
 
 A Fenwick Tree is a data structure that provides efficient methods for cumulative frequency tables.
 
-**Java Code Example:**
-```java
-class FenwickTree {
-    private int[] tree;
-    private int size;
+**Code Example:**
+```
+// Class to represent the Fenwick Tree
+class FenwickTree:
+    integer[] tree // Array to store the Fenwick Tree values
+    integer size // Size of the tree
 
-    public FenwickTree(int size) {
-        this.size = size;
-        tree = new int[size + 1];
-    }
+    // Constructor
+    function FenwickTree(integer size):
+        this.size = size
+        this.tree = new integer[size + 1] // Initialize tree with size + 1
 
     // Update the value at index idx
-    public void update(int idx, int delta) {
-        for (; idx <= size; idx += idx & -idx)
-            tree[idx] += delta;
-    }
+    public function update(integer idx, integer delta):
+        // While idx is within bounds
+        while idx <= size:
+            tree[idx] += delta // Update the value at index
+            idx += (idx AND -idx) // Move to the next index to update
 
     // Query the prefix sum from 1 to idx
-    public int query(int idx) {
-        int sum = 0;
-        for (; idx > 0; idx -= idx & -idx)
-            sum += tree[idx];
-        return sum;
-    }
-}
+    public function query(integer idx) -> integer:
+        integer sum = 0 // Initialize sum to 0
+        // While idx is greater than 0
+        while idx > 0:
+            sum += tree[idx] // Add the value at index idx to sum
+            idx -= (idx AND -idx) // Move to the parent index
+        return sum // Return the computed prefix sum
+
+    // Main function for testing the Fenwick Tree
+    function main():
+        FenwickTree fenwickTree = new FenwickTree(10) // Create a Fenwick Tree with size 10
+
+        // Update the Fenwick Tree
+        fenwickTree.update(1, 5) // Add 5 at index 1
+        fenwickTree.update(2, 3) // Add 3 at index 2
+        fenwickTree.update(3, 7) // Add 7 at index 3
+
+        // Query the prefix sums
+        integer sum1 = fenwickTree.query(1) // Query sum from 1 to 1
+        print sum1 // Should print 5
+
+        integer sum2 = fenwickTree.query(2) // Query sum from 1 to 2
+        print sum2 // Should print 8 (5 + 3)
+
+        integer sum3 = fenwickTree.query(3) // Query sum from 1 to 3
+        print sum3 // Should print 15 (5 + 3 + 7)
 ```
 
 **Union-Find Structures**
@@ -579,45 +612,69 @@ class FenwickTree {
 
 Union-Find is used to keep track of a partition of a set into disjoint subsets.
 
-**Java Code Example:**
-```java
-class UnionFind {
-    private int[] parent, rank;
+**Code Example:**
+```
+// Class to represent the Union-Find data structure
+class UnionFind:
+    integer[] parent // Array to store the parent of each element
+    integer[] rank // Array to store the rank of each set
 
-    public UnionFind(int size) {
-        parent = new int[size];
-        rank = new int[size];
-        for (int i = 0; i < size; i++) {
-            parent[i] = i;
-            rank[i] = 0;
-        }
-    }
+    // Constructor to initialize the Union-Find structure
+    function UnionFind(integer size):
+        parent = new integer[size] // Initialize parent array
+        rank = new integer[size] // Initialize rank array
+        // Initialize each element to be its own parent and rank to 0
+        for integer i from 0 to size - 1:
+            parent[i] = i // Each element is its own parent
+            rank[i] = 0 // Initialize rank to 0
 
     // Find the root of the set containing x
-    public int find(int x) {
-        if (parent[x] != x)
-            parent[x] = find(parent[x]); // Path compression
-        return parent[x];
-    }
+    public function find(integer x) -> integer:
+        if parent[x] != x: // If x is not its own parent
+            parent[x] = find(parent[x]) // Path compression
+        return parent[x] // Return the root of the set containing x
 
     // Union the sets containing x and y
-    public void union(int x, int y) {
-        int rootX = find(x);
-        int rootY = find(y);
+    public function union(integer x, integer y):
+        integer rootX = find(x) // Find the root of the set containing x
+        integer rootY = find(y) // Find the root of the set containing y
 
-        if (rootX != rootY) {
+        if rootX != rootY: // Only union if they are in different sets
             // Union by rank
-            if (rank[rootX] > rank[rootY])
-                parent[rootY] = rootX;
-            else if (rank[rootX] < rank[rootY])
-                parent[rootX] = rootY;
-            else {
-                parent[rootY] = rootX;
-                rank[rootX]++;
-            }
-        }
-    }
-}
+            if rank[rootX] > rank[rootY]: // If rootX has higher rank
+                parent[rootY] = rootX // Attach rootY to rootX
+            else if rank[rootX] < rank[rootY]: // If rootY has higher rank
+                parent[rootX] = rootY // Attach rootX to rootY
+            else: // If ranks are equal
+                parent[rootY] = rootX // Attach rootY to rootX
+                rank[rootX]++ // Increment the rank of rootX
+
+    // Main function for testing the Union-Find data structure
+    function main():
+        UnionFind uf = new UnionFind(10) // Create a Union-Find with 10 elements
+
+        // Perform union operations
+        uf.union(1, 2) // Union the sets containing 1 and 2
+        uf.union(2, 3) // Union the sets containing 2 and 3
+        uf.union(4, 5) // Union the sets containing 4 and 5
+
+        // Check the roots of different elements
+        integer root1 = uf.find(1) // Should return the root of set containing 1
+        print root1
+
+        integer root2 = uf.find(3) // Should return the same root as root1
+        print root2
+
+        integer root3 = uf.find(4) // Should return the root of set containing 4
+        print root3
+
+        // Check if 1 and 3 are in the same set
+        boolean sameSet = (root1 == root2) // Should be true
+        print sameSet
+
+        // Check if 1 and 4 are in the same set
+        sameSet = (root1 == root3) // Should be false
+        print sameSet
 ```
 
 ## Dynamic Programming
@@ -687,8 +744,8 @@ Example: Fibonacci Sequence
 
 To illustrate memoization, let’s consider an example where we compute Fibonacci numbers. The naive recursive approach has an exponential time complexity due to redundant calculations. Memoization optimizes this by storing intermediate results.
 
-**Java Code Example:**
-```java
+**Code Example:**
+```
 import java.util.HashMap;
 import java.util.Map;
 
@@ -709,20 +766,27 @@ class Fibonacci {
 
 Tabulation involves building up a table in a bottom-up manner.
 
-**Java Code Example:**
-```java
-class FibonacciTabulation {
-    public int fib(int n) {
-        if (n <= 1) return n;
-        int[] dp = new int[n + 1];
-        dp[0] = 0;
-        dp[1] = 1;
-        for (int i = 2; i <= n; i++) {
-            dp[i] = dp[i - 1] + dp[i - 2];
-        }
-        return dp[n];
-    }
-}
+**Code Example:**
+```
+// Class to calculate Fibonacci numbers using memoization
+class Fibonacci:
+    Map<Integer, Integer> memo // HashMap to store computed Fibonacci values
+
+    // Constructor
+    function Fibonacci():
+        memo = new Map<Integer, Integer>() // Initialize the memoization map
+
+    // Function to calculate Fibonacci number at position n
+    public function fib(integer n) -> integer:
+        if n <= 1: // Base cases
+            return n // Return n if n is 0 or 1
+        if memo.containsKey(n): // Check if result is already computed
+            return memo.get(n) // Return the cached result
+
+        // Compute Fibonacci number recursively and cache it
+        integer result = fib(n - 1) + fib(n - 2) 
+        memo.put(n, result) // Store the computed result in the map
+        return result // Return the computed Fibonacci number
 ```
 
 **Advanced Problems**
@@ -731,84 +795,88 @@ class FibonacciTabulation {
 
 The 0/1 Knapsack Problem involves choosing items with given weights and values to maximize the total value without exceeding the weight limit.
 
-**Java Code Example:**
-```java
-class Knapsack {
-    public int knapSack(int W, int[] wt, int[] val, int n) {
-        int[][] dp = new int[n + 1][W + 1];
+**Code Example:**
+```
+// Class to solve the 0/1 Knapsack problem
+class Knapsack:
+    // Function to solve the Knapsack problem
+    public function knapSack(integer W, integer[] wt, integer[] val, integer n) -> integer:
+        // Create a 2D array to store the maximum value for each item and weight capacity
+        integer[][] dp = new integer[n + 1][W + 1]
 
-        for (int i = 0; i <= n; i++) {
-            for (int w = 0; w <= W; w++) {
-                if (i == 0 || w == 0) {
-                    dp[i][w] = 0;
-                } else if (wt[i - 1] <= w) {
-                    dp[i][w] = Math.max(val[i - 1] + dp[i - 1][w - wt[i - 1]], dp[i - 1][w]);
-                } else {
-                    dp[i][w] = dp[i - 1][w];
-                }
-            }
-        }
-        return dp[n][W
+        // Fill the dp array
+        for integer i from 0 to n: // Iterate over the number of items
+            for integer w from 0 to W: // Iterate over the weight capacities
+                if i == 0 or w == 0: // If no items or no capacity
+                    dp[i][w] = 0 // No value can be obtained
+                else if wt[i - 1] <= w: // If the weight of the current item is less than or equal to the current capacity
+                    // Take the maximum of including the item or not including it
+                    dp[i][w] = max(val[i - 1] + dp[i - 1][w - wt[i - 1]], dp[i - 1][w])
+                else: // If the weight of the current item is more than the current capacity
+                    dp[i][w] = dp[i - 1][w] // Do not include the item
 
-];
-    }
-}
+        return dp[n][W] // Return the maximum value that can be obtained with n items and capacity W
 ```
 
 **Edit Distance**
 
 The Edit Distance problem involves finding the minimum number of operations required to transform one string into another.
 
-**Java Code Example:**
-```java
-class EditDistance {
-    public int minDistance(String word1, String word2) {
-        int m = word1.length();
-        int n = word2.length();
-        int[][] dp = new int[m + 1][n + 1];
+**Code Example:**
+```
+// Class to calculate the Edit Distance between two strings
+class EditDistance:
+    // Function to calculate the minimum distance between word1 and word2
+    public function minDistance(string word1, string word2) -> integer:
+        integer m = length of word1 // Length of the first string
+        integer n = length of word2 // Length of the second string
+        
+        // Create a 2D array to store the edit distances
+        integer[][] dp = new integer[m + 1][n + 1]
 
-        for (int i = 0; i <= m; i++) {
-            for (int j = 0; j <= n; j++) {
-                if (i == 0) {
-                    dp[i][j] = j;
-                } else if (j == 0) {
-                    dp[i][j] = i;
-                } else if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1];
-                } else {
-                    dp[i][j] = 1 + Math.min(dp[i - 1][j], Math.min(dp[i][j - 1], dp[i - 1][j - 1]));
-                }
-            }
-        }
-        return dp[m][n];
-    }
-}
+        // Fill the dp array
+        for integer i from 0 to m: // Iterate through the length of word1
+            for integer j from 0 to n: // Iterate through the length of word2
+                if i == 0: // If word1 is empty
+                    dp[i][j] = j // Minimum operations = j (insertions)
+                else if j == 0: // If word2 is empty
+                    dp[i][j] = i // Minimum operations = i (deletions)
+                else if word1[i - 1] == word2[j - 1]: // If last characters are the same
+                    dp[i][j] = dp[i - 1][j - 1] // No operation needed
+                else: // If last characters are different
+                    dp[i][j] = 1 + min(dp[i - 1][j], // Deletion
+                                       dp[i][j - 1], // Insertion
+                                       dp[i - 1][j - 1]) // Replacement
+
+        return dp[m][n] // Return the minimum edit distance
 ```
 
 **Longest Common Subsequence**
 
 The Longest Common Subsequence problem involves finding the longest subsequence common to two sequences.
 
-**Java Code Example:**
-```java
-class LCS {
-    public int longestCommonSubsequence(String text1, String text2) {
-        int m = text1.length();
-        int n = text2.length();
-        int[][] dp = new int[m + 1][n + 1];
+**Code Example:**
+```
+// Class to calculate the Longest Common Subsequence
+class LCS:
+    // Function to find the length of the longest common subsequence of text1 and text2
+    public function longestCommonSubsequence(string text1, string text2) -> integer:
+        integer m = length of text1 // Length of the first string
+        integer n = length of text2 // Length of the second string
+        
+        // Create a 2D array to store the lengths of longest common subsequences
+        integer[][] dp = new integer[m + 1][n + 1]
 
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1] + 1;
-                } else {
-                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
-                }
-            }
-        }
-        return dp[m][n];
-    }
-}
+        // Fill the dp array
+        for integer i from 1 to m: // Iterate over the length of text1
+            for integer j from 1 to n: // Iterate over the length of text2
+                if text1[i - 1] == text2[j - 1]: // If characters match
+                    dp[i][j] = dp[i - 1][j - 1] + 1 // Increment LCS length
+                else: // If characters do not match
+                    dp[i][j] = max(dp[i - 1][j], // LCS without the current character of text1
+                                   dp[i][j - 1]) // LCS without the current character of text2
+
+        return dp[m][n] // Return the length of the longest common subsequence
 ```
 
 ## Graph Algorithms
@@ -819,39 +887,45 @@ class LCS {
 
 Dijkstra’s algorithm finds the shortest path from a source node to all other nodes in a graph with non-negative weights.
 
-**Java Code Example:**
-```java
-import java.util.*;
+**Code Example:**
+```
+// Class to implement Dijkstra's algorithm
+class Dijkstra:
+    // Function to find the shortest paths from source node 'src' in a graph
+    public function dijkstra(integer[][] graph, integer src) -> integer[]:
+        integer V = length of graph // Number of vertices in the graph
+        integer[] dist = new integer[V] // Array to store shortest distances
+        boolean[] sptSet = new boolean[V] // Array to track vertices included in shortest path tree
 
-class Dijkstra {
-    public int[] dijkstra(int[][] graph, int src) {
-        int V = graph.length;
-        int[] dist = new int[V];
-        boolean[] sptSet = new boolean[V];
+        // Initialize distances to infinity and source distance to 0
+        for integer i from 0 to V - 1:
+            dist[i] = infinity
+        dist[src] = 0 // Distance to source is 0
 
-        Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[src] = 0;
+        // Create a priority queue to store vertices and their distances
+        PriorityQueue<int[]> pq = new PriorityQueue<>(comparator that compares by distance)
+        pq.add([src, 0]) // Add source node to priority queue
 
-        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
-        pq.add(new int[]{src, 0});
+        // Loop until the priority queue is empty
+        while not pq.isEmpty():
+            int[] u = pq.poll() // Extract the vertex with the smallest distance
+            integer uNode = u[0] // Current node
 
-        while (!pq.isEmpty()) {
-            int[] u = pq.poll();
-            int uNode = u[0];
+            // If uNode is already in the shortest path tree, skip it
+            if sptSet[uNode] == true:
+                continue
+            sptSet[uNode] = true // Mark the current node as processed
 
-            if (sptSet[uNode]) continue;
-            sptSet[uNode] = true;
+            // Iterate through all vertices adjacent to uNode
+            for integer v from 0 to V - 1:
+                // Check if v is not in the shortest path tree and there is an edge
+                if sptSet[v] == false and graph[uNode][v] != 0:
+                    // If the new distance is shorter, update the distance
+                    if dist[uNode] + graph[uNode][v] < dist[v]:
+                        dist[v] = dist[uNode] + graph[uNode][v] // Update distance
+                        pq.add([v, dist[v]]) // Add v to the priority queue with updated distance
 
-            for (int v = 0; v < V; v++) {
-                if (!sptSet[v] && graph[uNode][v] != 0 && dist[uNode] + graph[uNode][v] < dist[v]) {
-                    dist[v] = dist[uNode] + graph[uNode][v];
-                    pq.add(new int[]{v, dist[v]});
-                }
-            }
-        }
-        return dist;
-    }
-}
+        return dist // Return the array of shortest distances
 ```
 
 #### Bellman-Ford Algorithm
@@ -896,37 +970,42 @@ Time and Space Complexity
     Space Complexity: O(V)
         Space is needed to store the distance values for each vertex and the graph representation.
 
-**Java Code Example:**
-```java
-class BellmanFord {
-    public int[] bellmanFord(int[][] graph, int V, int E, int src) {
-        int[] dist = new int[V];
-        Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[src] = 0;
+**Code Example:**
+```
+// Class to implement the Bellman-Ford algorithm
+class BellmanFord:
+    // Function to find the shortest paths from source node 'src'
+    // graph: Array of edges where each edge is represented as [u, v, weight]
+    // V: Number of vertices
+    // E: Number of edges
+    // src: Source vertex
+    public function bellmanFord(integer[][] graph, integer V, integer E, integer src) -> integer[]:
+        // Initialize distances to all vertices as infinite
+        integer[] dist = new integer[V]
+        for integer i from 0 to V - 1:
+            dist[i] = infinity
+        dist[src] = 0 // Distance to source is 0
 
-        for (int i = 0; i < V - 1; i++) {
-            for (int j = 0; j < E; j++) {
-                int u = graph[j][0];
-                int v = graph[j][1];
-                int weight = graph[j][2];
-                if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
-                    dist[v] = dist[u] + weight;
-                }
-            }
-        }
+        // Relax all edges |V| - 1 times
+        for integer i from 0 to V - 2:
+            for integer j from 0 to E - 1:
+                integer u = graph[j][0] // Start vertex of edge
+                integer v = graph[j][1] // End vertex of edge
+                integer weight = graph[j][2] // Weight of edge
+                // Check if the distance can be shortened
+                if dist[u] != infinity and dist[u] + weight < dist[v]:
+                    dist[v] = dist[u] + weight // Update distance
 
         // Check for negative-weight cycles
-        for (int j = 0; j < E; j++) {
-            int u = graph[j][0];
-            int v = graph[j][1];
-            int weight = graph[j][2];
-            if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
-                System.out.println("Graph contains negative weight cycle");
-            }
-        }
-        return dist;
-    }
-}
+        for integer j from 0 to E - 1:
+            integer u = graph[j][0] // Start vertex of edge
+            integer v = graph[j][1] // End vertex of edge
+            integer weight = graph[j][2] // Weight of edge
+            // If we can still shorten the distance, there is a negative-weight cycle
+            if dist[u] != infinity and dist[u] + weight < dist[v]:
+                print("Graph contains negative weight cycle")
+
+        return dist // Return the array of shortest distances
 ```
 
 #### Maximum Flow
@@ -935,63 +1014,63 @@ class BellmanFord {
 
 Ford-Fulkerson computes the maximum flow in a flow network using augmenting paths.
 
-**Java Code Example:**
-```java
-class FordFulkerson {
-    private static final int V = 6;
+**Code Example:**
+```
+class FordFulkerson:
+    constant integer V = 6 // Number of vertices in the graph
 
-    // Returns the maximum flow from s to t in the given graph
-    public int fordFulkerson(int[][] graph, int s, int t) {
-        int u, v;
-        int[][] rGraph = new int[V][V];
-        for (u = 0; u < V; u++)
-            for (v = 0; v < V; v++)
-                rGraph[u][v] = graph[u][v];
+    // Function to compute the maximum flow from source 's' to sink 't'
+    public function fordFulkerson(integer[][] graph, integer s, integer t) -> integer:
+        integer u, v
+        integer[][] rGraph = new integer[V][V] // Residual graph
+        // Initialize residual graph with the capacities of the original graph
+        for integer u from 0 to V - 1:
+            for integer v from 0 to V - 1:
+                rGraph[u][v] = graph[u][v]
 
-        int[] parent = new int[V];
-        int max_flow = 0;
+        integer[] parent = new integer[V] // Array to store the path
+        integer max_flow = 0 // Initialize maximum flow
 
-        while (bfs(rGraph, s, t, parent)) {
-            int path_flow = Integer.MAX_VALUE;
-            for (v = t; v != s; v = parent[v]) {
-                u = parent[v];
-                path_flow = Math.min(path_flow, rGraph[u][v]);
-            }
+        // While there is a path from source to sink in the residual graph
+        while bfs(rGraph, s, t, parent):
+            integer path_flow = infinity // Initialize path flow
+            // Find the maximum flow through the path found by BFS
+            for v from t to s:
+                u = parent[v]
+                path_flow = min(path_flow, rGraph[u][v]) // Minimum capacity in the path
 
-            for (v = t; v != s; v = parent[v]) {
-                u = parent[v];
-                rGraph[u][v] -= path_flow;
-                rGraph[v][u] += path_flow;
-            }
+            // update residual capacities of the edges and reverse edges
+            for v from t to s:
+                u = parent[v]
+                rGraph[u][v] -= path_flow // Decrease the capacity of the edge
+                rGraph[v][u] += path_flow // Increase the capacity of the reverse edge
 
-            max_flow += path_flow;
-        }
-        return max_flow;
-    }
+            max_flow += path_flow // Add path flow to overall flow
 
-    private boolean bfs(int[][] rGraph, int s, int t, int[] parent) {
-        boolean[] visited = new boolean[V];
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(s);
-        visited[s] = true;
-        parent[s] = -1;
+        return max_flow // Return the maximum flow found
 
-        while (!queue.isEmpty()) {
-            int u = queue.poll();
+    // Function to perform BFS on the residual graph
+    private function bfs(integer[][] rGraph, integer s, integer t, integer[] parent) -> boolean:
+        boolean[] visited = new boolean[V] // Array to track visited vertices
+        Queue<Integer> queue = new Queue<Integer>() // Queue for BFS
+        queue.add(s) // Start from the source
+        visited[s] = true
+        parent[s] = -1 // Source has no parent
 
-            for (int v = 0; v < V; v++) {
-                if (!visited[v] && rGraph[u][v] > 0) {
-                    queue.add(v);
-                    visited[v] = true;
-                    parent[v] = u;
-                    if (v == t)
-                        return true;
-                }
-            }
-        }
-        return false;
-    }
-}
+        // BFS loop
+        while not queue.isEmpty():
+            integer u = queue.poll() // Get the front of the queue
+
+            for integer v from 0 to V - 1:
+                // If the vertex is not visited and there is a remaining capacity
+                if not visited[v] and rGraph[u][v] > 0:
+                    queue.add(v) // Add to queue
+                    visited[v] = true // Mark as visited
+                    parent[v] = u // Set parent of v
+                    if v == t: // If we reached the sink
+                        return true // Path found
+
+        return false // No path found
 ```
 
 #### Minimum Spanning Trees
@@ -1045,55 +1124,50 @@ class FordFulkerson {
 - **Greedy Approach**: Prim’s algorithm always selects the minimum weight edge that extends the current MST.
 - **Efficiency**: It runs in O(V^2) time with an adjacency matrix, but can be improved to O(E log V) with a priority queue.
 
-**Java Code Example**:
+**Code Example**:
 
 The following Java code implements Prim’s Algorithm to find the Minimum Spanning Tree (MST) of a given graph. The graph is represented using an adjacency matrix where `graph[i][j]` indicates the weight of the edge between vertices `i` and `j`.
 
-```java
-class PrimMST {
+```
+class PrimMST:
     /**
      * Computes the weight of the Minimum Spanning Tree (MST) using Prim's Algorithm.
      * 
      * @param graph 2D array representing the adjacency matrix of the graph
      * @return Total weight of the MST
      */
-    public int primMST(int[][] graph) {
-        int V = graph.length; // Number of vertices in the graph
-        int[] key = new int[V]; // Key values used to pick the minimum weight edge
-        boolean[] mstSet = new boolean[V]; // To track vertices included in the MST
-        int[][] parent = new int[V][V]; // To store the parent of each vertex in the MST
+    public function primMST(integer[][] graph) -> integer:
+        integer V = length of graph // Number of vertices in the graph
+        integer[] key = new integer[V] // Key values used to pick the minimum weight edge
+        boolean[] mstSet = new boolean[V] // To track vertices included in the MST
+        integer[][] parent = new integer[V][V] // To store the parent of each vertex in the MST
 
         // Initialize all keys as INFINITE and mstSet as false
-        for (int i = 0; i < V; i++) {
-            key[i] = Integer.MAX_VALUE; // Use MAX_VALUE to denote infinity
-            mstSet[i] = false; // All vertices are initially not included in the MST
-        }
-        key[0] = 0; // Start with the first vertex
-        parent[0][0] = -1; // The first node is the root of the MST
+        for integer i from 0 to V - 1:
+            key[i] = infinity // Use infinity to denote MAX_VALUE
+            mstSet[i] = false // All vertices are initially not included in the MST
+        key[0] = 0 // Start with the first vertex
+        parent[0][0] = -1 // The first node is the root of the MST
 
         // Find the MST for V-1 vertices
-        for (int count = 0; count < V - 1; count++) {
+        for integer count from 0 to V - 2:
             // Pick the minimum key vertex from the set of vertices not yet included in MST
-            int u = minKey(key, mstSet);
-            mstSet[u] = true; // Include this vertex in the MST
+            integer u = minKey(key, mstSet)
+            mstSet[u] = true // Include this vertex in the MST
 
             // Update the key and parent values of the adjacent vertices
-            for (int v = 0; v < V; v++) {
+            for integer v from 0 to V - 1:
                 // Update key if graph[u][v] is smaller than key[v] and v is not yet included in the MST
-                if (graph[u][v] != 0 && !mstSet[v] && graph[u][v] < key[v]) {
-                    parent[v][u] = graph[u][v]; // Update parent to reflect the new edge in the MST
-                    key[v] = graph[u][v]; // Update the key to reflect the new minimum edge weight
-                }
-            }
-        }
+                if graph[u][v] != 0 and not mstSet[v] and graph[u][v] < key[v]:
+                    parent[v][u] = graph[u][v] // Update parent to reflect the new edge in the MST
+                    key[v] = graph[u][v] // Update the key to reflect the new minimum edge weight
 
         // Calculate the total weight of the MST
-        int mst_weight = 0;
-        for (int i = 1; i < V; i++)
-            mst_weight += parent[i][i]; // Sum the weights of the MST edges
+        integer mst_weight = 0
+        for integer i from 1 to V - 1:
+            mst_weight += parent[i][i] // Sum the weights of the MST edges
 
-        return mst_weight; // Return the total weight of the MST
-    }
+        return mst_weight // Return the total weight of the MST
 
     /**
      * Finds the vertex with the minimum key value from the set of vertices not yet included in the MST.
@@ -1102,21 +1176,17 @@ class PrimMST {
      * @param mstSet Boolean array representing whether vertices are included in the MST
      * @return Index of the vertex with the minimum key value
      */
-    private int minKey(int[] key, boolean[] mstSet) {
-        int min = Integer.MAX_VALUE; // Initialize minimum key value
-        int min_index = -1; // Initialize index of the minimum key value
+    private function minKey(integer[] key, boolean[] mstSet) -> integer:
+        integer min = infinity // Initialize minimum key value
+        integer min_index = -1 // Initialize index of the minimum key value
 
-        for (int v = 0; v < key.length; v++) {
+        for integer v from 0 to length of key - 1:
             // Update min_index if the vertex is not in mstSet and has a smaller key value
-            if (!mstSet[v] && key[v] < min) {
-                min = key[v];
-                min_index = v;
-            }
-        }
+            if not mstSet[v] and key[v] < min:
+                min = key[v]
+                min_index = v
 
-        return min_index; // Return the index of the vertex with the minimum key value
-    }
-}
+        return min_index // Return the index of the vertex with the minimum key value
 ```
 
 **Explanation**:
@@ -1163,9 +1233,9 @@ We want to find the shortest route that visits each city exactly once and return
 
 We'll use the brute force approach to find the exact solution. This method evaluates all possible permutations of cities and calculates the total distance for each permutation to find the minimum.
 
-**Java Code for Brute Force Solution**:
+**Code for Brute Force Solution**:
 
-```java
+```
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -1250,77 +1320,68 @@ public class TSPBruteForce {
 
 The greedy algorithm constructs the route by always choosing the nearest unvisited city.
 
-**Java Code for Greedy Algorithm**:
+**Code for Greedy Algorithm**:
 
-```java
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+```
+class TSPGreedy:
+    private integer[][] graph
+    private integer V
 
-public class TSPGreedy {
-    private int[][] graph;
-    private int V;
+    // Constructor to initialize the graph and the number of vertices
+    public function TSPGreedy(integer[][] graph):
+        this.graph = graph
+        this.V = length of graph // Number of vertices in the graph
 
-    public TSPGreedy(int[][] graph) {
-        this.graph = graph;
-        this.V = graph.length;
-    }
+    // Function to find the shortest path using a greedy approach
+    public function findShortestPath() -> List<Integer>:
+        boolean[] visited = new boolean[V] // To track visited vertices
+        List<Integer> tour = new ArrayList<>()
+        integer currentVertex = 0 // Start from vertex 0
 
-    public List<Integer> findShortestPath() {
-        boolean[] visited = new boolean[V];
-        List<Integer> tour = new ArrayList<>();
-        int currentVertex = 0;
+        tour.add(currentVertex) // Add starting vertex to the tour
+        visited[currentVertex] = true // Mark the starting vertex as visited
 
-        tour.add(currentVertex);
-        visited[currentVertex] = true;
+        for integer i from 1 to V - 1: // Loop through remaining vertices
+            integer nearestVertex = findNearestVertex(currentVertex, visited) // Find the nearest unvisited vertex
+            tour.add(nearestVertex) // Add nearest vertex to the tour
+            visited[nearestVertex] = true // Mark it as visited
+            currentVertex = nearestVertex // Move to the nearest vertex
 
-        for (int i = 1; i < V; i++) {
-            int nearestVertex = findNearestVertex(currentVertex, visited);
-            tour.add(nearestVertex);
-            visited[nearestVertex] = true;
-            currentVertex = nearestVertex;
-        }
+        tour.add(0) // Return to the start node
+        return tour // Return the complete tour
 
-        tour.add(0); // Return to the start node
-        return tour;
-    }
+    // Function to find the nearest unvisited vertex from the current vertex
+    private function findNearestVertex(integer currentVertex, boolean[] visited) -> integer:
+        integer minDistance = infinity // Initialize minimum distance to infinity
+        integer nearestVertex = -1 // Initialize nearest vertex
 
-    private int findNearestVertex(int currentVertex, boolean[] visited) {
-        int minDistance = Integer.MAX_VALUE;
-        int nearestVertex = -1;
+        for integer i from 0 to V - 1: // Iterate through all vertices
+            if !visited[i] and graph[currentVertex][i] < minDistance: // Check if the vertex is unvisited and has a smaller distance
+                minDistance = graph[currentVertex][i] // Update minimum distance
+                nearestVertex = i // Update nearest vertex
 
-        for (int i = 0; i < V; i++) {
-            if (!visited[i] && graph[currentVertex][i] < minDistance) {
-                minDistance = graph[currentVertex][i];
-                nearestVertex = i;
-            }
-        }
+        return nearestVertex // Return the nearest unvisited vertex
 
-        return nearestVertex;
-    }
-
-    public static void main(String[] args) {
-        int[][] graph = {
+    // Main function to execute the program
+    public static function main(String[] args):
+        integer[][] graph = {
             {0, 10, 15, 20},
             {10, 0, 35, 25},
             {15, 35, 0, 30},
             {20, 25, 30, 0}
-        };
-        TSPGreedy tsp = new TSPGreedy(graph);
-        List<Integer> tour = tsp.findShortestPath();
-        System.out.println("Tour: " + tour);
-        int tourCost = calculateTourCost(graph, tour);
-        System.out.println("Tour Cost: " + tourCost);
-    }
-
-    private static int calculateTourCost(int[][] graph, List<Integer> tour) {
-        int cost = 0;
-        for (int i = 0; i < tour.size() - 1; i++) {
-            cost += graph[tour.get(i)][tour.get(i + 1)];
         }
-        return cost;
-    }
-}
+        TSPGreedy tsp = new TSPGreedy(graph) // Create instance of TSPGreedy
+        List<Integer> tour = tsp.findShortestPath() // Find the shortest tour
+        print("Tour: ", tour) // Print the tour
+        integer tourCost = calculateTourCost(graph, tour) // Calculate the cost of the tour
+        print("Tour Cost: ", tourCost) // Print the tour cost
+
+    // Function to calculate the total cost of the tour
+    private static function calculateTourCost(integer[][] graph, List<Integer> tour) -> integer:
+        integer cost = 0
+        for integer i from 0 to length of tour - 2: // Loop through the tour
+            cost += graph[tour.get(i)][tour.get(i + 1)] // Add the edge weights to the total cost
+        return cost // Return the total tour cost
 ```
 
 **Explanation**
@@ -1386,68 +1447,59 @@ The **Greedy Approximation Algorithm** for TSP is one of the simplest approximat
 - **Efficiency**: The time complexity is linear in terms of the number of cities, making it suitable for larger instances.
 - **Approximation Quality**: The performance of the greedy algorithm can vary depending on the distribution of cities and distances.
 
-**Java Code Example:**
+**Code Example:**
 
 The following Java code implements the Greedy Approximation Algorithm for TSP. This code assumes that the distance between cities is represented as a 2D array where `graph[i][j]` denotes the distance from city `i` to city `j`.
 
-```java
-import java.util.ArrayList;
-import java.util.List;
-
-class TSPGreedy {
+```
+class TSPGreedy:
     /**
      * Computes a tour using the Greedy Approximation Algorithm for the Traveling Salesman Problem (TSP).
      * 
      * @param graph 2D array representing the distance between each pair of cities
      * @return List of integers representing the tour, starting from city 0
      */
-    public List<Integer> tspGreedy(int[][] graph) {
-        int V = graph.length; // Number of cities
-        boolean[] visited = new boolean[V]; // Array to keep track of visited cities
-        List<Integer> tour = new ArrayList<>(); // List to store the tour
-        int currVertex = 0; // Start the tour from the first city
-        tour.add(currVertex); // Add the starting city to the tour
-        visited[currVertex] = true; // Mark the starting city as visited
+    public function tspGreedy(integer[][] graph) -> List<Integer>:
+        integer V = length of graph // Number of cities
+        boolean[] visited = new boolean[V] // Array to keep track of visited cities
+        List<Integer> tour = new ArrayList<> // List to store the tour
+        integer currVertex = 0 // Start the tour from the first city
+        tour.add(currVertex) // Add the starting city to the tour
+        visited[currVertex] = true // Mark the starting city as visited
 
         // Iterate through the remaining cities
-        for (int i = 1; i < V; i++) {
-            int nextVertex = -1; // Index of the next city to visit
-            int minDist = Integer.MAX_VALUE; // Minimum distance initialized to infinity
+        for integer i from 1 to V - 1:
+            integer nextVertex = -1 // Index of the next city to visit
+            integer minDist = infinity // Minimum distance initialized to infinity
             
             // Find the nearest unvisited city
-            for (int j = 0; j < V; j++) {
+            for integer j from 0 to V - 1:
                 // Check if the city is unvisited and if the distance is smaller than the current minimum distance
-                if (!visited[j] && graph[currVertex][j] < minDist) {
-                    minDist = graph[currVertex][j]; // Update the minimum distance
-                    nextVertex = j; // Update the next city to visit
-                }
-            }
+                if !visited[j] and graph[currVertex][j] < minDist:
+                    minDist = graph[currVertex][j] // Update the minimum distance
+                    nextVertex = j // Update the next city to visit
             
             // Add the nearest city to the tour
-            tour.add(nextVertex);
-            visited[nextVertex] = true; // Mark the city as visited
-            currVertex = nextVertex; // Move to the next city
-        }
+            tour.add(nextVertex) // Add the nearest city to the tour
+            visited[nextVertex] = true // Mark the city as visited
+            currVertex = nextVertex // Move to the next city
 
         // Return the tour as a list of city indices
-        return tour;
-    }
+        return tour // Return the completed tour
 
-    public static void main(String[] args) {
+    public static function main(String[] args):
         // Example graph: 4 cities with distances between them
-        int[][] graph = {
+        integer[][] graph = {
             {0, 10, 15, 20},
             {10, 0, 35, 25},
             {15, 35, 0, 30},
             {20, 25, 30, 0}
-        };
+        }
 
-        TSPGreedy tsp = new TSPGreedy();
-        List<Integer> tour = tsp.tspGreedy(graph);
+        TSPGreedy tsp = new TSPGreedy() // Create an instance of TSPGreedy
+        List<Integer> tour = tsp.tspGreedy(graph) // Compute the TSP tour
         
-        System.out.println("Greedy TSP Tour: " + tour);
-    }
-}
+        print("Greedy TSP Tour: ", tour) // Output the tour
 ```
 
 **Explanation**:
@@ -1476,40 +1528,35 @@ Monte Carlo and Las Vegas algorithms are two types of randomized algorithms that
 - **Performance**: They are often used when the problem can be solved more quickly or feasibly using random sampling rather than deterministic methods.
 - **Applications**: Monte Carlo algorithms are commonly used in simulations, optimization problems, and numerical integration.
 
-**Java Code Example: Monte Carlo Method for Estimating Pi**
+**Code Example: Monte Carlo Method for Estimating Pi**
 
 The following Java code demonstrates how to use a Monte Carlo algorithm to estimate the value of π (Pi) by randomly sampling points in a unit square and checking if they fall inside a unit circle.
 
-```java
-import java.util.Random;
-
-class MonteCarloPi {
+```
+class MonteCarloPi:
     // Method to estimate the value of Pi using the Monte Carlo method
-    public double estimatePi(int numSamples) {
-        int insideCircle = 0;
-        Random rand = new Random();
+    public function estimatePi(integer numSamples) -> double:
+        integer insideCircle = 0 // Counter for points inside the unit circle
+        Random rand = new Random() // Random number generator
 
         // Generate numSamples random points
-        for (int i = 0; i < numSamples; i++) {
-            double x = rand.nextDouble(); // Random x-coordinate
-            double y = rand.nextDouble(); // Random y-coordinate
-            // Check if the point is inside the unit circle
-            if (x * x + y * y <= 1) {
-                insideCircle++;
-            }
-        }
+        for integer i from 0 to numSamples - 1:
+            double x = rand.nextDouble() // Generate a random x-coordinate in [0, 1)
+            double y = rand.nextDouble() // Generate a random y-coordinate in [0, 1)
+            
+            // Check if the point is inside the unit circle (x^2 + y^2 <= 1)
+            if (x * x + y * y <= 1):
+                insideCircle = insideCircle + 1 // Increment counter for inside points
 
         // Estimate Pi using the ratio of points inside the circle to total points
-        return 4.0 * insideCircle / numSamples;
-    }
+        return 4.0 * insideCircle / numSamples // Return the estimated value of Pi
 
-    public static void main(String[] args) {
-        MonteCarloPi mcPi = new MonteCarloPi();
-        int numSamples = 1000000; // Number of samples to generate
-        double piEstimate = mcPi.estimatePi(numSamples);
-        System.out.println("Estimated value of Pi: " + piEstimate);
-    }
-}
+    public static function main(String[] args):
+        MonteCarloPi mcPi = new MonteCarloPi() // Create an instance of MonteCarloPi
+        integer numSamples = 1000000 // Number of samples to generate
+        double piEstimate = mcPi.estimatePi(numSamples) // Estimate Pi using the Monte Carlo method
+        
+        print("Estimated value of Pi: ", piEstimate) // Output the estimated value of Pi
 ```
 
 **Explanation**:
@@ -1528,62 +1575,58 @@ class MonteCarloPi {
 - **Randomness in Runtime**: The runtime can be influenced by random decisions or probabilistic factors, which may lead to faster or slower performance.
 - **Applications**: They are often used in probabilistic algorithms where an exact or optimal solution is needed, but the process to obtain it may be randomized to improve expected performance.
 
-**Java Code Example:**
+**Code Example:**
 
 While Las Vegas algorithms are often more complex and context-specific, a classic example is the **Randomized QuickSort** algorithm. Here’s a simplified version demonstrating a randomized approach to sorting:
 
-```java
-import java.util.Random;
-
-class RandomizedQuickSort {
-    private static final Random rand = new Random();
+```
+class RandomizedQuickSort:
+    // Static variable for random number generation
+    private static Random rand = new Random()
 
     // Method to perform Randomized QuickSort
-    public void sort(int[] arr, int low, int high) {
-        if (low < high) {
-            // Partition the array
-            int pivotIndex = partition(arr, low, high);
-            // Recursively sort the subarrays
-            sort(arr, low, pivotIndex - 1);
-            sort(arr, pivotIndex + 1, high);
-        }
-    }
+    public function sort(array arr, integer low, integer high):
+        if low < high:
+            // Partition the array and get the pivot index
+            integer pivotIndex = partition(arr, low, high)
+            // Recursively sort the left and right subarrays
+            sort(arr, low, pivotIndex - 1)
+            sort(arr, pivotIndex + 1, high)
 
     // Method to partition the array around a random pivot
-    private int partition(int[] arr, int low, int high) {
-        int pivotIndex = low + rand.nextInt(high - low + 1);
-        int pivot = arr[pivotIndex];
-        // Swap pivot with the last element
-        swap(arr, pivotIndex, high);
-        int i = low;
-        for (int j = low; j < high; j++) {
-            if (arr[j] < pivot) {
-                swap(arr, i, j);
-                i++;
-            }
-        }
-        // Place the pivot in the correct position
-        swap(arr, i, high);
-        return i;
-    }
+    private function partition(array arr, integer low, integer high) -> integer:
+        // Choose a random pivot index between low and high
+        integer pivotIndex = low + rand.nextInt(high - low + 1)
+        integer pivot = arr[pivotIndex] // Get the pivot value
+        swap(arr, pivotIndex, high) // Move pivot to the end
+        integer i = low // Initialize the index for smaller elements
+
+        // Rearrange the array based on the pivot value
+        for integer j from low to high - 1:
+            if arr[j] < pivot:
+                swap(arr, i, j) // Swap smaller element to the front
+                i = i + 1 // Move the boundary of smaller elements
+
+        // Move the pivot to its correct position
+        swap(arr, i, high)
+        return i // Return the index of the pivot
 
     // Method to swap elements in the array
-    private void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
+    private function swap(array arr, integer i, integer j):
+        integer temp = arr[i]
+        arr[i] = arr[j]
+        arr[j] = temp
 
-    public static void main(String[] args) {
-        int[] arr = { 10, 7, 8, 9, 1, 5 };
-        RandomizedQuickSort sorter = new RandomizedQuickSort();
-        sorter.sort(arr, 0, arr.length - 1);
-        System.out.println("Sorted array: ");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-    }
-}
+    // Main method to test the Randomized QuickSort
+    public static function main(String[] args):
+        // Initialize an array to sort
+        array arr = [10, 7, 8, 9, 1, 5]
+        RandomizedQuickSort sorter = new RandomizedQuickSort() // Create an instance of RandomizedQuickSort
+        sorter.sort(arr, 0, arr.length - 1) // Sort the array
+        
+        print("Sorted array: ") // Print the sorted array
+        for integer num in arr:
+            print(num + " ") // Output each sorted element
 ```
 
 **Explanation**:
