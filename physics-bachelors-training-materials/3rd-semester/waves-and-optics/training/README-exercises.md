@@ -6,7 +6,7 @@
 
 2. **Solve the one-dimensional wave equation** for a wave traveling to the right with initial conditions: $( \psi(x, 0) = \sin(kx) )$ and $( \frac{\partial \psi}{\partial t}(x, 0) = 0 )$.
 
-3. Two waves are described by $( \psi_1 = A \sin(kx - \omega t) )$ and $( \psi_2 = A \sin(kx - \omega t + \phi) )$. **Show that their interference pattern** produces a resultant amplitude of $( 2A \cos\left $(frac{\phi}{2}\right)$ )$.
+3. Two waves are described by $( \psi_1 = A \sin(kx - \omega t) )$ and $( \psi_2 = A \sin(kx - \omega t + \phi) )$. **Show that their interference pattern** produces a resultant amplitude of $( 2A \cos\left(frac{\phi}{2}\right) )$.
 
 4. In a double-slit experiment, light of wavelength $(600 \, \text{nm})$ passes through slits spaced $(0.2 \, \text{mm})$ apart. **Calculate the distance between adjacent bright fringes** on a screen 2 meters away.
 
