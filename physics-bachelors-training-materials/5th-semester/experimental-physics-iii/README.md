@@ -39,8 +39,5 @@ This course provides hands-on experience with advanced experimental techniques i
 - Laboratory guides and protocols from [OpenStax](https://openstax.org) and other educational resources.
 
 ## Books and References
-- [MIT OpenCourseWare - Experimental Physics](https://ocw.mit.edu/courses/physics/)
+- [MIT OpenCourseWare - Experimental Physics](https://ocw.mit.edu/courses/8-13-14-experimental-physics-i-ii-junior-lab-fall-2016-spring-2017/)
 - [Stanford University - Experimental Physics Resources](https://physics.stanford.edu/research/experimental)
-- [University of California, Berkeley - Physics Labs](https://www.physics.berkeley.edu)
-- [ArXiv Preprints in Experimental Physics](https://arxiv.org/archive/physics)
-- [Experimental Physics Blog and Community](https://www.experimentalphysicscommunity.com)
