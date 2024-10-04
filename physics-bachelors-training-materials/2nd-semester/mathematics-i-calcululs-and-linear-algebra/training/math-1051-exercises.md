@@ -49,9 +49,7 @@
 36. **Gram-Schmidt Process**: Use the Gram-Schmidt process to orthogonalize the set of vectors $( \mathbf{v}_1 = (1, 1, 0) )$ and $( \mathbf{v}_2 = (1, 0, 1) )$.
 37. **Inner Product Spaces**: Define an inner product on the space $( \mathbb{R}^3 )$, and use it to find the angle between the vectors $( (1, 0, 0) )$ and $( (0, 1, 1) )$.
 38. **Isomorphisms**: Show that the vector space $( \mathbb{R}^2 )$ is isomorphic to the space of 2x1 column matrices.
-39. **Row Space and Rank**: Find the rank of the matrix $( A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 4 \\ 5 & 
-
-6 & 0 \end{pmatrix} )$, and determine if the rows are linearly independent.
+39. **Row Space and Rank**: Find the rank of the matrix $( A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 4 \\ 5 & 6 & 0 \end{pmatrix} )$, and determine if the rows are linearly independent.
 40. **Applications in Coding Theory**: Explain how vector spaces are used in error-correcting codes, and provide an example of a simple coding matrix.
 
 ---
