@@ -35,23 +35,19 @@ This course provides hands-on experience with advanced experimental techniques i
 
 2. **Statistical Methods:**
 
-   - **Standard Deviation (\(\sigma\)):**
+   - **Standard Deviation ($(\sigma)$):**
 
-     \[
-     \sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \bar{x})^2}
-     \]
+     $\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \bar{x})^2}$
 
-     where \(x_i\) are individual measurements, \(\bar{x}\) is the mean, and \(N\) is the number of measurements.
+     where $(x_i)$ are individual measurements, $(\bar{x})$ is the mean, and $(N)$ is the number of measurements.
 
    - **Propagation of Errors:**
 
-     For a function \(f(x, y)\), the uncertainty \(\Delta f\) can be estimated using:
+     For a function $(f(x, y))$, the uncertainty $(\Delta f)$ can be estimated using:
 
-     \[
-     (\Delta f)^2 \approx \left(\frac{\partial f}{\partial x} \Delta x\right)^2 + \left(\frac{\partial f}{\partial y} \Delta y\right)^2
-     \]
+     $(\Delta f)^2 \approx \left(\frac{\partial f}{\partial x} \Delta x\right)^2 + \left(\frac{\partial f}{\partial y} \Delta y\right)^2$
 
-     where \(\Delta x\) and \(\Delta y\) are uncertainties in \(x\) and \(y\), respectively.
+     where $(\Delta x)$ and $(\Delta y)$ are uncertainties in $(x)$ and $(y)$, respectively.
 
 #### Data Acquisition and Analysis
 
@@ -61,19 +57,15 @@ This course provides hands-on experience with advanced experimental techniques i
 
    To reduce noise and extract relevant signals, techniques such as low-pass, high-pass, and band-pass filtering are used. The filtering process often involves:
 
-   \[
-   Y(f) = X(f) \cdot H(f)
-   \]
+   $Y(f) = X(f) \cdot H(f)$
 
-   where \(X(f)\) is the input signal, \(H(f)\) is the filter response, and \(Y(f)\) is the output signal.
+   where $(X(f))$ is the input signal, $(H(f))$ is the filter response, and $(Y(f))$ is the output signal.
 
 2. **Fourier Transform:**
 
    The Fourier Transform decomposes a signal into its constituent frequencies:
 
-   \[
-   \mathcal{F}\{x(t)\} = X(f) = \int_{-\infty}^\infty x(t) e^{-i 2 \pi f t} \, dt
-   \]
+   $\mathcal{F}\{x(t)\} = X(f) = \int_{-\infty}^\infty x(t) e^{-i 2 \pi f t} \, dt$
 
    This technique is useful for analyzing frequency components of signals.
 
@@ -97,45 +89,37 @@ This course provides hands-on experience with advanced experimental techniques i
 
 1. **Young’s Double-Slit Experiment:**
 
-   Demonstrates wave interference. The intensity \(I\) at a point on the screen is given by:
+   Demonstrates wave interference. The intensity $(I)$ at a point on the screen is given by:
 
-   \[
-   I = I_0 \left[ 1 + \cos\left(\frac{2 \pi d \sin \theta}{\lambda}\right) \right]
-   \]
+   $I = I_0 \left[ 1 + \cos\left(\frac{2 \pi d \sin \theta}{\lambda}\right) \right]$
 
-   where \(I_0\) is the maximum intensity, \(d\) is the distance between slits, \(\theta\) is the angle of observation, and \(\lambda\) is the wavelength of light.
+   where $(I_0)$ is the maximum intensity, $(d)$ is the distance between slits, $(\theta)$ is the angle of observation, and $(\lambda)$ is the wavelength of light.
 
 2. **Diffraction Gratings:**
 
-   For a grating with \(N\) lines per meter, the diffraction pattern is described by:
+   For a grating with $(N)$ lines per meter, the diffraction pattern is described by:
 
-   \[
-   d \sin \theta = m \lambda
-   \]
+   $d \sin \theta = m \lambda$
 
-   where \(d\) is the grating spacing, \(m\) is the order of the diffraction maximum, and \(\lambda\) is the wavelength.
+   where $(d)$ is the grating spacing, $(m)$ is the order of the diffraction maximum, and $(\lambda)$ is the wavelength.
 
 **Polarization:**
 
 1. **Measuring Polarized Light:**
 
-   Polarization can be studied using polarizing filters. The intensity \(I\) of light passing through two polarizers is given by Malus’s Law:
+   Polarization can be studied using polarizing filters. The intensity $(I)$ of light passing through two polarizers is given by Malus’s Law:
 
-   \[
-   I = I_0 \cos^2 \theta
-   \]
+   $I = I_0 \cos^2 \theta$
 
-   where \(I_0\) is the initial intensity and \(\theta\) is the angle between the transmission axes of the polarizers.
+   where $(I_0)$ is the initial intensity and $(\theta)$ is the angle between the transmission axes of the polarizers.
 
 2. **Optical Activity:**
 
-   Optical rotation occurs in substances that rotate the plane of polarization of light. The angle of rotation \(\alpha\) is related to the concentration \(c\) and path length \(l\) by:
+   Optical rotation occurs in substances that rotate the plane of polarization of light. The angle of rotation $(\alpha)$ is related to the concentration $(c)$ and path length $(l)$ by:
 
-   \[
-   \alpha = [\text{α}] c l
-   \]
+   $\alpha = [\text{α}] c l$
 
-   where \([\text{α}]\) is the specific rotation.
+   where $([\text{α}])$ is the specific rotation.
 
 #### Electromagnetic Experiments
 
@@ -143,25 +127,19 @@ This course provides hands-on experience with advanced experimental techniques i
 
 1. **Ohm’s Law:**
 
-   Relates the voltage \(V\), current \(I\), and resistance \(R\) in a circuit:
+   Relates the voltage $(V)$, current $(I)$, and resistance $(R)$ in a circuit:
 
-   \[
-   V = I R
-   \]
+   $V = I R$
 
 2. **Kirchhoff’s Laws:**
 
    - **Kirchhoff’s Current Law (KCL):** The total current entering a junction equals the total current leaving:
 
-     \[
-     \sum I_{\text{in}} = \sum I_{\text{out}}
-     \]
+     $\sum I_{\text{in}} = \sum I_{\text{out}}$
 
    - **Kirchhoff’s Voltage Law (KVL):** The sum of the electromotive forces (emf) and potential differences in any closed loop equals zero:
 
-     \[
-     \sum V = 0
-     \]
+     $\sum V = 0$
 
 **Electromagnetic Fields:**
 
@@ -169,15 +147,11 @@ This course provides hands-on experience with advanced experimental techniques i
 
    - **Gauss’s Law:** Relates the electric flux through a surface to the charge enclosed:
 
-     \[
-     \Phi_E = \oint \mathbf{E} \cdot d\mathbf{A} = \frac{Q_{\text{enc}}}{\epsilon_0}
-     \]
+     $\Phi_E = \oint \mathbf{E} \cdot d\mathbf{A} = \frac{Q_{\text{enc}}}{\epsilon_0}$
 
    - **Ampère’s Law:** Relates the magnetic field around a closed loop to the current passing through it:
 
-     \[
-     \oint \mathbf{B} \cdot d\mathbf{l} = \mu_0 I_{\text{enc}}
-     \]
+     $\oint \mathbf{B} \cdot d\mathbf{l} = \mu_0 I_{\text{enc}}$
 
 2. **Field Interaction:**
 
@@ -191,13 +165,11 @@ This course provides hands-on experience with advanced experimental techniques i
 
 1. **Particle Statistics:**
 
-   - **Photon Counting:** Measures the number of photons arriving at a detector. The mean number of photons is related to the intensity \(I\) of light by:
+   - **Photon Counting:** Measures the number of photons arriving at a detector. The mean number of photons is related to the intensity $(I)$ of light by:
 
-     \[
-     \langle n \rangle = \frac{I t}{\hbar \omega}
-     \]
+     $\langle n \rangle = \frac{I t}{\hbar \omega}$
 
-     where \(t\) is the measurement time and \(\omega\) is the angular frequency of light.
+     where $(t)$ is the measurement time and $(\omega)$ is the angular frequency of light.
 
 2. **Quantum State Measurement:**
 
@@ -209,7 +181,7 @@ This course provides hands-on experience with advanced experimental techniques i
 
    Entangled particles exhibit correlations that cannot be explained by classical physics. Observing one particle provides information about the state of the other, regardless of distance.
 
-   - **Bell’s Theorem:** Provides a test for the presence of entanglement. The correlation function \(E(\theta_1, \theta_2)\) is used to test inequalities that are violated by quantum entanglement.
+   - **Bell’s Theorem:** Provides a test for the presence of entanglement. The correlation function $(E(\theta_1, \theta_2))$ is used to test inequalities that are violated by quantum entanglement.
 
 2. **Applications:**
 
@@ -222,48 +194,34 @@ This course provides hands-on experience with advanced experimental techniques i
 
 1. **Conductivity:**
 
-   Electrical conductivity \(\sigma\) of a material is given by:
+   Electrical conductivity $(\sigma)$ of a material is given by:
 
-   \[
-   \sigma = \frac{1}{\rho}
-   \]
+   $\sigma = \frac{1}{\rho}$
 
-   where \(\rho\) is the resistivity. Measurements involve applying an electric field and measuring current.
+   where $(\rho)$ is the resistivity. Measurements involve applying an electric field and measuring current.
 
 2. **Magnetism:**
 
-   Magnetic properties are measured using techniques like magnetometry. The magnetization \(M\) is related to the applied magnetic field \(H\) by:
+   Magnetic properties are measured using techniques like magnetometry. The magnetization $(M)$ is related to the applied magnetic field $(H)$ by:
 
-   \[
-   M = \chi H
-   \]
+   $M = \chi H$
 
-   where \(\chi\) is the magnetic susceptibility.
+   where $(\chi)$ is the magnetic susceptibility.
 
 **Phase Transitions:**
 
 1. **Thermodynamic Properties:**
 
-   Phase transitions are studied by measuring properties like heat capacity \(C\), which exhibits anomalies at transition points:
+   Phase transitions are studied by measuring properties like heat capacity $(C)$, which exhibits anomalies at transition points:
 
-   \[
-   C = \frac{dQ}{dT}
-   \]
+   $C = \frac{dQ}{dT}$
 
-   where \(dQ\) is the heat added and \(dT\) is the change in temperature.
+   where $(dQ)$ is the heat added and $(dT)$ is the change in temperature.
 
 2. **Critical Phenomena:**
 
-   Critical exponents describe the behavior of physical quantities near the phase transition. For example, the order parameter \(\phi\) near the critical temperature \(T_c\) follows:
+   Critical exponents describe the behavior of physical quantities near the phase transition. For example, the order parameter $(\phi)$ near the critical temperature $(T_c)$ follows:
 
-   \[
-   \phi \propto (T - T_c)^\
+   $\phi \propto (T - T_c)^\beta$
 
-beta
-   \]
-
-   where \(\beta\) is the critical exponent.
-
----
-
-These notes offer an in-depth exploration of experimental techniques, advanced methods, and quantum mechanics, including detailed mathematical descriptions and practical applications. This comprehensive coverage aims to equip students with both theoretical understanding and hands-on skills in experimental physics.
+   where $(\beta)$ is the critical exponent.
