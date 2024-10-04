@@ -64,8 +64,6 @@ This course explores the physical properties of condensed matter systems, focusi
 - Tutorials and documentation for experimental and computational tools used in condensed matter research.
 
 ## Books and Resources
-- [MIT OpenCourseWare - Condensed Matter Physics](https://ocw.mit.edu/courses/physics/)
-- [Stanford University - Condensed Matter Physics Research](https://physics.stanford.edu/research/condensed-matter)
-- [University of Cambridge - Condensed Matter Resources](https://www.cambridge.org/core/what-we-publish/physics)
+- [Condensed Matter Physics Theory]([https://ocw.mit.edu/courses/physics/](https://physics.yale.edu/research/condensed-matter-physics-theory))
+- [University of Cambridge - Fundamentals of Condensed Matter Physics]([https://www.cambridge.org/core/what-we-publish/physics](https://assets.cambridge.org/97805215/13319/frontmatter/9780521513319_frontmatter.pdf))
 - [ArXiv Preprints in Condensed Matter Physics](https://arxiv.org/archive/cond-mat)
-- [Condensed Matter Physics Blog and Community](https://www.condensedmatterphysicscommunity.com)
