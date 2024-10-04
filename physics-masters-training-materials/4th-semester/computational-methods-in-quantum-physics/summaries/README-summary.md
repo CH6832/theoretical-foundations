@@ -70,5 +70,3 @@ This course provides an in-depth exploration of computational techniques used to
 - **Midterm Exam:** Assessment of understanding of theoretical concepts and practical skills in computational quantum physics.
 - **Final Exam:** Comprehensive exam covering all topics discussed in the course.
 - **Programming Projects:** Practical tasks involving the implementation, execution, and analysis of quantum simulations.
-
-This course is designed to equip students with both the theoretical knowledge and practical skills necessary to tackle complex problems in quantum physics using computational methods.
