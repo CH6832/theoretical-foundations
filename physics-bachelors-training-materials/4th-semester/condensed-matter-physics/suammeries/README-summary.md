@@ -14,10 +14,8 @@
 #### **X-ray Diffraction:**
 - **Bragg's Law:**
   - **Concept:** Bragg's Law provides the condition for the constructive interference of X-rays scattered by the atomic planes in a crystal. It is given by:
-    \[
-    n\lambda = 2d\sin\theta
-    \]
-    where \(n\) is an integer, \(\lambda\) is the wavelength of the X-rays, \(d\) is the distance between atomic planes, and \(\theta\) is the angle of incidence.
+    $n\lambda = 2d\sin\theta$
+    where $(n)$ is an integer, $(\lambda)$ is the wavelength of the X-rays, $(d)$ is the distance between atomic planes, and $(\theta)$ is the angle of incidence.
   - **Explanation:** Bragg's Law is the fundamental principle behind X-ray diffraction, a key experimental method for determining crystal structures. By analyzing the angles and intensities of the diffracted rays, one can infer the arrangement of atoms within a crystal.
 
 - **Reciprocal Space:**
@@ -32,10 +30,8 @@
 - **Bloch's Theorem:**
   - **Concept:** Bloch's theorem states that the wavefunctions of electrons in a periodic potential (such as a crystal lattice) can be written as a plane wave modulated by a periodic function. This leads to the formation of energy bands.
   - **Mathematical Formulation:**
-    \[
-    \psi_k(r) = e^{ik \cdot r} u_k(r)
-    \]
-    where \( \psi_k(r) \) is the electron wavefunction, \( k \) is the wave vector, and \( u_k(r) \) is a periodic function with the same periodicity as the lattice.
+    $\psi_k(r) = e^{ik \cdot r} u_k(r)$
+    where $( \psi_k(r) )$ is the electron wavefunction, $( k )$ is the wave vector, and $( u_k(r) )$ is a periodic function with the same periodicity as the lattice.
   - **Explanation:** Bloch's theorem is foundational for understanding electronic band structures in solids. It explains why electrons can propagate through a crystal without scattering, leading to the formation of conduction and valence bands, which determine the electrical properties of materials.
 
 - **Density of States (DOS):**
@@ -70,11 +66,9 @@
 - **BCS Theory:**
   - **Concept:** BCS (Bardeen-Cooper-Schrieffer) theory explains superconductivity as a state where electrons form Cooper pairs, which can move through the lattice without resistance. This pairing is mediated by lattice vibrations (phonons).
   - **Mathematical Formulation:**
-    The energy gap \( \Delta \) at zero temperature is given by:
-    \[
-    \Delta(0) \approx 1.76 k_B T_c
-    \]
-    where \( T_c \) is the critical temperature, and \( k_B \) is Boltzmann's constant.
+    The energy gap $( \Delta )$ at zero temperature is given by:
+    $\Delta(0) \approx 1.76 k_B T_c$
+    where $( T_c )$ is the critical temperature, and $( k_B )$ is Boltzmann's constant.
   - **Explanation:** BCS theory explains why certain materials can conduct electricity without resistance below a critical temperature. It has profound implications for developing superconducting materials for use in technologies like MRI machines and maglev trains.
 
 - **High-Temperature Superconductors:**
@@ -148,7 +142,3 @@
 - **Quantum Hall Effect:**
   - **Concept:** The quantum Hall effect occurs in two-dimensional electron systems under strong magnetic fields, leading to quantized Hall conductance. It is a striking example of topological properties in condensed matter physics.
   - **Explanation:** The quantum Hall effect has led to the discovery of new topological phases of matter and is fundamental in the development of precision measurement standards.
-
----
-
-This detailed overview of condensed matter physics integrates fundamental concepts with advanced topics, providing a thorough understanding necessary for exploring the physical properties of condensed matter systems. The combination of theoretical insights and experimental techniques is essential for anyone studying or working in the field of condensed matter physics.
