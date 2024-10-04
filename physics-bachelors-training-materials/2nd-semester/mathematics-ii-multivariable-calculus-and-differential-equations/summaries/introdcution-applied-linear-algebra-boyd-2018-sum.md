@@ -31,235 +31,147 @@
 
 *The preface provides an overview of the book, its objectives, and its target audience. It also explains the structure of the content and how to best utilize the book.*
 
+Linear algebra is a fundamental tool in mathematics, engineering, data science, and machine learning. This book aims to present the core concepts of vectors, matrices, and least squares in a clear and practical manner. The target audience includes undergraduate students, professionals looking to refresh their knowledge, and individuals interested in machine learning and optimization techniques.
+
 ## Part 1: Vectors
 
 ### Chapter 1: Vectors
 
 #### Introduction to Vectors
 
-Vectors are fundamental elements in both linear algebra and machine learning. A vector can be thought of as an ordered list of numbers, represented in a column or row. For example, a vector \(\mathbf{v} \in \mathbb{R}^n\) is denoted as:
-\[
-\mathbf{v} = \begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{bmatrix}
-\]
-where each \(v_i\) is a scalar and \(n\) represents the dimension of the vector.
+Vectors represent quantities that have both magnitude and direction. In physics, vectors are used to represent forces, velocities, and other directional quantities. In machine learning, vectors are often used to represent features of data points.
 
 #### Vector Addition
 
-The addition of two vectors \(\mathbf{v}, \mathbf{w} \in \mathbb{R}^n\) is performed component-wise:
-\[
-\mathbf{v} + \mathbf{w} = \begin{bmatrix} v_1 + w_1 \\ v_2 + w_2 \\ \vdots \\ v_n + w_n \end{bmatrix}
-\]
-This operation is commutative and associative, meaning that \(\mathbf{v} + \mathbf{w} = \mathbf{w} + \mathbf{v}\) and \((\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})\).
+Vectors can also be represented geometrically. The sum of two vectors $(\mathbf{v} + \mathbf{w})$ can be visualized as placing the tail of vector $\mathbf{w}$ at the head of vector $\mathbf{v}$.
 
 #### Scalar-Vector Multiplication
 
-Scalar multiplication involves multiplying a vector by a scalar \(c \in \mathbb{R}\):
-\[
-c\mathbf{v} = \begin{bmatrix} c v_1 \\ c v_2 \\ \vdots \\ c v_n \end{bmatrix}
-\]
-This operation scales the vector, preserving its direction if \(c > 0\) and reversing it if \(c < 0\).
+Scaling a vector by a positive scalar $c$ increases its magnitude, while scaling by a negative scalar $c$ flips its direction.
 
 #### Inner Product
 
-The inner product (or dot product) of two vectors \(\mathbf{v}, \mathbf{w} \in \mathbb{R}^n\) is given by:
-\[
-\mathbf{v} \cdot \mathbf{w} = \sum_{i=1}^{n} v_i w_i
-\]
-The inner product measures the cosine of the angle between the two vectors when normalized and is central to many operations in linear algebra, such as calculating vector projections.
+The inner product can be used to find the angle $\theta$ between two vectors:
+$\mathbf{v} \cdot \mathbf{w} = \|\mathbf{v}\| \|\mathbf{w}\| \cos(\theta)$
+When $\mathbf{v} \cdot \mathbf{w} = 0$, the vectors are orthogonal (perpendicular).
 
-#### Complexity of Vector Computations
+#### Vector Projections
 
-The complexity of basic vector operations is linear with respect to the dimension \(n\). For example, the complexity of vector addition or scalar multiplication is \(O(n)\) because each element requires a constant number of operations.
-
-#### Exercises
-
-1. Prove that vector addition is commutative and associative.  
-2. Compute the inner product of the vectors \(\mathbf{v} = \begin{bmatrix} 2 \\ 3 \end{bmatrix}\) and \(\mathbf{w} = \begin{bmatrix} 4 \\ 1 \end{bmatrix}\).
+The projection of a vector $\mathbf{v}$ onto another vector $\mathbf{w}$ is given by:
+$\text{proj}_{\mathbf{w}}(\mathbf{v}) = \frac{\mathbf{v} \cdot \mathbf{w}}{\mathbf{w} \cdot \mathbf{w}} \mathbf{w}$
+This is useful in applications like least squares fitting, where we project data points onto a line or plane.
 
 ### Chapter 2: Linear Functions
 
 #### Linear Functions
 
-A linear function \(f: \mathbb{R}^n \rightarrow \mathbb{R}\) can be represented as:
-\[
-f(\mathbf{x}) = \mathbf{a}^\top \mathbf{x} + b
-\]
-where \(\mathbf{a} \in \mathbb{R}^n\) is a vector of coefficients, \(\mathbf{x} \in \mathbb{R}^n\) is the input vector, and \(b \in \mathbb{R}\) is a scalar (often referred to as the bias).
+Linear functions map vectors to scalars or other vectors. These functions are called "linear" because they satisfy the properties of additivity and homogeneity: $f(\mathbf{x} + \mathbf{y}) = f(\mathbf{x}) + f(\mathbf{y})$ and $f(c \mathbf{x}) = c f(\mathbf{x})$.
 
-#### Taylor Approximation
+#### Affine Functions
 
-The first-order Taylor approximation of a function \(f(\mathbf{x})\) around a point \(\mathbf{x}_0\) is given by:
-\[
-f(\mathbf{x}) \approx f(\mathbf{x}_0) + \nabla f(\mathbf{x}_0)^\top (\mathbf{x} - \mathbf{x}_0)
-\]
-where \(\nabla f(\mathbf{x}_0)\) is the gradient of \(f\) at \(\mathbf{x}_0\). This approximation is fundamental in linear regression and optimization.
+Affine functions are an extension of linear functions, including a bias term:
+$f(\mathbf{x}) = \mathbf{a}^\top \mathbf{x} + b$
+These are common in linear regression and machine learning models.
 
 #### Exercises
 
-1. Given \(f(\mathbf{x}) = 3x_1 + 2x_2 - 5\), find the value of \(f(\mathbf{v})\) for \(\mathbf{v} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}\).
+1. Show that the function $f(\mathbf{x}) = 3x_1 + 4x_2 + 2$ is affine but not linear.
 
 ### Chapter 3: Norm and Distance
 
 #### Norm
 
-The norm of a vector \(\mathbf{x} \in \mathbb{R}^n\) is a measure of its length or magnitude. The most common norm is the Euclidean norm (or 2-norm), defined as:
-\[
-\|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^{n} x_i^2}
-\]
-This norm satisfies the properties of positivity, scalability, and the triangle inequality.
+Other common norms include the $1$-norm (Manhattan distance) and infinity norm:
+$\|\mathbf{x}\|_1 = \sum_{i=1}^{n} |x_i|
+\quad \text{and} \quad
+\|\mathbf{x}\|_\infty = \max_i |x_i|$
+Each norm has specific use cases, like the $1$-norm for sparse representations.
 
 #### Distance
 
-The distance between two vectors \(\mathbf{x}, \mathbf{y} \in \mathbb{R}^n\) using the Euclidean norm is:
-\[
-d(\mathbf{x}, \mathbf{y}) = \|\mathbf{x} - \mathbf{y}\|_2 = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
-\]
-This distance measure is crucial in clustering algorithms, classification, and optimization problems.
+The Euclidean distance is widely used in clustering, classification, and nearest neighbor algorithms. However, in high-dimensional spaces, alternative metrics like cosine similarity may be more effective.
 
-#### Standard Deviation
+#### Exercises
 
-The standard deviation of a set of points \(\{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\}\) in \(\mathbb{R}^n\) is computed as:
-\[
-\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N} \|\mathbf{x}_i - \mu\|_2^2}
-\]
-where \(\mu = \frac{1}{N} \sum_{i=1}^{N} \mathbf{x}_i\) is the mean vector. This measure indicates how much the points deviate from the mean.
+1. Compute the $1$-norm, $2$-norm, and $\infty$-norm for the vector $\mathbf{v} = \begin{bmatrix} 3 \\ -4 \\ 1 \end{bmatrix}$.
 
 ### Chapter 4: Clustering
 
 #### Clustering
 
-An introduction to the concept of clustering in data analysis.
+Clustering involves grouping data points into subsets (clusters) where points in the same group are more similar to each other than to those in other groups.
 
 #### A Clustering Objective
 
-Explains the objective functions used to measure the quality of clustering.
+Common clustering objective functions include minimizing within-cluster variance and maximizing between-cluster separation. These objectives are used in algorithms like k-means and hierarchical clustering.
 
 #### The k-means Algorithm
 
-Detailed discussion of the k-means algorithm, a popular clustering method.
-
-#### Examples
-
-Provides examples of clustering applied to real-world data.
-
-#### Applications
-
-Explores various applications of clustering in different fields.
+K-means is a popular algorithm that partitions data into $k$ clusters by minimizing the within-cluster sum of squares:
+$\sum_{i=1}^{k} \sum_{\mathbf{x} \in C_i} \|\mathbf{x} - \mathbf{c}_i\|_2^2$
+where $C_i$ is the set of points in cluster $i$ and $\mathbf{c}_i$ is the centroid of cluster $i$.
 
 #### Exercises
 
-1. Practice clustering techniques and their applications.
+1. Implement the k-means algorithm on a small dataset and visualize the clusters.
 
 ### Chapter 5: Linear Independence
 
-#### Linear Dependence
+#### Linear Dependence and Independence
 
-Discusses the concept of linear dependence among vectors.
+Vectors $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_k$ are linearly dependent if there exist scalars $c_1, c_2, \dots, c_k$ (not all zero) such that:
+$c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \dots + c_k \mathbf{v}_k = 0$
+Otherwise, they are linearly independent.
 
-#### Basis
+#### Basis and Dimension
 
-Introduces the concept of a basis in vector spaces, explaining its importance.
-
-#### Orthonormal Vectors
-
-Explores orthonormal vectors, which form the basis of many vector space operations.
-
-#### Gram–Schmidt Algorithm
-
-Detailed explanation of the Gram–Schmidt process for orthogonalizing a set of vectors.
-
-#### Exercises
-
-1. Problems related to
-
- linear dependence, basis, and orthonormal vectors.
+A basis for a vector space is a set of linearly independent vectors that span the space. The number of vectors in the basis is the dimension of the space.
 
 ## Part 2: Matrices
 
 ### Chapter 1: Matrices
 
-#### Introduction to Matrices
-
-A matrix is a rectangular array of numbers arranged in rows and columns. For example:
-\[
-\mathbf{A} = \begin{bmatrix}
-a_{11} & a_{12} & \cdots & a_{1m} \\
-a_{21} & a_{22} & \cdots & a_{2m} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{nm}
-\end{bmatrix}
-\]
-where \(a_{ij}\) denotes the element in the \(i\)-th row and \(j\)-th column of \(\mathbf{A}\).
-
 #### Matrix Operations
 
-Includes addition, scalar multiplication, and matrix multiplication.
+Matrix addition and scalar multiplication are defined element-wise. Matrix multiplication is defined as:
+$(\mathbf{A} \mathbf{B})_{ij} = \sum_{k} A_{ik} B_{kj}$
+Matrix multiplication is not commutative, i.e., $\mathbf{A} \mathbf{B} \neq \mathbf{B} \mathbf{A}$ in general.
 
-#### Matrix Properties
+#### Matrix Transpose
 
-Discusses properties such as symmetry, diagonal matrices, and identity matrices.
+The transpose of a matrix $\mathbf{A}$, denoted $\mathbf{A}^\top$, is obtained by flipping it over its diagonal. That is, $(\mathbf{A}^\top)_{ij} = \mathbf{A}_{ji}$.
 
 ### Chapter 2: Matrix Examples
 
-#### Identity Matrix
-
-Explains the concept and properties of the identity matrix.
-
 #### Symmetric Matrix
 
-Details the properties and applications of symmetric matrices.
-
-#### Diagonal Matrix
-
-Introduces diagonal matrices and their significance.
+A matrix $\mathbf{A}$ is symmetric if $\mathbf{A} = \mathbf{A}^\top$. Symmetric matrices have real eigenvalues and orthogonal eigenvectors.
 
 ### Chapter 3: Linear Equations
 
-#### Solving Linear Systems
+#### Gaussian Elimination
 
-Methods for solving systems of linear equations, including Gaussian elimination and matrix inversion.
-
-#### Applications
-
-Discusses real-world applications of linear systems.
+Gaussian elimination is a method for solving systems of linear equations by transforming the coefficient matrix into an upper triangular form.
 
 ### Chapter 4: Linear Dynamical Systems
 
-#### Introduction
-
-Basics of linear dynamical systems and their analysis.
-
 #### State-Space Representation
 
-Explains state-space models for representing linear dynamical systems.
+A linear dynamical system can be represented as:
+$\mathbf{x}_{k+1} = \mathbf{A} \mathbf{x}_k + \mathbf{B} \mathbf{u}_k$
+where $\mathbf{x}_k$ is the state vector, $\mathbf{u}_k$ is the input, and $\mathbf{A}$ and $\mathbf{B}$ are system matrices.
 
 ### Chapter 5: Matrix Multiplication
 
-#### Definition
+#### Strassen's Algorithm
 
-Formal definition of matrix multiplication.
-
-#### Properties
-
-Explores properties of matrix multiplication, such as associativity and distributivity.
-
-#### Computational Complexity
-
-Discusses the computational complexity of matrix multiplication.
+Matrix multiplication can be performed more efficiently than the standard $O(n^3)$ algorithm using methods like Strassen’s algorithm, which has a complexity of approximately $O(n^{2.81})$.
 
 ### Chapter 6: Matrix Inverses
 
-#### Definition
+#### Invertibility
 
-Introduction to matrix inverses and their properties.
-
-#### Methods for Finding Inverses
-
-Methods for calculating the inverse of a matrix, including the Gauss-Jordan elimination method.
-
-#### Applications
-
-Discusses applications of matrix inverses in solving linear systems and optimization problems.
+A matrix $\mathbf{A}$ is invertible if there exists a matrix $\mathbf{A}^{-1}$ such that $\mathbf{A} \mathbf{A}^{-1} = \mathbf{I}$. Not all matrices are invertible.
 
 ## Part 3: Least Squares
 
@@ -267,56 +179,12 @@ Discusses applications of matrix inverses in solving linear systems and optimiza
 
 #### Introduction
 
-Introduction to the least squares method for fitting models to data.
-
-#### Linear Least Squares
-
-Detailed explanation of linear least squares and its applications.
+The least squares method minimizes the sum of squared differences between observed and predicted values. It is widely used for fitting models to data.
 
 ### Chapter 2: Least Squares Data Fitting
 
-#### Data Fitting
+#### Ridge Regression
 
-Techniques for fitting data using the least squares method.
-
-### Chapter 3: Least Squares Classification
-
-#### Classification Problems
-
-Applying the least squares method to classification problems.
-
-### Chapter 4: Multi-Objective Least Squares
-
-#### Multi-Objective Optimization
-
-Explains multi-objective optimization using least squares.
-
-### Chapter 5: Constrained Least Squares
-
-#### Constrained Optimization
-
-Discusses constrained optimization problems and methods.
-
-### Chapter 6: Constrained Least Squares Applications
-
-#### Applications
-
-Explores real-world applications of constrained least squares.
-
-### Chapter 7: Statistical Estimation
-
-#### Estimation Techniques
-
-Introduction to statistical estimation techniques related to least squares.
-
-### Chapter 8: Convex Optimization
-
-#### Convex Optimization
-
-Overview of convex optimization and its relevance to least squares problems.
-
-## Appendix
-
-### Mathematical Notations
-
-A section for defining and explaining the mathematical notations used in the book.
+Ridge regression adds a regularization term to the least squares problem:
+$\min_\mathbf{w} \|\mathbf{y} - \mathbf{X} \mathbf{w}\|_2^2 + \lambda \|\mathbf{w}\|_2^2$
+This helps prevent overfitting by penalizing large weights.
