@@ -47,7 +47,7 @@ This course offers an in-depth practical experience in advanced experimental tec
 - **Bell's Theorem Tests:**
 
   - **Concept:**
-    Bell's theorem experiments test the predictions of quantum mechanics against local hidden variable theories. They assess whether correlations between entangled particles violate Bell’s inequalities.
+    Bell's theorem experiments test the predictions of quantum mechanics against local hidden variable theories. They assess whether correlations between entangled particles violate Bell's inequalities.
 
   - **Mathematical Explanation:**
     Bell's inequality for two entangled particles is often expressed as:
@@ -55,7 +55,7 @@ This course offers an in-depth practical experience in advanced experimental tec
     where $( \left\langle A_iB_j \right\rangle )$ are expectation values of measurement outcomes.
 
   - **Experimental Setup:**
-    Entangled photons are sent to two detectors located far apart. Their polarization states are measured, and the correlation between them is analyzed to test Bell’s inequality.
+    Entangled photons are sent to two detectors located far apart. Their polarization states are measured, and the correlation between them is analyzed to test Bell's inequality.
 
   - **Data Analysis:**
     Students compare experimental results with theoretical predictions. A violation of Bell's inequality supports quantum mechanics and challenges classical notions of locality and realism.
