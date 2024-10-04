@@ -26,11 +26,9 @@ To reconcile these principles, Lorentz transformations were developed to explain
 
    - **Formula:** 
 
-     \[
-     \Delta t = \frac{\Delta t_0}{\sqrt{1 - \frac{v^2}{c^2}}}
-     \]
+     $\Delta t = \frac{\Delta t_0}{\sqrt{1 - \frac{v^2}{c^2}}}$
 
-     Here, \( \Delta t_0 \) is the proper time interval (measured in the moving frame), \( v \) is the velocity of the moving object, and \( c \) is the speed of light. For example, if astronauts travel at a high speed in space, they would age more slowly compared to people on Earth.
+     Here, $( \Delta t_0 )$ is the proper time interval (measured in the moving frame), $( v )$ is the velocity of the moving object, and $( c )$ is the speed of light. For example, if astronauts travel at a high speed in space, they would age more slowly compared to people on Earth.
 
 2. **Length Contraction:**
 
@@ -38,11 +36,9 @@ To reconcile these principles, Lorentz transformations were developed to explain
 
    - **Formula:**
 
-     \[
-     L = L_0 \sqrt{1 - \frac{v^2}{c^2}}
-     \]
+     $L = L_0 \sqrt{1 - \frac{v^2}{c^2}}$
 
-     where \( L_0 \) is the proper length. For instance, a spaceship traveling near the speed of light would be measured as shorter by an observer at rest compared to its length when it is stationary.
+     where $( L_0 )$ is the proper length. For instance, a spaceship traveling near the speed of light would be measured as shorter by an observer at rest compared to its length when it is stationary.
 
 3. **Lorentz Transformation Equations:**
 
@@ -50,18 +46,13 @@ To reconcile these principles, Lorentz transformations were developed to explain
 
    - **Equations:**
 
-     \[
-     x' = \gamma (x - vt)
-     \]
-     \[
-     t' = \gamma \left(t - \frac{vx}{c^2}\right)
-     \]
+     $x' = \gamma (x - vt)$
 
-     where \( \gamma \) is the Lorentz factor:
+     $t' = \gamma \left(t - \frac{vx}{c^2}\right)$
 
-     \[
-     \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}
-     \]
+     where $( \gamma )$ is the Lorentz factor:
+
+     $\gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}$
 
      These transformations ensure that the speed of light is constant in all inertial frames and that the laws of physics remain consistent.
 
@@ -73,9 +64,7 @@ To reconcile these principles, Lorentz transformations were developed to explain
 
    - **Formula:**
 
-     \[
-     u' = \frac{u + v}{1 + \frac{uv}{c^2}}
-     \]
+     $u' = \frac{u + v}{1 + \frac{uv}{c^2}}$
 
      For example, if two spaceships are moving toward each other, their relative velocity is calculated using this formula, which accounts for relativistic effects.
 
@@ -85,11 +74,9 @@ To reconcile these principles, Lorentz transformations were developed to explain
 
    - **Formula:**
 
-     \[
-     \mathbf{p} = \gamma m \mathbf{v}
-     \]
+     $\mathbf{p} = \gamma m \mathbf{v}$
 
-     where \( m \) is the rest mass and \( \mathbf{v} \) is the velocity of the object.
+     where $( m )$ is the rest mass and $( \mathbf{v} )$ is the velocity of the object.
 
 3. **Relativistic Energy:**
 
@@ -97,15 +84,11 @@ To reconcile these principles, Lorentz transformations were developed to explain
 
    - **Formula:**
 
-     \[
-     E = \gamma mc^2
-     \]
+     $E = \gamma mc^2$
 
      The rest energy (when the object is at rest) is:
 
-     \[
-     E_0 = mc^2
-     \]
+     $E_0 = mc^2$
 
      This equation shows that energy and mass are equivalent and interchangeable.
 
@@ -119,24 +102,20 @@ To reconcile these principles, Lorentz transformations were developed to explain
 
    - **Formula:**
 
-     \[
-     x^\mu = (ct, x, y, z)
-     \]
+     $x^\mu = (ct, x, y, z)$
 
-     Here, \( ct \) represents time multiplied by the speed of light to match the spatial dimensions.
+     Here, $( ct )$ represents time multiplied by the speed of light to match the spatial dimensions.
 
 2. **Tensors:**
 
-   Tensors are mathematical objects used to describe physical quantities in multiple dimensions. For instance, the stress-energy tensor \( T^{\mu\nu} \) describes how energy and momentum are distributed in spacetime.
+   Tensors are mathematical objects used to describe physical quantities in multiple dimensions. For instance, the stress-energy tensor $( T^{\mu\nu} )$ describes how energy and momentum are distributed in spacetime.
 
    - **Stress-Energy Tensor:**
 
-     \[
-     T^{\mu\nu} = \begin{pmatrix}
+     $T^{\mu\nu} = \begin{pmatrix}
      \text{Energy Density} & \text{Momentum Flux} \\
      \text{Momentum Flux} & \text{Pressure}
-     \end{pmatrix}
-     \]
+     \end{pmatrix}$
 
      It provides a framework for understanding the curvature of spacetime in General Relativity.
 
@@ -156,15 +135,13 @@ To reconcile these principles, Lorentz transformations were developed to explain
 
 **De Broglie Hypothesis:**
 
-Louis de Broglie proposed that particles such as electrons have wave-like properties, characterized by a wavelength \( \lambda \). This wave-particle duality is a cornerstone of quantum mechanics.
+Louis de Broglie proposed that particles such as electrons have wave-like properties, characterized by a wavelength $( \lambda )$. This wave-particle duality is a cornerstone of quantum mechanics.
 
    - **Formula:**
 
-     \[
-     \lambda = \frac{h}{p}
-     \]
+     $\lambda = \frac{h}{p}$
 
-     where \( h \) is Planck's constant and \( p \) is the momentum of the particle. This means that particles like electrons exhibit interference and diffraction patterns, similar to light waves.
+     where $( h )$ is Planck's constant and $( p )$ is the momentum of the particle. This means that particles like electrons exhibit interference and diffraction patterns, similar to light waves.
 
 **Quantum Interference:**
 
@@ -186,51 +163,42 @@ The Schrödinger equation is fundamental to quantum mechanics, describing how th
 
    - **Formula:**
 
-     \[
-     i\hbar \frac{\partial \psi(x, t)}{\partial t} = \hat{H} \psi(x, t)
-     \]
+     $i\hbar \frac{\partial \psi(x, t)}{\partial t} = \hat{H} \psi(x, t)$
 
-     Here, \( \psi(x, t) \) is the wavefunction of the system, \( \hbar \) is the reduced Planck constant, and \( \hat{H} \) is the Hamiltonian operator, representing the total energy of the system.
+     Here, $( \psi(x, t) )$ is the wavefunction of the system, $( \hbar )$ is the reduced Planck constant, and $( \hat{H} )$ is the Hamiltonian operator, representing the total energy of the system.
 
 2. **Time-Independent Schrödinger Equation:**
 
-   For systems where the potential \( V \) does not depend on time, the time-independent Schrödinger equation is:
+   For systems where the potential $( V )$ does not depend on time, the time-independent Schrödinger equation is:
 
    - **Formula:**
 
-     \[
-     \hat{H} \psi(x) = E \psi(x)
-     \]
+     $\hat{H} \psi(x) = E \psi(x)$
 
-     This is used to find the stationary states of the system, where \( E \) is the energy eigenvalue associated with the eigenfunction \( \psi(x) \).
+     This is used to find the stationary states of the system, where $( E )$ is the energy eigenvalue associated with the eigenfunction $( \psi(x) )$.
 
 **Operators and Observables:**
 
 1. **Measurement and Observables:**
 
-   In quantum mechanics, physical quantities are represented by operators. The result of a measurement is an eigenvalue of the operator corresponding to the observable. For example, the position operator \( \hat{x} \) and the momentum operator \( \hat{p} \) have specific eigenvalues.
+   In quantum mechanics, physical quantities are represented by operators. The result of a measurement is an eigenvalue of the operator corresponding to the observable. For example, the position operator $( \hat{x} )$ and the momentum operator $( \hat{p} )$ have specific eigenvalues.
 
    - **Position Operator:**
 
-     \[
-     \hat{x} \psi(x) = x \psi(x)
-     \]
+     $\hat{x} \psi(x) = x \psi(x)$
 
    - **Momentum Operator:**
 
-     \[
-     \hat{p} = -i\hbar \frac{d}{dx}
-     \]
+     $\hat{p} = -i\hbar \frac{d}{dx}$
+
 
 2. **Eigenvalues and Eigenfunctions:**
 
    Solving the Schrödinger equation yields eigenvalues (possible measurement results) and eigenfunctions (the corresponding states). For example, the energy levels of the hydrogen atom are quantized and given by:
 
-   \[
-   E_n = -\frac{k e^2}{2a_0 n^2}
-   \]
+   $E_n = -\frac{k e^2}{2a_0 n^2}$
 
-   where \( n \) is the principal quantum number.
+   where $( n )$ is the principal quantum number.
 
 #### Applications
 
@@ -242,13 +210,9 @@ The Schrödinger equation is fundamental to quantum mechanics, describing how th
 
    - **Transmission Coefficient:**
 
-     \[
-     T \approx e^{-2 \kappa a}
+     $T \approx e^{-2 \kappa a}$
 
-
-     \]
-
-     where \( \kappa \) is related to the height and width of the barrier and \( a \) is the barrier width.
+     where $( \kappa )$ is related to the height and width of the barrier and $( a )$ is the barrier width.
 
 2. **Applications:**
 
