@@ -12,7 +12,7 @@ This course delves deep into the design, analysis, and implementation of advance
 #### **Key Concepts**:
 - Recurrence relations (e.g., solving with Master Theorem)
 
-```bash
+```plaintext
 function solveRecurrence(T(n)):
     if n <= base_case_threshold:
         return base_case_solution
@@ -30,7 +30,7 @@ function solveRecurrence(T(n)):
 
 - Binary Search, Merge Sort, Quick Sort
 
-```bash
+```plaintext
 function binarySearch(array, target):
     low = 0
     high = length(array) - 1
@@ -47,7 +47,7 @@ function binarySearch(array, target):
     return -1  // Target not found
 ```
 
-```bash
+```plaintext
 function mergeSort(array):
     if length(array) <= 1:
         return array  // Base case: array is already sorted
@@ -77,7 +77,7 @@ function merge(left, right):
 
 ```
 
-```bash
+```plaintext
 function quickSort(array):
     if length(array) <= 1:
         return array  // Base case: array is already sorted
@@ -100,7 +100,7 @@ function quickSort(array):
 
 - Fast Fourier Transform (FFT) and its applications
 
-```bash
+```plaintext
 function FFT(x):
     N = length(x)
     if N <= 1:
@@ -115,7 +115,7 @@ function FFT(x):
 
 - Karatsuba’s algorithm for fast integer multiplication
 
-```bash
+```plaintext
 function karatsuba(x, y):
     if x < 10 or y < 10:  // Base case for small numbers
         return x * y
@@ -170,7 +170,7 @@ function karatsuba(x, y):
 #### **Key Concepts**:
 - Memory hierarchies and cache complexity
 
-```bash
+```plaintext
 function cacheObliviousMatrixMultiply(A, B, C, n):
     if n == 1:  // Base case: 1x1 matrix multiplication
         C[0][0] = A[0][0] * B[0][0]
@@ -195,7 +195,7 @@ function cacheObliviousMatrixMultiply(A, B, C, n):
 
 - Cache-oblivious algorithms (matrix multiplication, sorting)
 
-```bash
+```plaintext
 function cacheObliviousMatrixMultiply(A, B, C, n):
     if n == 1:  // Base case: 1x1 matrix multiplication
         C[0][0] = A[0][0] * B[0][0]
@@ -220,7 +220,7 @@ function cacheObliviousMatrixMultiply(A, B, C, n):
 
 - Recursive divide-and-conquer techniques for cache efficiency
 
-```bash
+```plaintext
 function cacheObliviousMergeSort(array):
     n = length(array)
     if n <= 1:  // Base case
@@ -252,7 +252,7 @@ function cacheObliviousMerge(left, right):
 
 - External memory models
 
-```bash
+```plaintext
 function divideAndConquerMax(array, low, high):
     if low == high:  // Base case: single element
         return array[low]
@@ -284,7 +284,7 @@ function divideAndConquerMax(array, low, high):
 #### **Key Concepts**:
 - Greedy Algorithms: Activity selection, Huffman coding, Kruskal’s and Prim’s algorithms
 
-```bash
+```plaintext
 function activitySelection(activities):
     sort activities by finish time
     selectedActivities = []
@@ -298,7 +298,7 @@ function activitySelection(activities):
     return selectedActivities
 ```
 
-```bash
+```plaintext
 function huffmanCoding(characters, frequencies):
     priorityQueue = createPriorityQueue()
 
@@ -317,7 +317,7 @@ function huffmanCoding(characters, frequencies):
     return buildCode(priorityQueue.peek())
 ```
 
-```bash
+```plaintext
 function kruskal(graph):
     edges = sort(graph.edges by weight)
     disjointSet = createDisjointSet(graph.vertices)
@@ -331,13 +331,13 @@ function kruskal(graph):
     return mst
 ```
 
-```bash
+```plaintext
 
 ```
 
 - Dynamic Programming: Knapsack, Longest common subsequence, Edit distance
 
-```bash
+```plaintext
 function knapsack(weights, values, capacity):
     n = length(weights)
     dp = array of size (n+1) x (capacity+1)
@@ -354,7 +354,7 @@ function knapsack(weights, values, capacity):
     return dp[n][capacity]
 ```
 
-```bash
+```plaintext
 function lcs(X, Y):
     m = length(X)
     n = length(Y)
@@ -372,7 +372,7 @@ function lcs(X, Y):
     return dp[m][n]
 ```
 
-```bash
+```plaintext
 function lcs(X, Y):
     m = length(X)
     n = length(Y)
@@ -390,7 +390,7 @@ function lcs(X, Y):
     return dp[m][n]
 ```
 
-```bash
+```plaintext
 function editDistance(str1, str2):
     m = length(str1)
     n = length(str2)
@@ -412,7 +412,7 @@ function editDistance(str1, str2):
 
 - Approximation Algorithms: Vertex cover, Traveling Salesman Problem (TSP), Set cover
 
-```bash
+```plaintext
 function vertexCover(graph):
     cover = []
     edges = graph.edges
@@ -428,7 +428,7 @@ function vertexCover(graph):
     return cover
 ```
 
-```bash
+```plaintext
 function tspGreedy(graph):
     visited = set()
     tour = []
@@ -445,7 +445,7 @@ function tspGreedy(graph):
     return tour
 ```
 
-```bash
+```plaintext
 function setCover(universe, sets):
     cover = []
     coveredElements = set()
@@ -487,7 +487,7 @@ function setCover(universe, sets):
 
 - Competitive analysis and performance ratios
 
-```bash
+```plaintext
 function competitiveRatio(lruCache, accessSequence):
     optimalCost = calculateOptimalCost(accessSequence)  // Cost of optimal offline solution
     lruCost = calculateLRUCost(lruCache, accessSequence)  // Cost incurred by LRU
@@ -496,7 +496,7 @@ function competitiveRatio(lruCache, accessSequence):
 
 - Online problems: caching, online bipartite matching
 
-```bash
+```plaintext
 function competitiveRatio(lruCache, accessSequence):
     optimalCost = calculateOptimalCost(accessSequence)  // Cost of optimal offline solution
     lruCost = calculateLRUCost(lruCache, accessSequence)  // Cost incurred by LRU
@@ -505,7 +505,7 @@ function competitiveRatio(lruCache, accessSequence):
 
 - Streaming algorithms: count-min sketch, frequency moments, heavy hitters
 
-```bash
+```plaintext
 function findHeavyHitters(stream, threshold):
     sketch = CountMinSketch(width, depth)
     
@@ -520,7 +520,7 @@ function findHeavyHitters(stream, threshold):
     return heavyHitters
 ```
 
-```bash
+```plaintext
 class CountMinSketch:
     function __init__(width, depth):
         this.width = width  // Number of columns
@@ -560,7 +560,7 @@ class CountMinSketch:
 #### **Key Concepts**:
 - Parallel computation models: PRAM, MapReduce
 
-```bash
+```plaintext
 ParallelQuicksort(array, low, high)
     if low < high then
         pivotIndex = Partition(array, low, high)
@@ -596,7 +596,7 @@ Partition(array, low, high)
 - Parallel sorting and searching
 - Distributed consensus algorithms: Paxos, Raft
 
-```bash
+```plaintext
 RaftAlgorithm()
     InitializeServer()
     while true do
@@ -647,7 +647,7 @@ AppendEntriesToLog()
 
 - Load balancing and parallel graph algorithms
 
-```bash
+```plaintext
 LoadBalancingAlgorithm(tasks, servers)
     while tasks are not empty do
         for each server in servers do
@@ -670,7 +670,7 @@ Assign(task, server)
     server.addTask(task)  # Add task to the server's workload
 ```
 
-```bash
+```plaintext
 ParallelBFS(graph, startNode)
     Initialize a queue Q
     Mark startNode as visited
