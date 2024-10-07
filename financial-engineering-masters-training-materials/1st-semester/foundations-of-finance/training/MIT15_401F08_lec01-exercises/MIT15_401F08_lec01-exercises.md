@@ -1,8 +1,217 @@
 1. Discuss why understanding finance is critical for business decision-making, particularly in asset valuation and management. Create a case study involving a company facing a tough decision on whether to invest in a new technology. Use quantitative analysis to support your answer.
 
+- Why understanding Finance is critical for business decision-making?
+  - Efficient resource allocation through fiancial metrics
+  - Risk evaluation with investment
+  - Assets can evaluated accurately
+  - Strategies can be planned more efficiently because of insights
+
+- Case stuy: FinAI Tech Company
+  - Midsized Fintech Company, company considers in investing in new AI, total investment of $1 Million,
+  - Cash flow over the next five years:
+    - 1. $300,000
+    - 2. $400,000 
+    - 3. $500,000
+    - 4. $600,000     
+    - 5. $700,000 
+  - Discount reate is 10% for its product
+ 
+  - Quantitative analysis
+
+```c++
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+// Function to calculate Net Present Value (NPV)
+double calculateNPV(double initialInvestment, const vector<double>& cashFlows, double discountRate) {
+    double npv = 0.0; // Initialize NPV to zero
+
+    // Loop through each year's cash flow
+    for (size_t t = 0; t < cashFlows.size(); ++t) {
+        // Calculate the present value of the cash flow for year t
+        // Cash Flow_t / (1 + r)^t
+        double presentValue = cashFlows[t] / pow(1 + discountRate, t + 1);
+        npv += presentValue; // Accumulate the present values
+    }
+
+    // Subtract the initial investment from the total present value to get NPV
+    npv -= initialInvestment;
+
+    return npv; // Return the calculated NPV
+}
+
+// Function to calculate the Internal Rate of Return (IRR)
+// Here we use the Newton-Raphson method for finding the root of NPV equation
+double calculateIRR(double initialInvestment, const vector<double>& cashFlows, double guess = 0.1, int maxIterations = 1000, double tolerance = 0.0001) {
+    double rate = guess; // Initial guess for the IRR
+    int iteration = 0;
+
+    while (iteration < maxIterations) {
+        // Calculate the NPV for the current rate
+        double npv = calculateNPV(initialInvestment, cashFlows, rate);
+
+        // Calculate the derivative of NPV with respect to the rate (slope)
+        double npvDerivative = 0.0;
+        for (size_t t = 0; t < cashFlows.size(); ++t) {
+            // Derivative: -Cash Flow_t * t / (1 + r)^(t + 1)
+            npvDerivative -= cashFlows[t] * (t + 1) / pow(1 + rate, t + 2);
+        }
+
+        // Update the rate using Newton-Raphson formula
+        double newRate = rate - (npv / npvDerivative);
+
+        // Check if the result is within the tolerance level
+        if (abs(newRate - rate) < tolerance) {
+            return newRate; // Return the calculated IRR
+        }
+
+        rate = newRate; // Update the rate for the next iteration
+        ++iteration; // Increment the iteration counter
+    }
+
+    return rate; // Return the last calculated rate if max iterations reached
+}
+
+int main() {
+    double initialInvestment = 1000000; // Initial investment in dollars
+    vector<double> cashFlows = {300000, 400000, 500000, 600000, 700000}; // Cash flows for years 1-5
+    double discountRate = 0.10; // Discount rate of 10%
+
+    // Calculate NPV
+    double npv = calculateNPV(initialInvestment, cashFlows, discountRate);
+    cout << "Net Present Value (NPV): $" << npv << endl;
+
+    // Calculate IRR
+    double irr = calculateIRR(initialInvestment, cashFlows);
+    cout << "Internal Rate of Return (IRR): " << irr * 100 << "%" << endl;
+
+    return 0;
+}
+```
+
+----
+
 2. Develop a financial model to illustrate the difference between real and financial assets, using examples from real-world companies. Analyze how each type of asset impacts a company's valuation.
 
+- Real asset: physical or tangible (Real Estate, Machinery and Equipment, Natural Resources)
+- Financial asset: Represents claim to ownership or a contractual right to receive cash of another fnancial asset (Stocks, Bonds, Derivatives)
+
+| Feature                        | Real Assets                                     | Financial Assets                               |
+|--------------------------------|------------------------------------------------|------------------------------------------------|
+| **Nature**                     | Physical, tangible assets                       | Intangible, contractual claims                  |
+| **Value Determinants**        | Market demand, condition, location              | Market rates, company performance, creditworthiness |
+| **Usage**                      | Used in production or as resources              | Used for investment or liquidity                |
+| **Depreciation/Amortization** | Subject to depreciation over time               | Generally do not depreciate, but can fluctuate in value |
+| **Liquidity**                  | Generally less liquid, harder to sell quickly  | Usually more liquid, easily tradable           |
+
+```python
+import numpy as np
+
+
+def main() -> None:
+    """Driving code."""
+    # Company A: Real Asset-Focused Company (Manufacturing)
+    # Assets
+    real_estate = 5000000 # Real estate value in dollars
+    machinery = 2000000 # Machinery value in dollars
+    total_assets_A = real_estate + machinery  # Total assets for Company A
+    
+    # Liabilities
+    liabilities_A = 1500000 # Total liabilities in dollars
+    
+    # Revenue and Expenses
+    revenue_A = 4000000 # Revenue for Company A
+    expenses_A = 2500000 # Expenses for Company A (including depreciation)
+    
+    # Calculate NAV for Company A
+    nav_A = calculate_nav(total_assets_A, liabilities_A)
+    print(f"Company A - Net Asset Value (NAV): ${nav_A:,.2f}")
+
+    # Calculate EBIT for Company A
+    ebit_A = calculate_ebit(revenue_A, expenses_A)
+    print(f"Company A - Earnings Before Interest and Taxes (EBIT): ${ebit_A:,.2f}")
+
+    # Assuming an EV/EBIT multiple of 10 for Company A
+    valuation_multiple_A = 10
+    valuation_A = calculate_valuation(ebit_A, valuation_multiple_A)
+    print(f"Company A - Valuation: ${valuation_A:,.2f}\n")
+    
+    # Company B: Financial Asset-Focused Company (Technology)
+    # Assets
+    cash_and_equivalents = 10000000 # Cash value in dollars
+    marketable_securities = 5000000 # Marketable securities value in dollars
+    total_assets_B = cash_and_equivalents + marketable_securities  # Total assets for Company B
+    
+    # Liabilities
+    liabilities_B = 3000000 # Total liabilities in dollars
+    
+    # Revenue and Expenses
+    revenue_B = 6000000 # Revenue for Company B
+    expenses_B = 3500000 # Expenses for Company B
+    
+    # Calculate NAV for Company B
+    nav_B = calculate_nav(total_assets_B, liabilities_B)
+    print(f"Company B - Net Asset Value (NAV): ${nav_B:,.2f}")
+
+    # Calculate EBIT for Company B
+    ebit_B = calculate_ebit(revenue_B, expenses_B)
+    print(f"Company B - Earnings Before Interest and Taxes (EBIT): ${ebit_B:,.2f}")
+
+    # Assuming an EV/EBIT multiple of 12 for Company B
+    valuation_multiple_B = 12
+    valuation_B = calculate_valuation(ebit_B, valuation_multiple_B)
+    print(f"Company B - Valuation: ${valuation_B:,.2f}")
+
+    return None
+
+
+# Function to calculate Net Asset Value (NAV)
+def calculate_nav(total_assets, total_liabilities):
+    """Calculate the Net Asset Value (NAV) of a company.
+    
+    NAV = Total Assets - Total Liabilities
+    """
+
+    return total_assets - total_liabilities
+
+
+def calculate_ebit(revenue, expenses):
+    """Calculate Earnings Before Interest and Taxes (EBIT).
+    
+    EBIT = Revenue - Expenses
+    """
+
+    return revenue - expenses
+
+
+def calculate_valuation(ebit, multiple):
+    """Calculate the valuation of a company based on the EV/EBIT multiple.
+    
+    Valuation = EBIT * Valuation Multiple
+    """
+
+    return ebit * multiple
+
+
+if __name__ == "__main__":
+    main()
+```
+
+----
+
 3. Choose a non-financial corporation and evaluate how it raises capital. Identify the financial intermediaries involved and discuss the role of capital markets in this process.
+
+- OpenAI: Technological Research Organization and Technological Company
+  - Equity Financing: Equity investments from Venture Capital Firms
+  - Partnership: In cooperation with large Tech companies.
+  - Grants and Donations: From Philanthropists and other Organizations 
+- Financial Intermediaries: Venture Capital Firms, Investment Banks, Tech Partners, Philanthropic Organizations
+- Role of Capital Markets: Access to funding, Liquiditiy and platform for price discovery, Investors protection
+
+----
 
 4. Create a flow diagram representing the circulation of money between households, non-financial corporations, financial intermediaries, and capital markets. Apply this to a real-world economy, explaining the interaction between these entities.
 
