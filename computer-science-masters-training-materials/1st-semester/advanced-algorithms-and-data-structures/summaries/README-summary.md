@@ -1,8 +1,6 @@
-### **Course 1: Advanced Algorithms and Data Structures**
+### Advanced Algorithms and Data Structures**
 
 This course delves deep into the design, analysis, and implementation of advanced algorithms and data structures. Students will learn how to approach computational problems both theoretically and practically, with an emphasis on real-world applications. Below is a structured learning path, inspired by MIT’s standards, for each of the key topics listed.
-
----
 
 ### **1. Divide and Conquer Algorithms**
 
