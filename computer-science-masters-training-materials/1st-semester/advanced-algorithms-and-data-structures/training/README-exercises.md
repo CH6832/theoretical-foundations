@@ -1,8 +1,157 @@
 ### **1. Divide and Conquer Algorithms**
 
+----
+
 1. **(Implementation)** Implement Karatsuba’s algorithm for fast multiplication of large integers and analyze its time complexity compared to standard multiplication.
+
+- **Readings:**
+  - [Karatsuba's Algorithm - 6.006 Revew Session](https://courses.csail.mit.edu/6.006/spring11/exams/notes3-karatsuba)
+  - [Karatsuba algorithm](https://en.wikipedia.org/wiki/Karatsuba_algorithm)
+
+- Python
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Karatsuba Multiplication example."""
+
+def number_of_digits(z):
+    count=0
+    for c in str(z):
+        count=count+1
+    return count
+
+def karatsuba_multiplication(x, y):
+    if x < 10 or y < 10:
+        return x * y
+
+    max_num = max(number_of_digits(x), number_of_digits(y))
+
+    m = max_num // 2
+
+    high_1 = x // 10**m
+    low_1 = x % 10**m
+    high_2 = y // 10**m
+    low_2 = y % 10**m
+
+    z_0 = karatsuba_multiplication(low_1, low_2)
+    z_1 = karatsuba_multiplication((high_1 + low_1), (high_2 + low_2))
+    z_2 = karatsuba_multiplication(high_1, high_2)
+
+    return (z_2 * 10**(2*m)) + ((z_1 - z_2 - z_0) * 10**m) + z_0
+
+if __name__ == "__main__":
+    a = 24132
+    b = 438541
+    print(karatsuba_multiplication(a, b))
+    print(a * b)
+```
+
+- Java
+
+```java
+public class KaratsubaMultiplication {
+
+    public static int numberOfDigits(long z) {
+        return String.valueOf(z).length();
+    }
+
+    public static long karatsubaMultiplication(long x, long y) {
+        // Base case: if x or y is a single-digit number, multiply directly
+        if (x < 10 || y < 10) {
+            return x * y;
+        }
+
+        int maxNum = Math.max(numberOfDigits(x), numberOfDigits(y));
+
+        int m = maxNum / 2;
+
+        long high1 = x / (long) Math.pow(10, m);
+        long low1 = x % (long) Math.pow(10, m);
+        long high2 = y / (long) Math.pow(10, m);
+        long low2 = y % (long) Math.pow(10, m);
+
+        long z0 = karatsubaMultiplication(low1, low2);
+        long z1 = karatsubaMultiplication((high1 + low1), (high2 + low2));
+        long z2 = karatsubaMultiplication(high1, high2);
+
+        return (z2 * (long) Math.pow(10, 2 * m)) + ((z1 - z2 - z0) * (long) Math.pow(10, m)) + z0;
+    }
+
+    public static void main(String[] args) {
+        long a = 24132;
+        long b = 438541;
+
+        System.out.println("Karatsuba Result: " + karatsubaMultiplication(a, b));
+        System.out.println("Standard Multiplication Result: " + (a * b));
+    }
+}
+```
+
+- C++
+
+```cpp
+#include <iostream>
+#include <cmath>
+#include <string>
+
+using namespace std;
+
+int number_of_digits(long long z) {
+    return to_string(z).length();
+}
+
+long long karatsuba_multiplication(long long x, long long y) {
+    // Base case: if x or y is a single-digit number, multiply directly
+    if (x < 10 || y < 10) {
+        return x * y;
+    }
+
+    int max_num = max(number_of_digits(x), number_of_digits(y));
+
+    int m = max_num / 2;
+
+    long long high1 = x / pow(10, m);
+    long long low1 = x % (long long) pow(10, m);
+    long long high2 = y / pow(10, m);
+    long long low2 = y % (long long) pow(10, m);
+
+    long long z0 = karatsuba_multiplication(low1, low2);
+    long long z1 = karatsuba_multiplication((high1 + low1), (high2 + low2));
+    long long z2 = karatsuba_multiplication(high1, high2);
+
+    return (z2 * pow(10, 2 * m)) + ((z1 - z2 - z0) * pow(10, m)) + z0;
+}
+
+int main() {
+    long long a = 24132;
+    long long b = 438541;
+
+    cout << "Karatsuba Result: " << karatsuba_multiplication(a, b) << endl;
+    cout << "Standard Multiplication Result: " << (a * b) << endl;
+
+    return 0;
+}
+```
+
+----
+
 2. **(Theoretical)** Prove the correctness of the Strassen matrix multiplication algorithm and analyze its time complexity.
-3. **(Theoretical)** Solve the recurrence \( T(n) = 2T(n/2) + O(n) \) using the Master Theorem, and explain how it applies to the merge sort algorithm.
+
+- **Readings:**
+  - [Strassen algorithm](https://en.wikipedia.org/wiki/Strassen_algorithm)
+  - [Strassen's Algorithm proof](https://cs.stackexchange.com/questions/14907/strassens-algorithm-proof)
+
+----
+
+3. **(Theoretical)** Solve the recurrence $( T(n) = aT(n/b) + f(n) )$ using the Master Theorem, and explain how it applies to the merge sort algorithm.
+
+- **Readings:**
+  - [1 Solving recurrences-  1.3 Master theorem](https://web.stanford.edu/class/archive/cs/cs161/cs161.1168/lecture3.pdf) 
+
+----
+
 4. **(Implementation)** Implement the Fast Fourier Transform (FFT) algorithm for polynomial multiplication and analyze its performance.
 5. **(Theoretical)** Use divide-and-conquer to solve the closest pair of points problem in \( O(n \log n) \). Explain your approach.
 6. **(Theoretical)** Analyze the time complexity of the quicksort algorithm in the best case, worst case, and average case. Explain how randomized quicksort improves the average case.
