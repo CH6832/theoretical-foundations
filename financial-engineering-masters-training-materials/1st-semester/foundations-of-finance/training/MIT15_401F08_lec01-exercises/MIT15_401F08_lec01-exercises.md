@@ -215,9 +215,35 @@ if __name__ == "__main__":
 
 4. Create a flow diagram representing the circulation of money between households, non-financial corporations, financial intermediaries, and capital markets. Apply this to a real-world economy, explaining the interaction between these entities.
 
+- Households
+  - Member sof a household provide labour and earn wages. They deposit money in the bank as for savings or buy stocks, bonds, invest in Fonds as well.
+- Financial Coporations
+  - Banks act as intermediaries between households ad none financial cooperations. They invest in capital and loan money to the household.
+- Capital Makets
+  - NYSE, where etc. Amazon or Google issue stocks and bonds. 
+
+----
+
 5. Compare the valuation of tangible and intangible assets in a chosen company. Discuss how these valuations affect its financial management strategies.
 
+- Tangible asstes are for examples Smartphones, MacBooks or even Corporate Buildings. These asstes have acertain value and depreciate over time according to a fixed schedule.
+- Intangible assets are non-physical asstes and provide long-term value to a company. The value of such an asset is hard to measure. Examples for such assets are Intellectual Property, Brand Value, Software and Ecosystem, etc. 
+
+----
+
 6. Analyze the market for a company's stock and discuss the price discovery process. Consider how market value is determined by external factors, irrespective of the company's internal objectives.
+
+- Stock Market - Tesla Inc.:
+  - Listed on the NASDAQ
+  - Ticker symbol: TSLA
+  - Key characteristics: High volatility, Retail Investor INterest, Institutionalholdings, Options market Influence
+  - Price discovery process:
+    - Market Sentiment: Investor optimism or pessimism can drive Tesla’s stock price up or down.
+    - Information Flow: Stock prices reflect new information quickly.
+    - Liquidity and Trading Volume: With Tesla being one of the most traded stocks globally, high liquidity allows investors to buy and sell easily, leading to efficient price discovery. 
+    - Bid-Ask Spread: In any stock market, the difference between the highest price buyers are willing to pay (bid) and the lowest price sellers are willing to accept (ask) helps in determining the final trading price.
+
+----
 
 7. Create a hypothetical scenario where a corporation has to decide between two investment options. Evaluate these options using discounted cash flow analysis, taking into account the time value of money and associated risks.
 
