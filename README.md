@@ -1,6 +1,6 @@
 # Theoretical Foundations for Multidisciplinary Projects
 
-This repository provides a theoretical foundation across multiple disciplines—financial engineering, mathematics, physics, and software engineering—supporting both academic learning and practical application.
+This repository provides a theoretical foundation across multiple disciplines—financial engineering, mathematics, physics, and software engineering—supporting both academic learning and practical application. All content is at MIT Niveau, ensuring high-quality educational resources.
 
 ## Table of Contents
 

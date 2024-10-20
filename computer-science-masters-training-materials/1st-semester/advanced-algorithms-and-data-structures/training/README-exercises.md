@@ -550,212 +550,845 @@ int main() {
 
 ---
 
-**(Theoretical)** Analyze the time complexity of the quicksort algorithm in the best case, worst case, and average case. Explain how randomized quicksort improves the average case.
+### 1. **Divide-and-Conquer Algorithms**
 
-**(Implementation)** Implement a divide-and-conquer algorithm to find the majority element in an array (an element that appears more than \( n/2 \) times) in \( O(n \log n) \).
+#### **(Theoretical) Quicksort Time Complexity**
+1. **Best Case**: \(O(n \log n)\) - This occurs when the pivot divides the array into two equal halves.
+2. **Worst Case**: \(O(n^2)\) - This occurs when the pivot is the smallest or largest element, leading to unbalanced partitions.
+3. **Average Case**: \(O(n \log n)\) - With random pivot selection, the expected partition sizes are balanced on average.
 
-**(Theoretical)** Derive the recurrence relation for matrix exponentiation using divide and conquer, and analyze its time complexity.
-
-**(Implementation)** Implement the divide-and-conquer algorithm to count the number of inversions in an array.
-
-**(Theoretical)** Use the Master Theorem to solve the recurrence \( T(n) = 3T(n/3) + O(n) \) and explain its application in divide-and-conquer algorithms.
-
-**(Implementation)** Implement the divide-and-conquer approach to find the median of two sorted arrays.
-
-**(Theoretical)** Prove the correctness of the recursive binary search algorithm and analyze its time complexity.
-
-**(Implementation)** Implement a divide-and-conquer algorithm to solve the 0/1 knapsack problem and analyze its performance.
-
-**(Theoretical)** Explain how the divide-and-conquer approach can be applied to solve the maximum subarray problem (Kadane’s algorithm).
-
-**(Implementation)** Develop an algorithm using divide-and-conquer to sort a linked list.
-
-**(Theoretical)** Prove the optimality of the divide-and-conquer approach in calculating the convex hull of a set of points in the plane.
-
-**(Implementation)** Implement a divide-and-conquer algorithm to calculate the power of a number \( x^n \).
-
-**(Theoretical)** Discuss the implications of using divide-and-conquer for solving differential equations and provide an example.
-
-**(Implementation)** Create a divide-and-conquer solution for the "Game of Life" simulation and analyze its complexity.
-
-**(Theoretical)** Analyze the space complexity of various divide-and-conquer algorithms and suggest ways to minimize space usage.
+**Randomized Quicksort**: It selects a pivot randomly, reducing the probability of encountering the worst-case scenario. This improves the average case by increasing the likelihood of balanced partitions, leading to more efficient sorting.
 
 ---
 
-### **2. Graph Algorithms and Dynamic Graph Data Structures**
+#### **(Implementation) Majority Element in Array**
+```plaintext
+function findMajorityElement(array):
+    def majorityUtil(array, left, right):
+        if left == right:
+            return array[left]
+        
+        mid = (left + right) // 2
+        leftMajority = majorityUtil(array, left, mid)
+        rightMajority = majorityUtil(array, mid + 1, right)
+        
+        leftCount = countInRange(array, leftMajority, left, right)
+        rightCount = countInRange(array, rightMajority, left, right)
 
-**(Implementation)** Implement Dijkstra’s algorithm and compare its performance with the Bellman-Ford algorithm on various types of graphs.
+        if leftCount > (right - left + 1) // 2:
+            return leftMajority
+        if rightCount > (right - left + 1) // 2:
+            return rightMajority
+        return None  // No majority element
 
-**(Theoretical)** Prove that Kruskal’s algorithm always produces a minimum spanning tree, and analyze its time complexity using a disjoint-set data structure.
+    return majorityUtil(array, 0, length(array) - 1)
 
-**(Implementation)** Implement a dynamic connectivity data structure (e.g., link/cut trees or dynamic MST) and analyze its performance for a sequence of edge insertions and deletions.
-
-**(Implementation)** Implement and compare DFS-based and BFS-based algorithms for detecting strongly connected components in a directed graph.
-
-**(Theoretical)** Prove the correctness of Prim’s algorithm for finding the minimum spanning tree and analyze its performance using a Fibonacci heap.
-
-**(Theoretical)** Show that the Ford-Fulkerson algorithm may fail to terminate when applied to a network with irrational capacities, and explain the consequences.
-
-**(Implementation)** Implement the Edmonds-Karp algorithm for computing the maximum flow in a network, and compare it with the Ford-Fulkerson algorithm.
-
-**(Theoretical)** Prove that Dijkstra’s algorithm fails when negative edge weights are present, using an example graph.
-
-**(Implementation)** Design and implement a dynamic graph data structure that supports efficient shortest path updates as edges are added and removed.
-
-**(Theoretical)** Prove the correctness of Tarjan’s offline lowest common ancestor (LCA) algorithm and analyze its time complexity.
-
-**(Implementation)** Implement an algorithm to find all articulation points in a graph using DFS.
-
-**(Theoretical)** Discuss the applications of the Floyd-Warshall algorithm and analyze its time complexity.
-
-**(Implementation)** Create an implementation of the A* search algorithm for pathfinding and analyze its performance.
-
-**(Theoretical)** Prove the correctness of the Johnson algorithm for finding the shortest paths in a weighted graph.
-
-**(Implementation)** Implement a randomized algorithm for finding a minimum spanning tree and compare it to deterministic approaches.
-
-**(Theoretical)** Explain the role of the cut property in graph algorithms and prove its significance in finding a minimum spanning tree.
-
-**(Implementation)** Create an algorithm to detect cycles in an undirected graph using union-find.
-
-**(Theoretical)** Prove that the bipartite graph checking algorithm is efficient and describe its complexity.
-
-**(Implementation)** Implement the Chinese postman problem algorithm and analyze its performance.
-
-**(Theoretical)** Discuss the limitations of traditional graph traversal algorithms on dynamic graphs and suggest improvements.
+function countInRange(array, element, left, right):
+    count = 0
+    for i from left to right:
+        if array[i] == element:
+            count += 1
+    return count
+```
 
 ---
 
-### **3. Cache-Efficient Algorithms**
+#### **(Theoretical) Matrix Exponentiation Recurrence Relation**
+1. **Recurrence Relation**: 
+   \[
+   T(n) = T(n/2) + O(1)
+   \]
+   - This indicates that to compute \(A^n\), we recursively compute \(A^{n/2}\) and multiply.
 
-**(Implementation)** Implement a cache-oblivious matrix multiplication algorithm and compare its cache performance with the naive \( O(n^3) \) algorithm.
-
-**(Theoretical)** Prove that merge sort can be made cache-efficient by modifying the merge step to minimize cache misses, and analyze its cache complexity.
-
-**(Theoretical)** Explain the working of cache-oblivious binary search, and prove that it achieves \( O(\log_B n) \) cache misses, where \( B \) is the block size.
-
-**(Theoretical)** Analyze the cache performance of quicksort and merge sort in both the cache-oblivious and cache-aware models. Which is better?
-
-**(Implementation)** Implement a cache-oblivious algorithm for matrix transposition, and measure its cache performance against a naive row-major order transposition.
-
-**(Theoretical)** Explain how to modify quicksort to make it cache-oblivious and analyze the resulting performance.
-
-**(Theoretical)** Show that any cache-oblivious algorithm for the matrix multiplication problem that uses the divide-and-conquer paradigm has an optimal cache complexity of \( O(n^3 / B + n^2) \).
-
-**(Implementation)** Implement the cache-oblivious priority queue as described in the research paper by Frigo et al. and analyze its cache performance.
-
-**(Theoretical)** Derive and prove the optimality of the cache-oblivious algorithm for finding the median of a set of numbers.
-
-**(Implementation)** Design and implement a cache-oblivious sorting algorithm and measure its performance against traditional sorting algorithms like quicksort and mergesort.
-
-**(Theoretical)** Discuss the principles behind cache-efficient algorithms and how they differ from traditional algorithms in terms of data access patterns.
-
-**(Implementation)** Create a cache-oblivious binary tree traversal algorithm and compare its performance to traditional approaches.
-
-**(Theoretical)** Analyze the cache efficiency of dynamic programming algorithms and suggest optimizations.
-
-**(Implementation)** Implement a cache-aware version of the Strassen algorithm and compare it with the cache-oblivious version.
-
-**(Theoretical)** Prove the optimality of cache-efficient algorithms in terms of data locality and memory access patterns.
+2. **Time Complexity**: By the Master Theorem, this solves to \(O(\log n)\).
 
 ---
 
-### **4. Algorithmic Paradigms: Greedy, Dynamic Programming, Approximation Algorithms**
+#### **(Implementation) Count Inversions in an Array**
+```plaintext
+function countInversions(array):
+    if length(array) < 2:
+        return 0
+    
+    mid = length(array) // 2
+    left = array[0:mid]
+    right = array[mid:length(array)]
+    
+    inversions = countInversions(left) + countInversions(right)
 
-**(Implementation)** Implement the Huffman coding algorithm and use it to compress and decompress a text file. Analyze its performance on different datasets.
+    i = j = k = 0
+    while i < length(left) and j < length(right):
+        if left[i] <= right[j]:
+            array[k] = left[i]
+            i += 1
+        else:
+            array[k] = right[j]
+            inversions += (length(left) - i)  // Count inversions
+            j += 1
+        k += 1
 
-**(Theoretical)** Prove the correctness of the greedy algorithm for the activity selection problem and explain why a dynamic programming approach is unnecessary.
+    while i < length(left):
+        array[k] = left[i]
+        i += 1
+        k += 1
+    
+    while j < length(right):
+        array[k] = right[j]
+        j += 1
+        k += 1
 
-**(Implementation)** Implement the dynamic programming solution to the knapsack problem and compare its performance with a greedy heuristic for the fractional knapsack problem.
-
-**(Theoretical)** Prove that the greedy algorithm for finding a minimum spanning tree (Kruskal’s algorithm) is optimal.
-
-**(Theoretical)** Prove that the dynamic programming algorithm for the longest common subsequence problem has time complexity \( O(nm) \), where \( n \) and \( m \) are the lengths of the two strings.
-
-**(Implementation)** Implement a 2-approximation algorithm for the vertex cover problem and compare it with the exact solution.
-
-**(Implementation)** Implement the Bellman-Ford algorithm to solve the single-source shortest paths problem on graphs with negative weights.
-
-**(Theoretical)** Analyze the performance of a dynamic programming solution to the edit distance problem and prove its optimality.
-
-**(Implementation)** Implement the dynamic programming solution to the traveling salesman problem (TSP) and compare it with the performance of a greedy approximation algorithm.
-
-**(Theoretical)** Prove that there is no polynomial-time algorithm for the TSP unless P=NP, but that there exists a \( \frac{3}{2} \)-approximation algorithm for the metric TSP.
-
-**(Implementation)** Implement a greedy algorithm for the coin change problem and analyze its performance compared to dynamic programming.
-
-**(Theoretical)** Prove the correctness of the dynamic programming approach to solving the rod cutting problem.
-
-**(Implementation)** Create a dynamic programming algorithm for solving the subset sum problem and compare it with a brute force approach.
-
-**(Theoretical)** Discuss the trade-offs between greedy and dynamic programming approaches in optimization problems.
-
-**(Implementation)** Implement a 3-approximation algorithm for the metric TSP and compare its results with exact solutions.
-
----
-
-### **5. Online and Streaming Algorithms**
-
-**(Implementation)** Implement the Least Recently Used (LRU) caching algorithm and evaluate its competitive ratio compared to the optimal offline solution.
-
-**(Theoretical)** Prove that the greedy algorithm for the online bipartite matching problem achieves a competitive ratio of \( 1/2 \).
-
-**(Implementation)** Implement a Count-Min Sketch to estimate the frequency of elements in a stream and compare it with the exact solution in terms of memory usage and performance.
-
-**(Theoretical)** Prove the correctness and analyze the competitive ratio of the paging algorithm in an online setting.
-
-**(Implementation)** Design and implement an online algorithm for the k-server problem and evaluate its performance on different types of inputs.
-
-**(Theoretical)** Analyze the space complexity of the Misra-Gries algorithm for finding frequent elements in a data stream and explain how it improves over naive counting.
-
-**(Implementation)** Implement an algorithm to maintain the median of a data stream using two heaps, and analyze its time complexity.
-
-**(Theoretical)** Prove that any online algorithm for caching has a competitive ratio of at least \( k \) in the worst case, where \( k \) is the cache size.
-
-**(Implementation)** Implement an online algorithm for scheduling jobs on two machines to minimize the makespan, and analyze its competitive ratio.
-
-**(Theoretical)** Analyze the competitive ratio of the greedy algorithm for the k-center problem in an online setting, and prove its bounds.
-
-**(Implementation)** Design a streaming algorithm to find the kth smallest element in a stream of numbers.
-
-**(Theoretical)** Prove the optimality of the Randomized Online Algorithm for the ski rental problem.
-
-**(Implementation)** Implement a dynamic sketching algorithm for estimating the number of distinct elements in a data stream.
-
-**(Theoretical)** Discuss the limitations of online algorithms in terms of approximation ratios and provide examples.
-
-**(Implementation)** Create a sliding window algorithm for calculating the average of a stream of numbers.
-
-**(Theoretical)** Analyze the impact of delay in online algorithms and how it affects performance guarantees.
+    return inversions
+```
 
 ---
 
-### **6. Advanced Topics and Research-Oriented Exercises**
+#### **(Theoretical) Master Theorem Analysis**
+1. **Recurrence**: \( T(n) = 3T(n/3) + O(n) \)
+2. **Application**:
+   - Here, \(a = 3\), \(b = 3\), and \(f(n) = O(n)\).
+   - Using the Master Theorem, since \(f(n)\) grows polynomially slower than \(n^{\log_b a} = n^{\log_3 3} = n\), we can apply case 1:
+   \[
+   T(n) = \Theta(n^{\log_3 3}) = \Theta(n \log n)
+   \]
 
-**(Theoretical)** Explore and summarize recent advancements in quantum algorithms, focusing on their potential impact on classical algorithms.
+---
 
-**(Implementation)** Implement a machine learning algorithm and analyze its computational complexity.
+#### **(Implementation) Median of Two Sorted Arrays**
+```plaintext
+function findMedianSortedArrays(nums1, nums2):
+    if length(nums1) > length(nums2):
+        nums1, nums2 = nums2, nums1
+    
+    x = length(nums1)
+    y = length(nums2)
+    low = 0
+    high = x
 
-**(Theoretical)** Discuss the challenges of implementing algorithms in a distributed environment and propose potential solutions.
+    while low <= high:
+        partitionX = (low + high) // 2
+        partitionY = (x + y + 1) // 2 - partitionX
 
-**(Implementation)** Create a visual representation of an algorithm’s execution, such as a sorting algorithm, using a programming language of your choice.
+        maxX = (partitionX == 0) ? -∞ : nums1[partitionX - 1]
+        minX = (partitionX == x) ? +∞ : nums1[partitionX]
+        maxY = (partitionY == 0) ? -∞ : nums2[partitionY - 1]
+        minY = (partitionY == y) ? +∞ : nums2[partitionY]
 
-**(Theoretical)** Analyze the implications of parallel computing on traditional algorithm design and implementation.
+        if maxX <= minY and maxY <= minX:
+            if (x + y) % 2 == 0:
+                return (max(maxX, maxY) + min(minX, minY)) / 2
+            else:
+                return max(maxX, maxY)
+        elif maxX > minY:
+            high = partitionX - 1
+        else:
+            low = partitionX + 1
+```
 
-**(Implementation)** Develop an algorithm that integrates concepts from artificial intelligence for solving optimization problems.
+---
 
-**(Theoretical)** Explore the differences between deterministic and probabilistic algorithms, providing examples of each.
+#### **(Theoretical) Binary Search Proof of Correctness**
+1. **Correctness**: The algorithm continuously halves the search space.
+2. **Time Complexity**: The time complexity is \(O(\log n)\) since each iteration reduces the search space by half.
 
-**(Implementation)** Create an application that uses algorithms for real-time data processing and analyze its performance.
+---
 
-**(Theoretical)** Research and present the implications of the P vs NP problem in modern computing.
+#### **(Implementation) 0/1 Knapsack Problem**
+```plaintext
+function knapsack(values, weights, capacity):
+    n = length(values)
+    dp = array[0..n][0..capacity]
 
-**(Implementation)** Implement a genetic algorithm for solving a complex optimization problem and compare its performance with other algorithms.
+    for i from 0 to n:
+        for w from 0 to capacity:
+            if i == 0 or w == 0:
+                dp[i][w] = 0
+            elif weights[i - 1] <= w:
+                dp[i][w] = max(dp[i - 1][w], dp[i - 1][w - weights[i - 1]] + values[i - 1])
+            else:
+                dp[i][w] = dp[i - 1][w]
+    
+    return dp[n][capacity]
+```
 
-**(Theoretical)** Discuss the role of algorithms in machine learning and data mining, and their impact on the accuracy of predictions.
+---
 
-**(Implementation)** Create a project that implements multiple algorithms to solve the same problem and analyze their performance in various scenarios.
+#### **(Theoretical) Maximum Subarray Problem with Divide-and-Conquer**
+- **Approach**: Divide the array into two halves and recursively find the maximum subarray in the left half, right half, and across the midpoint. 
+- **Correctness**: This captures all possible maximum subarrays.
+- **Time Complexity**: The time complexity is \(O(n \log n)\).
 
-**(Theoretical)** Investigate the effects of algorithmic bias in machine learning and propose ways to mitigate it.
+---
 
-**(Implementation)** Design an interactive tool that allows users to visualize and manipulate different algorithms in real-time.
+#### **(Implementation) Sort a Linked List**
+```plaintext
+function mergeSort(head):
+    if head == null or head.next == null:
+        return head
+
+    middle = getMiddle(head)
+    nextToMiddle = middle.next
+    middle.next = null
+
+    left = mergeSort(head)
+    right = mergeSort(nextToMiddle)
+
+    return sortedMerge(left, right)
+
+function sortedMerge(left, right):
+    if left == null:
+        return right
+    if right == null:
+        return left
+
+    if left.data <= right.data:
+        left.next = sortedMerge(left.next, right)
+        return left
+    else:
+        right.next = sortedMerge(left, right.next)
+        return right
+
+function getMiddle(head):
+    if head == null:
+        return head
+    slow = head
+    fast = head.next
+
+    while fast != null and fast.next != null:
+        slow = slow.next
+        fast = fast.next.next
+
+    return slow
+```
+
+---
+
+#### **(Theoretical) Convex Hull Optimality Proof**
+- **Optimality**: The divide-and-conquer method (like Graham's scan) has a time complexity of \(O(n \log n)\) and is optimal for convex hull problems because it efficiently manages the sorting and merging of points.
+  
+---
+
+#### **(Implementation) Power Calculation**
+```plaintext
+function power(x, n):
+    if n == 0:
+        return 1
+    half = power(x, n // 2)
+    if n % 2 == 0:
+        return half * half
+    else:
+        return x * half * half
+```
+
+---
+
+#### **(Theoretical) Differential Equations and Divide-and-Conquer**
+- **Application**: Divide-and-conquer can be used to solve differential equations through methods such as the finite difference method. The problem is divided into smaller segments, solved independently, and then combined to form a solution.
+
+---
+
+#### **(Implementation) Game of Life Simulation**
+```plaintext
+function gameOfLife(board):
+    rows = length(board)
+    cols = length(board[0])
+
+    directions = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1), (1, -1), (-1, 1)]
+
+    function countLiveNeighbors(r, c):
+        count = 0
+        for direction in directions:
+            nr = r + direction[0]
+            nc = c + direction[1]
+            if 0 <= nr < rows and 0 <= nc < cols and abs(board[nr][nc]) == 1:
+                count += 1
+        return count
+
+    for r
+
+ from 0 to rows - 1:
+        for c from 0 to cols - 1:
+            liveNeighbors = countLiveNeighbors(r, c)
+            if board[r][c] == 1 and (liveNeighbors < 2 or liveNeighbors > 3):
+                board[r][c] = -1  // Mark for death
+            if board[r][c] == 0 and liveNeighbors == 3:
+                board[r][c] = 2  // Mark for birth
+
+    for r from 0 to rows - 1:
+        for c from 0 to cols - 1:
+            if board[r][c] > 0:
+                board[r][c] = 1
+            else:
+                board[r][c] = 0
+```
+
+---
+
+#### **(Theoretical) Space Complexity in Divide-and-Conquer**
+- **Analysis**: Generally, the space complexity can be linear in terms of input size for algorithms that utilize auxiliary space for merging or storing results (e.g., merge sort). Techniques like in-place algorithms can be employed to minimize space.
+
+---
+
+### 2. **Graph Algorithms and Dynamic Graph Data Structures**
+
+#### **(Implementation) Dijkstra’s Algorithm**
+```plaintext
+function dijkstra(graph, source):
+    dist = array filled with infinity
+    dist[source] = 0
+    priorityQueue = empty min-heap
+    add (0, source) to priorityQueue
+
+    while priorityQueue is not empty:
+        currentDist, currentNode = extract-min from priorityQueue
+        
+        for each neighbor in graph[currentNode]:
+            distance = currentDist + edgeWeight(currentNode, neighbor)
+            if distance < dist[neighbor]:
+                dist[neighbor] = distance
+                add (distance, neighbor) to priorityQueue
+                
+    return dist
+```
+
+#### **(Theoretical) Kruskal’s Algorithm**
+- **Proof of Minimum Spanning Tree (MST)**: By considering the cut property and using a disjoint-set data structure, we can prove that adding the minimum weight edge that does not form a cycle leads to an MST.
+- **Time Complexity**: \(O(E \log E)\) where \(E\) is the number of edges.
+
+---
+
+#### **(Implementation) Dynamic Connectivity Data Structure**
+```plaintext
+class LinkCutTree:
+    // Define necessary methods for link, cut, find root, and connected checks
+
+function dynamicConnectivity(operations):
+    for operation in operations:
+        if operation is a link:
+            linkCutTree.link(nodeA, nodeB)
+        elif operation is a cut:
+            linkCutTree.cut(nodeA, nodeB)
+        elif operation is a connected check:
+            return linkCutTree.connected(nodeA, nodeB)
+```
+
+---
+
+#### **(Implementation) Strongly Connected Components (SCCs)**
+```plaintext
+function tarjansSCC(graph):
+    index = 0
+    stack = []
+    lowlinks = array filled with -1
+    indices = array filled with -1
+    onStack = array filled with false
+
+    for v in graph:
+        if indices[v] == -1:
+            strongconnect(v)
+
+    function strongconnect(v):
+        nonlocal index
+        indices[v] = index
+        lowlinks[v] = index
+        index += 1
+        stack.push(v)
+        onStack[v] = true
+
+        for neighbor in graph[v]:
+            if indices[neighbor] == -1:
+                strongconnect(neighbor)
+                lowlinks[v] = min(lowlinks[v], lowlinks[neighbor])
+            elif onStack[neighbor]:
+                lowlinks[v] = min(lowlinks[v], indices[neighbor])
+
+        if lowlinks[v] == indices[v]:
+            scc = []
+            while true:
+                w = stack.pop()
+                onStack[w] = false
+                scc.push(w)
+                if w == v:
+                    break
+            return scc
+```
+
+---
+
+#### **(Theoretical) Prim’s Algorithm**
+- **Correctness**: It maintains a tree that grows by adding the lowest weight edge connected to the tree. A Fibonacci heap provides efficient minimum extractions.
+- **Performance**: \(O(E + V \log V)\).
+
+---
+
+#### **(Theoretical) Ford-Fulkerson and Irrational Capacities**
+- **Failure to Terminate**: In cases where edge capacities are irrational, the flow may not converge, potentially leading to infinite cycles.
+
+---
+
+#### **(Implementation) Edmonds-Karp Algorithm**
+```plaintext
+function edmondsKarp(graph, source, sink):
+    maxFlow = 0
+    while true:
+        parent = array filled with -1
+        queue = empty queue
+        queue.enqueue(source)
+        parent[source] = source
+
+        while queue is not empty:
+            currentNode = queue.dequeue()
+            for neighbor in graph[currentNode]:
+                if parent[neighbor] == -1 and capacity(currentNode, neighbor) > 0:
+                    parent[neighbor] = currentNode
+                    queue.enqueue(neighbor)
+                    if neighbor == sink:
+                        break
+
+        if parent[sink] == -1:
+            break  // No more augmenting paths
+
+        pathFlow = infinity
+        s = sink
+        while s != source:
+            pathFlow = min(pathFlow, capacity(parent[s], s))
+            s = parent[s]
+
+        maxFlow += pathFlow
+
+        v = sink
+        while v != source:
+            u = parent[v]
+            decreaseCapacity(u, v, pathFlow)
+            increaseCapacity(v, u, pathFlow)
+            v = parent[v]
+
+    return maxFlow
+```
+
+---
+
+#### **(Theoretical) Dijkstra’s Algorithm and Negative Weights**
+- **Proof**: If a negative edge exists, Dijkstra's algorithm may select the incorrect path initially, leading to suboptimal distance calculations. A counter-example is a triangle with negative weight on one edge.
+
+---
+
+#### **(Implementation) Dynamic Shortest Path Updates**
+```plaintext
+class DynamicGraph:
+    // Implement methods for adding and removing edges
+
+function dynamicShortestPathUpdates(graph, edges):
+    for edge in edges:
+        if edge.action is add:
+            graph.addEdge(edge.u, edge.v, edge.weight)
+        elif edge.action is remove:
+            graph.removeEdge(edge.u, edge.v)
+```
+
+---
+
+#### **(Theoretical) Tarjan’s LCA Algorithm**
+- **Correctness**: The algorithm effectively finds the LCA by employing depth-first search and tracking the paths.
+- **Time Complexity**: \(O(n)\) for preprocessing.
+
+---
+
+#### **(Implementation) Articulation Points**
+```plaintext
+function findArticulationPoints(graph):
+    index = 0
+    lowlinks = array filled with -1
+    indices = array filled with -1
+    articulationPoints = set()
+
+    function dfs(v, parent):
+        nonlocal index
+        indices[v] = lowlinks[v] = index
+        index += 1
+        children = 0
+        
+        for neighbor in graph[v]:
+            if neighbor == parent:
+                continue
+            if indices[neighbor] == -1:
+                children += 1
+                dfs(neighbor, v)
+                lowlinks[v] = min(lowlinks[v], lowlinks[neighbor])
+                if parent != -1 and lowlinks[neighbor] >= indices[v]:
+                    articulationPoints.add(v)
+            else:
+                lowlinks[v] = min(lowlinks[v], indices[neighbor])
+
+        if parent == -1 and children > 1:
+            articulationPoints.add(v)
+
+    for v in graph:
+        if indices[v] == -1:
+            dfs(v, -1)
+
+    return articulationPoints
+```
+
+---
+
+#### **(Theoretical) Floyd-Warshall Algorithm Applications**
+- **Applications**: Used for finding shortest paths between all pairs in dense graphs, particularly in transitive closure and detecting negative cycles.
+- **Time Complexity**: \(O(V^3)\).
+
+---
+
+#### **(Implementation) A* Search Algorithm**
+```plaintext
+function aStar(graph, start, goal):
+    openSet = empty priority queue
+    openSet.push(start)
+    cameFrom = empty map
+
+    gScore = array filled with infinity
+    gScore[start] = 0
+    fScore = array filled with infinity
+    fScore[start] = heuristic(start, goal)
+
+    while openSet is not empty:
+        current = openSet.extract-min()
+
+        if current == goal:
+            return reconstructPath(cameFrom, current)
+
+        for neighbor in graph.neighbors(current):
+            tentativeGScore = gScore[current] + distance(current, neighbor)
+            if tentativeGScore < gScore[neighbor]:
+                cameFrom[neighbor] = current
+                gScore[neighbor] = tentativeGScore
+                fScore[neighbor] = gScore[neighbor] + heuristic(neighbor, goal)
+                if neighbor not in openSet:
+                    openSet.push(neighbor)
+
+    return empty  // Path not found
+
+function reconstructPath(cameFrom, current):
+    totalPath = []
+    while current in cameFrom:
+        totalPath.prepend(current)
+        current = cameFrom[current]
+    return totalPath
+```
+
+---
+
+#### **(Theoretical) Johnson’s Algorithm for Shortest Paths**
+- **Correctness**: Uses reweighting to handle negative weights, ensuring all paths are correctly calculated.
+- **Time Complexity**: \(O(V^2 \log V + VE)\).
+
+---
+
+#### **(Implementation) Randomized Minimum Spanning Tree**
+```plaintext
+function randomizedMST(graph):
+    edges = shuffle(graph.edges)  // Randomly shuffle edges
+    mst = empty set
+    unionFind = createUnionFind(graph.vertices)
+
+    for edge in edges:
+        if unionFind.find(edge.u) != unionFind.find(edge.v):
+            mst.add(edge)
+            unionFind.union(edge.u, edge.v)
+
+    return mst
+```
+
+---
+
+#### **(Theoretical) Cut Property in Graph Algorithms**
+
+
+- **Proof**: The minimum cut that separates vertices in the graph must contain at least one edge from the minimum spanning tree, ensuring optimality.
+
+---
+
+#### **(Implementation) Cycle Detection with Union-Find**
+```plaintext
+function hasCycle(graph):
+    unionFind = createUnionFind(graph.vertices)
+
+    for edge in graph.edges:
+        if unionFind.find(edge.u) == unionFind.find(edge.v):
+            return true  // Cycle found
+        unionFind.union(edge.u, edge.v)
+
+    return false  // No cycle found
+```
+
+---
+
+#### **(Theoretical) Bipartite Graph Checking**
+- **Correctness**: Using BFS or DFS, the graph can be colored in two colors to check for bipartiteness.
+- **Complexity**: \(O(V + E)\).
+
+---
+
+#### **(Implementation) Chinese Postman Problem**
+```plaintext
+function chinesePostman(graph):
+    eulerianPath = findEulerianPath(graph)
+    if eulerianPath exists:
+        return eulerianPath
+    else:
+        // Handle odd degree vertices
+        addEdgesToMakeEulerian(graph)
+        return findEulerianPath(graph)
+
+function findEulerianPath(graph):
+    // Implementation of finding Eulerian Path
+```
+
+---
+
+#### **(Theoretical) Limitations of Traditional Graph Algorithms**
+- **Dynamic Graph Challenges**: Traditional algorithms often require a complete traversal of the graph, which can be inefficient for dynamic changes. Using data structures like link-cut trees can improve performance.
+
+---
+
+### 3. **Cache-Efficient Algorithms**
+
+#### **(Implementation) Cache-Oblivious Matrix Multiplication**
+```plaintext
+function cacheObliviousMatrixMultiplication(A, B, C, n):
+    if n <= 64:  // Base case for small matrices
+        for i from 0 to n-1:
+            for j from 0 to n-1:
+                C[i][j] += A[i][k] * B[k][j]
+    else:
+        mid = n / 2
+        cacheObliviousMatrixMultiplication(A[0:mid, 0:mid], B[0:mid, 0:mid], C[0:mid, 0:mid], mid)
+        // Recursive calls for other quadrants...
+```
+
+#### **(Theoretical) Merge Sort Cache Efficiency**
+- **Proof**: By organizing the merge step to fit within cache lines, we can reduce cache misses significantly compared to naive merge operations.
+
+---
+
+#### **(Theoretical) Cache-Oblivious Binary Search**
+- **Working**: It effectively reduces the number of cache misses to \( O(\log_B n) \) by accessing data in a way that respects the underlying memory hierarchy.
+
+---
+
+#### **(Theoretical) Quicksort Cache Performance**
+- **Analysis**: In general, quicksort performs better than merge sort in practice, but its cache performance can degrade with poor pivot choices leading to unbalanced partitions.
+
+---
+
+#### **(Implementation) Cache-Oblivious Matrix Transposition**
+```plaintext
+function cacheObliviousTranspose(matrix, result, n):
+    if n <= 64:
+        for i from 0 to n-1:
+            for j from 0 to n-1:
+                result[j][i] = matrix[i][j]
+    else:
+        mid = n / 2
+        cacheObliviousTranspose(matrix[0:mid, 0:mid], result[0:mid, 0:mid], mid)
+        // Transpose other quadrants...
+```
+
+---
+
+#### **(Theoretical) Cache-Oblivious Quicksort**
+- **Modification**: By partitioning arrays in a way that respects cache lines, we can optimize data access patterns leading to improved cache performance.
+
+---
+
+#### **(Theoretical) Optimal Cache Complexity for Matrix Multiplication**
+- **Proof**: It can be shown that the access pattern of any cache-oblivious algorithm fits within the bounds of \( O(n^3 / B + n^2) \).
+
+---
+
+#### **(Implementation) Cache-Oblivious Priority Queue**
+```plaintext
+class CacheObliviousPriorityQueue:
+    // Define methods for insert, extract-min, and maintain heap property
+
+function priorityQueueExample():
+    pq = CacheObliviousPriorityQueue()
+    for element in data:
+        pq.insert(element)
+    while not pq.isEmpty():
+        print(pq.extractMin())
+```
+
+---
+
+#### **(Theoretical) Cache-Oblivious Median Finding**
+- **Optimality**: Cache-oblivious algorithms can find the median in \( O(n) \) cache accesses, ensuring efficient data locality.
+
+---
+
+#### **(Implementation) Cache-Oblivious Sorting Algorithm**
+```plaintext
+function cacheObliviousSort(array, n):
+    if n <= 1:
+        return array
+    mid = n / 2
+    left = cacheObliviousSort(array[0:mid], mid)
+    right = cacheObliviousSort(array[mid:n], n - mid)
+    return merge(left, right)
+
+function merge(left, right):
+    // Merging logic ensuring cache efficiency
+```
+
+---
+
+#### **(Theoretical) Principles of Cache-Efficient Algorithms**
+- **Differences**: Cache-efficient algorithms prioritize minimizing cache misses through optimal data access patterns, contrasting traditional algorithms that may not consider memory hierarchy.
+
+---
+
+#### **(Implementation) Cache-Oblivious Binary Tree Traversal**
+```plaintext
+function cacheObliviousTreeTraversal(node):
+    if node is null:
+        return
+    cacheObliviousTreeTraversal(node.left)
+    visit(node)
+    cacheObliviousTreeTraversal(node.right)
+```
+
+---
+
+#### **(Theoretical) Cache Efficiency in Dynamic Programming**
+- **Optimization Suggestions**: Techniques such as blocking can improve cache locality, significantly enhancing performance in memory-intensive algorithms.
+
+---
+
+#### **(Implementation) Cache-Aware Strassen’s Algorithm**
+```plaintext
+function strassen(A, B, C, n):
+    if n <= 64:  // Base case
+        standardMatrixMultiply(A, B, C, n)
+    else:
+        // Strassen’s algorithm steps
+```
+
+---
+
+#### **(Theoretical) Optimality of Cache-Efficient Algorithms**
+- **Proof**: It can be shown that cache-efficient algorithms can minimize memory access time, leading to better overall performance.
+
+---
+
+### 4. **Algorithmic Paradigms: Greedy, Dynamic Programming, Approximation Algorithms**
+
+#### **(Implementation) Huffman Coding Algorithm**
+```plaintext
+function huffmanCoding(frequencies):
+    priorityQueue = createPriorityQueue(frequencies)
+    
+    while priorityQueue.size() > 1:
+        left = priorityQueue.extractMin()
+        right = priorityQueue.extractMin()
+        mergedNode = createNode(left.frequency + right.frequency)
+        priorityQueue.insert(mergedNode)
+
+    return constructCodes(priorityQueue.extractMin())
+```
+
+---
+
+#### **(Theoretical) Activity Selection Problem**
+- **Correctness**: Greedy choice guarantees optimality as it always selects the next non-overlapping activity, ensuring maximum selection.
+- **Dynamic Programming**: Not necessary as the greedy approach yields the optimal solution directly.
+
+---
+
+#### **(Implementation) Dynamic Programming Knapsack Problem**
+```plaintext
+function knapsack(weights, values, capacity):
+    n = length(weights)
+    dp = array filled with 0
+
+    for i from 0 to n-1:
+        for w from capacity down to weights[i]:
+            dp[w] = max(dp[w], dp[w - weights[i]] + values[i])
+
+    return dp[capacity]
+```
+
+---
+
+#### **(Theoretical) Minimum Spanning Tree Optimality (Kruskal)**
+- **Proof**: By adding the smallest edge that doesn’t create a cycle, Kruskal’s algorithm builds a valid MST.
+
+---
+
+#### **(Theoretical) Longest Common Subsequence Complexity**
+- **Proof**: The DP table has dimensions \( O(nm) \) for strings of lengths \( n \) and \( m \).
+
+---
+
+#### **(Implementation) Vertex Cover 2-Approximation Algorithm**
+```plaintext
+function vertexCover(graph):
+    cover = empty set
+    while graph has edges:
+        edge = pick an arbitrary edge (u, v)
+        cover.add(u)
+        cover.add(v)
+        remove edges incident to u and v from graph
+    return cover
+```
+
+---
+
+#### **(Implementation) Bellman-Ford Algorithm**
+```plaintext
+function bellmanFord(graph, source):
+    dist = array filled with infinity
+    dist[source] = 0
+
+    for i from 0 to length(graph) - 1:
+        for edge in graph.edges:
+            if dist[edge.u] + edge.weight < dist[edge.v]:
+                dist[edge.v] = dist[edge.u] + edge.weight
+
+    return dist
+```
+
+---
+
+#### **(Theoretical) Edit Distance Complexity**
+- **Analysis**: The optimality is ensured by the DP formulation, with complexity derived from filling a 2D table of size \( O(nm) \).
+
+---
+
+#### **(Implementation) Traveling Salesman Problem (TSP)**
+```plaintext
+function tsp(graph, start):
+    n = length(graph)
+    dp = array filled with infinity
+    dp[0][1] = 0  // Starting point
+
+    for mask from 1 to (1 << n) - 1:
+        for u from 0 to n-1:
+            for v from 0 to n-1:
+                if mask & (1 << v) == 0:  // If v is not visited
+                    dp[mask | (1 << v)][v] = min(dp[mask | (1 << v)][v], dp[mask][u] + graph[u][v])
+
+    return min(dp[(1 << n) - 1][u] + graph[u][start] for u in range(n))
+```
+
+---
+
+#### **(
+
+Theoretical) Approximation Algorithms for NP-Hard Problems**
+- **Proof of Approximation**: Algorithms like the greedy approach for set cover provide solutions within a logarithmic factor of the optimal.
+
+---
+
+#### **(Implementation) Minimum Cost Perfect Matching**
+```plaintext
+function minCostPerfectMatching(graph):
+    // Use algorithms like Hungarian or Edmonds-Karp to find minimum cost perfect matching
+```
