@@ -241,10 +241,8 @@ The Vasicek model is a one-factor short-rate model that describes the evolution 
 
 **Theoretical Foundation:**
 The Vasicek model is expressed as:
-\[
-dr_t = \alpha(\mu - r_t)dt + \sigma dW_t
-\]
-where \( r_t \) is the short-term interest rate, \( \alpha \) is the speed of mean reversion, \( \mu \) is the long-term mean rate, \( \sigma \) is the volatility, and \( W_t \) is a Wiener process.
+$[dr_t = \alpha(\mu - r_t)dt + \sigma dW_t]$
+where $( r_t )$ is the short-term interest rate, $( \alpha )$ is the speed of mean reversion, $( \mu )$ is the long-term mean rate, $( \sigma )$ is the volatility, and $( W_t )$ is a Wiener process.
 
 **Practical Example:**
 The Vasicek model is used in pricing zero-coupon bonds and interest rate derivatives. It provides a framework for understanding how interest rates evolve over time and the risks associated with this evolution.
@@ -303,9 +301,7 @@ The Cox-Ingersoll-Ross (CIR) model extends the Vasicek model by ensuring that in
 
 **Theoretical Foundation:**
 The CIR model is described by:
-\[
-dr_t = \alpha(\mu - r_t)dt + \sigma \sqrt{r_t} dW_t
-\]
+$[dr_t = \alpha(\mu - r_t)dt + \sigma \sqrt{r_t} dW_t]$
 where the square root term ensures that rates cannot go negative.
 
 **Practical Example:**
@@ -371,26 +367,22 @@ The Heath-Jarrow-Morton (HJM) framework is a more advanced approach to modeling 
 
 2. **Stochastic Processes for Forward Rates:**
 
-   In the HJM framework, the forward rate \( f(t, T) \), which represents the interest rate for a period starting at time \( T \) and ending at time \( T + \Delta T \), follows a stochastic process:
-   \[
-   df(t, T) = \alpha(t, T) \, dt + \sigma(t, T) \, dW(t)
-   \]
+   In the HJM framework, the forward rate $( f(t, T) )$, which represents the interest rate for a period starting at time $( T )$ and ending at time $( T + \Delta T )$, follows a stochastic process:
+   $[ df(t, T) = \alpha(t, T) \, dt + \sigma(t, T) \, dW(t) ]$
    where:
-   - \( \alpha(t, T) \) represents the drift term of the forward rate.
-   - \( \sigma(t, T) \) represents the volatility of the forward rate.
-   - \( W(t) \) denotes a standard Brownian motion or Wiener process.
+   - $( \alpha(t, T) )$ represents the drift term of the forward rate.
+   - $( \sigma(t, T) )$ represents the volatility of the forward rate.
+   - $( W(t) )$ denotes a standard Brownian motion or Wiener process.
 
 3. **Volatility Structure:**
 
-   One of the main contributions of the HJM framework is the specification of the volatility structure \( \sigma(t, T) \). The model allows for a flexible structure of volatility that can depend on both time \( t \) and maturity \( T \). To ensure no arbitrage opportunities, the volatility term must satisfy a specific no-arbitrage condition known as the HJM drift condition:
-   \[
-   \frac{\partial \sigma(t, T)}{\partial T} \geq 0
-   \]
+   One of the main contributions of the HJM framework is the specification of the volatility structure $( \sigma(t, T) )$. The model allows for a flexible structure of volatility that can depend on both time $( t )$ and maturity $( T )$. To ensure no arbitrage opportunities, the volatility term must satisfy a specific no-arbitrage condition known as the HJM drift condition:
+   $[ \frac{\partial \sigma(t, T)}{\partial T} \geq 0 ]$
    This condition ensures that the term structure of volatilities does not lead to arbitrage profits.
 
 4. **Bond Pricing under the HJM Framework:**
 
-   The HJM framework can be used to derive the price of zero-coupon bonds and other interest rate derivatives. The price of a zero-coupon bond \( P(t, T) \) can be computed by solving the associated partial differential equations (PDEs) that incorporate the dynamics of forward rates. The bond price \( P(t, T) \) is related to the forward rates \( f(t, T) \) and the risk-neutral measure.
+   The HJM framework can be used to derive the price of zero-coupon bonds and other interest rate derivatives. The price of a zero-coupon bond $( P(t, T) )$ can be computed by solving the associated partial differential equations (PDEs) that incorporate the dynamics of forward rates. The bond price $( P(t, T) )$ is related to the forward rates $( f(t, T) )$ and the risk-neutral measure.
 
 5. **Applications in Pricing Complex Derivatives:**
 
@@ -590,10 +582,8 @@ The Vasicek model is used to price zero-coupon bonds and interest rate derivativ
 
 **Theoretical Foundation:**
 The price of a zero-coupon bond under the Vasicek model can be derived using the following formula:
-\[
-P(t, T) = A(t, T) e^{-B(t, T) r_t}
-\]
-where \( A(t, T) \) and \( B(t, T) \) are functions of the model parameters.
+$[ P(t, T) = A(t, T) e^{-B(t, T) r_t} ]$
+where $( A(t, T) )$ and $( B(t, T) )$ are functions of the model parameters.
 
 **Practical Example:**
 Traders and portfolio managers use the Vasicek model to price interest rate derivatives and to manage risk by understanding how changes in interest rates affect bond prices.
@@ -690,9 +680,7 @@ The CIR model is often used to price interest rate derivatives due to its abilit
 
 **Theoretical Foundation:**
 The CIR model is described by the stochastic differential equation:
-\[
-dr_t = \alpha(\mu - r_t) dt + \sigma \sqrt{r_t} dW_t
-\]
+$[ dr_t = \alpha(\mu - r_t) dt + \sigma \sqrt{r_t} dW_t ]$
 The bond pricing formula under the CIR model can be derived using this equation and involves solving the associated partial differential equations (PDEs).
 
 **Practical Example:**
@@ -745,10 +733,8 @@ The HJM framework provides a general approach to modeling the evolution of forwa
 
 **Theoretical Foundation:**
 The HJM framework is characterized by its focus on the dynamics of forward rates and involves specifying a volatility structure for these rates. The evolution of forward rates is given by:
-\[
-df(t, T) = \sigma(t, T) dW(t)
-\]
-where \( \sigma(t, T) \) is the volatility function.
+$[df(t, T) = \sigma(t, T) dW(t)]$
+where $( \sigma(t, T) )$ is the volatility function.
 
 **Practical Example:**
 The HJM framework is applied in pricing complex interest rate derivatives like swaptions, where the ability to model the volatility of forward rates is crucial.
