@@ -67,11 +67,11 @@ int main() {
 - **Real-Time Analytics**: In high-frequency trading, where milliseconds matter, using parallel computing allows firms to evaluate numerous scenarios quickly, aiding in decision-making and strategy execution.
 - **Performance Metrics**: Speedup can be quantified using Amdahl's Law, which states:
   
-  \[
+  $[
   S = \frac{1}{(1 - P) + \frac{P}{N}}
-  \]
+  ]$
   
-  Where \( S \) is the speedup, \( P \) is the parallel portion of the task, and \( N \) is the number of processors.
+  Where $( S )$ is the speedup, $( P )$ is the parallel portion of the task, and $( N )$ is the number of processors.
 
 ### 4. Describe How MPI (Message Passing Interface) Differs from OpenMP
 
@@ -308,16 +308,16 @@ To analyze the performance of GPU versus CPU for pricing exotic options, conside
 
 **Geometric Brownian Motion Model**: This model is widely used to simulate stock prices and is defined as:
 
-\[
+$[
 S(t) = S(0) \cdot e^{( \mu - \frac{\sigma^2}{2})t + \sigma W(t)}
-\]
+]$
 
 Where:
-- \( S(t) \) = stock price at time \( t \)
-- \( S(0) \) = initial stock price
-- \( \mu \) = drift (expected return)
-- \( \sigma \) = volatility
-- \( W(t) \) = Wiener process (standard normal variable)
+- $( S(t) )$ = stock price at time $( t )$
+- $( S(0) )$ = initial stock price
+- $( \mu )$ = drift (expected return)
+- $( \sigma )$ = volatility
+- $( W(t) )$ = Wiener process (standard normal variable)
 
 **CUDA Program Example**:
 ```c
@@ -601,10 +601,10 @@ FEM is widely used to price exotic options, such as barrier options, Asian optio
 The heat equation can be applied in finance for various applications, such as modeling the evolution of interest rates over time.
 
 **PDE Formulation**:
-\[
+$[
 \frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
-\]
-where \( u \) could represent the temperature or interest rate at a given point in time.
+]$
+where $( u )$ could represent the temperature or interest rate at a given point in time.
 
 **Python Implementation**:
 
@@ -664,11 +664,11 @@ Spectral methods are a class of numerical techniques used to solve differential 
 **Basics of Spectral Methods**:
 1. **Function Expansion**: Spectral methods involve approximating the solution of a differential equation by expressing it as a sum of basis functions (e.g., polynomials or Fourier series).
   
-   \[
+   $[
    u(x) \approx \sum_{n=0}^{N} c_n \phi_n(x)
-   \]
+   ]$
 
-   where \(c_n\) are the coefficients to be determined, and \(\phi_n(x)\) are the basis functions.
+   where $(c_n)$ are the coefficients to be determined, and $(\phi_n(x))$ are the basis functions.
 
 2. **Differential Operators**: The differential operators (like derivatives) are applied in the spectral space, which often results in algebraic equations. This is a key advantage, as it can lead to more efficient computations.
 
@@ -684,11 +684,11 @@ Spectral methods are a class of numerical techniques used to solve differential 
 **PDE for Option Pricing**:
 Consider the Black-Scholes equation for a European call option:
 
-\[
+$[
 \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + r S \frac{\partial V}{\partial S} - r V = 0
-\]
+]$
 
-where \(V\) is the option price, \(S\) is the stock price, \(t\) is time, \(\sigma\) is volatility, and \(r\) is the risk-free rate.
+where $(V)$ is the option price, $(S)$ is the stock price, $(t)$ is time, $(\sigma)$ is volatility, and $(r)$ is the risk-free rate.
 
 **Python Implementation**:
 We'll use Chebyshev polynomials for the spectral method.
@@ -825,11 +825,11 @@ The Finite Volume Method (FVM) is a numerical technique commonly used for solvin
 **PDE for European Option Pricing**:
 The Black-Scholes PDE for a European call option can be expressed as:
 
-\[
+$[
 \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + r S \frac{\partial V}{\partial S} - r V = 0
-\]
+]$
 
-Where \( V \) is the option price, \( S \) is the stock price, \( t \) is time, \( \sigma \) is volatility, and \( r \) is the risk-free rate.
+Where $( V )$ is the option price, $( S )$ is the stock price, $( t )$ is time, $( \sigma )$ is volatility, and $( r )$ is the risk-free rate.
 
 **Python Implementation of FVM**:
 
@@ -1673,15 +1673,15 @@ Here’s a Python implementation to price an Asian option using the analytical m
 **Analytical Pricing for Asian Call Option**  
 The formula for pricing an Asian call option with an arithmetic average can be derived from the Black-Scholes model. The closed-form solution for an Asian call option is given by:
 
-\[
+$[
 C_A = e^{-rT} \left( A - K \right)
-\]
+]$
 
-Where \(A\) is the adjusted average price. The adjusted average price is given by:
+Where $(A)$ is the adjusted average price. The adjusted average price is given by:
 
-\[
+$[
 A = \frac{S_0 e^{(r - \sigma^2 / 2) T}}{1 - e^{-\sigma^2 T}}
-\]
+]$
 
 ### Python Code:
 
