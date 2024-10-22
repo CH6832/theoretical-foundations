@@ -75,11 +75,11 @@ The shape of the yield curve is a strong indicator of future economic conditions
 - Discuss expectations for future growth, inflation, and interest rates.
 
 #### 5. **Discount Bond Pricing**
-For a zero-coupon bond, its price \(P\) is calculated using the formula:
-\[
+For a zero-coupon bond, its price $(P)$ is calculated using the formula:
+$[
 P = \frac{100}{(1 + y)^n}
-\]
-Where \(y\) is the yield and \(n\) is the number of years to maturity.
+]$
+Where $(y)$ is the yield and $(n)$ is the number of years to maturity.
 
 **Example**:
 Calculate the price of a 5-year zero-coupon bond with a yield of 3%.
@@ -94,10 +94,10 @@ print(f"Price of the zero-coupon bond: ${price:.2f}")
 
 #### 6. **Forward Rate Calculation**
 The forward rate can be derived using the relationship between spot rates for different maturities. The formula for calculating the 1-year forward rate 2 years from now (F(2,1)) is:
-\[
+$[
 F(2,1) = \left(\frac{(1 + y_3)^3}{(1 + y_2)^2}\right) - 1
-\]
-Where \(y_3\) is the 3-year spot rate, and \(y_2\) is the 2-year spot rate.
+]$
+Where $(y_3)$ is the 3-year spot rate, and $(y_2)$ is the 2-year spot rate.
 
 **Example**:
 Let’s assume the 2-year spot rate is 2% and the 3-year spot rate is 2.5%.
@@ -119,10 +119,10 @@ Bootstrapping is used to derive zero-coupon yields from coupon-bearing bond pric
 
 #### 8. **Implement Yield Curve Models**
 The **Nelson-Siegel model** is commonly used to fit yield curves:
-\[
+$[
 y(\tau) = \beta_0 + \beta_1 \frac{1 - e^{-\lambda \tau}}{\lambda \tau} + \beta_2 \left(\frac{1 - e^{-\lambda \tau}}{\lambda \tau} - e^{-\lambda \tau}\right)
-\]
-Where \(y(\tau)\) is the yield for maturity \(\tau\), and \(\beta_0\), \(\beta_1\), \(\beta_2\), and \(\lambda\) are parameters.
+]$
+Where $(y(\tau))$ is the yield for maturity $(\tau)$, and $(\beta_0)$, $(\beta_1)$, $(\beta_2)$, and $(\lambda)$ are parameters.
 
 **Steps**:
 - Fit the model to actual yield curve data using optimization methods.
@@ -151,14 +151,14 @@ Here are the solutions to the remaining yield-curve-related problems, focusing o
 ### 11. **Duration Calculation**
 The **Macaulay duration** is the weighted average time to receive the bond's cash flows, weighted by the present value of those cash flows. It is calculated using the following formula:
 
-\[
+$[
 D = \frac{\sum \left(\frac{CF_t}{(1+y)^t} \cdot t\right)}{P}
-\]
+]$
 Where:
-- \( CF_t \) is the cash flow at time \( t \),
-- \( y \) is the bond's yield to maturity,
-- \( P \) is the bond's price,
-- \( t \) is the time period.
+- $( CF_t )$ is the cash flow at time $( t )$,
+- $( y )$ is the bond's yield to maturity,
+- $( P )$ is the bond's price,
+- $( t )$ is the time period.
 
 **Steps**:
 1. Compute the present value of each cash flow.
@@ -182,12 +182,12 @@ print(f"Macaulay Duration: {duration:.2f} years")
 
 ### 12. **Modified Duration**
 **Modified Duration** is a measure of a bond’s price sensitivity to interest rate changes. It is derived from Macaulay duration:
-\[
+$[
 D_{mod} = \frac{D_{mac}}{(1 + y)}
-\]
+]$
 Where:
-- \( D_{mac} \) is the Macaulay duration,
-- \( y \) is the bond's yield.
+- $( D_{mac} )$ is the Macaulay duration,
+- $( y )$ is the bond's yield.
 
 **Significance**: Modified duration tells us the approximate percentage price change for a 1% change in interest rates. A higher duration means the bond is more sensitive to interest rate changes.
 
@@ -202,13 +202,13 @@ print(f"Modified Duration: {mod_duration:.2f} years")
 
 ### 13. **Convexity Calculation**
 **Convexity** measures the curvature in the relationship between bond prices and interest rates, representing the bond’s price sensitivity to large interest rate changes. Convexity is calculated as:
-\[
+$[
 C = \frac{1}{P} \sum \frac{CF_t \cdot t \cdot (t + 1)}{(1 + y)^{t+2}}
-\]
+]$
 
 **Steps**:
 1. Calculate the present value of the bond's cash flows.
-2. Weight each cash flow by \( t(t+1) \).
+2. Weight each cash flow by $( t(t+1) )$.
 3. Sum the weighted cash flows and divide by the bond price.
 
 **Example**:
@@ -247,14 +247,14 @@ An **immunization strategy** locks in a guaranteed return by ensuring that the p
 
 ### 16. **Interest Rate Scenarios**
 To simulate bond price changes under different interest rate scenarios using **duration** and **convexity**, the bond price change approximation is:
-\[
+$[
 \Delta P = - D_{mod} \cdot \Delta y + \frac{1}{2} C \cdot (\Delta y)^2
-\]
+]$
 Where:
-- \( \Delta P \) is the percentage price change,
-- \( \Delta y \) is the change in yield,
-- \( D_{mod} \) is modified duration,
-- \( C \) is convexity.
+- $( \Delta P )$ is the percentage price change,
+- $( \Delta y )$ is the change in yield,
+- $( D_{mod} )$ is modified duration,
+- $( C )$ is convexity.
 
 **Steps**:
 - Simulate a range of interest rate changes.
@@ -263,13 +263,13 @@ Where:
 ### 17. **Portfolio Duration**
 The **weighted average duration** of a bond portfolio is the sum of the individual bonds’ durations, weighted by their market values.
 
-\[
+$[
 D_{portfolio} = \sum \left(\frac{MV_i}{MV_{total}} \cdot D_i\right)
-\]
+]$
 Where:
-- \( MV_i \) is the market value of bond \( i \),
-- \( D_i \) is the duration of bond \( i \),
-- \( MV_{total} \) is the total portfolio value.
+- $( MV_i )$ is the market value of bond $( i )$,
+- $( D_i )$ is the duration of bond $( i )$,
+- $( MV_{total} )$ is the total portfolio value.
 
 **Example**:
 ```python
@@ -410,31 +410,29 @@ Here are the solutions for the problems related to the **Vasicek Model**, includ
 
 The **Vasicek model** describes the evolution of interest rates with the following stochastic differential equation:
 
-\[
-dr_t = a(b - r_t)dt + \sigma dW_t
-\]
+$[ dr_t = a(b - r_t)dt + \sigma dW_t ]$
 
 Where:
-- \( r_t \) is the short-term interest rate at time \( t \),
-- \( a \) is the **speed of mean reversion**,
-- \( b \) is the **long-term mean** level,
-- \( \sigma \) is the **volatility** of interest rates,
-- \( dW_t \) is a Wiener process (stochastic term).
+- $( r_t )$ is the short-term interest rate at time $( t )$,
+- $( a )$ is the **speed of mean reversion**,
+- $( b )$ is the **long-term mean** level,
+- $( \sigma )$ is the **volatility** of interest rates,
+- $( dW_t )$ is a Wiener process (stochastic term).
 
 **Calibration Process**:
 1. **Collect Historical Interest Rate Data**: Gather time series data for short-term interest rates (e.g., 3-month Treasury yields).
 2. **Estimate Parameters**:
-   - \( a \): Speed of mean reversion (how fast interest rates revert to the long-term mean).
-   - \( b \): Long-term mean level.
-   - \( \sigma \): Volatility (standard deviation of interest rate changes).
+   - $( a )$: Speed of mean reversion (how fast interest rates revert to the long-term mean).
+   - $( b )$: Long-term mean level.
+   - $( \sigma )$: Volatility (standard deviation of interest rate changes).
    
    These can be estimated using econometric methods such as **maximum likelihood estimation (MLE)** or **ordinary least squares (OLS)**.
 
 **Steps**:
-- Fit the model to the historical data using regression techniques to estimate \( a \), \( b \), and \( \sigma \).
+- Fit the model to the historical data using regression techniques to estimate $( a )$, $( b )$, and $( \sigma )$.
 - Solve the equation for the parameters using iterative optimization.
 
-**Example** (OLS for \( a \), \( b \), and \( \sigma \)):
+**Example** (OLS for $( a )$, $( b )$, and $( \sigma )$):
 ```python
 import numpy as np
 from scipy.optimize import minimize
@@ -465,12 +463,12 @@ print(f"Calibrated Parameters: a={a:.4f}, b={b:.4f}, sigma={sigma:.4f}")
 Once the Vasicek model parameters have been calibrated, you can simulate interest rate paths.
 
 **Steps**:
-1. Use the calibrated parameters \( a \), \( b \), and \( \sigma \) from the Vasicek model.
+1. Use the calibrated parameters $( a )$, $( b )$, and $( \sigma )$ from the Vasicek model.
 2. Simulate multiple paths of interest rates using the following formula:
-\[
+$[
 r_{t+1} = r_t + a(b - r_t)dt + \sigma \sqrt{dt} \epsilon_t
-\]
-Where \( \epsilon_t \) is a standard normal random variable.
+]$
+Where $( \epsilon_t )$ is a standard normal random variable.
 
 **Example**:
 ```python
@@ -494,22 +492,22 @@ simulated_rates = simulate_vasicek(a, b, sigma, r0, dt, n_steps, n_simulations)
 
 **Analysis**:
 - Plot the simulated paths to visualize possible future interest rate scenarios.
-- Observe the mean-reverting nature of the paths toward the long-term mean \( b \).
+- Observe the mean-reverting nature of the paths toward the long-term mean $( b )$.
 
 ### 27. **Bond Pricing**: Price a Zero-Coupon Bond Using the Vasicek Model and Compare it with Market Prices
 
-In the Vasicek model, the price \( P(t,T) \) of a zero-coupon bond with maturity \( T \) is given by:
+In the Vasicek model, the price $( P(t,T) )$ of a zero-coupon bond with maturity $( T )$ is given by:
 
-\[
+$[
 P(t,T) = A(t,T) e^{-B(t,T)r_t}
-\]
+]$
 Where:
-- \( A(t,T) = \exp\left[\left(b - \frac{\sigma^2}{2a^2}\right)(B(t,T) - T + t) - \frac{\sigma^2 B(t,T)^2}{4a}\right] \),
-- \( B(t,T) = \frac{1 - e^{-a(T-t)}}{a} \).
+- $( A(t,T) = \exp\left[\left(b - \frac{\sigma^2}{2a^2}\right)(B(t,T) - T + t) - \frac{\sigma^2 B(t,T)^2}{4a}\right] )$,
+- $( B(t,T) = \frac{1 - e^{-a(T-t)}}{a} )$.
 
 **Steps**:
-1. Calculate \( A(t,T) \) and \( B(t,T) \) using the above formulas.
-2. Use the current short-term interest rate \( r_t \) to compute the bond price.
+1. Calculate $( A(t,T) )$ and $( B(t,T) )$ using the above formulas.
+2. Use the current short-term interest rate $( r_t )$ to compute the bond price.
 
 **Example**:
 ```python
@@ -542,7 +540,7 @@ print(f"Vasicek Zero-Coupon Bond Price: {bond_price:.4f}")
    - More suitable for modeling real-world short rates that can't go negative.
 
 3. **Hull-White Model**:
-   - Extends the Vasicek model by allowing time-varying parameters (e.g., \( a(t) \), \( b(t) \)).
+   - Extends the Vasicek model by allowing time-varying parameters (e.g., $( a(t) )$, $( b(t) )$).
    - Flexible in fitting the initial term structure of interest rates.
 
 4. **Black-Derman-Toy (BDT) Model**:
@@ -556,23 +554,23 @@ print(f"Vasicek Zero-Coupon Bond Price: {bond_price:.4f}")
 
 ### 29. **Mean Reversion Analysis**: Analyze the Mean-Reverting Behavior of Interest Rates Under the Vasicek Model
 
-The **Vasicek model** assumes that interest rates revert to a long-term mean \( b \) at a speed determined by \( a \). The larger \( a \), the faster rates revert to the mean.
+The **Vasicek model** assumes that interest rates revert to a long-term mean $( b )$ at a speed determined by $( a )$. The larger $( a )$, the faster rates revert to the mean.
 
 **Steps**:
 1. Simulate multiple interest rate paths as in problem 26.
 2. Analyze how quickly interest rates return to the mean after deviating from it.
 
 **Example**:
-- Use different values of \( a \) (mean reversion speed) and observe how fast the simulated rates return to \( b \).
-- Higher \( a \) values result in quicker reversion to the mean, while lower \( a \) values produce slower reversion, allowing interest rates to deviate longer from \( b \).
+- Use different values of $( a )$ (mean reversion speed) and observe how fast the simulated rates return to $( b )$.
+- Higher $( a )$ values result in quicker reversion to the mean, while lower $( a )$ values produce slower reversion, allowing interest rates to deviate longer from $( b )$.
 
 ### 30. **Sensitivity Analysis**: Conduct a Sensitivity Analysis on the Vasicek Parameters and Their Impact on Bond Prices
 
-**Sensitivity Analysis** examines how changes in the parameters \( a \), \( b \), and \( \sigma \) affect bond prices.
+**Sensitivity Analysis** examines how changes in the parameters $( a )$, $( b )$, and $( \sigma )$ affect bond prices.
 
 **Steps**:
-1. Fix the initial short rate \( r_0 \) and the bond maturity \( T \).
-2. Vary each parameter \( a \), \( b \), and \( \sigma \) while holding the others constant.
+1. Fix the initial short rate $( r_0 )$ and the bond maturity $( T )$.
+2. Vary each parameter $( a )$, $( b )$, and $( \sigma )$ while holding the others constant.
 3. Calculate the corresponding bond prices using the Vasicek bond pricing formula.
 
 **Example**:
@@ -593,36 +591,36 @@ plt.show()
 ```
 
 **Conclusion**:
-- **\( a \)**: Higher mean reversion speeds stabilize bond prices, as interest rates are less volatile.
-- **\( b \)**: Increasing \( b \) raises bond prices since the long-term mean represents higher expected future rates.
-- **\( \sigma \)**: Higher volatility (\( \sigma \)) generally decreases bond prices due to the increased uncertainty in future rates.
+- **$( a )$**: Higher mean reversion speeds stabilize bond prices, as interest rates are less volatile.
+- **$( b )$**: Increasing $( b )$ raises bond prices since the long-term mean represents higher expected future rates.
+- **$( \sigma )$**: Higher volatility ($( \sigma )$) generally decreases bond prices due to the increased uncertainty in future rates.
 
 #### **2.2 Cox-Ingersoll-Ross (CIR) Model**
 ### 31. **CIR Model Calibration**: Calibrate the CIR Model Parameters Using Historical Data and Discuss the Implications
 
 The **Cox-Ingersoll-Ross (CIR) model** is a widely used short-rate model for interest rates, and it has the following dynamics:
 
-\[
+$[
 dr_t = a(b - r_t)dt + \sigma \sqrt{r_t} dW_t
-\]
+]$
 
 Where:
-- \( r_t \) is the short-term interest rate at time \( t \),
-- \( a \) is the **speed of mean reversion**,
-- \( b \) is the **long-term mean** level,
-- \( \sigma \) is the **volatility**,
-- \( dW_t \) is a Wiener process.
+- $( r_t )$ is the short-term interest rate at time $( t )$,
+- $( a )$ is the **speed of mean reversion**,
+- $( b )$ is the **long-term mean** level,
+- $( \sigma )$ is the **volatility**,
+- $( dW_t )$ is a Wiener process.
 
-The **CIR model** is particularly known for not allowing negative interest rates, since the square root term \( \sqrt{r_t} \) ensures that the rate \( r_t \) cannot go negative.
+The **CIR model** is particularly known for not allowing negative interest rates, since the square root term $( \sqrt{r_t} )$ ensures that the rate $( r_t )$ cannot go negative.
 
 **Calibration Process**:
-1. **Collect Historical Interest Rate Data**: Use historical data (e.g., short-term Treasury yields) to estimate the model parameters \( a \), \( b \), and \( \sigma \).
+1. **Collect Historical Interest Rate Data**: Use historical data (e.g., short-term Treasury yields) to estimate the model parameters $( a )$, $( b )$, and $( \sigma )$.
 2. **Estimate Parameters**:
-   - \( a \): Speed of mean reversion.
-   - \( b \): Long-term mean.
-   - \( \sigma \): Volatility.
+   - $( a )$: Speed of mean reversion.
+   - $( b )$: Long-term mean.
+   - $( \sigma )$: Volatility.
    
-   The parameters can be estimated using **maximum likelihood estimation (MLE)** or **generalized method of moments (GMM)**. The challenge here is to account for the non-linearity introduced by \( \sqrt{r_t} \).
+   The parameters can be estimated using **maximum likelihood estimation (MLE)** or **generalized method of moments (GMM)**. The challenge here is to account for the non-linearity introduced by $( \sqrt{r_t} )$.
 
 **MLE Calibration Example**:
 ```python
@@ -652,22 +650,22 @@ print(f"Calibrated Parameters: a={a:.4f}, b={b:.4f}, sigma={sigma:.4f}")
 ```
 
 **Implications**:
-- \( a \) controls how fast interest rates revert to the mean. A high \( a \) implies quicker adjustments to shocks.
-- \( b \) represents the long-term average level of interest rates.
-- \( \sigma \) controls the volatility. Higher \( \sigma \) indicates greater uncertainty and wider fluctuations in rates.
+- $( a )$ controls how fast interest rates revert to the mean. A high $( a )$ implies quicker adjustments to shocks.
+- $( b )$ represents the long-term average level of interest rates.
+- $( \sigma )$ controls the volatility. Higher $( \sigma )$ indicates greater uncertainty and wider fluctuations in rates.
 
 ### 32. **Interest Rate Path Simulation**: Simulate Interest Rate Paths Using the CIR Model and Evaluate the Results
 
 Once the parameters are calibrated, you can simulate future interest rate paths using the CIR model:
 
-\[
+$[
 r_{t+1} = r_t + a(b - r_t)dt + \sigma \sqrt{r_t} \epsilon_t
-\]
-Where \( \epsilon_t \) is a standard normal random variable.
+]$
+Where $( \epsilon_t )$ is a standard normal random variable.
 
 **Steps**:
 1. Simulate multiple paths to capture a variety of possible interest rate scenarios.
-2. Use the calibrated parameters \( a \), \( b \), and \( \sigma \) for the simulations.
+2. Use the calibrated parameters $( a )$, $( b )$, and $( \sigma )$ for the simulations.
 
 **Example**:
 ```python
@@ -689,26 +687,26 @@ simulated_rates = simulate_cir(a, b, sigma, r0, 1/12, n_steps, n_simulations)
 ```
 
 **Evaluation**:
-- **Mean-reversion**: Rates revert to the long-term mean \( b \) over time.
+- **Mean-reversion**: Rates revert to the long-term mean $( b )$ over time.
 - **Volatility**: Rate volatility increases with the square root of the interest rate, meaning that as rates rise, they become more volatile.
 - **No negative rates**: Unlike the Vasicek model, CIR prevents negative rates.
 
 ### 33. **Zero-Coupon Bond Pricing**: Price Zero-Coupon Bonds Using the CIR Model and Compare with Market Prices
 
-In the CIR model, the price \( P(t,T) \) of a zero-coupon bond is given by:
+In the CIR model, the price $( P(t,T) )$ of a zero-coupon bond is given by:
 
-\[
+$[
 P(t,T) = A(t,T) e^{-B(t,T) r_t}
-\]
+]$
 
 Where:
-- \( B(t,T) = \frac{2(e^{\gamma(T-t)} - 1)}{(\gamma + a)(e^{\gamma(T-t)} - 1) + 2\gamma} \),
-- \( A(t,T) = \left(\frac{2\gamma e^{(\gamma + a)(T-t)/2}}{(\gamma + a)(e^{\gamma(T-t)} - 1) + 2\gamma}\right)^{2ab/\sigma^2} \),
-- \( \gamma = \sqrt{a^2 + 2\sigma^2} \).
+- $( B(t,T) = \frac{2(e^{\gamma(T-t)} - 1)}{(\gamma + a)(e^{\gamma(T-t)} - 1) + 2\gamma} )$,
+- $( A(t,T) = \left(\frac{2\gamma e^{(\gamma + a)(T-t)/2}}{(\gamma + a)(e^{\gamma(T-t)} - 1) + 2\gamma}\right)^{2ab/\sigma^2} )$,
+- $( \gamma = \sqrt{a^2 + 2\sigma^2} )$.
 
 **Steps**:
-1. Calculate \( A(t,T) \) and \( B(t,T) \) based on the CIR parameters \( a \), \( b \), and \( \sigma \).
-2. Use the current short rate \( r_t \) to compute the bond price.
+1. Calculate $( A(t,T) )$ and $( B(t,T) )$ based on the CIR parameters $( a )$, $( b )$, and $( \sigma )$.
+2. Use the current short rate $( r_t )$ to compute the bond price.
 
 **Example**:
 ```python
@@ -737,14 +735,14 @@ print(f"CIR Zero-Coupon Bond Price: {bond_price:.4f}")
 - **Mean Reversion**: The mean-reverting feature of the CIR model makes it suitable for environments where central banks are likely to target long-term rates.
 
 **CIR Model Weaknesses**:
-- **High Volatility at Low Rates**: The model's volatility term \( \sigma \sqrt{r_t} \) can cause very high volatility when rates are low, which may not align with market behavior.
+- **High Volatility at Low Rates**: The model's volatility term $( \sigma \sqrt{r_t} )$ can cause very high volatility when rates are low, which may not align with market behavior.
 
 **Testing**:
 - Simulate the model under different environments (e.g., rising, falling, or stable rates) and evaluate its ability to track actual interest rate behavior.
 
 ### 35. **Negative Rates Analysis**: Explore How the CIR Model Handles Negative Interest Rates and Compare with the Vasicek Model
 
-The CIR model does not allow for negative rates due to the square root term \( \sqrt{r_t} \). This contrasts with the Vasicek model, which allows for negative rates because of its linearity.
+The CIR model does not allow for negative rates due to the square root term $( \sqrt{r_t} )$. This contrasts with the Vasicek model, which allows for negative rates because of its linearity.
 
 **Comparison**:
 - **CIR Model**: By design, the CIR model keeps rates positive. In an environment where rates cannot go negative, this makes the CIR model more realistic.
@@ -752,25 +750,25 @@ The CIR model does not allow for negative rates due to the square root term \( \
 
 ### 36. **Effect of Volatility**: Analyze How Changes in Volatility Impact the Pricing of Bonds Under the CIR Model
 
-In the CIR model, volatility \( \sigma \) plays a critical role in the bond pricing formula
+In the CIR model, volatility $( \sigma )$ plays a critical role in the bond pricing formula
 
 #### **2.3 Heath-Jarrow-Morton (HJM) Framework**
 ### 37. **HJM Model Calibration**: Calibrate the HJM Model Using Historical Forward Rate Data and Discuss the Results
 
-The **Heath-Jarrow-Morton (HJM)** framework is a popular model for interest rate dynamics. It allows for the modeling of the entire term structure of interest rates through forward rates. The HJM model states that the evolution of forward rates \( f(t,T) \) can be expressed as:
+The **Heath-Jarrow-Morton (HJM)** framework is a popular model for interest rate dynamics. It allows for the modeling of the entire term structure of interest rates through forward rates. The HJM model states that the evolution of forward rates $( f(t,T) )$ can be expressed as:
 
-\[
+$[
 df(t,T) = \mu(t,T) dt + \sigma(t,T) dW(t)
-\]
+]$
 
 Where:
-- \( \mu(t,T) \) is the drift term,
-- \( \sigma(t,T) \) is the volatility term,
-- \( W(t) \) is a Wiener process.
+- $( \mu(t,T) )$ is the drift term,
+- $( \sigma(t,T) )$ is the volatility term,
+- $( W(t) )$ is a Wiener process.
 
 **Calibration Process**:
 1. **Collect Historical Forward Rate Data**: Obtain historical data for forward rates, such as those derived from interest rate swaps.
-2. **Estimate Parameters**: Use methods like **maximum likelihood estimation (MLE)** or **non-linear least squares** to estimate the parameters \( \mu(t,T) \) and \( \sigma(t,T) \).
+2. **Estimate Parameters**: Use methods like **maximum likelihood estimation (MLE)** or **non-linear least squares** to estimate the parameters $( \mu(t,T) )$ and $( \sigma(t,T) )$.
 
 **Example Calibration**:
 ```python
@@ -796,7 +794,7 @@ print(f"Calibrated Parameters: mu={mu:.4f}, sigma={sigma:.4f}")
 ```
 
 **Results Discussion**:
-- The calibrated \( \mu \) reflects the expected trend in forward rates, while \( \sigma \) indicates the level of uncertainty or risk.
+- The calibrated $( \mu )$ reflects the expected trend in forward rates, while $( \sigma )$ indicates the level of uncertainty or risk.
 - The fit quality can be assessed by comparing model predictions against historical forward rates.
 
 ---
@@ -830,7 +828,7 @@ simulated_forward_rates = simulate_hjm(mu, sigma, 5, 1/12, n_steps, n_simulation
 
 **Analysis**:
 - Examine the mean and variance of simulated paths.
-- Analyze how changes in \( \mu \) and \( \sigma \) affect the shape and volatility of forward rates.
+- Analyze how changes in $( \mu )$ and $( \sigma )$ affect the shape and volatility of forward rates.
 
 ---
 
@@ -862,7 +860,7 @@ print(f"Swaption Price: {swaption_price:.2f}")
 
 **Discussion**:
 - The swaption price reflects the expected future rates and their volatility.
-- Sensitivity analysis can show how changes in \( \mu \) and \( \sigma \) impact the swaption value.
+- Sensitivity analysis can show how changes in $( \mu )$ and $( \sigma )$ impact the swaption value.
 
 ---
 
@@ -871,7 +869,7 @@ print(f"Swaption Price: {swaption_price:.2f}")
 In the HJM model, the volatility structure can be time-dependent or state-dependent, which significantly impacts the pricing of bonds.
 
 **Analysis Steps**:
-1. Analyze how different functional forms of \( \sigma(t,T) \) affect bond prices.
+1. Analyze how different functional forms of $( \sigma(t,T) )$ affect bond prices.
 2. Compare constant volatility versus time-dependent volatility scenarios.
 
 **Example Comparison**:
@@ -924,10 +922,10 @@ print(f"No-Arbitrage Condition Holds: {no_arbitrage_condition}")
 
 ### 42. **Market Impact Assessment**: Assess How Changes in the HJM Parameters Affect Market Instruments like Interest Rate Swaps
 
-Changes in HJM parameters \( \mu \) and \( \sigma \) can have significant effects on the pricing of interest rate swaps.
+Changes in HJM parameters $( \mu )$ and $( \sigma )$ can have significant effects on the pricing of interest rate swaps.
 
 **Impact Assessment Steps**:
-1. Simulate interest rate swaps under different \( \mu \) and \( \sigma \) values.
+1. Simulate interest rate swaps under different $( \mu )$ and $( \sigma )$ values.
 2. Evaluate the effect of these parameters on the swap’s present value.
 
 **Example Assessment**:
@@ -1253,9 +1251,9 @@ LGD is the percentage of exposure that is lost when a borrower defaults.
 **Estimating LGD**:
 1. **Determine Recovery Rate**: Estimate the expected recovery rate based on historical data.
 2. **Calculate LGD**: Use the formula: 
-   \[
+   $[
    \text{LGD} = 1 - \text{Recovery Rate}
-   \]
+   ]$
 
 **Example Calculation**:
 ```python
@@ -1372,16 +1370,16 @@ print(f"Net Cash Flow from Swap: ${net_cash_flow:.2f}")
 
 **Performance Metrics**:
 1. **Sharpe Ratio**: Measures excess return per unit of risk.
-   \[
+   $[
    \text{Sharpe Ratio} = \frac{R_p - R_f}{\sigma_p}
-   \]
-   Where \( R_p \) is the portfolio return, \( R_f \) is the risk-free rate, and \( \sigma_p \) is the portfolio standard deviation.
+   ]$
+   Where $( R_p )$ is the portfolio return, $( R_f )$ is the risk-free rate, and $( \sigma_p )$ is the portfolio standard deviation.
 
 2. **Alpha**: Measures portfolio performance relative to a benchmark.
-   \[
+   $[
    \text{Alpha} = R_p - (R_f + \beta(R_m - R_f))
-   \]
-   Where \( R_m \) is the market return, and \( \beta \) measures sensitivity to market movements.
+   ]$
+   Where $( R_m )$ is the market return, and $( \beta )$ measures sensitivity to market movements.
 
 **Example Calculation**:
 ```python
