@@ -2,106 +2,64 @@
 
 #### 2.1.1 Random Variables and Distributions
 
-1. **Discrete Random Variable**: 
-   - **Expected Value \( E[Y] \)**:
-     \[
-     E[Y] = \sum (y_i \cdot P(Y = y_i)) = 2 \cdot 0.1 + 4 \cdot 0.4 + 6 \cdot 0.5 = 0.2 + 1.6 + 3.0 = 4.8
-     \]
-   - **Variance \( Var(Y) \)**:
-     \[
-     Var(Y) = E[Y^2] - (E[Y])^2
-     \]
+1. **Discrete Random Variable**:
+   - **Expected Value ( E[Y] )**:
+     [ E[Y] = \sum (y_i \cdot P(Y = y_i)) = 2 \cdot 0.1 + 4 \cdot 0.4 + 6 \cdot 0.5 = 0.2 + 1.6 + 3.0 = 4.8]
+   - **Variance ( Var(Y) )**:
+     [ Var(Y) = E[Y^2] - (E[Y])^2]
      Where 
-     \[
-     E[Y^2] = \sum (y_i^2 \cdot P(Y = y_i)) = 2^2 \cdot 0.1 + 4^2 \cdot 0.4 + 6^2 \cdot 0.5 = 0.4 + 6.4 + 18 = 24.8
-     \]
+     [ E[Y^2] = \sum (y_i^2 \cdot P(Y = y_i)) = 2^2 \cdot 0.1 + 4^2 \cdot 0.4 + 6^2 \cdot 0.5 = 0.4 + 6.4 + 18 = 24.8]
      Thus,
-     \[
-     Var(Y) = 24.8 - (4.8)^2 = 24.8 - 23.04 = 1.76
-     \]
+     [ Var(Y) = 24.8 - (4.8)^2 = 24.8 - 23.04 = 1.76]
 
 2. **Continuous Random Variable**:
-   - **Probability \( P(0.2 \leq Y \leq 0.8) \)**:
-     \[
-     P(0.2 \leq Y \leq 0.8) = \int_{0.2}^{0.8} 3y^2 \, dy = \left[ y^3 \right]_{0.2}^{0.8} = (0.8^3 - 0.2^3) = (0.512 - 0.008) = 0.504
-     \]
+   - **Probability ( P(0.2 \leq Y \leq 0.8) )**:
+     [ P(0.2 \leq Y \leq 0.8) = \int_{0.2}^{0.8} 3y^2 \, dy = \left[ y^3 \right]_{0.2}^{0.8} = (0.8^3 - 0.2^3) = (0.512 - 0.008) = 0.504]
    - **Mean**:
-     \[
-     E[Y] = \int_{0}^{1} y \cdot 3y^2 \, dy = \int_{0}^{1} 3y^3 \, dy = \left[ \frac{3y^4}{4} \right]_{0}^{1} = \frac{3}{4} = 0.75
-     \]
+     [ E[Y] = \int_{0}^{1} y \cdot 3y^2 \, dy = \int_{0}^{1} 3y^3 \, dy = \left[ \frac{3y^4}{4} \right]_{0}^{1} = \frac{3}{4} = 0.75]
 
 3. **Normal Distribution**:
-   - To find \( P(X < 5) \) where \( X \sim N(0.07, 0.015^2) \):
-     \[
-     Z = \frac{5 - 7}{1.5} = \frac{-2}{1.5} \approx -1.3333
-     \]
+   - To find ( P(X < 5) ) where ( X \sim N(0.07, 0.015^2) ):
+     [ Z = \frac{5 - 7}{1.5} = \frac{-2}{1.5} \approx -1.3333]
      Using the Z-table or calculator,
-     \[
-     P(Z < -1.3333) \approx 0.0918 \text{ or } 9.18\%
-     \]
+     [ P(Z < -1.3333) \approx 0.0918 \text{ or } 9.18\%]
 
 4. **Log-Normal Distribution**:
-   - The probability that \( S \geq 1.5S_0 \):
-     \[
-     P(S \geq 1.5S_0) = P\left(\frac{\ln(S)}{\sigma} \geq \ln(1.5) \right) = 1 - P\left(Z < \frac{\ln(1.5) - 0.04}{0.3}\right)
-     \]
-     Calculating \( Z \):
-     \[
-     Z = \frac{\ln(1.5) - 0.04}{0.3} \approx \frac{0.405465 - 0.04}{0.3} \approx 1.2155
-     \]
-     Then find \( P(Z \geq 1.2155) \) using Z-table,
-     \[
-     P(Z \geq 1.2155) \approx 0.1121
-     \]
+   - The probability that ( S \geq 1.5S_0 ):
+     [ P(S \geq 1.5S_0) = P\left(\frac{\ln(S)}{\sigma} \geq \ln(1.5) \right) = 1 - P\left(Z < \frac{\ln(1.5) - 0.04}{0.3}\right)]
+     Calculating ( Z ):
+     [ Z = \frac{\ln(1.5) - 0.04}{0.3} \approx \frac{0.405465 - 0.04}{0.3} \approx 1.2155]
+     Then find ( P(Z \geq 1.2155) ) using Z-table,
+     [ P(Z \geq 1.2155) \approx 0.1121]
 
 5. **Expectation Calculation**:
-   - \( E[Y^2] \):
-     \[
-     E[Y^2] = 1^2 \cdot 0.3 + 4^2 \cdot 0.5 + 5^2 \cdot 0.2 = 0.3 + 8 + 5 = 13.3
-     \]
-   - \( E[Y^3] \):
-     \[
-     E[Y^3] = 1^3 \cdot 0.3 + 4^3 \cdot 0.5 + 5^3 \cdot 0.2 = 0.3 + 64 + 25 = 89.3
-     \]
+   - ( E[Y^2] ):
+     [ E[Y^2] = 1^2 \cdot 0.3 + 4^2 \cdot 0.5 + 5^2 \cdot 0.2 = 0.3 + 8 + 5 = 13.3]
+   - ( E[Y^3] ):
+     [ E[Y^3] = 1^3 \cdot 0.3 + 4^3 \cdot 0.5 + 5^3 \cdot 0.2 = 0.3 + 64 + 25 = 89.3]
 
 6. **Variance Calculation**:
    - **Mean**:
-     \[
-     E[Y] = \int_{0}^{1} y \cdot 4y(1-y) \, dy = \int_{0}^{1} 4y^2 - 4y^3 \, dy = \left[ \frac{4y^3}{3} - \frac{4y^4}{4} \right]_{0}^{1} = \frac{4}{3} - 1 = \frac{1}{3}
-     \]
+     [ E[Y] = \int_{0}^{1} y \cdot 4y(1-y) \, dy = \int_{0}^{1} 4y^2 - 4y^3 \, dy = \left[ \frac{4y^3}{3} - \frac{4y^4}{4} \right]_{0}^{1} = \frac{4}{3} - 1 = \frac{1}{3}]
    - **Variance**:
-     \[
-     E[Y^2] = \int_{0}^{1} y^2 \cdot 4y(1-y) \, dy = \int_{0}^{1} 4y^3 - 4y^4 \, dy = \left[ \frac{4y^4}{4} - \frac{4y^5}{5} \right]_{0}^{1} = 1 - \frac{4}{5} = \frac{1}{5}
-     \]
-     \[
-     Var(Y) = E[Y^2] - (E[Y])^2 = \frac{1}{5} - \left(\frac{1}{3}\right)^2 = \frac{1}{5} - \frac{1}{9} = \frac{9-5}{45} = \frac{4}{45}
-     \]
+     [ E[Y^2] = \int_{0}^{1} y^2 \cdot 4y(1-y) \, dy = \int_{0}^{1} 4y^3 - 4y^4 \, dy = \left[ \frac{4y^4}{4} - \frac{4y^5}{5} \right]_{0}^{1} = 1 - \frac{4}{5} = \frac{1}{5}]
+     [ Var(Y) = E[Y^2] - (E[Y])^2 = \frac{1}{5} - \left(\frac{1}{3}\right)^2 = \frac{1}{5} - \frac{1}{9} = \frac{9-5}{45} = \frac{4}{45}]
 
 7. **Skewness**:
    - **Mean**:
-     \[
-     E[Y] = \int_{0}^{2} y \cdot \frac{3}{8} y^2 \, dy = \frac{3}{8} \cdot \frac{y^4}{4} \bigg|_0^2 = \frac{3}{8} \cdot 4 = \frac{3}{2}
-     \]
+     [ E[Y] = \int_{0}^{2} y \cdot \frac{3}{8} y^2 \, dy = \frac{3}{8} \cdot \frac{y^4}{4} \bigg|_0^2 = \frac{3}{8} \cdot 4 = \frac{3}{2}]
    - **Variance**:
-     \[
-     E[Y^2] = \int_{0}^{2} y^2 \cdot \frac{3}{8} y^2 \, dy = \frac{3}{8} \cdot \frac{y^5}{5} \bigg|_0^2 = \frac{3}{8} \cdot \frac{32}{5} = \frac{12}{5}
-     \]
+     [ E[Y^2] = \int_{0}^{2} y^2 \cdot \frac{3}{8} y^2 \, dy = \frac{3}{8} \cdot \frac{y^5}{5} \bigg|_0^2 = \frac{3}{8} \cdot \frac{32}{5} = \frac{12}{5}]
    - **Skewness**:
-     \[
-     \text{Skewness} = \frac{E[Y^3] - 3E[Y]Var(Y) - (E[Y])^3}{(Var(Y))^{3/2}}
-     \]
-     - Calculate \( E[Y^3] \) similarly to find skewness.
+     [ \text{Skewness} = \frac{E[Y^3] - 3E[Y]Var(Y) - (E[Y])^3}{(Var(Y))^{3/2}}]
+     - Calculate ( E[Y^3] ) similarly to find skewness.
 
 8. **Kurtosis**:
    - For a uniform distribution on \{0, 2\}, calculate:
-     \[
-     E[Y] = 1, \quad Var(Y) = \frac{(b-a)^2}{12} = \frac{(2-0)^2}{12} = \frac{4}{12} = \frac{1}{3}
-     \]
+     [ E[Y] = 1, \quad Var(Y) = \frac{(b-a)^2}{12} = \frac{(2-0)^2}{12} = \frac{4}{12} = \frac{1}{3}]
    - **Kurtosis**:
-     \[
-     \text{Kurtosis} = \frac{E[Y^4]}{(E[Y^2])^2}
-     \]
-     Calculate \( E[Y^4] \) for uniform distribution.
+     [ \text{Kurtosis} = \frac{E[Y^4]}{(E[Y^2])^2}]
+     Calculate ( E[Y^4] ) for uniform distribution.
 
 9. **Simulating Data**:
    ```python
@@ -131,33 +89,25 @@
 #### 2.1.2 Expectation and Moments
 
 11. **Expectation Calculation**:
-   \[
-   E[Y] = \frac{a + b}{2} = \frac{4 + 10}{2} = 7
-   \]
+   [ E[Y] = \frac{a + b}{2} = \frac{4 + 10}{2} = ]
 
 12. **Variance Calculation**:
-   \[
-   Var(Y) = \frac{1}{\lambda^2} = \frac{1}{(0.5)^2} = 4
-   \]
+   [ Var(Y) = \frac{1}{\lambda^2} = \frac{1}{(0.5)^2} = ]
 
 13. **Skewness and Kurtosis**:
    - For a normal distribution, skewness = 0 and kurtosis = 3.
 
 14. **Empirical Moments**:
    - **Mean**:
-     \[
-     \bar{x} = \frac{1 + 2 + 2 + 3
+     [ \bar{x} = \frac{1 + 2 + 2 + 3
 
- + 4}{5} = 2.4
-     \]
+ + 4}{5} = 2.4]
    - **Variance**:
-     \[
-     s^2 = \frac{(1-2.4)^2 + (2-2.4)^2 + (2-2.4)^2 + (3-2.4)^2 + (4-2.4)^2}{5 - 1} = 1.3
-     \]
+     [ s^2 = \frac{(1-2.4)^2 + (2-2.4)^2 + (2-2.4)^2 + (3-2.4)^2 + (4-2.4)^2}{5 - 1} = 1.3]
    - **Skewness**:
-     Calculate using \( \text{skew} = \frac{(n \cdot \sum (x_i - \bar{x})^3)}{(n-1)(n-2)s^3} \)
+     Calculate using ( \text{skew} = \frac{(n \cdot \sum (x_i - \bar{x})^3)}{(n-1)(n-2)s^3} )
    - **Kurtosis**:
-     Calculate using \( \text{kurt} = \frac{(n \cdot (n+1) \cdot \sum (x_i - \bar{x})^4)}{(n-1)(n-2)(n-3)s^4} - \frac{3(n-1)^2}{(n-2)(n-3)} \)
+     Calculate using ( \text{kurt} = \frac{(n \cdot (n+1) \cdot \sum (x_i - \bar{x})^4)}{(n-1)(n-2)(n-3)s^4} - \frac{3(n-1)^2}{(n-2)(n-3)} )
 
 15. **Comparing Distributions**:
    - **Normal Distribution**: Skewness = 0, Kurtosis = 3.
@@ -165,35 +115,23 @@
 
 16. **Moment Generating Functions**:
    - MGF of Poisson:
-     \[
-     M(t) = e^{\lambda (e^t - 1)}
-     \]
+     [ M(t) = e^{\lambda (e^t - 1)}]
    - First two moments:
-     \[
-     E[Y] = \lambda, \quad E[Y^2] = \lambda + \lambda^2
-     \]
+     [ E[Y] = \lambda, \quad E[Y^2] = \lambda + \lambda^2]
 
 17. **Variance of a Sum**:
-   \[
-   Var(Y_1 + Y_2) = Var(Y_1) + Var(Y_2) = 2 + 3 = 5
-   \]
+   [ Var(Y_1 + Y_2) = Var(Y_1) + Var(Y_2) = 2 + 3 = ]
 
 18. **Covariance Calculation**:
-   \[
-   Cov(Y_1, Y_2) = E[Y_1Y_2] - E[Y_1]E[Y_2] = 20 - (5 \cdot 3) = 20 - 15 = 5
-   \]
+   [ Cov(Y_1, Y_2) = E[Y_1Y_2] - E[Y_1]E[Y_2] = 20 - (5 \cdot 3) = 20 - 15 = ]
 
 19. **Law of Total Expectation**:
-   \[
-   E[Y] = E[E[Y|X]] = E[2X + 3] = 2E[X] + 3 = 2 \cdot 4 + 3 = 8 + 3 = 11
-   \]
+   [ E[Y] = E[E[Y|X]] = E[2X + 3] = 2E[X] + 3 = 2 \cdot 4 + 3 = 8 + 3 = 1]
 
 20. **Cauchy-Schwarz Inequality**:
-   - For any random variables \( X \) and \( Y \):
-   \[
-   E[X^2]E[Y^2] \geq (E[XY])^2
-   \]
-   - Example: \( X \) = 1, 2 and \( Y \) = 2, 3.
+   - For any random variables ( X ) and ( Y ):
+   [ E[X^2]E[Y^2] \geq (E[XY])^]
+   - Example: ( X ) = 1, 2 and ( Y ) = 2, 3.
    - Verify the inequality holds.
 
 ### 2.2 Statistical Inference
@@ -202,69 +140,49 @@
 
 21. **t-Test Application**:
    - Sample mean:
-   \[
-   \bar{x} = \frac{4 + 5 + 6 + 8 + 7}{5} = 6
-   \]
+   [ \bar{x} = \frac{4 + 5 + 6 + 8 + 7}{5} = ]
    - t-statistic:
-   \[
-   t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}} = \frac{6 - 6}{\frac{1.58}{\sqrt{5}}} = 0
-   \]
+   [ t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}} = \frac{6 - 6}{\frac{1.58}{\sqrt{5}}} = ]
    - p-value = 1.
 
 22. **Chi-Square Test**:
-   \[
-   \chi^2 = \sum \frac{(O - E)^2}{E} = \frac{(15-10)^2}{10} + \frac{(30-30)^2}{30} + \frac{(20-30)^2}{30} = \frac{25}{10} + 0 + \frac{100}{30} = 2.5 + 0 + 3.33 = 5.83
-   \]
-   - Degrees of freedom = 2. Compare \( \chi^2 \) to critical value.
+   [ \chi^2 = \sum \frac{(O - E)^2}{E} = \frac{(15-10)^2}{10} + \frac{(30-30)^2}{30} + \frac{(20-30)^2}{30} = \frac{25}{10} + 0 + \frac{100}{30} = 2.5 + 0 + 3.33 = 5.8]
+   - Degrees of freedom = 2. Compare ( \chi^2 ) to critical value.
 
 23. **Confidence Intervals**:
-   \[
-   CI = \bar{x} \pm z \cdot \frac{\sigma}{\sqrt{n}} = 50 \pm 1.645 \cdot \frac{10}{\sqrt{25}} = 50 \pm 3.29 = (46.71, 53.29)
-   \]
+   [ CI = \bar{x} \pm z \cdot \frac{\sigma}{\sqrt{n}} = 50 \pm 1.645 \cdot \frac{10}{\sqrt{25}} = 50 \pm 3.29 = (46.71, 53.29]
 
 24. **p-Value Calculation**:
    Using a t-distribution table:
-   - Degrees of freedom = 15, find \( p \) for \( t = 1.8 \).
+   - Degrees of freedom = 15, find ( p ) for ( t = 1.8 ).
 
 25. **Power of a Test**:
    - Use power tables or software to calculate based on the parameters provided.
 
 26. **Paired t-Test**:
-   - Calculate the differences \( D = {1, 1, 1, 1} \) and perform a t-test:
-   \[
-   t = \frac{\bar{D}}{s_D / \sqrt{n}} = \frac{1}{0}{2/\sqrt{4}} = 2
-   \]
+   - Calculate the differences ( D = {1, 1, 1, 1} ) and perform a t-test:
+   [ t = \frac{\bar{D}}{s_D / \sqrt{n}} = \frac{1}{0}{2/\sqrt{4}} = ]
    - Check critical value and p-value.
 
 27. **One-Way ANOVA**:
    - Compute group means and perform ANOVA F-test:
-   \[
-   F = \frac{\text{Between-group variance}}{\text{Within-group variance}} 
-   \]
+   [ F = \frac{\text{Between-group variance}}{\text{Within-group variance}}]
    - Compare with F-distribution.
 
 28. **Multiple Comparisons**:
    - Apply Tukey’s HSD test:
-   \[
-   HSD = \frac{q \cdot s}{\sqrt{n}}
-   \]
+   [ HSD = \frac{q \cdot s}{\sqrt{n}}]
    - Calculate significant differences.
 
 29. **Z-Test**:
-   \[
-   z = \frac{\bar{x} - \mu}{\sigma / \sqrt{n}} = \frac{100 - 95}{10/\sqrt{n}} = \text{Calculate } z
-   \]
+   [ z = \frac{\bar{x} - \mu}{\sigma / \sqrt{n}} = \frac{100 - 95}{10/\sqrt{n}} = \text{Calculate } ]
 
 30. **Hypothesis Test for Proportions**:
-   \[
-   \hat{p} = \frac{70}{200} = 0.35, \quad p_0 = 0.25
-   \]
-   \[
-   z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}} = \frac{0.35 - 0.25}{\sqrt{\frac{0.25(0.75)}{200}}} = \text{Calculate } z
-   \]
+   [ \hat{p} = \frac{70}{200} = 0.35, \quad p_0 = 0.2]
+   [ z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}} = \frac{0.35 - 0.25}{\sqrt{\frac{0.25(0.75)}{200}}} = \text{Calculate } ]
 
 ### 2.3 Time Series Analysis
-Here’s a structured guide for implementing ARIMA and GARCH models, including explanations for each task and Python code snippets to demonstrate the analysis. 
+Here’s a structured guide for implementing ARIMA and GARCH models, including explanations for each task and Python code snippets to demonstrate the analysis.
 
 ### 2.3.1 ARIMA Models
 
@@ -1175,5 +1093,4 @@ print(f'Net Present Value of Real Estate Investment: {npv}')
 
 #### 100. Financial Crisis Analysis
 - **Description**: Examine the causes and consequences of a financial crisis using quantitative analysis.
-
 - **Output**: Prepare a report summarizing findings, supported by data visualizations.
