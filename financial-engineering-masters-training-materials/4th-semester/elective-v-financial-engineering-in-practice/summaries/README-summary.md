@@ -16,11 +16,9 @@ This course focuses on the practical aspects of financial engineering, exploring
 **Mathematical Formulation: Performance Metrics**
 - **Sharpe Ratio:** This ratio measures the risk-adjusted return of an investment and is defined as:
 
-\[
-\text{Sharpe Ratio} = \frac{R_p - R_f}{\sigma_p}
-\]
+$[\text{Sharpe Ratio} = \frac{R_p - R_f}{\sigma_p}]$
 
-where \( R_p \) is the portfolio return, \( R_f \) is the risk-free rate, and \( \sigma_p \) is the standard deviation of the portfolio returns. The Sharpe Ratio helps assess whether the returns of a portfolio are due to smart investment decisions or excessive risk-taking.
+where $( R_p )$ is the portfolio return, $( R_f )$ is the risk-free rate, and $( \sigma_p )$ is the standard deviation of the portfolio returns. The Sharpe Ratio helps assess whether the returns of a portfolio are due to smart investment decisions or excessive risk-taking.
 
 **Pseudocode Example: Calculating Sharpe Ratio**
 
@@ -40,15 +38,11 @@ where \( R_p \) is the portfolio return, \( R_f \) is the risk-free rate, and \(
 **Mathematical Formulation: Risk Assessment**
 - **Return on Investment (ROI):**
 
-\[
-\text{ROI} = \frac{\text{Final Value} - \text{Initial Investment}}{\text{Initial Investment}}
-\]
+$[\text{ROI} = \frac{\text{Final Value} - \text{Initial Investment}}{\text{Initial Investment}}]$
 
-- **Standard Deviation (σ):** Measures the dispersion of returns. For returns \( r_i \) with mean \( \bar{r} \):
+- **Standard Deviation (σ):** Measures the dispersion of returns. For returns $( r_i )$ with mean $( \bar{r} )$:
 
-\[
-\sigma = \sqrt{\frac{\sum_{i=1}^{n} (r_i - \bar{r})^2}{n-1}}
-\]
+$[\sigma = \sqrt{\frac{\sum_{i=1}^{n} (r_i - \bar{r})^2}{n-1}}]$
 
 **Pseudocode Example: Risk Assessment**
 
@@ -72,11 +66,9 @@ where \( R_p \) is the portfolio return, \( R_f \) is the risk-free rate, and \(
 **Mathematical Formulation: Pricing Structured Products**
 - **Binomial Model:** Used for pricing options and structured products by simulating multiple paths of asset prices.
 
-\[
-V = \frac{1}{(1 + r)^T} \sum_{i=1}^{n} p_i \times \text{Payoff}_i
-\]
+$[V = \frac{1}{(1 + r)^T} \sum_{i=1}^{n} p_i \times \text{Payoff}_i]$
 
-where \( p_i \) represents the risk-neutral probability of state \( i \), \( \text{Payoff}_i \) is the payoff in state \( i \), and \( r \) is the risk-free rate.
+where $( p_i )$ represents the risk-neutral probability of state $( i )$, $( \text{Payoff}_i )$ is the payoff in state $( i )$, and $( r )$ is the risk-free rate.
 
 **Pseudocode Example: Pricing a Simple Structured Note**
 
@@ -95,17 +87,13 @@ where \( p_i \) represents the risk-neutral probability of state \( i \), \( \te
 **Mathematical Formulation:**
 - **Risk and Return Analysis:**
 
-\[
-\text{Expected Return} = \sum_{i=1}^{n} p_i \times r_i
-\]
+$[\text{Expected Return} = \sum_{i=1}^{n} p_i \times r_i]$
 
-where \( p_i \) is the probability of return \( r_i \).
+where $( p_i )$ is the probability of return $( r_i )$.
 
 - **Standard Deviation (σ):**
 
-\[
-\sigma = \sqrt{\sum_{i=1}^{n} p_i \times (r_i - \text{Expected Return})^2}
-\]
+$[\sigma = \sqrt{\sum_{i=1}^{n} p_i \times (r_i - \text{Expected Return})^2}]$
 
 **Pseudocode Example: Calculating ROI and Standard Deviation**
 
@@ -138,11 +126,9 @@ where \( p_i \) is the probability of return \( r_i \).
 - Blockchain technology offers decentralized ledgers that ensure transparency and security. It supports cryptocurrencies and can be applied to various financial operations.
 
 **Mathematical Formulation: Blockchain Hashing**
-- **Hash Function:** Blockchain uses cryptographic hash functions to secure transactions. For a block containing data \( d \), the hash function \( H \) computes:
+- **Hash Function:** Blockchain uses cryptographic hash functions to secure transactions. For a block containing data $( d )$, the hash function $( H )$ computes:
 
-\[
-H(d) = \text{SHA-256}(d)
-\]
+$[H(d) = \text{SHA-256}(d)]$
 
 **Pseudocode Example: Simple Blockchain Implementation**
 
@@ -233,9 +219,7 @@ H(d) = \text{SHA-256}(d)
 : ESG Score Calculation**
 - **ESG Score Calculation:**
 
-\[
-\text{ESG Score} = \frac{\text{Environmental Score} + \text{Social Score} + \text{Governance Score}}{3}
-\]
+$[\text{ESG Score} = \frac{\text{Environmental Score} + \text{Social Score} + \text{Governance Score}}{3}]$
 
 **Pseudocode Example: ESG Score Calculation**
 
