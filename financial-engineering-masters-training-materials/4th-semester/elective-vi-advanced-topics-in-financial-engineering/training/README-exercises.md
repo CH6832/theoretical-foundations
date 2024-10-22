@@ -2,16 +2,12 @@
 Here are detailed answers to each of your exercises, tailored for a high-level understanding in line with MIT standards.
 
 ### 1. Price Calculation of a Derivative
-**Exercise:** Given Arrow-Debreu prices of \([0.7, 0.3]\) and payoffs of \([150, 50]\), calculate the price of the derivative.
+**Exercise:** Given Arrow-Debreu prices of $([0.7, 0.3])$ and payoffs of $([150, 50])$, calculate the price of the derivative.
 
 **Solution:** The price of a derivative can be calculated using the formula:
-\[
-\text{Price} = \sum_{i} \text{Price}_i \times \text{Payoff}_i
-\]
+$[\text{Price} = \sum_{i} \text{Price}_i \times \text{Payoff}_i]$
 Substituting in the given values:
-\[
-\text{Price} = (0.7 \times 150) + (0.3 \times 50) = 105 + 15 = 120
-\]
+$[\text{Price} = (0.7 \times 150) + (0.3 \times 50) = 105 + 15 = 120]$
 Thus, the price of the derivative is **120**.
 
 ### 2. Python Function for Price Calculation
@@ -32,12 +28,10 @@ print(f"The price of the derivative is: {price}")
 ```
 
 ### 3. Price Calculation in a Three-State Scenario
-**Exercise:** Create a scenario with Arrow-Debreu prices: \([0.5, 0.3, 0.2]\) and payoffs: \([200, 100, 50]\). Calculate the price of the derivative.
+**Exercise:** Create a scenario with Arrow-Debreu prices: $([0.5, 0.3, 0.2])$ and payoffs: $([200, 100, 50])$. Calculate the price of the derivative.
 
 **Solution:** Using the same pricing formula:
-\[
-\text{Price} = (0.5 \times 200) + (0.3 \times 100) + (0.2 \times 50) = 100 + 30 + 10 = 140
-\]
+$[\text{Price} = (0.5 \times 200) + (0.3 \times 100) + (0.2 \times 50) = 100 + 30 + 10 = 140]$
 Thus, the price of the derivative in this scenario is **140**.
 
 ### 4. Market Incompleteness and Hedging Strategies
@@ -53,18 +47,16 @@ Thus, the price of the derivative in this scenario is **140**.
 **Exercise:** Explain how to use the HJB equation to find optimal stopping times in financial options.
 
 **Solution:** The Hamilton-Jacobi-Bellman (HJB) equation is fundamental in optimal control theory and is used to determine the value function of a decision problem:
-1. **Formulate the Problem:** Define the value function \(V(t, x)\) for the option, where \(t\) is time and \(x\) is the underlying asset price.
+1. **Formulate the Problem:** Define the value function $(V(t, x))$ for the option, where $(t)$ is time and $(x)$ is the underlying asset price.
 2. **Set Up the HJB Equation:** The HJB equation takes the form:
-   \[
-   \frac{\partial V}{\partial t} + \max_{\tau} \left\{ \frac{1}{2} \sigma^2 x^2 \frac{\partial^2 V}{\partial x^2} + \mu x \frac{\partial V}{\partial x} - rV \right\} = 0
-   \]
+   $[\frac{\partial V}{\partial t} + \max_{\tau} \left\{ \frac{1}{2} \sigma^2 x^2 \frac{\partial^2 V}{\partial x^2} + \mu x \frac{\partial V}{\partial x} - rV \right\} = 0   ]$
 3. **Solve the HJB Equation:** The solution will provide the optimal policy for stopping based on the value function, indicating when it is optimal to exercise the option.
 
 ### 6. Modifying HJB Equation for Additional State Variables
 **Exercise:** Modify the provided HJB equation solution code to include additional state variables affecting the payoff.
 
 **Solution:**
-Assuming we want to add another state variable \(y\):
+Assuming we want to add another state variable $(y)$:
 ```python
 import numpy as np
 
@@ -108,14 +100,10 @@ def hjb_solution_with_states(t, x, y):
 ### 9. Variance of Hedging Error Calculation
 **Exercise:** Calculate the variance of the hedging error if the expected payoff is 100 and the actual payoff is 90.
 
-**Solution:** The hedging error \(E\) is given by:
-\[
-E = \text{Expected Payoff} - \text{Actual Payoff} = 100 - 90 = 10
-\]
+**Solution:** The hedging error $(E)$ is given by:
+$[E = \text{Expected Payoff} - \text{Actual Payoff} = 100 - 90 = 10]$
 The variance of the hedging error, given it's a single outcome, is simply:
-\[
-\text{Variance}(E) = (E - \mu)^2 = (10 - 0)^2 = 100
-\]
+$[\text{Variance}(E) = (E - \mu)^2 = (10 - 0)^2 = 100]$
 Thus, the variance of the hedging error is **100**.
 
 ### 10. Simulation for Hedging Strategies
@@ -183,15 +171,13 @@ Here are detailed responses to exercises 11 through 20, providing high-quality i
 - **Arbitrage Opportunities:** HFT strategies often rely on exploiting price discrepancies across different markets. Sufficient market depth ensures that trades can be executed without significant delay or price alteration.
 
 ### 12. Market-Making Profit Calculation
-**Exercise:** Given bid and ask prices of \([99.50, 100.50]\), calculate the market-making profit for 100 trades.
+**Exercise:** Given bid and ask prices of $([99.50, 100.50])$, calculate the market-making profit for 100 trades.
 
 **Solution:**
 Market-making profit is derived from the difference between the bid and ask prices (the spread) multiplied by the number of trades:
-- **Bid-Ask Spread:** \( \text{Spread} = \text{Ask} - \text{Bid} = 100.50 - 99.50 = 1.00 \)
+- **Bid-Ask Spread:** $( \text{Spread} = \text{Ask} - \text{Bid} = 100.50 - 99.50 = 1.00 )$
 - **Total Profit for 100 Trades:** 
-\[
-\text{Profit} = \text{Spread} \times \text{Number of Trades} = 1.00 \times 100 = 100
-\]
+$[\text{Profit} = \text{Spread} \times \text{Number of Trades} = 1.00 \times 100 = 100]$
 Thus, the market-making profit for 100 trades is **100**.
 
 ### 13. Python Function for Simulating Price Movements
@@ -235,10 +221,10 @@ print(f"Total Profit from Market Making: {total_profit}")
 - **Competition:** The competition for speed leads to innovations in trading technology and infrastructure, further fueling the arms race in high-frequency trading.
 
 ### 15. Value at Risk (VaR) Calculation
-**Exercise:** Calculate the Value at Risk (VaR) for a portfolio with the following returns: \([0.02, -0.01, 0.03, -0.02, 0.01]\).
+**Exercise:** Calculate the Value at Risk (VaR) for a portfolio with the following returns: $([0.02, -0.01, 0.03, -0.02, 0.01])$.
 
 **Solution:** The Value at Risk can be calculated using historical returns. Here, we calculate the VaR at the 5% level (for a one-tailed test):
-1. **Sort the Returns:** \([-0.02, -0.01, 0.01, 0.02, 0.03]\)
+1. **Sort the Returns:** $([-0.02, -0.01, 0.01, 0.02, 0.03])$
 2. **Identify the VaR:** The 5th percentile corresponds to the second lowest return in this dataset.
 3. Thus, **VaR = -0.02**, indicating that there is a 5% chance that the portfolio will lose more than 2%.
 
@@ -438,10 +424,10 @@ plt.show()
 - **Assortative Mixing:** If highly connected institutions are connected to less connected ones, systemic risk may be reduced. Conversely, disassortative mixing (less connected institutions connecting with highly connected ones) can amplify systemic risk.
 
 ### 27. Degree Calculation
-**Exercise:** Given a network with the following edges: \([(0, 1), (1, 2), (2, 3)]\), calculate the degree of each node.
+**Exercise:** Given a network with the following edges: $([(0, 1), (1, 2), (2, 3)])$, calculate the degree of each node.
 
 **Solution:**
-- **Edges:** \([(0, 1), (1, 2), (2, 3)]\)
+- **Edges:** $([(0, 1), (1, 2), (2, 3)])$
 - **Degree Calculation:**
   - Node 0: Degree 1 (connected to Node 1)
   - Node 1: Degree 2 (connected to Nodes 0 and 2)
@@ -535,15 +521,11 @@ Here are detailed answers to exercises 31 through 40, focusing on collateral man
 **Solution:**
 To calculate the adjusted collateral value, we apply the haircut to the current value of the asset:
 
-\[
-\text{Adjusted Collateral Value} = \text{Current Value} \times (1 - \text{Haircut})
-\]
+$[\text{Adjusted Collateral Value} = \text{Current Value} \times (1 - \text{Haircut})]$
 
 Substituting the given values:
 
-\[
-\text{Adjusted Collateral Value} = 5000 \times (1 - 0.20) = 5000 \times 0.80 = 4000
-\]
+$[\text{Adjusted Collateral Value} = 5000 \times (1 - 0.20) = 5000 \times 0.80 = 4000]$
 
 Thus, the adjusted collateral value is **4000**.
 
@@ -580,9 +562,7 @@ print(adjusted_values)
 
 **Solution:** The Exposure at Default (EAD) typically refers to the total value exposed to loss at the time of default. In this case, EAD can be considered simply as the exposure amount, assuming the entire amount is at risk at the time of default. Therefore:
 
-\[
-\text{EAD} = 200,000
-\]
+$[\text{EAD} = 200,000]$
 
 Thus, the Exposure at Default is **200,000**.
 
@@ -659,11 +639,9 @@ plt.show()
 
 - **Calculation Impact:** In the CVA formula, the recovery rate is subtracted from the expected loss due to default. A higher recovery rate reduces the CVA because it lowers the loss given default (LGD):
   
-  \[
-  \text{CVA} = EAD \times PD \times (1 - RR)
-  \]
+  $[ \text{CVA} = EAD \times PD \times (1 - RR) ]$
 
-  where \(EAD\) is Exposure at Default, \(PD\) is the Probability of Default, and \(RR\) is the Recovery Rate.
+  where $(EAD)$ is Exposure at Default, $(PD)$ is the Probability of Default, and $(RR)$ is the Recovery Rate.
   
 - **Risk Assessment:** Recovery rates vary significantly across different asset classes and credit profiles. Understanding the potential recovery helps financial institutions gauge their risk exposure more accurately.
 - **Market Influence:** Market conditions can influence recovery rates; during economic downturns, recovery rates typically decrease as asset values drop, thereby increasing CVA.
@@ -991,9 +969,7 @@ simulation.plot_results()
 
 **Solution:**
 - **Bid-Ask Spread Calculation:**
-  \[
-  \text{Bid-Ask Spread} = \text{Ask Price} - \text{Bid Price} = 102 - 100 = 2
-  \]
+  $[ \text{Bid-Ask Spread} = \text{Ask Price} - \text{Bid Price} = 102 - 100 = 2 ]$
 
 **Market Implications:**
 1. **Liquidity Indicator:** A bid-ask spread of 2 suggests moderate liquidity. Wider spreads typically indicate lower liquidity, leading to higher trading costs for market participants.
@@ -1413,16 +1389,14 @@ plt.show()
 **Solution:**
 - **Definitions:**
   - **Expected Loss (EL):** Given by the formula:
-  \[
-  EL = PD \times (1 - RR) \times EAD
-  \]
+  $[ EL = PD \times (1 - RR) \times EAD ]$
   where:
-  - \(PD\) = Probability of Default
-  - \(RR\) = Recovery Rate
-  - \(EAD\) = Exposure at Default
+  - $(PD)$ = Probability of Default
+  - $(RR)$ = Recovery Rate
+  - $(EAD)$ = Exposure at Default
 
 - **Example Calculation:**
-  - Assume \(PD = 0.02\) (2% default probability), \(RR = 0.4\) (40% recovery), and \(EAD = 100,000\).
+  - Assume $(PD = 0.02)$ (2% default probability), $(RR = 0.4)$ (40% recovery), and $(EAD = 100,000)$.
 
 ```python
 # Given parameters
@@ -1542,7 +1516,8 @@ Here are detailed answers for exercises 71 to 90, designed to provide high-quali
 7. **Risk Management:**
    - Incorporate risk management techniques, such as stop-loss orders and position sizing, to mitigate potential losses.
 
-8. **Conclusion:** By leveraging machine learning techniques, this trading strategy aims to enhance decision-making processes, improve accuracy in predicting price movements, and manage associated risks effectively.
+8. **Conclusion:**
+    - By leveraging machine learning techniques, this trading strategy aims to enhance decision-making processes, improve accuracy in predicting price movements, and manage associated risks effectively.
 
 ---
 
@@ -1941,19 +1916,19 @@ Here are detailed responses to the exercises from 91 to 100, focusing on various
 
 2. **Mean-Variance Optimization:**
    - Use the Markowitz mean-variance optimization framework, where:
-     - **Expected Return:** \( E[R_p] = \sum_{i=1}^n w_i E[R_i] \)
-     - **Portfolio Variance:** \( \sigma_p^2 = \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij} \)
-   - Here, \( w_i \) represents the weight of asset \( i \), \( E[R_i] \) is the expected return, and \( \sigma_{ij} \) is the covariance between assets.
+     - **Expected Return:** $( E[R_p] = \sum_{i=1}^n w_i E[R_i] )$
+     - **Portfolio Variance:** $( \sigma_p^2 = \sum_{i=1}^n \sum_{j=1}^n w_i w_j \sigma_{ij} )$
+   - Here, $( w_i )$ represents the weight of asset $( i )$, $( E[R_i] )$ is the expected return, and $( \sigma_{ij} )$ is the covariance between assets.
 
 3. **Constraints:**
    - Include constraints such as:
-     - Total weights equal to 1: \( \sum_{i=1}^n w_i = 1 \)
-     - Non-negativity: \( w_i \geq 0 \) for all \( i \)
+     - Total weights equal to 1: $( \sum_{i=1}^n w_i = 1 )$
+     - Non-negativity: $( w_i \geq 0 )$ for all $( i )$
 
 4. **Optimization Algorithm:**
-   - Implement optimization algorithms (e.g., quadratic programming) to find the optimal weights \( w_i \) that maximize the Sharpe Ratio:
-     - \( \text{Sharpe Ratio} = \frac{E[R_p] - R_f}{\sigma_p} \)
-   - Where \( R_f \) is the risk-free rate.
+   - Implement optimization algorithms (e.g., quadratic programming) to find the optimal weights $( w_i )$ that maximize the Sharpe Ratio:
+     - $( \text{Sharpe Ratio} = \frac{E[R_p] - R_f}{\sigma_p} )$
+   - Where $( R_f )$ is the risk-free rate.
 
 5. **Conclusion:**
    - A robust portfolio optimization model helps investors balance risk and return, enabling more informed investment decisions.
