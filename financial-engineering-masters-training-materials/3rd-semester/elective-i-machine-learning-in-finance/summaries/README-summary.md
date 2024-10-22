@@ -12,30 +12,30 @@ Supervised learning involves training a model on a labeled dataset, where the ou
 #### **Linear and Logistic Regression**
 
 **Linear Regression in Finance:**
-- Linear regression is a fundamental technique used to model the relationship between a dependent variable \( y \) and one or more independent variables \( X \). In finance, linear regression can predict asset prices, estimate beta in the Capital Asset Pricing Model (CAPM), or evaluate the sensitivity of a portfolio to market factors.
+- Linear regression is a fundamental technique used to model the relationship between a dependent variable $( y )$ and one or more independent variables $( X )$. In finance, linear regression can predict asset prices, estimate beta in the Capital Asset Pricing Model (CAPM), or evaluate the sensitivity of a portfolio to market factors.
 
 **Mathematical Formulation:**
 - The linear regression model is expressed as:
   
-\[
+$[
 y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_n X_n + \epsilon
-\]
+]$
 
 Where:
-  - \( y \) is the dependent variable (e.g., asset return),
-  - \( \beta_0 \) is the intercept,
-  - \( \beta_1, \dots, \beta_n \) are the coefficients for the independent variables,
-  - \( X_1, \dots, X_n \) are the independent variables (e.g., market indices, economic factors),
-  - \( \epsilon \) is the error term.
+  - $( y )$ is the dependent variable (e.g., asset return),
+  - $( \beta_0 )$ is the intercept,
+  - $( \beta_1, \dots, \beta_n )$ are the coefficients for the independent variables,
+  - $( X_1, \dots, X_n )$ are the independent variables (e.g., market indices, economic factors),
+  - $( \epsilon )$ is the error term.
 
 **Objective Function:**
-- The coefficients \( \beta \) are estimated by minimizing the sum of squared errors (SSE) between the predicted values and the actual values:
+- The coefficients $( \beta )$ are estimated by minimizing the sum of squared errors (SSE) between the predicted values and the actual values:
 
-\[
+$[
 \text{SSE} = \sum_{i=1}^{m} (y_i - \hat{y}_i)^2
-\]
+]$
 
-Where \( m \) is the number of observations, \( y_i \) is the actual value, and \( \hat{y}_i \) is the predicted value.
+Where $( m )$ is the number of observations, $( y_i )$ is the actual value, and $( \hat{y}_i )$ is the predicted value.
 
 **Python Example: Linear Regression for Predicting Stock Returns**
 
@@ -59,24 +59,24 @@ predictions = model.predict(X)
 - Logistic regression is used for binary classification problems. In finance, logistic regression models are commonly applied to predict the probability of default (credit scoring), bankruptcy, or fraud detection.
 
 **Mathematical Formulation:**
-- Logistic regression models the probability \( p \) that a given input belongs to a particular class using the sigmoid function:
+- Logistic regression models the probability $( p )$ that a given input belongs to a particular class using the sigmoid function:
 
-\[
+$[
 p = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \dots + \beta_n X_n)}}
-\]
+]$
 
 Where:
-  - \( p \) is the probability of the positive class (e.g., default),
-  - \( \beta_0, \beta_1, \dots, \beta_n \) are the model coefficients.
+  - $( p )$ is the probability of the positive class (e.g., default),
+  - $( \beta_0, \beta_1, \dots, \beta_n )$ are the model coefficients.
 
 **Log-Likelihood Function:**
 - The coefficients in logistic regression are estimated by maximizing the log-likelihood function:
 
-\[
+$[
 \mathcal{L}(\beta) = \sum_{i=1}^{m} \left[ y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \right]
-\]
+]$
 
-Where \( p_i \) is the predicted probability for the \( i \)-th observation.
+Where $( p_i )$ is the predicted probability for the $( i )$-th observation.
 
 **Python Example: Logistic Regression for Credit Scoring**
 
@@ -103,15 +103,15 @@ probabilities = model.predict_proba(X)[:, 1]
 **Mathematical Formulation:**
 - The SVM optimization problem for a linearly separable dataset can be formulated as:
 
-\[
+$[
 \min_{\mathbf{w}, b} \frac{1}{2} \|\mathbf{w}\|^2 \quad \text{subject to} \quad y_i (\mathbf{w} \cdot \mathbf{x}_i + b) \geq 1, \quad \forall i
-\]
+]$
 
 Where:
-  - \( \mathbf{w} \) is the normal vector to the hyperplane,
-  - \( b \) is the bias term,
-  - \( y_i \) is the class label (\(+1\) or \(-1\)),
-  - \( \mathbf{x}_i \) is the feature vector for the \( i \)-th observation.
+  - $( \mathbf{w} )$ is the normal vector to the hyperplane,
+  - $( b )$ is the bias term,
+  - $( y_i )$ is the class label ($(+1)$ or $(-1)$),
+  - $( \mathbf{x}_i )$ is the feature vector for the $( i )$-th observation.
 
 **Kernel Trick:**
 - The kernel trick allows SVM to handle non-linear classification problems by implicitly mapping the input features into a higher-dimensional space without explicitly computing the transformation. Common kernels include the polynomial kernel and the radial basis function (RBF) kernel.
@@ -141,13 +141,13 @@ predictions = model.predict(X)
 **Mathematical Formulation:**
 - The decision tree algorithm selects splits that maximize the information gain, defined as:
 
-\[
+$[
 \text{Information Gain} = \text{Entropy}(S) - \sum_{i=1}^{k} \frac{|S_i|}{|S|} \text{Entropy}(S_i)
-\]
+]$
 
 Where:
-  - \( S \) is the set of data points,
-  - \( S_i \) is the subset after the split.
+  - $( S )$ is the set of data points,
+  - $( S_i )$ is the subset after the split.
 
 **Python Example: Decision Tree for Credit Scoring**
 
@@ -170,13 +170,13 @@ predictions = model.predict(X)
 - Random forests are an ensemble method that combines multiple decision trees to improve prediction accuracy and robustness. Each tree is trained on a bootstrap sample of the dataset, and the final prediction is made by aggregating the predictions of all trees (e.g., majority voting for classification or averaging for regression).
 
 **Mathematical Formulation:**
-- Given \( B \) trees, the random forest prediction for regression is:
+- Given $( B )$ trees, the random forest prediction for regression is:
 
-\[
+$[
 \hat{f}(x) = \frac{1}{B} \sum_{b=1}^{B} \hat{f}_b(x)
-\]
+]$
 
-Where \( \hat{f}_b(x) \) is the prediction from the \( b \)-th tree.
+Where $( \hat{f}_b(x) )$ is the prediction from the $( b )$-th tree.
 
 **Python Example: Random Forest for Portfolio Risk Classification**
 
@@ -207,15 +207,15 @@ Unsupervised learning involves training a model on data where the outcome is not
 - Clustering is a technique used to group similar data points together. In finance, clustering can be used for market segmentation, identifying similar assets, or grouping customers based on transaction behaviors.
 
 **Mathematical Formulation (K-Means Clustering):**
-- K-means clustering aims to partition \( n \) observations into \( k \) clusters where each observation belongs to the cluster with the nearest mean:
+- K-means clustering aims to partition $( n )$ observations into $( k )$ clusters where each observation belongs to the cluster with the nearest mean:
 
-\[
+$[
 \min_{\mathbf{c}, \mathbf{\mu}} \sum_{i=1}^{k} \sum_{j=1}^{n} \|\mathbf{x}_j - \mathbf{\mu}_i\|^2
-\]
+]$
 
 Where:
-  - \( \mathbf{c}_i \) is the centroid of cluster \( i \),
-  - \( \mathbf{\mu}_i \) is the mean of points assigned to cluster \( i \).
+  - $( \mathbf{c}_i )$ is the centroid of cluster $( i )$,
+  - $( \mathbf{\mu}_i )$ is the mean of points assigned to cluster $( i )$.
 
 **Python Example: K-Means Clustering for Market Segmentation**
 
@@ -241,13 +241,13 @@ clusters = model.predict(X)
 **Mathematical Formulation (Principal Component Analysis - PCA):**
 - PCA transforms the original features into a new set of orthogonal (uncorrelated) features, called principal components, ordered by the amount of variance they explain:
 
-\[
+$[
 \mathbf{Z} = \mathbf{XW}
-\]
+]$
 
 Where:
-  - \( \mathbf{X} \) is the original data matrix,
-  - \( \mathbf{W} \) is the matrix of eigenvectors of the covariance matrix of \( \mathbf{X} \).
+  - $( \mathbf{X} )$ is the original data matrix,
+  - $( \mathbf{W} )$ is the matrix of eigenvectors of the covariance matrix of $( \mathbf{X} )$.
 
 **Python Example: PCA for Portfolio Management**
 
@@ -274,16 +274,16 @@ Neural networks are a class of machine learning models inspired by the human bra
 **Mathematical Formulation (Neural Network):**
 - A simple feedforward neural network with one hidden layer can be expressed as:
 
-\[
+$[
 \hat{y} = f\left(\mathbf{W}_2 \cdot g\left(\mathbf{W}_1 \cdot \mathbf{X} + \mathbf{b}_1\right) + \mathbf{b}_2\right)
-\]
+]$
 
 Where:
-  - \( \mathbf{X} \) is the input vector,
-  - \( \mathbf{W}_1 \) and \( \mathbf{W}_2 \) are the weight matrices,
-  - \( \mathbf{b}_1 \) and \( \mathbf{b}_2 \) are the bias vectors,
-  - \( g(\cdot) \) is the activation function (e.g., ReLU),
-  - \( f(\cdot) \) is the output activation function (e.g., softmax or sigmoid for classification).
+  - $( \mathbf{X} )$ is the input vector,
+  - $( \mathbf{W}_1 )$ and $( \mathbf{W}_2 )$ are the weight matrices,
+  - $( \mathbf{b}_1 )$ and $( \mathbf{b}_2 )$ are the bias vectors,
+  - $( g(\cdot) )$ is the activation function (e.g., ReLU),
+  - $( f(\cdot) )$ is the output activation function (e.g., softmax or sigmoid for classification).
 
 **Python Example: Deep Neural Network for Financial Forecasting**
 
@@ -311,13 +311,11 @@ model.fit(X, y, epochs=10, batch_size=32)
 - CNNs are designed to process structured grid-like data, such as images. In finance, CNNs can be applied to analyze visual patterns in financial data (e.g., candlestick charts) or extract sentiment from financial news and social media images.
 
 **Mathematical Formulation:**
-- The convolution operation involves a filter (or kernel) \( \mathbf{K} \) that slides over the input data \( \mathbf{X} \), producing a feature map \( \mathbf{Z} \):
+- The convolution operation involves a filter (or kernel) $( \mathbf{K} )$ that slides over the input data $( \mathbf{X} )$, producing a feature map $( \mathbf{Z} )$:
 
-\[
-\mathbf{Z} = \mathbf{K} * \mathbf{X}
-\]
+$[ \mathbf{Z} = \mathbf{K} * \mathbf{X} ]$
 
-Where \( * \) denotes the convolution operation.
+Where $( * )$ denotes the convolution operation.
 
 **Python Example: CNN for Sentiment Analysis**
 
@@ -352,27 +350,17 @@ model.fit(X, y, epochs=10, batch_size=32)
 **Mathematical Formulation:**
 - The LSTM cell state is updated through gates that control the flow of information:
 
-\[
-\mathbf{f}_t = \sigma(\mathbf{W}_f \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_f)
-\]
-\[
-\mathbf{i}_t = \sigma(\mathbf{W}_i \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_i)
-\]
-\[
-\mathbf{C}_t = \mathbf{f}_t \cdot \mathbf{C}_{t-1} + \mathbf{i}_t \cdot \tanh(\mathbf{W}_C \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_C)
-\]
-\[
-\mathbf{o}_t = \sigma(\mathbf{W}_o \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_o)
-\]
-\[
-\mathbf{h}_t = \mathbf{o}_t \cdot \tanh(\mathbf{C}_t)
-\]
+$[ \mathbf{f}_t = \sigma(\mathbf{W}_f \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_f) ]$
+$[ \mathbf{i}_t = \sigma(\mathbf{W}_i \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_i) ]$
+$[ \mathbf{C}_t = \mathbf{f}_t \cdot \mathbf{C}_{t-1} + \mathbf{i}_t \cdot \tanh(\mathbf{W}_C \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_C) ]$
+$[ \mathbf{o}_t = \sigma(\mathbf{W}_o \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_o) ]$
+$[ \mathbf{h}_t = \mathbf{o}_t \cdot \tanh(\mathbf{C}_t) ]$
 
 Where:
-  - \( \mathbf{f}_t \), \( \mathbf{i}_t \), \( \mathbf{o}_t \) are the forget, input, and output gates, respectively,
-  - \( \mathbf{C}_t \) is the cell state,
-  - \( \mathbf{h}_t \) is the hidden state,
-  - \( \mathbf{x}_t \) is the input at time \( t \).
+  - $( \mathbf{f}_t )$, $( \mathbf{i}_t )$, $( \mathbf{o}_t )$ are the forget, input, and output gates, respectively,
+  - $( \mathbf{C}_t )$ is the cell state,
+  - $( \mathbf{h}_t )$ is the hidden state,
+  - $( \mathbf{x}_t )$ is the input at time $( t )$.
 
 **Python Example: LSTM for Time Series Forecasting**
 
@@ -402,7 +390,7 @@ model.fit(X, y, epochs=100, batch_size=32)
 - ML models can be used to develop and backtest trading strategies, allowing for data-driven decision-making in trading. Strategies can include trend following, mean reversion, or statistical arbitrage.
 
 **Mathematical Formulation:**
-- In a simple moving average crossover strategy, a buy signal is generated when a short-term moving average \( \text{SMA}_\text{short} \) crosses above a long-term moving average \( \text{SMA}_\text{long} \), and a sell signal is generated when it crosses below.
+- In a simple moving average crossover strategy, a buy signal is generated when a short-term moving average $( \text{SMA}_\text{short} )$ crosses above a long-term moving average $( \text{SMA}_\text{long} )$, and a sell signal is generated when it crosses below.
 
 **Python Example: Simple Moving Average Crossover Strategy**
 
