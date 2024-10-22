@@ -1,9 +1,3 @@
-### Case Studies in Financial Engineering
-
-Here’s a structured approach for each of the financial analysis tasks you’ve listed, focusing on methodologies, calculations, and interpretations relevant to the concepts of Sharpe ratio, ROI, and risk assessment. 
-
----
-
 ## 1. Apple Convertible Bond Case Study
 
 ### Objective:
@@ -23,16 +17,15 @@ Analyze Apple’s issuance of convertible bonds and calculate the Sharpe ratio f
    - Calculate the standard deviation of the bond’s returns.
 
 4. **Calculate Sharpe Ratio**:
-   \[
-   \text{Sharpe Ratio} = \frac{(R_p - R_f)}{\sigma_p}
-   \]
-   where \( R_p \) = portfolio return, \( R_f \) = risk-free rate, \( \sigma_p \) = standard deviation of portfolio returns.
+   $[
+   \text{Sharpe Ratio} = \frac{(R_p - R_f)}{\sigma_p}]$
+   where $( R_p )$ = portfolio return, $( R_f )$ = risk-free rate, $( \sigma_p )$ = standard deviation of portfolio returns.
 
 ### Example Calculation:
 - **Assumed Returns**: Total return = 25%, Risk-free rate = 2%, Standard deviation = 5%
-- \[
+- $[
 \text{Sharpe Ratio} = \frac{(0.25 - 0.02)}{0.05} = 4.6
-\]
+]$
 
 ---
 
@@ -56,19 +49,18 @@ Recreate a portfolio of mortgage-backed securities (MBS) and calculate the portf
    - Calculate the standard deviation of returns for both periods.
 
 5. **Calculate Sharpe Ratio for Both Periods**:
-   \[
-   \text{Sharpe Ratio} = \frac{(R_p - R_f)}{\sigma_p}
-   \]
+   $[
+   \text{Sharpe Ratio} = \frac{(R_p - R_f)}{\sigma_p}]$
 
 ### Example Calculation:
 - **Pre-crisis (2006)**: Return = 10%, Risk-free rate = 3%, Standard deviation = 2%
-- \[
+- $[
 \text{Sharpe Ratio (2006)} = \frac{(0.10 - 0.03)}{0.02} = 3.5
-\]
+]$
 - **During Crisis (2008)**: Return = -5%, Risk-free rate = 2%, Standard deviation = 6%
-- \[
+- $[
 \text{Sharpe Ratio (2008)} = \frac{(-0.05 - 0.02)}{0.06} = -1.17
-\]
+]$
 
 ---
 
@@ -88,9 +80,8 @@ Simulate portfolio returns with varying degrees of volatility and calculate the 
    - Calculate the standard deviation of the simulated returns.
 
 4. **Calculate Sharpe Ratio for Each Volatility Level**:
-   \[
-   \text{Sharpe Ratio} = \frac{(R_p - R_f)}{\sigma_p}
-   \]
+   $[
+   \text{Sharpe Ratio} = \frac{(R_p - R_f)}{\sigma_p}]$
 
 ### Example Simulation Results:
 | Volatility | Mean Return | Standard Deviation | Sharpe Ratio |
@@ -115,22 +106,21 @@ Calculate and compare the ROI and standard deviation of returns for two investme
    - Project B: Initial Investment = $200,000, Return = $300,000
 
 2. **Calculate ROI**:
-   \[
-   \text{ROI} = \frac{(\text{Return} - \text{Investment})}{\text{Investment}} \times 100
-   \]
+   $[
+   \text{ROI} = \frac{(\text{Return} - \text{Investment})}{\text{Investment}} \times 100]$
 
 3. **Calculate Standard Deviation**:
    - Collect returns data over time for each project and calculate the standard deviation.
 
 ### Example Calculation:
 - **Project A**:
-  \[
+  $[
   \text{ROI} = \frac{(150,000 - 100,000)}{100,000} \times 100 = 50\%
-  \]
+  ]$
 - **Project B**:
-  \[
+  $[
   \text{ROI} = \frac{(300,000 - 200,000)}{200,000} \times 100 = 50\%
-  \]
+  ]$
 
 ### Conclusion:
 Both projects have the same ROI, but their standard deviations will indicate risk differences.
@@ -147,30 +137,28 @@ Explain the Black-Scholes model’s success in options pricing by applying it to
    - Choose a stock (e.g., Apple) and its call option with specific terms.
 
 2. **Black-Scholes Formula**:
-   \[
-   C = S_0N(d_1) - Xe^{-rt}N(d_2)
-   \]
+   $[
+   C = S_0N(d_1) - Xe^{-rt}N(d_2)]$
    where:
-   \[
-   d_1 = \frac{\ln(\frac{S_0}{X}) + (r + \frac{\sigma^2}{2})t}{\sigma\sqrt{t}}, \quad d_2 = d_1 - \sigma\sqrt{t}
-   \]
+   $[
+   d_1 = \frac{\ln(\frac{S_0}{X}) + (r + \frac{\sigma^2}{2})t}{\sigma\sqrt{t}}, \quad d_2 = d_1 - \sigma\sqrt{t}]$
 
 3. **Gather Inputs**:
-   - Current stock price (\( S_0 \)), strike price (\( X \)), risk-free rate (\( r \)), volatility (\( \sigma \)), and time to expiration (\( t \)).
+   - Current stock price ($( S_0 )$), strike price ($( X )$), risk-free rate ($( r )$), volatility ($( \sigma )$), and time to expiration ($( t )$).
 
 4. **Calculate Call Option Price**:
    - Use the Black-Scholes formula to calculate the option price.
 
 ### Example Calculation:
 Assuming:
-- \( S_0 = 150 \)
-- \( X = 155 \)
-- \( r = 0.05 \)
-- \( \sigma = 0.2 \)
-- \( t = 1 \)
+- $( S_0 = 150 )$
+- $( X = 155 )$
+- $( r = 0.05 )$
+- $( \sigma = 0.2 )$
+- $( t = 1 )$
 
-1. Calculate \( d_1 \) and \( d_2 \).
-2. Plug into the Black-Scholes formula to get \( C \).
+1. Calculate $( d_1 )$ and $( d_2 )$.
+2. Plug into the Black-Scholes formula to get $( C )$.
 
 ---
 
@@ -187,9 +175,8 @@ Simulate the default probabilities of the underlying assets in Lehman Brothers�
    - Simulate default probabilities using historical data or models.
 
 3. **Calculate Expected Loss**:
-   \[
-   \text{Expected Loss} = \text{Exposure at Default} \times \text{Probability of Default} \times \text{Loss Given Default}
-   \]
+   $[
+   \text{Expected Loss} = \text{Exposure at Default} \times \text{Probability of Default} \times \text{Loss Given Default}]$
 
 ### Example Calculation:
 Assuming:
@@ -197,9 +184,9 @@ Assuming:
 - Probability of Default = 5%
 - Loss Given Default = 40%
 
-\[
+$[
 \text{Expected Loss} = 1,000,000 \times 0.05 \times 0.4 = 20,000
-\]
+]$
 
 ---
 
@@ -238,24 +225,23 @@ Analyze the performance of two hypothetical hedge funds by calculating their ROI
    - Fund B: Initial Investment = $1,000,000, End Value = $1,050,000
 
 2. **Calculate ROI for Each Fund**:
-   \[
+   $[
    \text{ROI} = \frac{(\text{End Value} - \text{Initial Investment})}{\text{Initial Investment}} \times 
 
-100
-   \]
+100]$
 
 3. **Calculate Sharpe Ratio**:
    - Collect the standard deviation of returns and use the risk-free rate for Sharpe calculation.
 
 ### Example Calculation:
 - **Fund A**:
-  \[
+  $[
   \text{ROI} = \frac{(1,100,000 - 1,000,000)}{1,000,000} \times 100 = 10\%
-  \]
+  ]$
 - **Fund B**:
-  \[
+  $[
   \text{ROI} = \frac{(1,050,000 - 1,000,000)}{1,000,000} \times 100 = 5\%
-  \]
+  ]$
 
 ### Conclusion:
 Fund A performs better in both ROI and Sharpe ratio when compared to Fund B.
@@ -298,20 +284,18 @@ Derive the mathematical relationships between the Sharpe ratio, ROI, and standar
 
 ### Methodology:
 1. **Define Terms**:
-   - \( R_p \): Portfolio return
-   - \( R_f \): Risk-free rate
-   - \( \sigma_p \): Portfolio standard deviation
+   - $( R_p )$: Portfolio return
+   - $( R_f )$: Risk-free rate
+   - $( \sigma_p )$: Portfolio standard deviation
 
 2. **Sharpe Ratio Derivation**:
-   \[
-   \text{Sharpe Ratio} = \frac{(R_p - R_f)}{\sigma_p}
-   \]
+   $[\text{Sharpe Ratio} = \frac{(R_p - R_f)}{\sigma_p}]$
 
 3. **Relationship to ROI**:
-   - ROI can be related to returns, where \( ROI = \frac{(R_p - R_f)}{R_f} \).
+   - ROI can be related to returns, where $( ROI = \frac{(R_p - R_f)}{R_f} )$.
 
 4. **Multi-Asset Portfolio**:
-   - Define a portfolio of \( n \) assets and derive the expected return and standard deviation based on asset weights.
+   - Define a portfolio of $( n )$ assets and derive the expected return and standard deviation based on asset weights.
 
 ### Conclusion:
 The Sharpe ratio provides insight into the risk-adjusted performance of a portfolio, while ROI provides a straightforward measure of profitability.
@@ -1172,8 +1156,6 @@ Here are detailed outlines for the topics focused on regulatory frameworks, comp
        - **Scenario Development**: Create various adverse scenarios (e.g., economic downturns, liquidity crises) for testing.
        - **Modeling Techniques**: Discuss techniques for modeling the impact of scenarios on financial metrics.
      - **Outcome Analysis**:
-       - **Impact Assessment**: Analyze the results of
-
- stress tests and their implications for capital adequacy and risk management.
-       - **Regulatory Compliance Check**: Evaluate whether the institution meets regulatory requirements following the stress tests.
+       - **Impact Assessment**: Analyze the results of stress tests and their implications for capital adequacy and risk management.
+     - **Regulatory Compliance Check**: Evaluate whether the institution meets regulatory requirements following the stress tests.
      - **Recommendations**: Provide recommendations for improving risk management practices based on stress testing results.
