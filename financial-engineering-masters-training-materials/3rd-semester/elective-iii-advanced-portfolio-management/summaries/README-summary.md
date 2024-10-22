@@ -14,29 +14,23 @@ This course provides an in-depth exploration of advanced strategies and theories
 
 **Mathematical Formulation:**
 - Let:
-  - \( w \): vector of portfolio weights
-  - \( \mu \): vector of expected returns
-  - \( \Sigma \): covariance matrix of asset returns
+  - $( w )$: vector of portfolio weights
+  - $( \mu )$: vector of expected returns
+  - $( \Sigma )$: covariance matrix of asset returns
 
 The expected return and variance of the portfolio are expressed as:
 - Expected Return: 
-  \[
-  \mathbb{E}[R_p] = w^T \mu
-  \]
+  $[  \mathbb{E}[R_p] = w^T \mu
+]$
 - Variance: 
-  \[
-  \sigma_p^2 = w^T \Sigma w
-  \]
+  $[  \sigma_p^2 = w^T \Sigma w
+]$
 
 **Constructing the Efficient Frontier:**
 - To derive the efficient frontier, solve the optimization problem for various levels of expected return:
-\[
-\min_w \, w^T \Sigma w
-\]
+$[\min_w \, w^T \Sigma w]$
 subject to:
-\[
-\mathbb{E}[R_p] = w^T \mu, \quad \sum_{i=1}^n w_i = 1, \quad w_i \geq 0 \text{ for all } i
-\]
+$[\mathbb{E}[R_p] = w^T \mu, \quad \sum_{i=1}^n w_i = 1, \quad w_i \geq 0 \text{ for all } i]$
 
 **Pseudocode for Efficient Frontier Construction:**
 ```plaintext
@@ -107,10 +101,8 @@ FUNCTION PlotReturnVsStdDev(results):
 
 **Practical Application: Identifying Optimal Portfolios**
 - Portfolios are typically selected based on the highest Sharpe ratio, which is defined as:
-\[
-\text{Sharpe} = \frac{\mathbb{E}[R_p] - R_f}{\sigma_p}
-\]
-Where \( R_f \) is the risk-free rate. The portfolio with the highest Sharpe ratio is often found at the tangent point between the efficient frontier and the Capital Market Line (CML).
+$[\text{Sharpe} = \frac{\mathbb{E}[R_p] - R_f}{\sigma_p}]$
+Where $( R_f )$ is the risk-free rate. The portfolio with the highest Sharpe ratio is often found at the tangent point between the efficient frontier and the Capital Market Line (CML).
 
 #### **Markowitz Model**
 
@@ -118,9 +110,7 @@ Where \( R_f \) is the risk-free rate. The portfolio with the highest Sharpe rat
 - Markowitz’s model focuses on constructing a portfolio that maximizes expected return for a given risk or minimizes risk for a specific return level.
 
 **Mathematical Formulation:**
-\[
-\max_w \, \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}}
-\]
+$[\max_w \, \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}}]$
 
 **Portfolio Diversification Strategies:**
 - Diversification lowers overall portfolio risk by investing in assets with low or negative correlations. The goal is to minimize portfolio variance while achieving a desired return.
@@ -190,9 +180,7 @@ FUNCTION CalculateCovarianceMatrix(returns):
 - The CML shows the risk-return trade-off for portfolios that optimally combine a risk-free asset with the market portfolio.
 
 **Mathematical Expression of the CML:**
-\[
-\mathbb{E}[R_p] = R_f + \frac{\mathbb{E}[R_m] - R_f}{\sigma_m} \sigma_p
-\]
+$[\mathbb{E}[R_p] = R_f + \frac{\mathbb{E}[R_m] - R_f}{\sigma_m} \sigma_p]$
 
 **Pseudocode for CML Construction:**
 ```plaintext
@@ -427,9 +415,7 @@ FUNCTION CalculateSortinoRatio(returns, riskFreeRate):
 
 **Valuation Methods:**
 - **Cap Rate**: 
-\[
-\text{Cap Rate} = \frac{\text{NOI}}{\text{Property Value}}
-\]
+$[\text{Cap Rate} = \frac{\text{NOI}}{\text{Property Value}}]$
 
 **Pseudocode for Real Estate Valuation:**
 ```plaintext
