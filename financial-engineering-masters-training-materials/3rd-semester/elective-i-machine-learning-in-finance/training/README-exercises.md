@@ -43,9 +43,9 @@ plt.show()
 
 **Description**: We derive the regression coefficients using ordinary least squares to fit the Capital Asset Pricing Model (CAPM), which is given by:
 
-\[ R_i = \beta_0 + \beta_1 R_m + \epsilon \]
+$[ R_i = \beta_0 + \beta_1 R_m + \epsilon ]$
 
-Where \( R_i \) is the return on asset \( i \), \( R_m \) is the market return, and \( \beta_0 \) and \( \beta_1 \) are the regression coefficients.
+Where $( R_i )$ is the return on asset $( i )$, $( R_m )$ is the market return, and $( \beta_0 )$ and $( \beta_1 )$ are the regression coefficients.
 
 **Python Code**:
 ```python
@@ -101,11 +101,11 @@ print(classification_report(y_test, y_pred))
 
 **Description**: The cost function for logistic regression is convex, which ensures a unique global minimum. The cost function is:
 
-\[
+$[
 J(\beta) = -\frac{1}{m} \sum_{i=1}^{m} [y^{(i)} \log(h(x^{(i)})) + (1 - y^{(i)}) \log(1 - h(x^{(i)}))]
-\]
+]$
 
-Where \( h(x) = \frac{1}{1 + e^{-\beta^T x}} \).
+Where $( h(x) = \frac{1}{1 + e^{-\beta^T x}} )$.
 
 **Implementation of Gradient Descent**:
 ```python
@@ -165,7 +165,7 @@ plt.show()
 
 ### 6. Ridge Regression to Handle Multicollinearity
 
-**Description**: Ridge regression applies \( L_2 \)-norm regularization to reduce overfitting caused by multicollinearity among predictors.
+**Description**: Ridge regression applies $( L_2 )$-norm regularization to reduce overfitting caused by multicollinearity among predictors.
 
 **Python Code**:
 ```python
@@ -190,7 +190,7 @@ ridge_model.fit(X_train, y_train)
 predictions = ridge_model.predict(X_test)
 ```
 
-**Justification for \( L_2 \)-norm Regularization**: Ridge regression adds a penalty term \( \lambda \sum_{j=1}^{n} \beta_j^2 \) to the loss function, discouraging large coefficients, which reduces model complexity and helps mitigate the risk of overfitting.
+**Justification for $( L_2 )$-norm Regularization**: Ridge regression adds a penalty term $( \lambda \sum_{j=1}^{n} \beta_j^2 )$ to the loss function, discouraging large coefficients, which reduces model complexity and helps mitigate the risk of overfitting.
 
 ### 7. Logistic Regression for Market Downturn Prediction
 
@@ -293,11 +293,11 @@ plt.show()
 
 **Description**: The likelihood function for a logistic regression model with a Bernoulli-distributed dependent variable is given by:
 
-\[
+$[
 L(\beta) = \prod_{i=1}^{m} h(x^{(i)})^{y^{(i)}} (1 - h(x^{(i)}))^{(1 - y^{(i)})}
-\]
+]$
 
-Where \( h(x) = \frac{1}{1 + e^{-\beta^T x}} \).
+Where $( h(x) = \frac{1}{1 + e^{-\beta^T x}} )$.
 
 **Python Code**:
 ```python
@@ -358,15 +358,15 @@ print(classification_report(y_test, y_pred))
 
 **Description**: The SVM optimization problem can be formulated in dual form, which allows the use of kernels for nonlinear classification. The dual problem is:
 
-\[
+$[
 \text{maximize } W(\alpha) = \sum_{i=1}^{m} \alpha_i - \frac{1}{2} \sum_{i=1}^{m} \sum_{j=1}^{m} \alpha_i \alpha_j y_i y_j K(x_i, x_j)
-\]
+]$
 
 Subject to:
 
-\[
+$[
 \sum_{i=1}^{m} \alpha_i y_i = 0, \quad \alpha_i \geq 0
-\]
+]$
 
 **Implementing Polynomial and RBF Kernels**:
 ```python
@@ -415,7 +415,7 @@ print(classification_report(y_test, y_pred))
 
 ### 14. Developing a Soft-Margin SVM Classifier
 
-**Description**: Soft-margin SVM allows some misclassification, which is particularly useful in noisy datasets. It introduces a penalty for misclassifications controlled by the parameter \( C \).
+**Description**: Soft-margin SVM allows some misclassification, which is particularly useful in noisy datasets. It introduces a penalty for misclassifications controlled by the parameter $( C )$.
 
 **Python Code**:
 ```python
@@ -578,11 +578,11 @@ print(classification_report(y_test, y_pred))
 **Gini Impurity Formula**:
 The Gini impurity is defined as:
 
-\[
+$[
 Gini(D) = 1 - \sum_{k=1}^{K} p_k^2
-\]
+]$
 
-where \( p_k \) is the proportion of class \( k \) instances in dataset \( D \).
+where $( p_k )$ is the proportion of class $( k )$ instances in dataset $( D )$.
 
 **Minimizing Classification Error**:
 A decision tree aims to minimize the Gini impurity when splitting nodes, leading to more homogenous child nodes. The split that results in the lowest Gini impurity is chosen for the decision tree.
@@ -844,7 +844,7 @@ plt.show()
 ### 28. Prove the Convergence of the K-Means Clustering Algorithm
 
 **Convergence Proof**:
-1. The k-means algorithm initializes \( k \) centroids.
+1. The k-means algorithm initializes $( k )$ centroids.
 2. In each iteration, it assigns data points to the nearest centroid and updates the centroid positions.
 3. The algorithm converges when the centroids no longer change, as the assignments stabilize.
 
@@ -912,8 +912,8 @@ print("Testing R^2:", model.score(X_test, y_test))
 **Eigenvalue Decomposition**:
 PCA involves the following steps:
 1. **Standardization**: Center the data.
-2. **Covariance Matrix**: Calculate the covariance matrix \( C = \frac{1}{n-1} X^T X \).
-3. **Eigenvalues and Eigenvectors**: Solve the equation \( C v = \lambda v \).
+2. **Covariance Matrix**: Calculate the covariance matrix $( C = \frac{1}{n-1} X^T X )$.
+3. **Eigenvalues and Eigenvectors**: Solve the equation $( C v = \lambda v )$.
 
 **Python Code** (Eigenvalue Decomposition):
 ```python
@@ -957,7 +957,7 @@ plt.show()
 ### 32. Analyze Time Complexity of Clustering Algorithms
 
 **Time Complexity Analysis**:
-- **K-Means**: O(n * k * i), where \( n \) is the number of samples, \( k \) is the number of clusters, and \( i \) is the number of iterations.
+- **K-Means**: O(n * k * i), where $( n )$ is the number of samples, $( k )$ is the number of clusters, and $( i )$ is the number of iterations.
 - **Hierarchical Clustering**: O(n^3) for the naive approach; O(n^2) with optimizations.
 - **DBSCAN**: O(n log n) for spatial indexing, O(n^2) for the naive approach.
 
@@ -1236,10 +1236,10 @@ model.fit(X_train, y_train, epochs=20, batch_size=32)
 
 **Convolution Operation**:
 The convolution operation is defined as:
-\[
+$[
 (S * K)(i, j) = \sum_m \sum_n S(m, n)K(i-m, j-n)
-\]
-where \( S \) is the input feature map, and \( K \) is the kernel.
+]$
+where $( S )$ is the input feature map, and $( K )$ is the kernel.
 
 **Python Code** (Sentiment Analysis):
 ```python
@@ -1314,10 +1314,10 @@ print(f'Model Accuracy: {accuracy}')
 
 **Bellman Equation**:
 The Bellman equation is given by:
-\[
+$[
 Q(s, a) = r + \gamma \max_{a'} Q(s', a')
-\]
-where \( Q \) is the action-value function, \( r \) is the reward, and \( \gamma \) is the discount factor.
+]$
+where $( Q )$ is the action-value function, $( r )$ is the reward, and $( \gamma )$ is the discount factor.
 
 **Python Code**:
 ```python
@@ -1496,9 +1496,9 @@ print(f'Correlation between sentiment scores and market trends: {correlation[0, 
 
 **Loss Function**:
 For predicting option prices, the loss function is often Mean Squared Error:
-\[
+$[
 L(y, \hat{y}) = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-\]
+]$
 
 **Implementing Stochastic Gradient Descent**:
 ```python
