@@ -18,7 +18,7 @@ This repository consolidates knowledge across four major disciplines: financial 
 
 The repository is organized into four main categories based on educational level and discipline:
 
-### 1. **Financial Engineering (Master's Level)**
+### **Financial Engineering (Master's Level)**
 
 Topics include:
 - Numerical Methods for Financial Engineering
@@ -33,7 +33,7 @@ Topics include:
 - Advanced Portfolio Management
 - Advanced Risk Management
 
-### 2. **Mathematics (Master's Level)**
+### **Mathematics (Master's Level)**
 
 Topics include:
 - Abstract Algebra
@@ -47,20 +47,7 @@ Topics include:
 - Advanced Probability and Stochastic Processes
 - Algebraic Topology
 
-### 3. **Physics (Bachelor's and Master's Levels)**
-
-Topics include:
-- Classical Mechanics
-- Electromagnetism
-- Quantum Field Theory
-- Quantum Mechanics
-- Computational Physics
-- Experimental Physics
-- Statistical Mechanics
-- Quantum Computing
-- Advanced Theoretical Physics
-
-### 4. **Software Engineering (Master's Level)**
+### **Software Engineering (Master's Level)**
 
 Topics include:
 - Algorithms and Data Structures
