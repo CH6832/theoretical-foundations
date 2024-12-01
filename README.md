@@ -4,9 +4,8 @@ This repository provides a theoretical foundation across multiple disciplines—
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Repository Structure](#repository-structure)
-3. [Prerequisites](#prerequisites)
+- [Introduction](#introduction)
+- [Repository Structure](#repository-structure)
 
 ---
 
@@ -18,53 +17,7 @@ This repository consolidates knowledge across four major disciplines: financial 
 
 The repository is organized into four main categories based on educational level and discipline:
 
-### **Financial Engineering (Master's Level)**
-
-Topics include:
-- Numerical Methods for Financial Engineering
-- Quantitative Methods in Finance
-- Stochastic Calculus and Financial Derivatives
-- Advanced Derivatives and Risk Management
-- Financial Econometrics
-- Fixed Income Securities
-- Programming for Financial Engineering
-- Machine Learning in Finance
-- Computational Finance
-- Advanced Portfolio Management
-- Advanced Risk Management
-
-### **Mathematics (Master's Level)**
-
-Topics include:
-- Abstract Algebra
-- Advanced Real Analysis
-- Complex Analysis
-- Topology
-- Differential Geometry
-- Functional Analysis
-- Partial Differential Equations
-- Advanced Numerical Analysis
-- Advanced Probability and Stochastic Processes
-- Algebraic Topology
-
-### **Software Engineering (Master's Level)**
-
-Topics include:
-- Algorithms and Data Structures
-- Database Systems and Data Management
-- Programming Paradigms and Functional Programming
-- Software Architecture
-- Cloud Computing and DevOps
-- Distributed Systems
-- Machine Learning for Engineers
-- Software Testing asnd Quality Assurance
-- Advanced Software Engineering
-- Blockchain Technology
-- Cybersecurity
-- Enterprise Software Systems
-- Human-Computer Interaction
-
-### 5. **Computer Science (Master's Level)**
+### **Computer Science (Master's Level)**
 
 Topics include:
 - Neural Networks
@@ -92,7 +45,34 @@ Topics include:
 - Quantum Error Correction
 - Applications of Quantum Computing in Cryptography
 
-## Prerequisites
+### **Financial Engineering (Master's Level)**
 
-- A modern operating system (Linux, macOS, Windows)
-- Basic knowledge of Git and GitHub
+Topics include:
+- Numerical Methods for Financial Engineering
+- Quantitative Methods in Finance
+- Stochastic Calculus and Financial Derivatives
+- Advanced Derivatives and Risk Management
+- Financial Econometrics
+- Fixed Income Securities
+- Programming for Financial Engineering
+- Machine Learning in Finance
+- Computational Finance
+- Advanced Portfolio Management
+- Advanced Risk Management
+
+### **Software Engineering (Master's Level)**
+
+Topics include:
+- Algorithms and Data Structures
+- Database Systems and Data Management
+- Programming Paradigms and Functional Programming
+- Software Architecture
+- Cloud Computing and DevOps
+- Distributed Systems
+- Machine Learning for Engineers
+- Software Testing asnd Quality Assurance
+- Advanced Software Engineering
+- Blockchain Technology
+- Cybersecurity
+- Enterprise Software Systems
+- Human-Computer Interaction
